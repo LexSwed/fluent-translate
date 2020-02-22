@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "style.css",
+  "sources": [
+    "..\\App.svelte"
+  ],
+  "sourcesContent": [
+    "<script>\n  console.log(\"Hello world!\");\n</script>\n\n<style>\n  p {\n    color: purple;\n    font-family: \"Comic Sans MS\", cursive;\n    font-size: 2em;\n  }\n</style>\n\n<p>These styles...</p>\n"
+  ],
+  "names": [],
+  "mappings": "AAKE,CAAC,cAAC,CAAC,AACD,KAAK,CAAE,MAAM,CACb,WAAW,CAAE,eAAe,CAAC,CAAC,OAAO,CACrC,SAAS,CAAE,GAAG,AAChB,CAAC"
+}
