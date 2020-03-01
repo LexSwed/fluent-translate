@@ -16,17 +16,17 @@ export default () => {
       sourcemap: true,
       format: 'iife',
       name: 'app',
-      file: `${source}/script.js`
+      file: `build/${source}/script.js`
     },
     plugins: [
       svelte({
         dev: !production,
         css: css => {
-          css.write(`${source}/style.css`);
+          css.write(`build/${source}/style.css`);
         }
       }),
       del({
-        targets: sources.map(() => `${source}/*.{js,css}`),
+        targets: ['build/**/!(*.html)'],
         verbose: !production,
         runOnce: !production
       }),
@@ -41,14 +41,14 @@ export default () => {
         dedupe: ['svelte']
       }),
       commonjs(),
-      !production && serve(source),
-      !production && livereload(source),
+      !production && serve(),
+      !production && livereload('build'),
       production && terser()
     ]
   }));
 };
 
-function serve(source) {
+function serve() {
   let started = false;
 
   return {
@@ -56,7 +56,7 @@ function serve(source) {
       if (!started) {
         started = true;
 
-        require('child_process').spawn('npm', ['run', 'serve', '--', source, '--dev'], {
+        require('child_process').spawn('npm', ['run', 'serve', '--', '--port', process.env.PORT || 8000], {
           stdio: ['ignore', 'inherit', 'inherit'],
           shell: true
         });

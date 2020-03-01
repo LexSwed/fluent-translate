@@ -6,11 +6,13 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "serve": "sirv start"
+    "serve": "sirv build --dev",
+    "dev:server": "now dev"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.0",
     "@rollup/plugin-node-resolve": "^7.0.0",
+    "now": "^17.0.4",
     "rollup": "^1.20.0",
     "rollup-plugin-delete": "^1.2.0",
     "rollup-plugin-livereload": "^1.0.4",
@@ -35,6 +37,7 @@
   },
   "homepage": "https://github.com/LexSwed/edge-translate#readme",
   "dependencies": {
+    "@now/node": "^1.4.1",
     "autosize": "^4.0.2"
   }
 }

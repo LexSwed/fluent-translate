@@ -1,0 +1,5 @@
+{
+  "env": {
+    "AZURE_KEY": "@azure_translator_key"
+  }
+}
