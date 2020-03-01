@@ -1,36 +1,40 @@
 {
-	"name": "edge-translate",
-	"version": "1.0.0",
-	"description": "Translator extension for Microsoft Edge using Microsoft Translator",
-	"main": "index.js",
-	"scripts": {
-		"build": "rollup -c",
-		"dev": "rollup -c -w"
-	},
-	"devDependencies": {
-		"@rollup/plugin-commonjs": "^11.0.0",
-		"@rollup/plugin-node-resolve": "^7.0.0",
-		"rollup": "^1.20.0",
-		"rollup-plugin-delete": "^1.2.0",
-		"rollup-plugin-livereload": "^1.0.4",
-		"rollup-plugin-svelte": "^5.0.3",
-		"rollup-plugin-terser": "^5.1.2",
-		"sirv-cli": "^0.4.5",
-		"svelte": "^3.0.0"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/LexSwed/edge-translate.git"
-	},
-	"keywords": [
-		"edge",
-		"extension",
-		"chromium"
-	],
-	"author": "lexswed",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/LexSwed/edge-translate/issues"
-	},
-	"homepage": "https://github.com/LexSwed/edge-translate#readme"
+  "name": "edge-translate",
+  "version": "1.0.0",
+  "description": "Translator extension for Microsoft Edge using Microsoft Translator",
+  "main": "index.js",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "serve": "sirv start"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^11.0.0",
+    "@rollup/plugin-node-resolve": "^7.0.0",
+    "rollup": "^1.20.0",
+    "rollup-plugin-delete": "^1.2.0",
+    "rollup-plugin-livereload": "^1.0.4",
+    "rollup-plugin-svelte": "^5.0.3",
+    "rollup-plugin-terser": "^5.1.2",
+    "sirv-cli": "^0.4.5",
+    "svelte": "^3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LexSwed/edge-translate.git"
+  },
+  "keywords": [
+    "edge",
+    "extension",
+    "chromium"
+  ],
+  "author": "lexswed",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LexSwed/edge-translate/issues"
+  },
+  "homepage": "https://github.com/LexSwed/edge-translate#readme",
+  "dependencies": {
+    "autosize": "^4.0.2"
+  }
 }

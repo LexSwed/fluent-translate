@@ -41,7 +41,7 @@ export default () => {
         dedupe: ['svelte']
       }),
       commonjs(),
-      !production && serve(),
+      !production && serve(source),
       !production && livereload(source),
       production && terser()
     ]
@@ -56,7 +56,7 @@ function serve(source) {
       if (!started) {
         started = true;
 
-        require('child_process').spawn('node_modules/.bin/sirv', ['start', source, '-s'], {
+        require('child_process').spawn('npm', ['run', 'serve', '--', source, '--dev'], {
           stdio: ['ignore', 'inherit', 'inherit'],
           shell: true
         });

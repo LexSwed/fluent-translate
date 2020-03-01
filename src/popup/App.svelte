@@ -1,13 +1,14 @@
 <script>
-  console.log("Hello world!");
+  import TextInput from "./TextInput.svelte";
 </script>
 
 <style>
-  p {
-    color: purple;
-    font-family: "Comic Sans MS", cursive;
-    font-size: 2em;
+  :global(body) {
+    font-size: 15px;
+    font-family: Segoe UI, SegoeUI, "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    overflow: hidden;
   }
 </style>
 
-<p>These styles...</p>
+<TextInput />
