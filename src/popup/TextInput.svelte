@@ -1,10 +1,9 @@
 <script>
-  import Input from "./Input.svelte";
+  import Input from "../common/Input.svelte";
   import LanguageSelect from "./LangaugeSelect.svelte";
+  import { text } from "../stores/translation";
 
-  let text = "";
-
-  $: multiline = Math.floor(text.length / 25) > 0;
+  $: multiline = Math.floor($text.length / 25) > 0;
 </script>
 
 <style>
@@ -12,10 +11,9 @@
     position: relative;
     border: 1px solid #cbd5e0;
     border-radius: 2px;
-    padding: 8px;
-    width: 300px;
     display: flex;
     align-items: center;
+    padding: 8px;
   }
 
   .wrapper:hover {
@@ -42,7 +40,7 @@
 </style>
 
 <div class="wrapper" class:multiline>
-  <Input bind:value={text} />
+  <Input />
   <div class="language-select">
     <LanguageSelect />
   </div>

@@ -1,8 +1,8 @@
 <script>
   import { onMount, onDestroy } from "svelte";
   import autosize from "autosize";
+  import { text } from "../stores/translation";
 
-  export let value = "";
   let textareaRef;
 
   onMount(() => {
@@ -20,9 +20,10 @@
     resize: none;
     font-family: inherit;
     min-height: 1em;
+    max-height: 300px;
     width: 100%;
     overflow: hidden;
   }
 </style>
 
-<textarea bind:value rows="1" bind:this={textareaRef} />
+<textarea bind:value={$text} rows="1" bind:this={textareaRef} />

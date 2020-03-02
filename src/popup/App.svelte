@@ -1,5 +1,8 @@
 <script>
   import TextInput from "./TextInput.svelte";
+  import ProgressBar from "../common/ProgressBar.svelte";
+  import Translated from "./Translated.svelte";
+  import { translating } from "../stores/translation";
 </script>
 
 <style>
@@ -9,6 +12,14 @@
       sans-serif;
     overflow: hidden;
   }
+
+  main {
+    width: 300px;
+  }
 </style>
 
-<TextInput />
+<main>
+  <TextInput />
+  <ProgressBar visible={$translating} />
+  <Translated />
+</main>

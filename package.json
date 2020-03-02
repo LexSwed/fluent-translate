@@ -5,21 +5,35 @@
   "main": "index.js",
   "scripts": {
     "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "serve": "sirv build --dev",
-    "dev:server": "now dev"
+    "dev": "run-p rollup serve",
+    "rollup": "rollup -c -w",
+    "serve": "sirv build --dev --port $PORT"
+  },
+  "dependencies": {
+    "@now/node": "^1.4.1",
+    "autosize": "^4.0.2",
+    "axios": "^0.19.2",
+    "lodash.debounce": "^4.0.8",
+    "node-fetch": "^2.6.0",
+    "qs": "^6.9.1",
+    "uuidv4": "^6.0.5"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.0",
     "@rollup/plugin-node-resolve": "^7.0.0",
+    "@rollup/plugin-replace": "^2.3.1",
+    "@types/lodash.debounce": "^4.0.6",
+    "@types/node-fetch": "^2.5.5",
+    "@types/qs": "^6.9.1",
     "now": "^17.0.4",
-    "rollup": "^1.20.0",
+    "npm-run-all": "^4.1.5",
+    "rollup": "^1.32.0",
     "rollup-plugin-delete": "^1.2.0",
     "rollup-plugin-livereload": "^1.0.4",
     "rollup-plugin-svelte": "^5.0.3",
     "rollup-plugin-terser": "^5.1.2",
     "sirv-cli": "^0.4.5",
-    "svelte": "^3.0.0"
+    "svelte": "^3.19.1"
   },
   "repository": {
     "type": "git",
@@ -35,9 +49,5 @@
   "bugs": {
     "url": "https://github.com/LexSwed/edge-translate/issues"
   },
-  "homepage": "https://github.com/LexSwed/edge-translate#readme",
-  "dependencies": {
-    "@now/node": "^1.4.1",
-    "autosize": "^4.0.2"
-  }
+  "homepage": "https://github.com/LexSwed/edge-translate#readme"
 }

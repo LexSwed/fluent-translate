@@ -4,6 +4,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import del from 'rollup-plugin-delete';
 import { terser } from 'rollup-plugin-terser';
 import livereload from 'rollup-plugin-livereload';
+import replace from '@rollup/plugin-replace';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -41,26 +42,9 @@ export default () => {
         dedupe: ['svelte']
       }),
       commonjs(),
-      !production && serve(),
       !production && livereload('build'),
-      production && terser()
+      production && terser(),
+      replace({ __buildEnv__: JSON.stringify(production ? 'production' : 'development') })
     ]
   }));
 };
-
-function serve() {
-  let started = false;
-
-  return {
-    writeBundle() {
-      if (!started) {
-        started = true;
-
-        require('child_process').spawn('npm', ['run', 'serve', '--', '--port', process.env.PORT || 8000], {
-          stdio: ['ignore', 'inherit', 'inherit'],
-          shell: true
-        });
-      }
-    }
-  };
-}

@@ -1,10 +1,15 @@
 <script>
-  let languages = ["English", "Russian"];
-  let value = null;
+  import { from, languages } from "../stores/translation";
 </script>
 
-<select bind:value>
-  {#each languages as lang}
-    <option value={lang}>{lang}</option>
+<style>
+  select {
+    width: 100px;
+  }
+</style>
+
+<select bind:value={$from}>
+  {#each [...Object.entries($languages || {})] as [lang, { name, nativeName }]}
+    <option value={lang} title={nativeName}>{name}</option>
   {/each}
 </select>
