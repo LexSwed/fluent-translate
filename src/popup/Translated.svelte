@@ -10,10 +10,6 @@
     position: relative;
     margin-top: 16px;
   }
-  .flex-center {
-    display: flex;
-    align-items: center;
-  }
 
   .empty {
     user-select: none;
