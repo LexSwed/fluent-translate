@@ -1,7 +1,8 @@
 <script>
   import TextInput from "./TextInput.svelte";
-  import ProgressBar from "../common/ProgressBar.svelte";
   import Translated from "./Translated.svelte";
+  import Footer from "./Footer.svelte";
+
   import { translating } from "../stores/translation";
 </script>
 
@@ -21,6 +22,6 @@
 
 <main>
   <TextInput />
-  <ProgressBar visible={$translating} />
   <Translated />
+  <Footer />
 </main>
