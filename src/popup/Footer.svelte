@@ -11,7 +11,7 @@
   }
   .line {
     border-top: 1px solid #b6b6b6;
-    width: 90%;
+    width: 100%;
     margin: 8px auto 16px;
   }
   a {
@@ -29,6 +29,7 @@
   <div class="line" />
   <a
     href="https://www.bing.com/translator/?to={$to}&text={$text}"
+    target="_blank"
     rel="noopener">
     Microsoft Translator
   </a>

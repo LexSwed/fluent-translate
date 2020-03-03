@@ -11,7 +11,7 @@
     align-items: center;
     position: relative;
     overflow: hidden;
-    transition: opacity 0.1s 0.2s ease;
+    transition: opacity 0.1s 0.1s ease;
   }
 
   .invisible {
@@ -19,7 +19,7 @@
   }
 
   .ball {
-    margin: 3px;
+    margin: 0 3px;
     width: var(--size);
     height: var(--size);
     background-color: var(--color);

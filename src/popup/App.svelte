@@ -13,6 +13,8 @@
       sans-serif;
     overflow: hidden;
     color: #262626;
+    margin: 0;
+    padding: 16px;
   }
 
   main {
