@@ -46,7 +46,6 @@ const translateDebounced = debounce(async function([$from, $to, $text], set) {
   });
 
   translating.set(false);
-  from.set(res.from);
   to.set(res.to);
   set(res.translation);
 }, 300);

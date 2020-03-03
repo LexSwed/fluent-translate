@@ -23,6 +23,8 @@
     max-height: 300px;
     width: 100%;
     overflow: hidden;
+    font-size: 15px;
+    line-height: 1;
   }
 </style>
 

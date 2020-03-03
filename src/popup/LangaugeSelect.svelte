@@ -1,5 +1,7 @@
 <script>
-  import { from, languages } from "../stores/translation";
+  import { languages } from "../stores/translation";
+
+  export let value;
 </script>
 
 <style>
@@ -8,7 +10,7 @@
   }
 </style>
 
-<select bind:value={$from}>
+<select bind:value>
   {#each [...Object.entries($languages || {})] as [lang, { name, nativeName }]}
     <option value={lang} title={nativeName}>{name}</option>
   {/each}

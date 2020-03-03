@@ -1,7 +1,7 @@
 <script>
   import Input from "../common/Input.svelte";
   import LanguageSelect from "./LangaugeSelect.svelte";
-  import { text } from "../stores/translation";
+  import { text, from } from "../stores/translation";
 
   $: multiline = Math.floor($text.length / 25) > 0;
 </script>
@@ -42,6 +42,6 @@
 <div class="wrapper" class:multiline>
   <Input />
   <div class="language-select">
-    <LanguageSelect />
+    <LanguageSelect bind:value={$from} />
   </div>
 </div>

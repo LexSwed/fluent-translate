@@ -11,6 +11,7 @@
     font-family: Segoe UI, SegoeUI, "Helvetica Neue", Helvetica, Arial,
       sans-serif;
     overflow: hidden;
+    color: #262626;
   }
 
   main {
