@@ -27,6 +27,7 @@
   .language-select {
     align-self: flex-end;
     display: inline-block;
+    margin: -4px -4px -4px 8px;
   }
 
   .multiline {

@@ -13,9 +13,9 @@
     color: inherit;
     background-color: #edf2f7;
     height: 28px;
-    line-height: 0.8;
-    padding: 0 8px;
-    margin: -4px -4px -4px 8px;
+    /* otherwise doesn't look centered: */
+    line-height: 26px;
+    padding: 0 22px 0 8px;
     -webkit-appearance: none;
     background-position: right 4px center;
     background-repeat: no-repeat;
