@@ -24,7 +24,7 @@
   }
 
   /* focus-within is ugly due to possible focused select element */
-  .input-focused {
+  .input-wrapper.input-focused {
     border-color: #2d3748;
   }
 
