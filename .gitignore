@@ -1,5 +1,6 @@
 node_modules
 build/*
-!build/popup.html
+!build/*.html
+!build/*.html
 .env
 .now

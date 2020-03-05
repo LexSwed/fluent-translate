@@ -12,7 +12,7 @@ const plugins = [
   del({
     targets: ['build/**/!(*.html)'],
     verbose: !production,
-    runOnce: !production
+    runOnce: true
   }),
 
   // If you have external dependencies installed from
