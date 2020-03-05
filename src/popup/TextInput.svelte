@@ -3,24 +3,28 @@
   import LanguageSelect from "./LangaugeSelect.svelte";
   import { text, from } from "../stores/translation";
 
+  let inputFocused = false;
+
   $: multiline = Math.floor($text.length / 25) > 0;
 </script>
 
 <style>
-  .wrapper {
+  .input-wrapper {
     position: relative;
     border: 1px solid #cbd5e0;
     border-radius: 2px;
     display: flex;
     align-items: center;
     padding: 8px;
+    transition: 0.12s ease-in-out;
   }
 
-  .wrapper:hover {
+  .input-wrapper:hover {
     border-color: #718096;
   }
 
-  .wrapper:focus-within {
+  /* focus-within is ugly due to possible focused select element */
+  .input-focused {
     border-color: #2d3748;
   }
 
@@ -40,8 +44,10 @@
   }
 </style>
 
-<div class="wrapper" class:multiline>
-  <Input />
+<div class="input-wrapper" class:multiline class:input-focused={inputFocused}>
+  <Input
+    on:focus={() => (inputFocused = true)}
+    on:blur={() => (inputFocused = false)} />
   <div class="language-select">
     <LanguageSelect bind:value={$from} />
   </div>

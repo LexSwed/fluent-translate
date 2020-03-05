@@ -28,4 +28,9 @@
   }
 </style>
 
-<textarea bind:value={$text} rows="1" bind:this={textareaRef} />
+<textarea
+  bind:value={$text}
+  rows="1"
+  bind:this={textareaRef}
+  on:focus
+  on:blur />
