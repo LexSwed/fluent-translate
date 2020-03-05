@@ -1,5 +1,8 @@
 <script>
   import { to, text } from "../stores/translation";
+  import { getTranslatorLink } from "../utils";
+
+  $: link = getTranslatorLink({ to: $to, text: $text });
 </script>
 
 <style>
@@ -27,10 +30,5 @@
 
 <div class="wrapper">
   <div class="line" />
-  <a
-    href="https://www.bing.com/translator/?to={$to}&text={$text}"
-    target="_blank"
-    rel="noopener">
-    Microsoft Translator
-  </a>
+  <a href={link} target="_blank" rel="noopener">Microsoft Translator</a>
 </div>

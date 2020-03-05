@@ -1,8 +1,7 @@
-import { writable, readable, derived, get } from 'svelte/store';
+import { writable, derived } from 'svelte/store';
 import debounce from 'lodash.debounce';
-import * as api from '../api';
 
-export const userLang = window.navigator.language.slice(0, 2) || window.navigator.languages[0].slice(0, 2);
+import { userLang, translate } from '../utils';
 
 export const languages = writable({
   auto: {
@@ -11,8 +10,8 @@ export const languages = writable({
   }
 });
 
-api.getLanguages().then(langs => {
-  languages.update(state => Object.assign(state, langs));
+chrome.storage.local.get(['languages'], cache => {
+  languages.update(state => ({ ...state, ...cache.languages }));
 });
 
 export const from = writable('auto');
@@ -27,7 +26,7 @@ const translateDebounced = debounce(async function([$from, $to, $text], set) {
   }
   translating.set(true);
 
-  const res = await api.translate({
+  const res = await translate({
     // let guess language if Auto is selected
     from: $from === 'auto' ? undefined : $from,
     // user lang

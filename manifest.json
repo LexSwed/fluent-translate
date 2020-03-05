@@ -13,5 +13,9 @@
   "browser_action": {
     "default_popup": "build/popup.html"
   },
-  "permissions": ["http://localhost:3000/", "https://*.lexswed.now.sh/"]
+  "background": {
+    "persistent": false,
+    "scripts": ["build/background/script.js"]
+  },
+  "permissions": ["contextMenus", "storage", "http://localhost:3000/", "https://*.lexswed.now.sh/"]
 }
