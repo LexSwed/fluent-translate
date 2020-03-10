@@ -2,6 +2,7 @@ import { writable, derived } from 'svelte/store';
 import debounce from 'lodash.debounce';
 
 import { userLang, translate } from '../utils';
+import config from '../../config/consts';
 
 export const languages = writable({
   auto: {
@@ -15,14 +16,14 @@ export const to = writable(userLang);
 export const text = writable('');
 
 const translateDebounced = debounce(async function([$from, $to, $text], set) {
-  const $textTrimmed = $text.trim();
-
-  if ($textTrimmed.length < 2) {
+  if ($text.length < 2) {
     set('');
 
     return;
   }
   translating.set(true);
+
+  const $textTrimmed = $text.trim().slice(0, config.maxLength);
 
   const res = await translate({
     // let guess language if Auto is selected

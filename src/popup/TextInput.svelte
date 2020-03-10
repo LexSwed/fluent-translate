@@ -49,7 +49,6 @@
   }
 
   .multiline .language-select {
-    margin-top: 8px;
-    margin-left: 8px;
+    margin-top: 4px;
   }
 </style>

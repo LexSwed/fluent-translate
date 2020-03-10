@@ -13,8 +13,7 @@
 <style>
   :global(body) {
     font-size: 15px;
-    font-family: Segoe UI, SegoeUI, 'Helvetica Neue', Helvetica, Arial,
-      sans-serif;
+    font-family: 'system-ui', sans-serif;
     overflow: hidden;
     color: #262626;
     margin: 0;

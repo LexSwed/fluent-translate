@@ -1,12 +1,13 @@
 import { NowRequest, NowResponse } from '@now/node';
 import { post } from './_utils/fetch';
+import { maxLength } from '../config/consts';
 
 export default async (req: NowRequest, res: NowResponse) => {
   const { to, from, text } = req.query;
 
   try {
     const [{ detectedLanguage, translations }] = await post('/translate', {
-      body: [{ Text: text }],
+      body: [{ Text: text.slice(0, maxLength) }],
       query: { to, from }
     });
 

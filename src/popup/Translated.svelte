@@ -1,8 +1,13 @@
 <script>
   import LanguageSelect from './LangaugeSelect.svelte';
   import ProgressBar from '../common/ProgressBar.svelte';
+  import TranslatorLink from '../common/TranslatorLink.svelte';
 
-  import { translation, translating, to } from '../stores/translation';
+  import { translation, translating, to, text } from '../stores/translation';
+  import config from '../../config/consts.js';
+
+  $: isTextCut = $text.length - config.maxLength > 5;
+  $: translatedText = isTextCut ? `${$translation}…` : $translation;
 
   function onChange(ev) {
     const { value } = ev.target;
@@ -15,7 +20,12 @@
 <div class="wrapper">
   {#if $translation}
     <LanguageSelect value={$to} on:change={onChange} />
-    <p class="translated">{$translation}</p>
+    <p class="translated">
+      {translatedText}
+      {#if isTextCut}
+        <TranslatorLink>Full translation</TranslatorLink>
+      {/if}
+    </p>
   {:else}
     <div class="empty">
       <i class="material-icons">language</i>
@@ -54,5 +64,9 @@
 
   .translated {
     white-space: pre-wrap;
+    font-size: 14px;
+    line-height: 20px;
+    color: #262626;
+    padding: 0;
   }
 </style>

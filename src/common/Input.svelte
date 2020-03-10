@@ -31,6 +31,7 @@
     max-height: 150px;
     width: 100%;
     overflow: hidden;
-    font-size: 15px;
+    font-size: 14px;
+    line-height: 16px;
   }
 </style>
