@@ -24,8 +24,11 @@
     "@types/lodash.debounce": "^4.0.6",
     "@types/node-fetch": "^2.5.5",
     "@types/qs": "^6.9.1",
+    "husky": "^4.2.3",
     "now": "^17.0.4",
     "npm-run-all": "^4.1.5",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
     "rollup": "^2.0.3",
     "rollup-plugin-delete": "^1.2.0",
     "rollup-plugin-livereload": "^1.0.4",
@@ -49,5 +52,10 @@
   "bugs": {
     "url": "https://github.com/LexSwed/edge-translate/issues"
   },
-  "homepage": "https://github.com/LexSwed/edge-translate#readme"
+  "homepage": "https://github.com/LexSwed/edge-translate#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
 }
