@@ -12,6 +12,8 @@
   onDestroy(() => {
     autosize.destroy(textareaRef);
   });
+
+  export let autofocus;
 </script>
 
 <style>
@@ -29,6 +31,7 @@
 </style>
 
 <textarea
+  {autofocus}
   bind:value={$text}
   rows="1"
   bind:this={textareaRef}

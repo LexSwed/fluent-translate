@@ -46,6 +46,7 @@
 
 <div class="input-wrapper" class:multiline class:input-focused={inputFocused}>
   <Input
+    autofocus
     on:focus={() => (inputFocused = true)}
     on:blur={() => (inputFocused = false)} />
   <div class="language-select">
