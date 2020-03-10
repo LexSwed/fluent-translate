@@ -1,5 +1,9 @@
+<img src="icons/icon.svg" height="100px" align="right"/>
+
 # edge-translate
+
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+
 Translator extension for Microsoft Edge using Microsoft Translator
 
-![Demo video](https://github.com/LexSwed/edge-translate/blob/master/demo.gif)
-
+<img src="demo.gif" height="300px" />
