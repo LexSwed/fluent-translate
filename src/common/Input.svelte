@@ -20,11 +20,10 @@
     resize: none;
     font-family: inherit;
     min-height: 1em;
-    max-height: 300px;
+    max-height: 150px;
     width: 100%;
     overflow: hidden;
     font-size: 15px;
-    line-height: 1;
   }
 </style>
 

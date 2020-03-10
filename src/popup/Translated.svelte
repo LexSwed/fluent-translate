@@ -30,12 +30,16 @@
     right: 0;
     display: inline-flex;
   }
+
+  .translated {
+    white-space: pre-wrap;
+  }
 </style>
 
 <div class="wrapper">
   {#if $translation}
     <LanguageSelect bind:value={$to} />
-    <p>{$translation}</p>
+    <p class="translated">{$translation}</p>
   {:else}
     <div class="empty">
       <i class="material-icons">language</i>

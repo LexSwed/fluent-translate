@@ -5,7 +5,7 @@
 
   let inputFocused = false;
 
-  $: multiline = Math.floor($text.length / 25) > 0;
+  $: multiline = Math.floor($text.length / 25) > 0 || $text.includes("\n");
 </script>
 
 <style>

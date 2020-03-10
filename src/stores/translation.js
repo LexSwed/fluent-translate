@@ -19,7 +19,9 @@ export const to = writable(userLang);
 export const text = writable('');
 
 const translateDebounced = debounce(async function([$from, $to, $text], set) {
-  if ($text.length < 2) {
+  const $textTrimmed = $text.trim();
+
+  if ($textTrimmed.length < 2) {
     set('');
 
     return;
@@ -31,7 +33,7 @@ const translateDebounced = debounce(async function([$from, $to, $text], set) {
     from: $from === 'auto' ? undefined : $from,
     // user lang
     to: $to,
-    text: $text
+    text: $textTrimmed
   });
 
   translating.set(false);
