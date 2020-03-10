@@ -1,5 +1,6 @@
+/* eslint-env node */
+
 module.exports = {
-  printWidth: 120,
   singleQuote: true,
   trailingComma: 'none',
   tabWidth: 2,
@@ -12,5 +13,7 @@ module.exports = {
         printWidth: 200
       }
     }
-  ]
+  ],
+  plugins: ['prettier-plugin-svelte'],
+  svelteSortOrder: 'scripts-markup-styles'
 };

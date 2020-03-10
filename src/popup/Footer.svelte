@@ -1,9 +1,14 @@
 <script>
-  import { to, text } from "../stores/translation";
-  import { getTranslatorLink } from "../utils";
+  import { to, text } from '../stores/translation';
+  import { getTranslatorLink } from '../utils';
 
   $: link = getTranslatorLink({ to: $to, text: $text });
 </script>
+
+<div class="wrapper">
+  <div class="line" />
+  <a href={link} target="_blank" rel="noopener">Microsoft Translator</a>
+</div>
 
 <style>
   .wrapper {
@@ -27,8 +32,3 @@
     border-color: #1a202c;
   }
 </style>
-
-<div class="wrapper">
-  <div class="line" />
-  <a href={link} target="_blank" rel="noopener">Microsoft Translator</a>
-</div>

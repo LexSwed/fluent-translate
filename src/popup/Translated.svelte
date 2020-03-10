@@ -1,8 +1,8 @@
 <script>
-  import LanguageSelect from "./LangaugeSelect.svelte";
-  import ProgressBar from "../common/ProgressBar.svelte";
+  import LanguageSelect from './LangaugeSelect.svelte';
+  import ProgressBar from '../common/ProgressBar.svelte';
 
-  import { translation, translating, to } from "../stores/translation";
+  import { translation, translating, to } from '../stores/translation';
 
   function onChange(ev) {
     const { value } = ev.target;
@@ -11,6 +11,20 @@
     chrome.storage.local.set({ to: value });
   }
 </script>
+
+<div class="wrapper">
+  {#if $translation}
+    <LanguageSelect value={$to} on:change={onChange} />
+    <p class="translated">{$translation}</p>
+  {:else}
+    <div class="empty">
+      <i class="material-icons">language</i>
+    </div>
+  {/if}
+  <div class="progress-bar">
+    <ProgressBar visible={$translating} />
+  </div>
+</div>
 
 <style>
   .wrapper {
@@ -42,17 +56,3 @@
     white-space: pre-wrap;
   }
 </style>
-
-<div class="wrapper">
-  {#if $translation}
-    <LanguageSelect value={$to} on:change={onChange} />
-    <p class="translated">{$translation}</p>
-  {:else}
-    <div class="empty">
-      <i class="material-icons">language</i>
-    </div>
-  {/if}
-  <div class="progress-bar">
-    <ProgressBar visible={$translating} />
-  </div>
-</div>

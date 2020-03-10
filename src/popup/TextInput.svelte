@@ -1,12 +1,22 @@
 <script>
-  import Input from "../common/Input.svelte";
-  import LanguageSelect from "./LangaugeSelect.svelte";
-  import { text, from } from "../stores/translation";
+  import Input from '../common/Input.svelte';
+  import LanguageSelect from './LangaugeSelect.svelte';
+  import { text, from } from '../stores/translation';
 
   let inputFocused = false;
 
-  $: multiline = Math.floor($text.length / 25) > 0 || $text.includes("\n");
+  $: multiline = Math.floor($text.length / 25) > 0 || $text.includes('\n');
 </script>
+
+<div class="input-wrapper" class:multiline class:input-focused={inputFocused}>
+  <Input
+    autofocus
+    on:focus={() => (inputFocused = true)}
+    on:blur={() => (inputFocused = false)} />
+  <div class="language-select">
+    <LanguageSelect bind:value={$from} />
+  </div>
+</div>
 
 <style>
   .input-wrapper {
@@ -43,13 +53,3 @@
     margin-left: 8px;
   }
 </style>
-
-<div class="input-wrapper" class:multiline class:input-focused={inputFocused}>
-  <Input
-    autofocus
-    on:focus={() => (inputFocused = true)}
-    on:blur={() => (inputFocused = false)} />
-  <div class="language-select">
-    <LanguageSelect bind:value={$from} />
-  </div>
-</div>

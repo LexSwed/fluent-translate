@@ -14,5 +14,7 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 
 chrome.contextMenus.onClicked.addListener(info => {
-  chrome.tabs.create({ url: getTranslatorLink({ to: userLang, text: info.selectionText }) });
+  chrome.tabs.create({
+    url: getTranslatorLink({ to: userLang, text: info.selectionText })
+  });
 });

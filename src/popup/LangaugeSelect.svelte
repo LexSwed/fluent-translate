@@ -1,8 +1,14 @@
 <script>
-  import { languages } from "../stores/translation";
+  import { languages } from '../stores/translation';
 
   export let value;
 </script>
+
+<select bind:value on:change>
+  {#each [...Object.entries($languages || {})] as [lang, { name, nativeName }]}
+    <option value={lang} title={nativeName}>{name}</option>
+  {/each}
+</select>
 
 <style>
   select {
@@ -31,9 +37,3 @@
     border-color: rgb(26, 32, 44);
   }
 </style>
-
-<select bind:value on:change>
-  {#each [...Object.entries($languages || {})] as [lang, { name, nativeName }]}
-    <option value={lang} title={nativeName}>{name}</option>
-  {/each}
-</select>

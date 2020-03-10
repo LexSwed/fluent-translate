@@ -2,6 +2,12 @@
   export let visible = false;
 </script>
 
+<div class="wrapper" class:invisible={!visible}>
+  <div class="ball" />
+  <div class="ball" />
+  <div class="ball" />
+</div>
+
 <style>
   .wrapper {
     --size: 6px;
@@ -49,9 +55,3 @@
     }
   }
 </style>
-
-<div class="wrapper" class:invisible={!visible}>
-  <div class="ball" />
-  <div class="ball" />
-  <div class="ball" />
-</div>

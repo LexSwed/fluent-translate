@@ -1,7 +1,7 @@
 <script>
-  import { onMount, onDestroy } from "svelte";
-  import autosize from "autosize";
-  import { text } from "../stores/translation";
+  import { onMount, onDestroy } from 'svelte';
+  import autosize from 'autosize';
+  import { text } from '../stores/translation';
 
   let textareaRef;
 
@@ -13,6 +13,14 @@
     autosize.destroy(textareaRef);
   });
 </script>
+
+<textarea
+  {...$$props}
+  bind:value={$text}
+  rows="1"
+  bind:this={textareaRef}
+  on:focus
+  on:blur />
 
 <style>
   textarea {
@@ -26,11 +34,3 @@
     font-size: 15px;
   }
 </style>
-
-<textarea
-  {...$$props}
-  bind:value={$text}
-  rows="1"
-  bind:this={textareaRef}
-  on:focus
-  on:blur />

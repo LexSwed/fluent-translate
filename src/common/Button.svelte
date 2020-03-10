@@ -3,6 +3,18 @@
   export let iconLeft = null;
 </script>
 
+<button {...$$props} on:click>
+  {#if iconLeft}
+    <i class="material-icons">{iconLeft}</i>
+  {/if}
+  <span>
+    <slot />
+  </span>
+  {#if iconRight}
+    <i class="material-icons">{iconRight}</i>
+  {/if}
+</button>
+
 <style>
   button {
     border: 1px solid transparent;
@@ -37,15 +49,3 @@
     user-select: none;
   }
 </style>
-
-<button {...$$props} on:click>
-  {#if iconLeft}
-    <i class="material-icons">{iconLeft}</i>
-  {/if}
-  <span>
-    <slot />
-  </span>
-  {#if iconRight}
-    <i class="material-icons">{iconRight}</i>
-  {/if}
-</button>
