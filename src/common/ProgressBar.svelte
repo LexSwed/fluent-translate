@@ -11,7 +11,7 @@
     align-items: center;
     position: relative;
     overflow: hidden;
-    transition: opacity 0.1s 0.1s ease;
+    transition: opacity 0.1s 0.3s ease;
   }
 
   .invisible {
