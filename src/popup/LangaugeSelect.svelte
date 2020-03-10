@@ -32,7 +32,7 @@
   }
 </style>
 
-<select bind:value>
+<select bind:value on:change>
   {#each [...Object.entries($languages || {})] as [lang, { name, nativeName }]}
     <option value={lang} title={nativeName}>{name}</option>
   {/each}

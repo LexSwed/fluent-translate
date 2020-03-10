@@ -10,10 +10,6 @@ export const languages = writable({
   }
 });
 
-chrome.storage.local.get(['languages'], cache => {
-  languages.update(state => ({ ...state, ...cache.languages }));
-});
-
 export const from = writable('auto');
 export const to = writable(userLang);
 export const text = writable('');
@@ -40,8 +36,9 @@ const translateDebounced = debounce(async function([$from, $to, $text], set) {
 
   if (res.from) {
     languages.update(langs => {
-      const name = langs[res.from].name + ' | Auto';
-      const nativeName = langs[res.from].nativeName + ' | Auto';
+      const suffix = ' | Auto';
+      const name = langs[res.from].name + suffix;
+      const nativeName = langs[res.from].nativeName + suffix;
 
       return { ...langs, auto: { name, nativeName } };
     });
@@ -63,4 +60,16 @@ export const translation = derived(
   ''
 );
 
-export default store;
+initFromLocalStorage();
+
+function initFromLocalStorage() {
+  chrome.storage.local.get(['to'], cache => {
+    if (cache.to) {
+      to.set(cache.to);
+    }
+  });
+
+  chrome.storage.local.get(['languages'], cache => {
+    languages.update(state => ({ ...state, ...cache.languages }));
+  });
+}

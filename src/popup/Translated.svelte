@@ -3,6 +3,13 @@
   import ProgressBar from "../common/ProgressBar.svelte";
 
   import { translation, translating, to } from "../stores/translation";
+
+  function onChange(ev) {
+    const { value } = ev.target;
+
+    to.set(value);
+    chrome.storage.local.set({ to: value });
+  }
 </script>
 
 <style>
@@ -38,7 +45,7 @@
 
 <div class="wrapper">
   {#if $translation}
-    <LanguageSelect bind:value={$to} />
+    <LanguageSelect value={$to} on:change={onChange} />
     <p class="translated">{$translation}</p>
   {:else}
     <div class="empty">
