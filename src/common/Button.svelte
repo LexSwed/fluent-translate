@@ -38,7 +38,7 @@
   }
 </style>
 
-<button on:click>
+<button {...$$props} on:click>
   {#if iconLeft}
     <i class="material-icons">{iconLeft}</i>
   {/if}
