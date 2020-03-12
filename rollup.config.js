@@ -1,3 +1,5 @@
+/* eslint-env node */
+
 import svelte from 'rollup-plugin-svelte';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
@@ -27,7 +29,9 @@ const plugins = [
   commonjs(),
   !production && livereload('build'),
   production && terser(),
-  replace({ __buildEnv__: JSON.stringify(production ? 'production' : 'development') })
+  replace({
+    __buildEnv__: JSON.stringify(production ? 'production' : 'development')
+  })
 ];
 
 const sources = ['popup', 'background'];

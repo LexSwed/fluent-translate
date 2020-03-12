@@ -3,9 +3,11 @@ import { uuid } from 'uuidv4';
 import qs from 'qs';
 
 export function get(relativeUrl: string) {
-  const url = `https://api.cognitive.microsofttranslator.com${relativeUrl}?${qs.stringify({
-    'api-version': '3.0'
-  })}`;
+  const url = `https://api.cognitive.microsofttranslator.com${relativeUrl}?${qs.stringify(
+    {
+      'api-version': '3.0'
+    }
+  )}`;
 
   return fetch(url, {
     method: 'GET',
@@ -17,10 +19,12 @@ export function get(relativeUrl: string) {
 }
 
 export function post(relativeUrl: string, { body, query }: PostParams) {
-  const url = `https://api.cognitive.microsofttranslator.com${relativeUrl}?${qs.stringify({
-    'api-version': '3.0',
-    ...query
-  })}`;
+  const url = `https://api.cognitive.microsofttranslator.com${relativeUrl}?${qs.stringify(
+    {
+      'api-version': '3.0',
+      ...query
+    }
+  )}`;
 
   return fetch(url, {
     method: 'POST',
@@ -37,3 +41,9 @@ type PostParams = {
   query?: object;
   body?: object;
 };
+
+if (!process.env.AZURE_KEY) {
+  console.warn(
+    "AZURE_KEY environment variable is not specified, /translate requests won't work!"
+  );
+}

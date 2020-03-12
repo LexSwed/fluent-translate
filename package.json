@@ -4,6 +4,7 @@
   "description": "Translator extension for Microsoft Edge using Microsoft Translator",
   "main": "index.js",
   "scripts": {
+    "start": "now dev",
     "build": "rollup -c",
     "dev": "run-p rollup serve",
     "rollup": "rollup -c -w",
