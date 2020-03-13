@@ -12,7 +12,7 @@ const production = !process.env.ROLLUP_WATCH;
 
 const plugins = [
   del({
-    targets: ['build/**/!(*.css|js)'],
+    targets: ['build/**/*.(css|js)'],
     verbose: !production,
     runOnce: true
   }),
