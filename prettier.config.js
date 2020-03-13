@@ -8,9 +8,15 @@ module.exports = {
   quoteProps: 'consistent',
   overrides: [
     {
-      files: ['.prettierrc', '*.json'],
+      files: ['*.html'],
       options: {
         printWidth: 200
+      }
+    },
+    {
+      files: ['*.html'],
+      options: {
+        printWidth: 140
       }
     }
   ],

@@ -1,4 +1,4 @@
-<img src="icons/icon.svg" height="120px" align="right"/>
+<img src="build/static/icon.svg" height="120px" align="right"/>
 
 # edge-translate
 
@@ -6,7 +6,7 @@
 
 Translator extension for Microsoft Edge using Microsoft Translator
 
-<img src="demo.gif" height="300px" />
+<img src="build/static/demo.gif" height="300px" />
 
 ## How it works
 
