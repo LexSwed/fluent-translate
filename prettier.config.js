@@ -10,12 +10,6 @@ module.exports = {
     {
       files: ['*.html'],
       options: {
-        printWidth: 200
-      }
-    },
-    {
-      files: ['*.html'],
-      options: {
         printWidth: 140
       }
     }
