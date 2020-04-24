@@ -11,7 +11,7 @@ body {
   color: var(--text-color);
   background-color: #fff;
   overflow: hidden;
-  background: no-repeat top / cover url('static/bg.webp');
+  background: no-repeat top / cover url('images/bg.webp');
   height: 100vh;
 }
 
