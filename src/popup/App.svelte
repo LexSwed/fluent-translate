@@ -17,7 +17,7 @@
     overflow: hidden;
     color: #262626;
     margin: 0;
-    padding: 16px;
+    padding: 16px 16px 8px;
   }
 
   main {

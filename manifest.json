@@ -11,11 +11,11 @@
     "128": "icons/icon-128.png"
   },
   "browser_action": {
-    "default_popup": "build/popup.html"
+    "default_popup": "dist/popup/popup.html"
   },
   "background": {
     "persistent": false,
-    "scripts": ["build/background/script.js"]
+    "scripts": ["dist/background/background.js"]
   },
-  "permissions": ["contextMenus", "storage", "http://localhost:3000/", "https://*.lexswed.now.sh/"]
+  "permissions": ["contextMenus", "storage", "<all_urls>"]
 }

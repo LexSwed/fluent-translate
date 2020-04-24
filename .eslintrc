@@ -19,6 +19,6 @@
   ],
   "globals": {
     "chrome": true,
-    "__buildEnv__": true
+    "process": true
   }
 }

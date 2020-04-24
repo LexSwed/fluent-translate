@@ -3,7 +3,7 @@
   import ProgressBar from '../common/ProgressBar.svelte';
   import TranslatorLink from '../common/TranslatorLink.svelte';
 
-  import { translation, translating, to, text } from '../stores/translation';
+  import { translation, to, text } from '../stores/translation';
   import config from '../../config/consts.js';
 
   $: isTextCut = $text.length - config.maxLength > 5;
@@ -31,9 +31,6 @@
       <i class="material-icons">language</i>
     </div>
   {/if}
-  <div class="progress-bar">
-    <ProgressBar visible={$translating} />
-  </div>
 </div>
 
 <style>

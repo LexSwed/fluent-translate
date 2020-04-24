@@ -16,6 +16,7 @@
     outline: none;
     text-decoration: none;
     line-height: 0.9;
+    font-size: inherit;
   }
   a:hover {
     border-bottom-color: #0060a9;

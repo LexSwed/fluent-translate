@@ -1,7 +1,8 @@
 .DS_Store
 node_modules
-build/*
-!build/*.html
-!build/static
+build/
 .env
 .now
+.cache
+.parcel-cache
+dist

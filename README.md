@@ -1,4 +1,4 @@
-<img src="build/static/icon.svg" height="120px" align="right"/>
+<img src="public/images/icon.svg" height="120px" align="right"/>
 
 # edge-translate
 
@@ -6,7 +6,7 @@
 
 Translator extension for Microsoft Edge using Microsoft Translator
 
-<img src="build/static/demo.gif" height="300px" />
+<img src="public/images/demo.gif" height="300px" />
 
 ## How it works
 
@@ -44,11 +44,11 @@ Translates `text` from language `from` to language `to`, see [Microsoft Translat
 
 [![Deploy with ZEIT Now](https://zeit.co/button)](https://zeit.co/import/project?template=https://github.com/LexSwed/edge-translate)
 
-For working API you need to get a Subscription Key: [How to sign up for the Translator Text API](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/translator-text-how-to-signup)
+For working Translator API you need to get a Subscription Key: [How to sign up for the Translator Text API](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/translator-text-how-to-signup)
 
 Create file `.env` and place `AZURE_KEY=<your-key-goes-here>`.
 
-Now you can start development via:
+Now you can start the development via:
 
 ```bash
 npm run start

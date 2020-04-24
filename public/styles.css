@@ -1,0 +1,146 @@
+:root {
+  --max-width: 1100px;
+  --text-color: #262626;
+  --header-height: 54px;
+}
+body {
+  margin: 0;
+  font-size: 15px;
+  font-family: Segoe UI, SegoeUI, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  min-width: 320px;
+  color: var(--color);
+  background-color: #fff;
+  overflow: hidden;
+  background: no-repeat top / cover url('static/bg.webp');
+  height: 100vh;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.main-center {
+  box-sizing: border-box;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+header {
+  background-color: #fff;
+}
+
+.header-wrap {
+  height: var(--header-height);
+  padding: 0 24px;
+}
+
+.logo-wrap {
+  padding: 0 16px;
+  border-right: 2px solid #000;
+}
+
+.logo {
+  height: 24px;
+  width: 24px;
+}
+
+.logo-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-left: 16px;
+}
+
+.links {
+  padding: 0;
+  margin: 0 0 0 32px;
+  list-style: none;
+}
+
+.link {
+  display: inline-block;
+  color: var(--text-color);
+  margin: 0 16px;
+  font-size: 13px !important;
+}
+
+.link a {
+  border-bottom: 2px solid transparent;
+  padding: 8px 0 2px;
+  transition: 0.12s ease;
+  margin-bottom: 6px;
+}
+
+.link a:hover {
+  border-bottom-color: #000;
+  color: #000;
+}
+.link a:link,
+.link a:focus,
+.link a:hover,
+.link a:active,
+.link a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+.h1-main {
+  font-size: 36px;
+  line-height: 1.2;
+  font-weight: 600;
+  color: #000;
+  text-align: center;
+  margin: 20vh 0 32px;
+}
+
+.ms-edge {
+  padding: 12px;
+  transition: 0.12s ease;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+}
+.ms-edge:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.ms-edge-logo {
+  height: 28px;
+  margin-right: 8px;
+}
+
+.install {
+  background-color: #0067b8;
+  color: #fff;
+  height: 100%;
+  text-align: center;
+  padding: 12px;
+  border: none;
+  line-height: 1.5;
+  font-weight: normal;
+  font-size: 13px;
+}
+.install:disabled {
+  background-color: rgba(0, 104, 184, 0.5);
+}
+
+.install-big-text {
+  line-height: 20px;
+  font-weight: 600;
+  font-size: 19px;
+  text-transform: uppercase;
+}
+
+.ms-logo {
+  height: 40px;
+  margin-right: 12px;
+}
