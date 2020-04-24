@@ -2,17 +2,5 @@
   "version": 2,
   "env": {
     "AZURE_KEY": "@azure_translator_key"
-  },
-  "builds": [
-    {
-      "src": "public/**",
-      "use": "@now/static",
-      "config": { "distDir": "public" }
-    },
-    { "src": "api/**", "use": "@now/node" }
-  ],
-  "routes": [
-    { "src": "/api/(.*)", "dest": "api/$1" },
-    { "src": "/(.*)", "dest": "public/$1" }
-  ]
+  }
 }
