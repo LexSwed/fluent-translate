@@ -8,7 +8,7 @@ body {
   font-size: 15px;
   font-family: Segoe UI, SegoeUI, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   min-width: 320px;
-  color: var(--color);
+  color: var(--text-color);
   background-color: #fff;
   overflow: hidden;
   background: no-repeat top / cover url('static/bg.webp');
