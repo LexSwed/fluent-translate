@@ -6,6 +6,7 @@
     "start": "now dev",
     "dev": "parcel watch src/background/background.js src/popup/popup.html --no-hmr --public-url /dist",
     "build": "parcel build src/background/background.js src/popup/popup.html --public-url /dist",
+    "serve": "npx serve public",
     "lint": "eslint src/**/*"
   },
   "dependencies": {
