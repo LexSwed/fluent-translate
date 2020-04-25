@@ -4,10 +4,6 @@
   import TranslatorLink from '../common/TranslatorLink.svelte';
 
   import { translation, to, text } from '../stores/translation';
-  import config from '../../config/consts.js';
-
-  $: isTextCut = $text.length - config.maxLength > 5;
-  $: translatedText = isTextCut ? `${$translation}…` : $translation;
 
   function onChange(ev) {
     const { value } = ev.target;
@@ -18,13 +14,13 @@
 </script>
 
 <div class="wrapper">
-  {#if $translation}
+  {#if $translation.text}
     <LanguageSelect value={$to} on:change={onChange} />
     <p class="translated">
-      {translatedText}
-      {#if isTextCut}
+      {#if $translation.trimmed}
+        {`${$translation.text}…`}
         <TranslatorLink>Full translation</TranslatorLink>
-      {/if}
+      {:else}{$translation.text}{/if}
     </p>
   {:else}
     <div class="empty">
