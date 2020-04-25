@@ -1,6 +1,6 @@
 <script>
   import Input from '../common/Input.svelte';
-  import LanguageSelect from './LangaugeSelect.svelte';
+  import LanguageSelect from './LanguageSelect.svelte';
   import { text, from } from '../stores/translation';
 
   let inputFocused = false;

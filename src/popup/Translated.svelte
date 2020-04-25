@@ -1,5 +1,5 @@
 <script>
-  import LanguageSelect from './LangaugeSelect.svelte';
+  import LanguageSelect from './LanguageSelect.svelte';
   import ProgressBar from '../common/ProgressBar.svelte';
   import TranslatorLink from '../common/TranslatorLink.svelte';
 
@@ -32,7 +32,7 @@
 <style>
   .wrapper {
     position: relative;
-    margin-top: 8px;
+    margin-top: 10px;
   }
 
   .empty {
@@ -60,7 +60,7 @@
     font-size: 14px;
     line-height: 20px;
     color: #262626;
-    padding: 0 4px 0 4px;
-    margin: 4px 0 0;
+    padding-left: 5px;
+    margin: 5px 0 0;
   }
 </style>
