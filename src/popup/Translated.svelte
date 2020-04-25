@@ -32,7 +32,7 @@
 <style>
   .wrapper {
     position: relative;
-    margin-top: 16px;
+    margin-top: 8px;
   }
 
   .empty {
@@ -60,6 +60,7 @@
     font-size: 14px;
     line-height: 20px;
     color: #262626;
-    padding: 0;
+    padding: 0 4px 0 4px;
+    margin: 4px 0 0;
   }
 </style>
