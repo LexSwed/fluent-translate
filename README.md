@@ -26,7 +26,8 @@ Language to translate the text to is saved to [`chrome.storage.local`](https://d
 
 ## API
 
-This extension uses [Microsoft Translator Text API](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/). Since the only way to get access to the API isby using a [subscription key](https://docs.microsoft.com/en-us/azure/cognitive-services/authentication), this extension is using free [`zeit.co` Serverless Functions](https://zeit.co/docs/v2/serverless-functions/introduction). This enables to have a proxy which enriches requests from the extension to the `Microsoft Translator Text API` with needed Subscription Key. This key is exposed via `env` variable `AZURE_KEY`. Thanks to [`zeit.co` secrets management](https://zeit.co/docs/v2/serverless-functions/env-and-secrets#), that key can be saved for production environment.
+The API is developed using [Vercel Serverless Functions](https://vercel.com/docs/runtimes#official-runtimes/node-js). It wraps Translations provider in a convenient API.
+Translations provided by [Microsoft Translator Text API](https://docs.microsoft.com/en-us/azure/cognitive-services/translator).
 
 ### GET /languages
 
@@ -40,30 +41,16 @@ Returns the list of supported languages, see [Microsoft Translator Text API](htt
 | from  | Language code to translate from |   en    |
 | text  | Text to translate               | Hello!  |
 
-Translates `text` from language `from` to language `to`, see [Microsoft Translator Text API](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-translate). Text length is restricted by the [config](https://github.com/LexSwed/edge-translate/blob/master/config/consts.js).
+Translates `text` from language `from` to language `to`, see [Microsoft Translator Text API](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-translate).
 
 ## Development
 
-[![Deploy with ZEIT Now](https://zeit.co/button)](https://zeit.co/import/project?template=https://github.com/LexSwed/edge-translate)
+This extension uses [Vercel](https://vercel.com) for easier switching of translation API provider.
 
-For working Translator API you need to get a Subscription Key: [How to sign up for the Translator Text API](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/translator-text-how-to-signup)
-
-Create file `.env` and place `AZURE_KEY=<your-key-goes-here>`.
-
-Now you can start the development via:
+You can start the development via:
 
 ```bash
 npm run start
 ```
 
 It will run [`now dev`](https://zeit.co/docs/now-cli#commands/dev) command which will use your imported `now` project config. This is handy for automatic pick up of environment variables from `.env` file and running Lambda functions in `/api` folder.
-
-Don't forget to use [`zeit.co` secrets](https://zeit.co/docs/v2/serverless-functions/env-and-secrets#) to specify `AZURE_KEY` in production.
-
-## To do
-
-- [ ] Tests
-- [ ] Handle errors
-- [ ] Publish
-- [ ] Add content scripts for one click translation (via on-page popup)
-- [ ] Pregenerate HTML

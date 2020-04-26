@@ -83,7 +83,7 @@ const AppContextProvider: React.FC = ({ children }) => {
         });
       }
       setTo(res.to);
-    }, 300);
+    }, 200);
 
     return () => clearTimeout(id);
   }, [text, from, to, setLangs, dispatch]);
