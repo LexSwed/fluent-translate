@@ -1,5 +1,4 @@
 .wrapper {
-  position: relative;
   border: 1px solid var(--border-color);
   border-radius: var(--br);
   display: flex;

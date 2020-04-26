@@ -38,7 +38,7 @@ const context = createContext<Context>({} as Context);
 const AppContextProvider: React.FC = ({ children }) => {
   const [languages, setLangs] = useState<Languages>(initialLanguages);
   const [text, setText] = useState<string>('');
-  const [from, setFrom] = useState<string>('');
+  const [from, setFrom] = useState<string>('auto');
   const [to, setTo] = useState<string>(userLang);
   const [translation, dispatch] = useReducer(translationReducer, initialState);
 
@@ -55,10 +55,12 @@ const AppContextProvider: React.FC = ({ children }) => {
   }, [setTo, setLangs]);
 
   useEffect(() => {
-    const request = debounce(async function() {
+    const id = setTimeout(async () => {
       if (text.length < 2) {
+        dispatch({ type: 'textRemoved' });
         return;
       }
+
       dispatch({ type: 'translating' });
 
       const res = await translate({
@@ -68,8 +70,8 @@ const AppContextProvider: React.FC = ({ children }) => {
         to,
         text: text.trim()
       });
-
-      dispatch({ type: 'translated', payload: res });
+      console.log(res);
+      dispatch({ type: 'translated', payload: res.translation });
 
       if (res.from) {
         setLangs(langs => {
@@ -83,8 +85,8 @@ const AppContextProvider: React.FC = ({ children }) => {
       setTo(res.to);
     }, 300);
 
-    return request.cancel;
-  }, [text, from, to]);
+    return () => clearTimeout(id);
+  }, [text, from, to, setLangs, dispatch]);
 
   return (
     <context.Provider
@@ -135,7 +137,7 @@ export const useTranslation = () => {
 function translationReducer(state = initialState, action: Action) {
   switch (action.type) {
     case 'translating':
-      return { ...state, translating: true, text: '' };
+      return { ...state, translating: true };
     case 'translated':
       return { ...state, translating: false, ...action.payload };
     case 'textRemoved':
