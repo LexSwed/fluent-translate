@@ -8,6 +8,8 @@ Translator extension for Microsoft Edge using Microsoft Translator
 
 <img src="public/images/demo.gif" height="300px" />
 
+[🛤 Track progress](https://www.notion.so/lexswed/Edge-Translate-0fdfc85fee82448689ffd1dfb8f51c08)
+
 ## How it works
 
 Extension consists of two main scripts: `popup` and `background`.
