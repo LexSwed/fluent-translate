@@ -1,7 +1,8 @@
 import { NowRequest, NowResponse } from '@now/node';
-import { get } from './_utils/fetch';
+import { getLanguages } from './_utils/microsoft-cognitive';
 
 export default async (_req: NowRequest, res: NowResponse) => {
-  const { translation } = await get('/languages');
-  res.send(translation);
+  const langs = await getLanguages();
+
+  res.send(langs);
 };

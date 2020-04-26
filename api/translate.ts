@@ -1,21 +1,24 @@
 import { NowRequest, NowResponse } from '@now/node';
-import { post } from './_utils/fetch';
 import config from './config';
+import { translate } from './_utils/bing';
 
 export default async (req: NowRequest, res: NowResponse) => {
-  const { to, from, text } = req.query;
+  const { to, from, text } = req.query as TranslateQuery;
 
   try {
     const Text = text.slice(0, config.maxLength);
-    const [{ detectedLanguage, translations }] = await post('/translate', {
-      body: [{ Text }],
-      query: { to, from }
+
+    const translated = await translate({
+      to,
+      from,
+      text
     });
+
     const body: TranslateResponse = {
-      from: from ? from : detectedLanguage ? detectedLanguage.language : null,
-      to: translations[0].to,
+      from: from ? from : translated.from,
+      to: translated.to,
       translation: {
-        text: translations[0].text,
+        text: translated.text,
         truncated: text.length > Text.length
       }
     };
