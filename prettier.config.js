@@ -14,6 +14,5 @@ module.exports = {
       }
     }
   ],
-  plugins: ['prettier-plugin-svelte'],
   svelteSortOrder: 'scripts-markup-styles'
 };
