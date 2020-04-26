@@ -13,6 +13,8 @@
   "dependencies": {
     "@fxtrot/edge": "^1.0.27",
     "@now/node": "^1.5.1",
+    "@sentry/browser": "^5.15.5",
+    "@sentry/node": "^5.15.5",
     "autosize": "^4.0.2",
     "classnames": "^2.2.6",
     "node-fetch": "^2.6.0",

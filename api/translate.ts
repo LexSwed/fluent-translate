@@ -1,32 +1,25 @@
-import { NowRequest, NowResponse } from '@now/node';
 import config from './config';
 import { translate } from './_utils/bing';
+import withSentry from './_utils/withSentry';
 
-export default async (req: NowRequest, res: NowResponse) => {
+export default withSentry(async (req, res) => {
   const { to, from, text } = req.query as TranslateQuery;
+  const Text = text.slice(0, config.maxLength);
 
-  try {
-    const Text = text.slice(0, config.maxLength);
+  const translated = await translate({
+    to,
+    from,
+    text
+  });
 
-    const translated = await translate({
-      to,
-      from,
-      text
-    });
+  const body: TranslateResponse = {
+    from: from ? from : translated.from,
+    to: translated.to,
+    translation: {
+      text: translated.text,
+      truncated: text.length > Text.length
+    }
+  };
 
-    const body: TranslateResponse = {
-      from: from ? from : translated.from,
-      to: translated.to,
-      translation: {
-        text: translated.text,
-        truncated: text.length > Text.length
-      }
-    };
-
-    res.send(body);
-  } catch (error) {
-    console.error(error);
-
-    res.status(500).send(error);
-  }
-};
+  res.send(body);
+});
