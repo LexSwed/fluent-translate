@@ -1,28 +1,25 @@
 import React from 'react';
-import cx from 'classnames';
-
-import styles from './styles.css';
+import { TextLink } from '@fxtrot/edge';
 
 import { useToLanguage, useText } from '../AppContext';
 import { getTranslatorLink } from '../../utils';
 
-const TranslatorLink: React.FC<React.DetailedHTMLProps<
-  React.AnchorHTMLAttributes<HTMLAnchorElement>,
-  HTMLAnchorElement
->> = ({ children, className, ...props }) => {
+const TranslatorLink: React.FC<React.ComponentProps<typeof TextLink>> = ({
+  children,
+  ...props
+}) => {
   const [to] = useToLanguage();
   const [text] = useText();
 
   return (
-    <a
+    <TextLink
       href={getTranslatorLink({ to, text })}
-      className={cx(styles.link, className)}
       target="_blank"
       rel="noopener"
       {...props}
     >
       {children}
-    </a>
+    </TextLink>
   );
 };
 

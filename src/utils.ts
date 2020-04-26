@@ -1,14 +1,24 @@
-import axios from 'axios';
+import { stringify } from 'qs';
 
-axios.defaults.baseURL =
+const baseURL =
   process.env.NODE_ENV === 'production'
-    ? 'https://edge-translate.lexswed.now.sh/'
-    : 'http://localhost:3000/';
+    ? 'https://edge-translate.lexswed.now.sh'
+    : 'http://localhost:3000';
 
-export const getLanguages = () => axios('/api/languages').then(res => res.data);
+const request = <T = any>(
+  url: string,
+  params?: Record<string, any>
+): Promise<T> => {
+  return fetch(
+    `${baseURL}${url}${stringify(params, { addQueryPrefix: true })}`,
+    params
+  ).then(res => res.json());
+};
 
-export const translate = (params: any) =>
-  axios('/api/translate', { params }).then(res => res.data);
+export const getLanguages = () => request('/api/languages');
+
+export const translate = (params: TranslateQuery): Promise<TranslateResponse> =>
+  request<TranslateResponse>('/api/translate', params);
 
 export const userLang =
   window.navigator.language.slice(0, 2) ||

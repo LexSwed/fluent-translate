@@ -10,12 +10,10 @@
     "lint": "eslint src/**/*"
   },
   "dependencies": {
-    "@fxtrot/edge": "^1.0.25",
+    "@fxtrot/edge": "^1.0.27",
     "@now/node": "^1.5.1",
     "autosize": "^4.0.2",
-    "axios": "^0.19.2",
     "classnames": "^2.2.6",
-    "lodash.debounce": "^4.0.8",
     "node-fetch": "^2.6.0",
     "qs": "^6.9.3",
     "react": "^16.13.1",

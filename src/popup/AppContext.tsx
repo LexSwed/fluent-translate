@@ -5,7 +5,6 @@ import React, {
   useReducer,
   useContext
 } from 'react';
-import debounce from 'lodash.debounce';
 
 import { userLang, translate } from '../utils';
 
@@ -70,14 +69,15 @@ const AppContextProvider: React.FC = ({ children }) => {
         to,
         text: text.trim()
       });
-      console.log(res);
+
       dispatch({ type: 'translated', payload: res.translation });
 
-      if (res.from) {
+      const $from = res.from;
+      if ($from) {
         setLangs(langs => {
           const suffix = ' | Auto';
-          const name = langs[res.from].name + suffix;
-          const nativeName = langs[res.from].nativeName + suffix;
+          const name = langs[$from].name + suffix;
+          const nativeName = langs[$from].nativeName + suffix;
 
           return { ...langs, auto: { name, nativeName } };
         });
