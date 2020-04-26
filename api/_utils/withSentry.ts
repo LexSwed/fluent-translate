@@ -2,8 +2,7 @@ import * as Sentry from '@sentry/node';
 import { NowRequest, NowResponse } from '@now/node';
 
 Sentry.init({
-  dsn:
-    'https://dffd96a87e8f47e8a2921033d3d53e05@o383828.ingest.sentry.io/5214268'
+  dsn: process.env.SENTRY_DSN
 });
 
 function withSentry(handler: (req: NowRequest, res: NowResponse) => any) {
@@ -11,9 +10,12 @@ function withSentry(handler: (req: NowRequest, res: NowResponse) => any) {
     try {
       return await handler(req, res);
     } catch (error) {
-      console.error(error);
       Sentry.captureException(error);
-      await Sentry.flush(2000);
+
+      if (process.env.NODE_ENV !== 'production') {
+        console.error(error);
+      }
+
       return error;
     }
   };
