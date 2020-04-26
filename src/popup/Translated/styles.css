@@ -1,0 +1,14 @@
+.empty {
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  color: var(--gray-400);
+}
+
+.translated {
+  white-space: pre-wrap;
+  font-size: 14px;
+  line-height: 1.2em;
+}

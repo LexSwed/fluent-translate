@@ -8,12 +8,12 @@ chrome.runtime.onInstalled.addListener(() => {
     contexts: ['selection']
   });
 
-  getLanguages().then((languages) => {
+  getLanguages().then(languages => {
     chrome.storage.local.set({ languages });
   });
 });
 
-chrome.contextMenus.onClicked.addListener((info) => {
+chrome.contextMenus.onClicked.addListener(info => {
   chrome.tabs.create({
     url: getTranslatorLink({ to: userLang, text: info.selectionText })
   });

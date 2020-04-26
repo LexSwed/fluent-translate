@@ -1,0 +1,9 @@
+.line {
+  border-top: 1px solid #b6b6b6;
+  width: 100%;
+}
+
+.text {
+  font-size: 12px;
+  line-height: 14px;
+}

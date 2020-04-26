@@ -11,15 +11,16 @@ export default async (req: NowRequest, res: NowResponse) => {
       body: [{ Text }],
       query: { to, from }
     });
-
-    res.send({
+    const body: TranslateResponse = {
       from: from ? from : detectedLanguage ? detectedLanguage.language : null,
       to: translations[0].to,
       translation: {
         text: translations[0].text,
-        trimmed: text.length > Text.length
+        truncated: text.length > Text.length
       }
-    });
+    };
+
+    res.send(body);
   } catch (error) {
     console.error(error);
 
