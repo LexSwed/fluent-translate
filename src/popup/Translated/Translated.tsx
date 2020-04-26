@@ -3,8 +3,8 @@ import { Box, Icon } from '@fxtrot/edge';
 
 import styles from './styles.css';
 
-import { useTranslation } from '../AppContext';
 import TranslatedText from './TranslatedText';
+import { useTranslation } from '../store/utils';
 
 const Translated = () => {
   const translation = useTranslation();

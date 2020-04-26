@@ -1,8 +1,8 @@
 import React from 'react';
 import { TextLink } from '@fxtrot/edge';
 
-import { useToLanguage, useText } from '../AppContext';
 import { getTranslatorLink } from '../../utils';
+import { useToLanguage, useText } from '../store/utils';
 
 const TranslatorLink: React.FC<React.ComponentProps<typeof TextLink>> = ({
   children,

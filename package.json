@@ -7,7 +7,8 @@
     "dev": "parcel watch src/background/background.ts src/popup/popup.html --no-hmr --public-url /dist",
     "build": "parcel build src/background/background.ts src/popup/popup.html --public-url /dist",
     "serve": "npx serve public",
-    "lint": "eslint src/**/*"
+    "lint": "eslint src/**/*",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@fxtrot/edge": "^1.0.27",
@@ -28,10 +29,19 @@
     "@types/qs": "^6.9.1",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
+    "@typescript-eslint/eslint-plugin": "^2.29.0",
+    "@typescript-eslint/parser": "^2.29.0",
+    "babel-eslint": "^10.1.0",
     "cssnano": "^4.1.10",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.11.0",
+    "eslint-config-react-app": "^5.2.1",
+    "eslint-plugin-flowtype": "^4.7.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.1",
     "husky": "^4.2.5",
     "now": "^18.0.0",
     "parcel-bundler": "^1.12.4",
@@ -53,9 +63,7 @@
   ],
   "author": "lexswed",
   "engines": {
-    "browsers": [
-      "last 2 Chrome version"
-    ]
+    "browsers": "last 2 Chrome version"
   },
   "license": "MIT",
   "bugs": {
@@ -64,7 +72,7 @@
   "homepage": "https://github.com/LexSwed/edge-translate#readme",
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged"
+      "pre-commit": "npm run typecheck && pretty-quick --staged"
     }
   }
 }

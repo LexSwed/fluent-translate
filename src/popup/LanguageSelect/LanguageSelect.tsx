@@ -1,16 +1,14 @@
 import React from 'react';
 
 import styles from './styles.css';
-import { useLanguages } from '../AppContext';
 
 type Props = {
   value: string;
   onChange: (value: string) => void;
+  languages: Languages;
 };
 
-const LanguageSelect: React.FC<Props> = ({ value, onChange }) => {
-  const languages = useLanguages();
-
+const LanguageSelect: React.FC<Props> = ({ value, onChange, languages }) => {
   return (
     <select
       value={value}

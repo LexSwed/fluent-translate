@@ -3,24 +3,25 @@ import cx from 'classnames';
 import autosize from 'autosize';
 import { Box } from '@fxtrot/edge';
 
-import LanguageSelect from '../LanguageSelect';
-
 import styles from './styles.css';
-import { useFromLanguage, useText } from '../AppContext';
+
+import { useText } from '../store/utils';
+import FromLanguageSelect from './FromLanguageSelect';
 
 const TextInput: React.FC = () => {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const [focused, setFocused] = useState(false);
   const [text, setText] = useText();
-  const [from, setFrom] = useFromLanguage();
 
   const multiline = Math.floor(text.length / 25) > 0 || text.includes('\n');
 
   useLayoutEffect(() => {
-    inputRef.current && autosize(inputRef.current);
+    const el = inputRef.current;
+
+    el && autosize(el);
 
     return () => {
-      inputRef.current && autosize.destroy(inputRef.current);
+      el && autosize.destroy(el);
     };
   }, [inputRef]);
 
@@ -41,9 +42,7 @@ const TextInput: React.FC = () => {
         autoFocus
         ref={inputRef}
       />
-      <Box pl="xs" pr="xs" className={styles.languageSelect}>
-        <LanguageSelect value={from} onChange={setFrom} />
-      </Box>
+      <FromLanguageSelect />
     </Box>
   );
 };

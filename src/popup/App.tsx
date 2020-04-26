@@ -1,11 +1,11 @@
 import React from 'react';
 import { Stack, Box } from '@fxtrot/edge';
 
-import Footer from './Footer/Footer';
+import './styles.css';
+
 import TextInput from './TextInput';
 import Translated from './Translated';
-
-import './styles.css';
+import Footer from './Footer';
 
 const App: React.FC = () => {
   return (

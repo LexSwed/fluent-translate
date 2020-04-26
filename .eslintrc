@@ -1,7 +1,6 @@
 {
   "root": true,
-  "extends": ["eslint:recommended"],
-  "plugins": ["svelte3"],
+  "extends": "react-app",
   "parserOptions": {
     "ecmaVersion": 2019,
     "sourceType": "module"
@@ -11,12 +10,6 @@
     "browser": true,
     "webextensions": true
   },
-  "overrides": [
-    {
-      "files": ["**/*.svelte"],
-      "processor": "svelte3/svelte3"
-    }
-  ],
   "globals": {
     "chrome": true,
     "process": true
