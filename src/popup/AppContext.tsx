@@ -128,6 +128,10 @@ export const useFromLanguage = () => {
   return [from, setFrom] as const;
 };
 
+export const useTranslation = () => {
+  return useContext(context).translation;
+};
+
 function translationReducer(state = initialState, action: Action) {
   switch (action.type) {
     case 'translating':

@@ -31,7 +31,7 @@ export function post(relativeUrl: string, { body, query }: PostParams) {
     headers: {
       'Content-type': 'application/json',
       'X-ClientTraceId': uuid().toString(),
-      'Ocp-Apim-Subscription-Key': process.env.AZURE_KEY
+      'Ocp-Apim-Subscription-Key': process.env.AZURE_KEY || ''
     },
     body: JSON.stringify(body)
   }).then(res => res.json());

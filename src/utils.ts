@@ -14,5 +14,10 @@ export const userLang =
   window.navigator.language.slice(0, 2) ||
   window.navigator.languages[0].slice(0, 2);
 
-export const getTranslatorLink = ({ to, text }: any) =>
-  `https://www.bing.com/translator?to=${to}&text=${text}`;
+export const getTranslatorLink = ({
+  to,
+  text
+}: {
+  to?: string;
+  text?: string;
+}) => `https://www.bing.com/translator?to=${to}&text=${text}`;

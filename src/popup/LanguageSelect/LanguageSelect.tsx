@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from 'styles.css';
+import styles from './styles.css';
 import { useLanguages } from '../AppContext';
 
 type Props = {
@@ -17,8 +17,8 @@ const LanguageSelect: React.FC<Props> = ({ value, onChange }) => {
       onChange={e => onChange(e.target.value)}
       className={styles.select}
     >
-      {[...Object.entries(languages)].map(([lang, { nativeName, name }]) => (
-        <option value={lang} title={nativeName}>
+      {Object.entries(languages).map(([lang, { nativeName, name }]) => (
+        <option key={lang} value={lang} title={nativeName}>
           {name}
         </option>
       ))}

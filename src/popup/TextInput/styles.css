@@ -1,0 +1,38 @@
+.wrapper {
+  position: relative;
+  border: 1px solid var(--border-color);
+  border-radius: var(--br);
+  display: flex;
+  align-items: center;
+  transition: 0.12s ease-in-out;
+  &:hover {
+    border-color: var(--border-color-hover);
+  }
+  /* :focus-within is ugly due to possible focused select element */
+  &.inputFocused {
+    border-color: var(--border-color-focus);
+  }
+}
+
+.multiline {
+  flex-direction: column;
+  & .languageSelect {
+    align-self: flex-end;
+    margin-bottom: var(--xs);
+  }
+}
+
+.input {
+  --h: var(--m);
+  all: unset;
+  resize: none;
+  font-family: inherit;
+  min-height: 1em;
+  max-height: 150px;
+  width: calc(100% - var(--s) * 2);
+  overflow: hidden;
+  font-size: 14px;
+  line-height: var(--h);
+  height: var(--h);
+  padding: var(--s);
+}

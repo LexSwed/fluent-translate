@@ -4,8 +4,8 @@
   "description": "Translator extension for Microsoft Edge using Microsoft Translator",
   "scripts": {
     "start": "now dev",
-    "dev": "parcel watch src/background/background.js src/popup/popup.html --no-hmr --public-url /dist",
-    "build": "parcel build src/background/background.js src/popup/popup.html --public-url /dist",
+    "dev": "parcel watch src/background/background.ts src/popup/popup.html --no-hmr --public-url /dist",
+    "build": "parcel build src/background/background.ts src/popup/popup.html --public-url /dist",
     "serve": "npx serve public",
     "lint": "eslint src/**/*"
   },
@@ -14,6 +14,7 @@
     "@now/node": "^1.5.1",
     "autosize": "^4.0.2",
     "axios": "^0.19.2",
+    "classnames": "^2.2.6",
     "lodash.debounce": "^4.0.8",
     "node-fetch": "^2.6.0",
     "qs": "^6.9.3",
@@ -21,7 +22,9 @@
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
+    "@types/autosize": "^3.0.7",
     "@types/chrome": "0.0.104",
+    "@types/classnames": "^2.2.10",
     "@types/lodash.debounce": "^4.0.6",
     "@types/node-fetch": "^2.5.7",
     "@types/qs": "^6.9.1",
@@ -34,9 +37,11 @@
     "husky": "^4.2.5",
     "now": "^18.0.0",
     "parcel-bundler": "^1.12.4",
+    "postcss-modules": "^2.0.0",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.1",
+    "typescript": "^3.8.3",
     "uuidv4": "^6.0.7"
   },
   "repository": {

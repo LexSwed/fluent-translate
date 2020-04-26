@@ -1,0 +1,12 @@
+.empty {
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  color: var(--gray-400);
+}
+
+.translated {
+  white-space: pre-wrap;
+}

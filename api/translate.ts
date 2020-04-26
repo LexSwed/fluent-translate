@@ -17,7 +17,7 @@ export default async (req: NowRequest, res: NowResponse) => {
       to: translations[0].to,
       translation: {
         text: translations[0].text,
-        trimmed: text.length > Text.length
+        truncated: text.length > Text.length
       }
     });
   } catch (error) {
