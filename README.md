@@ -1,4 +1,4 @@
-<img src="public/images/icon.svg" height="120px" align="right"/>
+<img src="icons/icon.svg" height="120px" align="right"/>
 
 # edge-translate
 
@@ -6,9 +6,9 @@
 
 Translator extension for Microsoft Edge using Microsoft Translator
 
-<img src="public/images/demo.gif" height="300px" />
+<!-- <img src="public/images/demo.gif" height="300px" /> -->
 
-[🛤 Track progress](https://www.notion.so/lexswed/Edge-Translate-0fdfc85fee82448689ffd1dfb8f51c08)
+### [🛤 Track progress](https://www.notion.so/lexswed/Edge-Translate-0fdfc85fee82448689ffd1dfb8f51c08)
 
 ## How it works
 
