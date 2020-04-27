@@ -19,7 +19,7 @@ const TranslatedText: React.FC = () => {
         <Text className={styles.translated}>
           {truncated ? (
             <>
-              `${text}…`
+              {`${text}… `}
               <TranslatorLink>Full translation</TranslatorLink>
             </>
           ) : (

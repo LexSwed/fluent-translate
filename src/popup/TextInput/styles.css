@@ -35,3 +35,9 @@
   height: var(--h);
   padding: var(--s);
 }
+
+@media (prefers-color-scheme: dark) {
+  .wrapper {
+    background-color: #333333;
+  }
+}

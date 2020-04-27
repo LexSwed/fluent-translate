@@ -24,32 +24,32 @@ class App extends React.Component {
     this.setState({ hasError: true });
   }
 
-  style = { width: '300px' };
-
   render() {
     if (this.state.hasError) {
       return (
-        <Box p="m" style={this.style}>
+        <Box p="m">
           <Stack align="center">
             <Icon icon="cloud_off" size="xl" color="var(--gray-400)" />
             <Text align="center">
               Something broke the service,
-              <br /> we are notified about it!
+              <br /> checking what was it...
             </Text>
             <Box pt="m" />
             <Text align="center" tone="light">
-              In the meanwhile, try to close and open this popup, maybe the{' '}
+              In the meanwhile, try to close and open this popup,
+              <br />
+              maybe the{' '}
               <span role="img" aria-label="bug">
                 🐞
               </span>
-              is gone...
+              is already gone
             </Text>
           </Stack>
         </Box>
       );
     }
     return (
-      <Box p="m" style={this.style}>
+      <Box p="m">
         <Stack space="m">
           <TextInput />
           <Translated />
