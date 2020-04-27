@@ -14,7 +14,12 @@ const TranslatedText: React.FC = () => {
 
   return (
     <Stack space="s">
-      <LanguageSelect value={to} onChange={setTo} languages={languages} />
+      <LanguageSelect
+        value={to}
+        onChange={setTo}
+        languages={languages}
+        border
+      />
       <Box pl="xs">
         <Text className={styles.translated}>
           {truncated ? (

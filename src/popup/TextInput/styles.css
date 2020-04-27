@@ -13,10 +13,15 @@
   }
 }
 
+.languageSelect {
+  border-left: 1px solid var(--border-color);
+}
+
 .multiline {
   flex-direction: column;
   & .languageSelect {
     align-self: flex-end;
+    margin-top: var(--xs);
     margin-bottom: var(--xs);
   }
 }

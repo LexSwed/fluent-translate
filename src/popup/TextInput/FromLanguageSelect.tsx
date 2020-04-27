@@ -25,7 +25,7 @@ const FromLanguageSelect: React.FC = () => {
   }
 
   return (
-    <Box pl="xs" pr="xs" className={styles.languageSelect}>
+    <Box className={styles.languageSelect}>
       <LanguageSelect value={from} onChange={setFrom} languages={languages} />
     </Box>
   );
