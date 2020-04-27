@@ -11,7 +11,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@fxtrot/edge": "^1.0.27",
+    "@fxtrot/edge": "^1.0.28",
     "@now/node": "^1.5.1",
     "@sentry/browser": "^5.15.5",
     "@sentry/node": "^5.15.5",

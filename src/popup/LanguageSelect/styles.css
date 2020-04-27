@@ -4,7 +4,7 @@
   border: 1px solid transparent;
   transition: 0.16s ease-in-out;
   color: var(--text-color);
-  background-color: #edf2f7;
+  background-color: var(--gray-300);
   height: 24px;
   font-size: 11px;
   line-height: 12px;
@@ -14,7 +14,7 @@
   background-repeat: no-repeat;
   background-image: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="15" height="15" viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/><path d="M0 0h24v24H0V0z" fill="none"/></svg>');
   &:hover {
-    background-color: var(--gray-300);
+    border-color: var(--border-color-hover);
   }
   &:focus {
     outline: none;
