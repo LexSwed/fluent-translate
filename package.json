@@ -92,7 +92,7 @@
         "@semantic-release/github",
         {
           "assets": [
-            "EdgeTranslate.tar.gz"
+            "EdgeTranslate.zip"
           ]
         }
       ]
