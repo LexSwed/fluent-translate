@@ -2,6 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 
 import styles from './styles.css';
+import RecentLanguages, { useRecentLanguages } from './RecentLanguages';
 
 type Props = {
   value: string;
@@ -16,17 +17,27 @@ const LanguageSelect: React.FC<Props> = ({
   languages,
   border
 }) => {
+  const [recent, addRecent] = useRecentLanguages();
+
   return (
     <select
       value={value}
-      onChange={e => onChange(e.target.value)}
+      onChange={(e) => {
+        const { value } = e.target;
+
+        addRecent(value);
+        onChange(value);
+      }}
       className={cx(styles.select, border && styles.withBorder)}
     >
-      {Object.entries(languages).map(([lang, { nativeName, name }]) => (
-        <option key={lang} value={lang} title={nativeName}>
-          {name}
-        </option>
-      ))}
+      <RecentLanguages recent={recent} languages={languages} />
+      <optgroup label="Languages">
+        {Object.entries(languages).map(([lang, { nativeName, name }]) => (
+          <option key={lang} value={lang} title={nativeName}>
+            {name}
+          </option>
+        ))}
+      </optgroup>
     </select>
   );
 };

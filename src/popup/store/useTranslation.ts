@@ -51,7 +51,7 @@ export default useTranslationReducer;
 function translationReducer(state = initialState, action: Action) {
   switch (action.type) {
     case 'translating':
-      return { ...state, translating: true };
+      return { ...state, from: '', to: '', translating: true };
     case 'translated':
       return { ...state, translating: false, ...action.payload };
     case 'textRemoved':
