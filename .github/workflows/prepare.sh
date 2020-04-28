@@ -1,0 +1,1 @@
+tar -czvf EdgeTranslate.tar.gz manifest.json icons dist

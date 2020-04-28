@@ -23,6 +23,7 @@
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
+    "@semantic-release/exec": "^5.0.0",
     "@types/autosize": "^3.0.7",
     "@types/chrome": "0.0.106",
     "@types/classnames": "^2.2.10",
@@ -76,5 +77,25 @@
     "hooks": {
       "pre-commit": "npm run typecheck && pretty-quick --staged"
     }
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/exec",
+        {
+          "prepareCmd": "./.github/workflows/prepare.sh"
+        }
+      ],
+      [
+        "@semantic-release/github",
+        {
+          "assets": [
+            "typortal.tar.gz"
+          ]
+        }
+      ]
+    ]
   }
 }
