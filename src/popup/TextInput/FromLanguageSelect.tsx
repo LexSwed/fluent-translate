@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Box } from '@fxtrot/edge';
 
 import styles from './styles.css';
@@ -8,21 +8,7 @@ import { useFromLanguage, useLanguages, useTranslation } from '../store/utils';
 
 const FromLanguageSelect: React.FC = () => {
   const [from, setFrom] = useFromLanguage();
-  let languages = useLanguages();
-  const translation = useTranslation();
-
-  if (from === 'auto' && translation.from) {
-    const suffix = ' | Auto';
-    const lang = languages[translation.from];
-
-    languages = {
-      ...languages,
-      auto: {
-        name: `${lang.name}${suffix}`,
-        nativeName: `${lang.nativeName}${suffix}`
-      }
-    };
-  }
+  const languages = useLanguagesWithAuto(from);
 
   return (
     <Box className={styles.languageSelect}>
@@ -32,3 +18,25 @@ const FromLanguageSelect: React.FC = () => {
 };
 
 export default FromLanguageSelect;
+
+function useLanguagesWithAuto(from: string) {
+  const translation = useTranslation();
+  const languages = useLanguages();
+
+  return useMemo(() => {
+    if (from === 'auto' && translation.from) {
+      const suffix = ' | Auto';
+      const lang = languages[translation.from];
+
+      return {
+        ...languages,
+        auto: {
+          name: `${lang.name}${suffix}`,
+          nativeName: `${lang.nativeName}${suffix}`
+        }
+      };
+    }
+
+    return languages;
+  }, [from, languages, translation.from]);
+}

@@ -34,8 +34,8 @@ export function getCachedItems(): Promise<{
   to?: 'string';
   languages?: Languages;
 }> {
-  return new Promise(resolve => {
-    chrome.storage.local.get(['to', 'languages'], cache => {
+  return new Promise((resolve) => {
+    chrome.storage.local.get(['to', 'languages'], (cache) => {
       resolve(cache);
     });
   });

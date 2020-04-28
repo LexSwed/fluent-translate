@@ -19,28 +19,12 @@ export function useStore() {
   const translation = useTranslation({ to, from, text });
 
   useEffect(() => {
-    getCachedItems().then(cache => {
+    getCachedItems().then((cache) => {
       cache.to && setTo(cache.to);
-      cache.languages && setLangs(langs => ({ ...langs, ...cache.languages }));
+      cache.languages &&
+        setLangs((langs) => ({ ...langs, ...cache.languages }));
     });
   }, [setTo, setLangs]);
-
-  //   useEffect(() => {
-  //     if (from !== 'auto') {
-  //       return;
-  //     }
-
-  //     const $from = translation.from;
-  //     if ($from) {
-  //       setLangs(langs => {
-  //         const suffix = ' | Auto';
-  //         const name = langs[$from].name + suffix;
-  //         const nativeName = langs[$from].nativeName + suffix;
-
-  //         return { ...langs, auto: { name, nativeName } };
-  //       });
-  //     }
-  //   }, [from, translation.from]);
 
   const store: Store = {
     languages,
