@@ -1,1 +1,1 @@
-zip EdgeTranslate.zip manifest.json icons dist
+zip -r EdgeTranslate.zip manifest.json icons dist
