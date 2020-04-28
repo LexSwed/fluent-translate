@@ -19,5 +19,10 @@
     "persistent": false,
     "scripts": ["dist/background/background.js"]
   },
-  "permissions": ["contextMenus", "storage", "<all_urls>"]
+  "permissions": [
+    "contextMenus",
+    "storage",
+    "http://localhost/*",
+    "https://edge-translate.lexswed.now.sh/*"
+  ]
 }

@@ -12,7 +12,7 @@ const request = <T = any>(
   return fetch(
     `${baseURL}${url}${stringify(params, { addQueryPrefix: true })}`,
     params
-  ).then(res => res.json());
+  ).then((res) => res.json());
 };
 
 export const getLanguages = () => request('/api/languages');
