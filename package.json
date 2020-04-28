@@ -92,7 +92,7 @@
         "@semantic-release/github",
         {
           "assets": [
-            "typortal.tar.gz"
+            "EdgeTranslate.tar.gz"
           ]
         }
       ]
