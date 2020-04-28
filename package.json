@@ -5,7 +5,7 @@
   "scripts": {
     "start": "now dev",
     "dev": "parcel watch src/background/background.ts src/popup/popup.html --no-hmr --public-url /dist",
-    "build": "parcel build src/background/background.ts src/popup/popup.html --public-url /dist",
+    "build": "parcel build src/background/background.ts src/popup/popup.html --public-url /dist --no-source-maps",
     "serve": "npx serve public",
     "lint": "eslint src/**/*",
     "typecheck": "tsc --noEmit"
