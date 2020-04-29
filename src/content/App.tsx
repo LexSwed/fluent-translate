@@ -58,7 +58,7 @@ const App: React.FC<Props> = ({ to, text, onClose: onCloseProp }) => {
       <Close onClick={() => onClose()} />
       <Stack>
         <Stack space="s">
-          <FromLanguageSelect size="small" border />
+          <FromLanguageSelect size="small" />
           <Text>{text}</Text>
         </Stack>
         <TranslatedText />
