@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Card, Stack, Text } from '@fxtrot/edge';
 import cx from 'classnames';
 
@@ -15,11 +15,18 @@ type Props = {
   text?: string;
   onClose: () => void;
 };
-const App: React.FC<Props> = ({ to, text, onClose }) => {
+const App: React.FC<Props> = ({ to, text, onClose: onCloseProp }) => {
   const [, setTo] = useToLanguage();
   const [, setText] = useText();
   const [isMouseOver, setMouseOver] = useState(false);
   const [isMounted, setMounted] = useState(false);
+
+  const onClose = useCallback(() => {
+    setMounted(false);
+    setTimeout(() => {
+      onCloseProp();
+    }, 300);
+  }, [setMounted, onCloseProp]);
 
   useEffect(() => {
     setMounted(true);
@@ -50,7 +57,7 @@ const App: React.FC<Props> = ({ to, text, onClose }) => {
     >
       <Close onClick={() => onClose()} />
       <Stack>
-        <Stack space="xs">
+        <Stack space="s">
           <FromLanguageSelect size="small" border />
           <Text>{text}</Text>
         </Stack>
