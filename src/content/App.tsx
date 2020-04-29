@@ -52,7 +52,7 @@ const App: React.FC<Props> = ({ to, text, onClose }) => {
       <Stack>
         <Stack space="xs">
           <FromLanguageSelect size="small" border />
-          <Text className={styles.text}>{text}</Text>
+          <Text>{text}</Text>
         </Stack>
         <TranslatedText />
       </Stack>

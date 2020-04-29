@@ -1,7 +1,4 @@
 import React, { useMemo } from 'react';
-import { Box } from '@fxtrot/edge';
-
-import styles from './styles.css';
 
 import LanguageSelect from '../LanguageSelect';
 import { useFromLanguage, useLanguages, useTranslation } from '../store/utils';
@@ -16,14 +13,12 @@ const FromLanguageSelect: React.FC<Props> = (props) => {
   const languages = useLanguagesWithAuto(from);
 
   return (
-    <Box className={styles.languageSelect}>
-      <LanguageSelect
-        value={from}
-        onChange={setFrom}
-        languages={languages}
-        {...props}
-      />
-    </Box>
+    <LanguageSelect
+      value={from}
+      onChange={setFrom}
+      languages={languages}
+      {...props}
+    />
   );
 };
 

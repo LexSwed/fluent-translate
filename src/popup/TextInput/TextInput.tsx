@@ -42,7 +42,9 @@ const TextInput: React.FC = () => {
         autoFocus
         ref={inputRef}
       />
-      <FromLanguageSelect />
+      <Box className={styles.languageSelect}>
+        <FromLanguageSelect />
+      </Box>
     </Box>
   );
 };
