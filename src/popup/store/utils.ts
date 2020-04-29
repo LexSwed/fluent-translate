@@ -17,7 +17,12 @@ export const useText = () => {
 export const useToLanguage = () => {
   const { to, setTo } = useContext(context);
 
-  return [to, setTo] as const;
+  const updateTo = (langKey: string) => {
+    chrome.storage.local.set({ to: langKey });
+    setTo(langKey);
+  };
+
+  return [to, updateTo] as const;
 };
 
 export const useFromLanguage = () => {

@@ -35,7 +35,7 @@ const TextInput: React.FC = () => {
     >
       <textarea
         value={text}
-        onChange={e => setText(e.target.value)}
+        onChange={(e) => setText(e.target.value)}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
         className={styles.input}

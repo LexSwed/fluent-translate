@@ -14,3 +14,7 @@ type TranslateResponse = {
     truncated: boolean;
   };
 };
+
+type AsyncRequest =
+  | { request: 'getLanguages'; params: undefined }
+  | { request: 'translate'; params: TranslateQuery };

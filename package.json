@@ -4,8 +4,8 @@
   "description": "Translator extension for Microsoft Edge using Microsoft Translator",
   "scripts": {
     "start": "now dev",
-    "dev": "parcel watch src/background/background.ts src/popup/popup.html --no-hmr --public-url /dist",
-    "build": "parcel build src/background/background.ts src/popup/popup.html --public-url /dist --no-source-maps",
+    "dev": "parcel watch src/background/background.ts src/popup/popup.html src/content/content.tsx --no-hmr --public-url /dist",
+    "build": "parcel build src/background/background.ts src/popup/popup.html src/content/content.tsx --public-url /dist --no-source-maps",
     "serve": "npx serve public",
     "lint": "eslint src/**/*",
     "typecheck": "tsc --noEmit"

@@ -18,6 +18,7 @@ const TranslatedText: React.FC = () => {
         value={to}
         onChange={setTo}
         languages={languages}
+        size="small"
         border
       />
       <Box pl="xs">

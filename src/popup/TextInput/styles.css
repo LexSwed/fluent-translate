@@ -34,7 +34,7 @@
   max-height: 150px;
   width: calc(100% - var(--s) * 2);
   overflow: hidden;
-  font-size: 14px;
+  font-size: var(--font-size);
   line-height: var(--h);
   height: var(--h);
   padding: var(--s);

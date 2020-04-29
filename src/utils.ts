@@ -31,3 +31,16 @@ export const getTranslatorLink = ({
   to?: string;
   text?: string;
 }) => `https://www.bing.com/translator?to=${to}&text=${text}`;
+
+export const API = {
+  getLanguages: () => {
+    return new Promise((resolve) =>
+      chrome.runtime.sendMessage({ request: 'getLanguages' }, resolve)
+    );
+  },
+  translate: (params: TranslateQuery): Promise<TranslateResponse> => {
+    return new Promise((resolve) =>
+      chrome.runtime.sendMessage({ request: 'translate', params }, resolve)
+    );
+  }
+};

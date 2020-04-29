@@ -6,13 +6,23 @@ import styles from './styles.css';
 import LanguageSelect from '../LanguageSelect';
 import { useFromLanguage, useLanguages, useTranslation } from '../store/utils';
 
-const FromLanguageSelect: React.FC = () => {
+type Props = {
+  size?: React.ComponentProps<typeof LanguageSelect>['size'];
+  border?: React.ComponentProps<typeof LanguageSelect>['border'];
+};
+
+const FromLanguageSelect: React.FC<Props> = (props) => {
   const [from, setFrom] = useFromLanguage();
   const languages = useLanguagesWithAuto(from);
 
   return (
     <Box className={styles.languageSelect}>
-      <LanguageSelect value={from} onChange={setFrom} languages={languages} />
+      <LanguageSelect
+        value={from}
+        onChange={setFrom}
+        languages={languages}
+        {...props}
+      />
     </Box>
   );
 };

@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round');
+
+.app {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  min-width: 280px;
+  max-width: 400px;
+  max-height: 500px;
+  z-index: 2000;
+  background: inherit;
+  overflow: hidden;
+  transition: 0.2s;
+  opacity: 0;
+  transform: translateY(8px);
+  &:hover {
+    & .close {
+      opacity: 1;
+    }
+  }
+}
+
+.shown {
+  opacity: 1;
+  transform: none;
+}
+
+.close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: none;
+  background: none;
+  height: 18px;
+  border-radius: var(--br);
+  opacity: 0;
+  transition: 0.12s;
+  padding: 0;
+  cursor: pointer;
+}
+
+.text {
+  font-size: 14px;
+}

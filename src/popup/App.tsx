@@ -2,7 +2,8 @@ import React from 'react';
 import { Stack, Box, Icon, Text } from '@fxtrot/edge';
 import { BrowserClient } from '@sentry/browser';
 
-import './styles.css';
+import '../global.css';
+import styles from './styles.css';
 
 import TextInput from './TextInput';
 import Translated from './Translated';
@@ -27,7 +28,7 @@ class App extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <Box p="m">
+        <Box className={styles.app} p="m">
           <Stack align="center">
             <Icon icon="cloud_off" size="xl" color="var(--gray-400)" />
             <Text align="center">
@@ -49,7 +50,7 @@ class App extends React.Component {
       );
     }
     return (
-      <Box p="m">
+      <Box className={styles.app} p="m">
         <Stack space="m">
           <TextInput />
           <Translated />
