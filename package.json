@@ -15,12 +15,14 @@
     "@now/node": "^1.5.1",
     "@sentry/browser": "^5.15.5",
     "@sentry/node": "^5.15.5",
+    "@webcomponents/webcomponentsjs": "^2.4.3",
     "autosize": "^4.0.2",
     "classnames": "^2.2.6",
     "node-fetch": "^2.6.0",
     "qs": "^6.9.3",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-shadow": "^18.1.0"
   },
   "devDependencies": {
     "@semantic-release/exec": "^5.0.0",

@@ -1,24 +1,16 @@
-import ReactDOM from 'react-dom';
-import React from 'react';
+import '@webcomponents/webcomponentsjs';
+import EdgeTranslate from './EdgeTranslateWC';
 
-import AppContext from '../popup/AppContext';
-import App from './App';
+// @ts-ignore
+customElements.define('edge-translate', EdgeTranslate);
+
+const el = document.createElement('edge-translate');
+el.setAttribute(
+  'style',
+  'position: fixed; top: 8px; right: 8px; z-index: 999999;'
+);
+document.documentElement.appendChild(el);
 
 chrome.runtime.onMessage.addListener(({ text }) => {
-  const el = document.createElement('div');
-
-  document.body.appendChild(el);
-
-  ReactDOM.render(
-    <AppContext>
-      <App
-        text={text}
-        onClose={() => {
-          ReactDOM.unmountComponentAtNode(el);
-          document.body.removeChild(el);
-        }}
-      />
-    </AppContext>,
-    el
-  );
+  el.setAttribute('text', text);
 });

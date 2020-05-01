@@ -25,6 +25,7 @@ chrome.contextMenus.onClicked.addListener((info) => {
 
 chrome.runtime.onMessage.addListener(
   (request: AsyncRequest, _sender, sendResponse) => {
+    console.log(request);
     switch (request.request) {
       case 'getLanguages': {
         getLanguages().then(sendResponse);

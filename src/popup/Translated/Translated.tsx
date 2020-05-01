@@ -19,4 +19,4 @@ const Translated = () => {
   );
 };
 
-export default Translated;
+export default React.memo(Translated);

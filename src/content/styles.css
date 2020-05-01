@@ -1,23 +1,26 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round');
 
 .app {
-  position: fixed;
-  top: 16px;
-  right: 16px;
+  position: relative;
   min-width: 280px;
   max-width: 400px;
   max-height: 500px;
-  z-index: 2000;
   background: inherit;
   overflow: hidden;
-  transition: 0.2s;
-  opacity: 0;
-  transform: translateY(-8px);
   &:hover {
     & .close {
       opacity: 1;
     }
   }
+}
+
+.shadowRoot {
+  transition: 0.2s;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(-8px);
 }
 
 .shown {

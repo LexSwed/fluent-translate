@@ -36,4 +36,4 @@ const TranslatedText: React.FC = () => {
   );
 };
 
-export default TranslatedText;
+export default React.memo(TranslatedText);

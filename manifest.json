@@ -15,6 +15,7 @@
   "browser_action": {
     "default_popup": "dist/popup/popup.html"
   },
+  "web_accessible_resources": ["dist/*"],
   "content_scripts": [
     {
       "matches": ["<all_urls>"],

@@ -19,7 +19,6 @@ function useTranslationReducer({ text, from, to }: Params) {
         dispatch({ type: 'textRemoved' });
         return;
       }
-
       dispatch({ type: 'translating' });
 
       const res = await API.translate({
