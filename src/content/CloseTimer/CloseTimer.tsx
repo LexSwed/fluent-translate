@@ -14,7 +14,7 @@ type Props = {
 const CloseTimer: React.FC<Props> = ({ isMouseOver, onClose }) => {
   return (
     <div className={cx(styles.container, isMouseOver && styles.hovered)}>
-      <Timer isMouseOver={isMouseOver} />
+      <Timer isMouseOver={isMouseOver} onTimeout={onClose} />
       <Close onClick={() => onClose()} />
     </div>
   );

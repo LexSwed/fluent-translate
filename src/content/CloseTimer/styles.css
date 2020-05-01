@@ -36,9 +36,6 @@
   transition: 0.12s;
   padding: 0;
   cursor: pointer;
-  &:hover {
-    background-color: var(--border-color);
-  }
 }
 
 .timer {

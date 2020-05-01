@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Stack, Text } from '@fxtrot/edge';
+import { Stack, Text, Box } from '@fxtrot/edge';
 
 import '../global.css';
 import styles from './styles.css';
@@ -21,23 +21,13 @@ const App: React.FC<Props> = ({ text, onClose }) => {
     text && setText(text);
   }, [text, setText]);
 
-  // useEffect(() => {
-  //   if (isMouseOver) {
-  //     return;
-  //   }
-
-  //   const id = setTimeout(onClose, 4000);
-
-  //   return () => {
-  //     clearTimeout(id);
-  //   };
-  // }, [isMouseOver, onClose]);
-
   return (
-    <Card
+    <Box
+      elevation="2"
+      p="m"
       className={styles.app}
       onMouseOver={() => setMouseOver(true)}
-      onMouseOut={() => setMouseOver(false)}
+      onMouseLeave={() => setMouseOver(false)}
     >
       <CloseTimer isMouseOver={isMouseOver} onClose={onClose} />
       <Stack>
@@ -47,7 +37,7 @@ const App: React.FC<Props> = ({ text, onClose }) => {
         </Stack>
         <TranslatedText />
       </Stack>
-    </Card>
+    </Box>
   );
 };
 
