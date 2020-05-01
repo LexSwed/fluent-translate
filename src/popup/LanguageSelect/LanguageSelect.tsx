@@ -9,13 +9,15 @@ type Props = {
   onChange: (value: string) => void;
   languages: Languages;
   border?: boolean;
+  size?: 'small';
 };
 
 const LanguageSelect: React.FC<Props> = ({
   value,
   onChange,
   languages,
-  border
+  border,
+  size
 }) => {
   const [recent, addRecent] = useRecentLanguages();
 
@@ -28,7 +30,11 @@ const LanguageSelect: React.FC<Props> = ({
         addRecent(value);
         onChange(value);
       }}
-      className={cx(styles.select, border && styles.withBorder)}
+      className={cx(
+        styles.select,
+        border && styles.withBorder,
+        size && styles[`select--${size}`]
+      )}
     >
       <RecentLanguages recent={recent} languages={languages} />
       <optgroup label="Languages">

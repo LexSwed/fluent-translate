@@ -1,10 +1,11 @@
 import React from 'react';
-import { Box, Icon } from '@fxtrot/edge';
+import { Box } from '@fxtrot/edge';
 
 import styles from './styles.css';
 
 import TranslatedText from './TranslatedText';
 import { useTranslation } from '../store/utils';
+import LanguageIcon from './LanguageIcon';
 
 const Translated = () => {
   const translation = useTranslation();
@@ -13,9 +14,9 @@ const Translated = () => {
     <TranslatedText />
   ) : (
     <Box className={styles.empty}>
-      <Icon icon="language" size="xl" />
+      <LanguageIcon fill="var(--gray-400" width={50} height={50} />
     </Box>
   );
 };
 
-export default Translated;
+export default React.memo(Translated);

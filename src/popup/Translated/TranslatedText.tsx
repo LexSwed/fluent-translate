@@ -18,7 +18,7 @@ const TranslatedText: React.FC = () => {
         value={to}
         onChange={setTo}
         languages={languages}
-        border
+        size="small"
       />
       <Box pl="xs">
         <Text className={styles.translated}>
@@ -36,4 +36,4 @@ const TranslatedText: React.FC = () => {
   );
 };
 
-export default TranslatedText;
+export default React.memo(TranslatedText);

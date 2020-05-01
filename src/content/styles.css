@@ -1,0 +1,22 @@
+.app {
+  position: relative;
+  min-width: 280px;
+  max-width: 400px;
+  max-height: 500px;
+  background: inherit;
+  overflow: hidden;
+}
+
+.shadowRoot {
+  transition: 0.2s;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+.shown {
+  opacity: 1;
+  transform: none;
+}

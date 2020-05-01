@@ -1,6 +1,6 @@
 import { useReducer, useEffect } from 'react';
 
-import { translate } from '../../utils';
+import { API } from '../../utils';
 
 const initialState: Translation = {
   translating: false,
@@ -19,10 +19,9 @@ function useTranslationReducer({ text, from, to }: Params) {
         dispatch({ type: 'textRemoved' });
         return;
       }
-
       dispatch({ type: 'translating' });
 
-      const res = await translate({
+      const res = await API.translate({
         // let guess language if Auto is selected
         from: from === 'auto' ? undefined : from,
         // user lang

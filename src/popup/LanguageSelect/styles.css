@@ -5,23 +5,24 @@
   transition: 0.16s ease-in-out;
   color: var(--text-color);
   background-color: transparent;
-  height: 32px;
-  font-size: 12px;
+  height: 26px;
+  font-size: 11px;
   line-height: 12px;
   padding: 0 24px 0 8px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   -webkit-appearance: none;
+  background-color: var(--gray-300);
   background-repeat: no-repeat;
   background-position: right 4px center;
-  background-image: url('data:image/svg+xml;utf-8,<svg width="16" height="16" viewBox="0 0 16 12" xmlns="http://www.w3.org/2000/svg"><path d="M11.3613 2.73633L11.8887 3.26367L6 9.15234L0.111328 3.26367L0.638672 2.73633L6 8.09766L11.3613 2.73633Z"></path></svg>');
+  background-image: url('data:image/svg+xml;utf-8,<svg width="12" height="12" viewBox="0 0 16 12" xmlns="http://www.w3.org/2000/svg"><path stroke-width="3" d="M11.3613 2.73633L11.8887 3.26367L6 9.15234L0.111328 3.26367L0.638672 2.73633L6 8.09766L11.3613 2.73633Z"></path></svg>');
   &:hover {
-    background-color: #eaeaea;
+    background-color: var(--gray-400);
   }
   &:focus {
     outline: none;
-    background-color: #efefef;
+    background-color: var(--gray-300);
   }
 }
 
@@ -37,12 +38,14 @@
 
 @media (prefers-color-scheme: dark) {
   .select {
-    background-image: url('data:image/svg+xml;utf-8,<svg width="16" height="16" fill="#fff" viewBox="0 0 16 12" xmlns="http://www.w3.org/2000/svg"><path d="M11.3613 2.73633L11.8887 3.26367L6 9.15234L0.111328 3.26367L0.638672 2.73633L6 8.09766L11.3613 2.73633Z"></path></svg>');
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    background-image: url('data:image/svg+xml;utf-8,<svg width="12" height="12" fill="#fff" viewBox="0 0 16 12" xmlns="http://www.w3.org/2000/svg"><path d="M11.3613 2.73633L11.8887 3.26367L6 9.15234L0.111328 3.26367L0.638672 2.73633L6 8.09766L11.3613 2.73633Z"></path></svg>');
     &:hover {
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: rgba(255, 255, 255, 0.13);
     }
     &:focus {
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: rgba(255, 255, 255, 0.13);
     }
   }
 }

@@ -1,6 +1,7 @@
 {
   "include": ["src", "api", "types"],
   "compilerOptions": {
+    "target": "es6",
     "module": "esnext",
     "lib": ["dom", "esnext"],
     "importHelpers": true,

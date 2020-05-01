@@ -3,6 +3,7 @@ declare module '*.css' {
 
   export = styles;
 }
+declare module 'react-shadow';
 
 type TranslateQuery = { to?: string; from?: string; text: string };
 
@@ -14,3 +15,7 @@ type TranslateResponse = {
     truncated: boolean;
   };
 };
+
+type AsyncRequest =
+  | { request: 'getLanguages'; params: undefined }
+  | { request: 'translate'; params: TranslateQuery };
