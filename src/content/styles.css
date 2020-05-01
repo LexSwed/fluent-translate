@@ -7,11 +7,6 @@
   max-height: 500px;
   background: inherit;
   overflow: hidden;
-  &:hover {
-    & .close {
-      opacity: 1;
-    }
-  }
 }
 
 .shadowRoot {
@@ -26,18 +21,4 @@
 .shown {
   opacity: 1;
   transform: none;
-}
-
-.close {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  border: none;
-  background: none;
-  height: 18px;
-  border-radius: var(--br);
-  opacity: 0;
-  transition: 0.12s;
-  padding: 0;
-  cursor: pointer;
 }

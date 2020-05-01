@@ -5,9 +5,9 @@ import '../global.css';
 import styles from './styles.css';
 
 import { useText } from '../popup/store/utils';
-import Close from './Close';
 import FromLanguageSelect from '../popup/TextInput/FromLanguageSelect';
 import TranslatedText from '../popup/Translated/TranslatedText';
+import CloseTimer from './CloseTimer';
 
 type Props = {
   text?: string;
@@ -21,17 +21,17 @@ const App: React.FC<Props> = ({ text, onClose }) => {
     text && setText(text);
   }, [text, setText]);
 
-  useEffect(() => {
-    if (isMouseOver) {
-      return;
-    }
+  // useEffect(() => {
+  //   if (isMouseOver) {
+  //     return;
+  //   }
 
-    const id = setTimeout(onClose, 4000);
+  //   const id = setTimeout(onClose, 4000);
 
-    return () => {
-      clearTimeout(id);
-    };
-  }, [isMouseOver, onClose]);
+  //   return () => {
+  //     clearTimeout(id);
+  //   };
+  // }, [isMouseOver, onClose]);
 
   return (
     <Card
@@ -39,7 +39,7 @@ const App: React.FC<Props> = ({ text, onClose }) => {
       onMouseOver={() => setMouseOver(true)}
       onMouseOut={() => setMouseOver(false)}
     >
-      <Close onClick={() => onClose()} />
+      <CloseTimer isMouseOver={isMouseOver} onClose={onClose} />
       <Stack>
         <Stack space="s">
           <FromLanguageSelect size="small" />
