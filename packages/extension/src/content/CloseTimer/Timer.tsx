@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 
 import styles from './styles.css';
+import { useText } from '../../popup/store/utils';
 
 const TIME_LIMIT = 4000;
 const R = 32;
@@ -18,36 +19,7 @@ type Props = {
 };
 
 const Timer: React.FC<Props> = ({ isMouseOver, onTimeout }) => {
-  const timePassed = useRef(0);
-  const [dashArray, setDashArray] = useState(`${FULL_DASH_ARRAY}`);
-
-  useEffect(() => {
-    if (isMouseOver) {
-      return;
-    }
-
-    const id = setInterval(() => {
-      if (timePassed.current >= TIME_LIMIT) {
-        clearInterval(id);
-        onTimeout();
-      }
-
-      timePassed.current += 1000;
-
-      const rawTimeFraction = (TIME_LIMIT - timePassed.current) / TIME_LIMIT;
-      const timeFraction =
-        rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
-      const dashArray = (timeFraction * FULL_DASH_ARRAY).toFixed(0);
-
-      setDashArray(`${dashArray} ${FULL_DASH_ARRAY}`);
-    }, 1000);
-
-    return () => {
-      timePassed.current = 0;
-      setDashArray(`${FULL_DASH_ARRAY}`);
-      clearInterval(id);
-    };
-  }, [isMouseOver, onTimeout]);
+  const dashArray = useDasharray({ isMouseOver, onTimeout });
 
   return (
     <svg
@@ -67,3 +39,45 @@ const Timer: React.FC<Props> = ({ isMouseOver, onTimeout }) => {
 };
 
 export default Timer;
+
+function useDasharray({ isMouseOver, onTimeout }: Props) {
+  const timePassed = useRef(0);
+  const [dashArray, setDashArray] = useState(`${FULL_DASH_ARRAY}`);
+  const [text] = useText();
+
+  useEffect(() => {
+    if (isMouseOver) {
+      return;
+    }
+
+    const id = setInterval(() => {
+      if (timePassed.current >= TIME_LIMIT) {
+        clearInterval(id);
+        onTimeout();
+
+        return;
+      }
+
+      timePassed.current += 1000;
+
+      setDashArray(calcCurrentDasharrayValue(timePassed.current));
+    }, 1000);
+
+    return () => {
+      timePassed.current = 0;
+      setDashArray(`${FULL_DASH_ARRAY}`);
+      clearInterval(id);
+    };
+  }, [text, isMouseOver, onTimeout]);
+
+  return dashArray;
+}
+
+function calcCurrentDasharrayValue(timePassed: number) {
+  const rawTimeFraction = (TIME_LIMIT - timePassed) / TIME_LIMIT;
+  const timeFraction =
+    rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
+  const dashArray = (timeFraction * FULL_DASH_ARRAY).toFixed(0);
+
+  return `${dashArray} ${FULL_DASH_ARRAY}`;
+}
