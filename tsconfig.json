@@ -18,8 +18,7 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
-    "esModuleInterop": true,
-    "jsx": "preserve"
+    "esModuleInterop": true
   },
   "include": ["packages", "types"],
   "exclude": ["node_modules", "**/*.test.ts", "**/__mocks__/*"]
