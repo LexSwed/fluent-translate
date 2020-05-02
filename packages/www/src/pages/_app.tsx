@@ -6,7 +6,7 @@ import { Edge } from '@fxtrot/edge';
 import '@fxtrot/edge/dist/styles.css';
 import './global.css';
 
-import Header from 'src/components/header/Header';
+import Header from '../components/header';
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (

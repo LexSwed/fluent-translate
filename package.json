@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "@fxtrot/edge": "^1.0.29",
-    "@now/next": "^2.5.4",
     "@now/node": "^1.5.1",
     "@sentry/node": "^5.15.5",
     "node-fetch": "^2.6.0",

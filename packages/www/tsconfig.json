@@ -1,8 +1,6 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "baseUrl": "./",
-    "rootDir": "./src",
     "allowJs": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
