@@ -1,34 +1,25 @@
 {
   "name": "edge-translate",
   "version": "1.2.2",
-  "description": "Translator extension for Microsoft Edge using Microsoft Translator",
+  "private": true,
+  "description": "Translator browser extension",
   "scripts": {
     "start": "now dev",
-    "dev": "parcel watch src/background/background.ts src/popup/popup.html src/content/content.tsx --no-hmr --public-url /dist",
-    "build": "parcel build src/background/background.ts src/popup/popup.html src/content/content.tsx --public-url /dist --no-source-maps",
-    "serve": "npx serve public",
-    "lint": "eslint src/**/*",
+    "dev": "yarn workspace extension dev",
+    "build": "yarn workspace extension build",
+    "dev:www": "yarn workspace www dev",
+    "lint": "eslint packages/**/*",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@fxtrot/edge": "^1.0.28",
     "@now/node": "^1.5.1",
-    "@sentry/browser": "^5.15.5",
     "@sentry/node": "^5.15.5",
-    "@webcomponents/webcomponentsjs": "^2.4.3",
-    "autosize": "^4.0.2",
-    "classnames": "^2.2.6",
     "node-fetch": "^2.6.0",
-    "qs": "^6.9.3",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-shadow": "^18.1.0"
+    "qs": "^6.9.3"
   },
   "devDependencies": {
     "@semantic-release/exec": "^5.0.0",
     "@semantic-release/git": "^9.0.0",
-    "@types/autosize": "^3.0.7",
-    "@types/chrome": "0.0.106",
     "@types/classnames": "^2.2.10",
     "@types/lodash.debounce": "^4.0.6",
     "@types/node-fetch": "^2.5.7",
@@ -38,7 +29,6 @@
     "@typescript-eslint/eslint-plugin": "^2.30.0",
     "@typescript-eslint/parser": "^2.30.0",
     "babel-eslint": "^10.1.0",
-    "cssnano": "^4.1.10",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-react-app": "^5.2.1",
@@ -50,11 +40,9 @@
     "eslint-plugin-react-hooks": "^3.0.0",
     "husky": "^4.2.5",
     "now": "^18.0.0",
-    "parcel-bundler": "^1.12.4",
-    "postcss-modules": "^2.0.0",
-    "postcss-preset-env": "^6.7.0",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
+    "semantic-release": "^17.0.7",
     "typescript": "^3.8.3",
     "uuidv4": "^6.0.7"
   },
@@ -68,9 +56,6 @@
     "chromium"
   ],
   "author": "lexswed",
-  "engines": {
-    "browsers": "last 2 Chrome version"
-  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/LexSwed/edge-translate/issues"
@@ -81,6 +66,9 @@
       "pre-commit": "npm run typecheck && pretty-quick --staged"
     }
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "release": {
     "plugins": [
       "@semantic-release/commit-analyzer",

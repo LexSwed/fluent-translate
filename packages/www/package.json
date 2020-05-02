@@ -1,0 +1,31 @@
+{
+  "name": "www",
+  "version": "1.0.0",
+  "description": "Edge Translate public page",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LexSwed/edge-translate.git"
+  },
+  "keywords": [
+    "edge",
+    "extension",
+    "chromium"
+  ],
+  "author": "lexswed",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LexSwed/edge-translate/issues"
+  },
+  "homepage": "https://github.com/LexSwed/edge-translate#readme",
+  "dependencies": {
+    "@fxtrot/edge": "^1.0.28",
+    "next": "^9.3.6",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}

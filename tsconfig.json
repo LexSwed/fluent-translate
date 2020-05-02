@@ -1,5 +1,4 @@
 {
-  "include": ["src", "api", "types"],
   "compilerOptions": {
     "target": "es6",
     "module": "esnext",
@@ -21,5 +20,6 @@
     "moduleResolution": "node",
     "jsx": "react",
     "esModuleInterop": true
-  }
+  },
+  "exclude": ["node_modules", "**/*.test.ts", "**/__mocks__/*"]
 }
