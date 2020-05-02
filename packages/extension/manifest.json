@@ -1,6 +1,6 @@
 {
   "name": "Edge Translate",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "manifest_version": 2,
   "description": "Extension for Microsoft Translator",
   "icons": {
