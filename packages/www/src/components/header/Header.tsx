@@ -1,5 +1,6 @@
 import React from 'react';
 import { ContentBlock, Inline, Heading, TextLink } from '@fxtrot/edge';
+import Link from 'next/link';
 
 import styles from './styles.module.css';
 
@@ -8,17 +9,21 @@ const Header = () => {
     <header className={styles.header}>
       <ContentBlock>
         <Inline space="l" alignY="center">
-          <Inline space="m" alignY="center">
-            <img
-              src="images/icon.svg"
-              alt="Edge Translate logo"
-              className={styles.logo}
-              aria-hidden="true"
-            />
-            <Heading as="h3" tone="light">
-              Edge Translate <span className={styles.delimiter}>|</span>
-            </Heading>
-          </Inline>
+          <Link href="/">
+            <a href="/" className={styles.logoLink}>
+              <Inline space="m" alignY="center">
+                <img
+                  src="images/icon.svg"
+                  alt="Edge Translate logo"
+                  className={styles.logo}
+                  aria-hidden="true"
+                />
+                <Heading as="h3" tone="light">
+                  Edge Translate <span className={styles.delimiter}>|</span>
+                </Heading>
+              </Inline>
+            </a>
+          </Link>
           <Inline space="m" alignY="center">
             <TextLink href="https://lexswed.github.io/" className={styles.link}>
               Author
@@ -29,6 +34,9 @@ const Header = () => {
             >
               Sources
             </TextLink>
+            <Link href="/privacy">
+              <TextLink className={styles.link}>Privacy Policy</TextLink>
+            </Link>
           </Inline>
         </Inline>
       </ContentBlock>

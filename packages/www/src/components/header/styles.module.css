@@ -2,6 +2,10 @@
   background-color: #fff;
 }
 
+.logoLink {
+  text-decoration: none;
+}
+
 .logo {
   height: 24px;
   width: 24px;
