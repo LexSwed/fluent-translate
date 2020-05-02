@@ -2,6 +2,7 @@ import React from 'react';
 import { ContentBlock, Columns, Column, Heading, Stack } from '@fxtrot/edge';
 
 import styles from './styles.module.css';
+import Image from '../../components/image';
 
 const Intro: React.FC = () => {
   return (
@@ -30,9 +31,8 @@ const Intro: React.FC = () => {
           </Column>
           <Column width="1/2">
             <div>
-              <img
+              <Image
                 src="/images/screenshot-1.png"
-                alt=""
                 className={styles.screenshot}
               />
             </div>

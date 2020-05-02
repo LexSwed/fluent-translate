@@ -1,20 +1,22 @@
 import React from 'react';
+import { ContentBlock, Stack, Heading, Inline } from '@fxtrot/edge';
 
 import styles from './styles.module.css';
-import { ContentBlock, Stack, Heading, Inline } from '@fxtrot/edge';
+
+import Image from '../../components/image';
 
 const items = [
   {
     title: 'Simple popup for quick text translate',
-    img: '/images/screenshot-2.png'
+    img: '/images/screenshot-2.webp'
   },
   {
     title: 'Day or night, it follows your style',
-    img: '/images/screenshot-1.png'
+    img: '/images/screenshot-1.webp'
   },
   {
     title: 'Translate faster with Right Click',
-    img: '/images/screenshot-3.png'
+    img: '/images/screenshot-3.webp'
   }
 ];
 
@@ -25,7 +27,7 @@ const Features = () => {
         <Inline space="xl" align="center" alignY="center">
           {items.map((item) => (
             <Stack key={item.img} align="center">
-              <img src={item.img} alt="" className={styles.featureImg} />
+              <Image src={item.img} className={styles.featureImg} />
               <Heading as="h3">{item.title}</Heading>
             </Stack>
           ))}
