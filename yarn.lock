@@ -1088,10 +1088,10 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
-"@fxtrot/edge@^1.0.28":
-  version "1.0.28"
-  resolved "https://registry.yarnpkg.com/@fxtrot/edge/-/edge-1.0.28.tgz#db44f8a84407367f767674597e603fa6f9dff2ad"
-  integrity sha512-7VeKaY0R94R19nyIgoruc3tG/NhcoFXroskkgDnNOEKjfuI81cFu0ObIq1y0t88U4Y13/K8+VlYC1S2UYJColA==
+"@fxtrot/edge@^1.0.29":
+  version "1.0.29"
+  resolved "https://registry.yarnpkg.com/@fxtrot/edge/-/edge-1.0.29.tgz#267d79405f4b72d578f1308276f8616845a72b2a"
+  integrity sha512-vyONJt081XL6vbQeaOIfGlEeFR/dMSTaGVTdSgdrSZyatgfsCbmwHHabQQW41Pr+odb4d8QlrIT8EMhdipKwtA==
   dependencies:
     "@popperjs/core" "^2.3.3"
     "@reach/auto-id" "^0.10.1"

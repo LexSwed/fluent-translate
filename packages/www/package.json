@@ -23,9 +23,12 @@
   },
   "homepage": "https://github.com/LexSwed/edge-translate#readme",
   "dependencies": {
-    "@fxtrot/edge": "^1.0.28",
     "next": "^9.3.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "cssnano": "^4.1.10",
+    "postcss-modules": "^2.0.0"
   }
 }

@@ -5,13 +5,16 @@
   "description": "Translator browser extension",
   "scripts": {
     "start": "now dev",
-    "dev": "yarn workspace extension dev",
-    "build": "yarn workspace extension build",
+    "dev": "yarn dev:extension",
+    "dev:extension": "yarn workspace extension dev",
     "dev:www": "yarn workspace www dev",
+    "build": "yarn build:extension && yarn workspace www build",
+    "build:extension": "yarn workspace extension build",
     "lint": "eslint packages/**/*",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@fxtrot/edge": "^1.0.29",
     "@now/node": "^1.5.1",
     "@sentry/node": "^5.15.5",
     "node-fetch": "^2.6.0",

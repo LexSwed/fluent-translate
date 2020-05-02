@@ -1,8 +1,12 @@
 import React from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import { Edge } from '@fxtrot/edge';
 
 import '@fxtrot/edge/dist/styles.css';
+import './global.css';
+
+import Header from 'src/components/header/Header';
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
@@ -12,7 +16,10 @@ const App = ({ Component, pageProps }: AppProps) => {
         <link rel="shortcut icon" href="/images/favicon.ico" />
         <title>Edge Translate</title>
       </Head>
-      <Component {...pageProps} />
+      <Edge>
+        <Header />
+        <Component {...pageProps} />
+      </Edge>
     </>
   );
 };

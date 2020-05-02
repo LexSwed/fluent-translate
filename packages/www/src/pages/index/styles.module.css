@@ -1,0 +1,41 @@
+.main {
+}
+
+.intro {
+  background-color: var(--gray-100);
+  padding: 5vh 0;
+}
+
+.webStore {
+  display: block;
+  height: 80px;
+  border-radius: var(--br);
+  background-color: #fff;
+  border: 1px solid transparent;
+  text-decoration: none;
+  display: flex;
+  align-content: center;
+  &:hover {
+    border-color: var(--gray-500);
+  }
+  & > img {
+    max-height: 100%;
+  }
+}
+
+.msLogo {
+  height: 40px;
+}
+
+.screenshot {
+  width: 100%;
+}
+
+.features {
+  height: 100%;
+  padding: 5vh 0;
+}
+
+.featureImg {
+  height: 200px;
+}

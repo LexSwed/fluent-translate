@@ -1,27 +1,37 @@
 import React from 'react';
+import { ContentBlock, Inline, Heading, TextLink } from '@fxtrot/edge';
+
+import styles from './styles.module.css';
 
 const Header = () => {
   return (
-    <header>
-      <div className="flex-center main-center header-wrap">
-        <div className="flex-center logo-wrap">
-          <img
-            src="images/icon.svg"
-            alt="Edge Translate logo"
-            className="logo"
-            aria-hidden="true"
-          />
-          <span className="logo-title">Edge Translate</span>
-        </div>
-        <ul className="links">
-          <li className="link">
-            <a href="https://lexswed.github.io/">Author</a>
-          </li>
-          <li className="link">
-            <a href="https://github.com/LexSwed/edge-translate">Sources</a>
-          </li>
-        </ul>
-      </div>
+    <header className={styles.header}>
+      <ContentBlock>
+        <Inline space="l" alignY="center">
+          <Inline space="m" alignY="center">
+            <img
+              src="images/icon.svg"
+              alt="Edge Translate logo"
+              className={styles.logo}
+              aria-hidden="true"
+            />
+            <Heading as="h3" tone="light">
+              Edge Translate <span className={styles.delimiter}>|</span>
+            </Heading>
+          </Inline>
+          <Inline space="m" alignY="center">
+            <TextLink href="https://lexswed.github.io/" className={styles.link}>
+              Author
+            </TextLink>
+            <TextLink
+              href="https://github.com/LexSwed/edge-translate"
+              className={styles.link}
+            >
+              Sources
+            </TextLink>
+          </Inline>
+        </Inline>
+      </ContentBlock>
     </header>
   );
 };

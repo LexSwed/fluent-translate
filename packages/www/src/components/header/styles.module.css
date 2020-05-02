@@ -1,0 +1,33 @@
+.header {
+  background-color: #fff;
+}
+
+.logo {
+  height: 24px;
+  width: 24px;
+}
+
+.delimiter {
+  user-select: none;
+  margin-left: var(--l);
+}
+
+.link {
+  color: var(--text-color);
+  border-bottom: 2px solid transparent;
+  transition: 0.12s ease;
+  font-size: 13px !important;
+  &:hover {
+    border-bottom-color: #000;
+    color: #000;
+  }
+
+  &:link,
+  &:focus,
+  &:hover,
+  &:active,
+  &:visited {
+    text-decoration: none;
+    color: inherit;
+  }
+}
