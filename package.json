@@ -1,6 +1,6 @@
 {
   "name": "edge-translate",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Translator extension for Microsoft Edge using Microsoft Translator",
   "scripts": {
     "start": "now dev",
