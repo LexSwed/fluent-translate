@@ -1,4 +1,4 @@
-<img src="icons/icon.svg" height="120px" align="right"/>
+<img src="packages/extension/icons/icon.svg" height="120px" align="right"/>
 
 # edge-translate
 
