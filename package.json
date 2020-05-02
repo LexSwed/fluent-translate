@@ -87,7 +87,7 @@
         "@semantic-release/github",
         {
           "assets": [
-            "EdgeTranslate.zip"
+            "packages/extension/EdgeTranslate.zip"
           ]
         }
       ],
@@ -95,8 +95,8 @@
         "@semantic-release/git",
         {
           "assets": [
-            "manifest.json",
-            "package.json"
+            "packages/extension/manifest.json",
+            "packages/extension/package.json"
           ],
           "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
         }
