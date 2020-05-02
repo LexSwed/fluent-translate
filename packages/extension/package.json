@@ -1,0 +1,40 @@
+{
+  "name": "extension",
+  "description": "Edge Translate browser extension",
+  "version": "1.0.0",
+  "author": "lexswed",
+  "scripts": {
+    "dev": "parcel watch src/background/background.ts src/popup/popup.html src/content/content.tsx --no-hmr --public-url /dist",
+    "build": "parcel build src/background/background.ts src/popup/popup.html src/content/content.tsx --public-url /dist --no-source-maps"
+  },
+  "browserslist": [
+    "last 2 Chrome version"
+  ],
+  "bugs": {
+    "url": "https://github.com/LexSwed/edge-translate/issues"
+  },
+  "homepage": "https://github.com/LexSwed/edge-translate#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LexSwed/edge-translate.git"
+  },
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@sentry/browser": "^5.15.5",
+    "@webcomponents/webcomponentsjs": "^2.4.3",
+    "autosize": "^4.0.2",
+    "classnames": "^2.2.6",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-shadow": "^18.1.0"
+  },
+  "devDependencies": {
+    "@types/autosize": "^3.0.7",
+    "@types/chrome": "^0.0.106",
+    "cssnano": "^4.1.10",
+    "parcel-bundler": "^1.12.4",
+    "postcss-modules": "^2.0.0",
+    "postcss-preset-env": "^6.7.0"
+  }
+}
