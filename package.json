@@ -8,8 +8,9 @@
     "dev": "yarn dev:extension",
     "dev:extension": "yarn workspace extension dev",
     "dev:www": "yarn workspace www dev",
-    "build": "yarn build:extension && yarn workspace www build",
+    "build": "yarn build:extension && yarn build:www",
     "build:extension": "yarn workspace extension build",
+    "build:www": "yarn workspace www build",
     "lint": "eslint packages/**/*",
     "typecheck": "tsc --noEmit"
   },
