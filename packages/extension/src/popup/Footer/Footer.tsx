@@ -1,17 +1,23 @@
 import React from 'react';
-import { Inline } from '@fxtrot/edge';
-
-import TranslatorLink from '../TranslatorLink';
+import { Box, Columns, Column } from '@fxtrot/edge';
 
 import styles from './styles.css';
 
+import TranslatorLink from '../TranslatorLink';
+import HistoryHeading from '../History/HistoryHeading';
+
 const Footer = () => {
   return (
-    <Inline space="m" align="center" alignY="center">
-      <TranslatorLink className={styles.text}>
-        Microsoft Translator
-      </TranslatorLink>
-    </Inline>
+    <Box px="m" py="s" className={styles.sheet}>
+      <Columns align="apart" alignY="center">
+        <Column width="content">
+          <HistoryHeading />
+        </Column>
+        <Column width="content" className={styles.text}>
+          <TranslatorLink>Microsoft Translator</TranslatorLink>
+        </Column>
+      </Columns>
+    </Box>
   );
 };
 

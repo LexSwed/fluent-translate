@@ -1,4 +1,5 @@
 import { useContext, createContext } from 'react';
+import { setStorageTo } from '../../utils';
 
 const context = createContext<Store>({} as Store);
 
@@ -18,7 +19,7 @@ export const useToLanguage = () => {
   const { to, setTo } = useContext(context);
 
   const updateTo = (langKey: string) => {
-    chrome.storage.local.set({ to: langKey });
+    setStorageTo(langKey);
     setTo(langKey);
   };
 
@@ -34,14 +35,3 @@ export const useFromLanguage = () => {
 export const useTranslation = () => {
   return useContext(context).translation;
 };
-
-export function getCachedItems(): Promise<{
-  to?: 'string';
-  languages?: Languages;
-}> {
-  return new Promise((resolve) => {
-    chrome.storage.local.get(['to', 'languages'], (cache) => {
-      resolve(cache);
-    });
-  });
-}

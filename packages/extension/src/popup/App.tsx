@@ -50,13 +50,15 @@ class App extends React.Component {
       );
     }
     return (
-      <Box className={styles.app} p="m">
-        <Stack space="m">
-          <TextInput />
-          <Translated />
-          <Footer />
-        </Stack>
-      </Box>
+      <>
+        <Box className={styles.app} p="m">
+          <Stack space="m">
+            <TextInput />
+            <Translated />
+          </Stack>
+        </Box>
+        <Footer />
+      </>
     );
   }
 }

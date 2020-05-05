@@ -44,3 +44,36 @@ export const API = {
     );
   }
 };
+
+export const setStorageTo = (to: string) => {
+  return new Promise((resolve) => chrome.storage.local.set({ to }, resolve));
+};
+
+export const updateHistory = async ({
+  text,
+  to,
+  from,
+  translation
+}: HistoryItem) => {
+  if (text.length > 20) {
+    return;
+  }
+
+  const { history } = await getStorageItems<{ history: HistoryItems }>(
+    'history'
+  );
+
+  history.push({ text, to, from, translation });
+
+  return new Promise((resolve) => {
+    chrome.storage.sync.set({ history }, resolve);
+  });
+};
+
+export function getStorageItems<T extends Record<string, any>>(
+  item: string | string[]
+): Promise<T> {
+  return new Promise((resolve) => {
+    chrome.storage.local.get(item, (caches) => resolve(caches as T));
+  });
+}

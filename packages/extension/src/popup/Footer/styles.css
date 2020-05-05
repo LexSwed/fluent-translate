@@ -7,3 +7,13 @@
   font-size: 12px;
   line-height: 14px;
 }
+
+.sheet {
+  background-color: var(--gray-100);
+}
+
+@media (prefers-color-scheme: dark) {
+  .sheet {
+    background-color: hsla(0, 0%, 100%, 0.05);
+  }
+}

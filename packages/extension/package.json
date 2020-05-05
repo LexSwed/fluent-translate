@@ -34,7 +34,7 @@
     "@types/autosize": "^3.0.7",
     "@types/chrome": "^0.0.106",
     "cssnano": "^4.1.10",
-    "parcel-bundler": "^1.12.4",
+    "parcel": "^2.0.0-nightly.248",
     "postcss-modules": "^2.0.0",
     "postcss-preset-env": "^6.7.0"
   }

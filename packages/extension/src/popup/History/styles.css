@@ -1,0 +1,8 @@
+@media (prefers-color-scheme: dark) {
+  .historyHeading:hover {
+    --bg-color: hsla(0, 0%, 100%, 0.1);
+  }
+  .historyHeading:active {
+    --bg-color: hsla(0, 0%, 100%, 0.15);
+  }
+}
