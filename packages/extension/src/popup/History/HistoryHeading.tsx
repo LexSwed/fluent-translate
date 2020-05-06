@@ -4,7 +4,7 @@ import { Button } from '@fxtrot/edge';
 import styles from './styles.css';
 
 const Icon = (
-  <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24">
+  <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 0 24 24">
     <path fill="none" d="M0 0h24v24H0z" />
     <path
       fill="var(--text-color)"
@@ -13,9 +13,18 @@ const Icon = (
   </svg>
 );
 
-const HistoryHeading = () => {
+type Props = {
+  onClick: React.ComponentProps<typeof Button>['onClick'];
+};
+
+const HistoryHeading: React.FC<Props> = ({ onClick }) => {
   return (
-    <Button tone="transparent" size="s" className={styles.historyHeading}>
+    <Button
+      tone="transparent"
+      size="xs"
+      onClick={onClick}
+      className={styles.historyHeading}
+    >
       {Icon}
       History
     </Button>

@@ -1,3 +1,12 @@
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--gray-100);
+  transition: 2s ease-in-out;
+}
+
 .line {
   border-top: 1px solid #b6b6b6;
   width: 100%;
@@ -8,12 +17,8 @@
   line-height: 14px;
 }
 
-.sheet {
-  background-color: var(--gray-100);
-}
-
 @media (prefers-color-scheme: dark) {
-  .sheet {
-    background-color: hsla(0, 0%, 100%, 0.05);
+  .footer {
+    background-color: #4f4f4f;
   }
 }
