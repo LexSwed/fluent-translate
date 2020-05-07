@@ -15,11 +15,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@fxtrot/edge": "^1.0.29",
-    "@now/node": "^1.5.1",
-    "@sentry/node": "^5.15.5",
-    "node-fetch": "^2.6.0",
-    "qs": "^6.9.3"
+    "@fxtrot/edge": "^1.0.29"
   },
   "devDependencies": {
     "@semantic-release/exec": "^5.0.0",

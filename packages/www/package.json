@@ -23,7 +23,11 @@
   },
   "homepage": "https://github.com/LexSwed/edge-translate#readme",
   "dependencies": {
+    "@now/node": "^1.5.1",
+    "@sentry/node": "^5.15.5",
     "next": "^9.3.6",
+    "node-fetch": "^2.6.0",
+    "qs": "^6.9.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
