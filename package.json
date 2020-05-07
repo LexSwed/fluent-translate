@@ -12,7 +12,9 @@
     "build:extension": "yarn workspace extension build",
     "build:www": "yarn workspace www build",
     "lint": "eslint packages/**/*",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "npx npm-run-all -p tsc:extension tsc:www",
+    "tsc:extension": "tsc --noEmit -p packages/extension/tsconfig.json",
+    "tsc:www": "tsc --noEmit -p packages/www/tsconfig.json"
   },
   "dependencies": {
     "@fxtrot/edge": "^1.0.29",
