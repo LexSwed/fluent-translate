@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build && next export -o build",
-    "start": "next start"
+    "start": "next start",
+    "typecheck": "tsc --noEmit"
   },
   "repository": {
     "type": "git",

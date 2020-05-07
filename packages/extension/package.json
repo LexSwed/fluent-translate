@@ -5,7 +5,8 @@
   "author": "lexswed",
   "scripts": {
     "dev": "parcel watch src/background/background.ts src/popup/popup.html src/content/content.tsx --no-hmr --public-url /dist",
-    "build": "parcel build src/background/background.ts src/popup/popup.html src/content/content.tsx --public-url /dist --no-source-maps"
+    "build": "parcel build src/background/background.ts src/popup/popup.html src/content/content.tsx --public-url /dist --no-source-maps",
+    "typecheck": "tsc --noEmit"
   },
   "browserslist": [
     "last 2 Chrome version"

@@ -12,7 +12,7 @@
     "build:extension": "yarn workspace extension build",
     "build:www": "yarn workspace www build",
     "lint": "eslint packages/**/*",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "yarn workspace extension typecheck && yarn workspace www typecheck"
   },
   "dependencies": {
     "@fxtrot/edge": "^1.0.29"
