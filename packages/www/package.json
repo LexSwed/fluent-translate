@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Edge Translate public page",
   "scripts": {
-    "next": "if [[ $EXTENSION == *true ]]; then yarn workspace extension run dev; else yarn run next dev --port $PORT; fi",
     "start": "vc dev"
   },
   "repository": {

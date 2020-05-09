@@ -8,7 +8,10 @@
     "jsx": "preserve",
     "target": "es6",
     "module": "esnext",
-    "lib": ["dom", "esnext"],
+    "lib": [
+      "dom",
+      "esnext"
+    ],
     "declaration": true,
     "sourceMap": true,
     "strict": true,
@@ -23,8 +26,17 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "isolatedModules": true
   },
-  "include": ["src", "api", "types"],
-  "exclude": ["node_modules", "**/*.test.ts", "**/__mocks__/*"]
+  "include": [
+    "src",
+    "api",
+    "types"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.test.ts",
+    "**/__mocks__/*"
+  ]
 }

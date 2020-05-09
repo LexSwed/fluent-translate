@@ -4,10 +4,9 @@
   "private": true,
   "description": "Translator browser extension",
   "scripts": {
-    "start": "yarn dev",
-    "dev": "EXTENSION=true yarn dev:www",
+    "start": "yarn dev:ext",
     "dev:ext": "yarn workspace extension dev",
-    "dev:www": "yarn workspace www start",
+    "dev:www": "vc dev",
     "build": "yarn build:ext && yarn build:www",
     "build:ext": "yarn workspace extension build",
     "build:www": "yarn workspace www build",
