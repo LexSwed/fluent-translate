@@ -22,7 +22,7 @@ export const translate = (params: TranslateQuery): Promise<TranslateResponse> =>
 
 export const addHistoryItem = debounce(
   async ({ text, to, from, translation }: HistoryItem) => {
-    if (text.length > 20) {
+    if (text.length > 40) {
       return;
     }
 

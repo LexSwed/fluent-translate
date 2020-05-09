@@ -13,10 +13,14 @@ const Footer = () => {
 
   return (
     <div className={cx(styles.footer, isOpen && styles.footerOpen)}>
-      <Box px="m" py="s">
+      <Box
+        px="m"
+        py="s"
+        className={cx(styles.footerBar, isOpen && styles.footerBarOpen)}
+      >
         <Columns align="apart" alignY="center">
           <Column width="content">
-            <HistoryHeading onClick={() => setOpen(!isOpen)} />
+            <HistoryHeading isOpen={isOpen} onClick={() => setOpen(!isOpen)} />
           </Column>
           <Column width="content" className={styles.text}>
             <TranslatorLink>Microsoft Translator</TranslatorLink>

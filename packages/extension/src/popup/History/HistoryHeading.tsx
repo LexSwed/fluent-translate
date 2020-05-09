@@ -4,7 +4,7 @@ import { Button } from '@fxtrot/edge';
 import styles from './styles.css';
 
 const Icon = (
-  <svg xmlns="http://www.w3.org/2000/svg" height="15px" viewBox="0 0 24 24">
+  <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 0 24 24">
     <path fill="none" d="M0 0h24v24H0z" />
     <path
       fill="var(--text-color)"
@@ -14,10 +14,11 @@ const Icon = (
 );
 
 type Props = {
+  isOpen: boolean;
   onClick: React.ComponentProps<typeof Button>['onClick'];
 };
 
-const HistoryHeading: React.FC<Props> = ({ onClick }) => {
+const HistoryHeading: React.FC<Props> = ({ isOpen, onClick }) => {
   return (
     <Button
       tone="transparent"
@@ -26,7 +27,7 @@ const HistoryHeading: React.FC<Props> = ({ onClick }) => {
       className={styles.historyHeading}
     >
       {Icon}
-      History
+      {isOpen ? 'Close' : 'History'}
     </Button>
   );
 };
