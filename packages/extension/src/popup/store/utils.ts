@@ -35,3 +35,13 @@ export const useFromLanguage = () => {
 export const useTranslation = () => {
   return useContext(context).translation;
 };
+
+export const useStoreUpdater = () => {
+  const { setFrom, setTo, setText } = useContext(context);
+
+  return ({ to, from, text }: Record<string, string>) => {
+    setFrom(from);
+    setTo(to);
+    setText(text);
+  };
+};

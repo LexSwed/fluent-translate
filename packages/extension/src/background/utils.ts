@@ -3,7 +3,7 @@ import { debounce } from 'debounce';
 
 import { Storage } from '../utils';
 
-const baseURL = 'https://edge-translate.lexswed.now.sh';
+const baseURL = 'https://edge-translate.now.sh';
 
 const request = <T = any>(
   url: string,
@@ -30,9 +30,15 @@ export const addHistoryItem = debounce(
       history: HistoryItems;
     }>('history');
 
+    const textIndex = history.findIndex((item) => item.text === text);
+
+    if (textIndex > -1) {
+      history.splice(textIndex, 1);
+    }
+
     history.unshift({ text, to, from, translation });
-    console.log('Save item', { text, from, to, translation });
-    await Storage.setSyncItems({ history });
+
+    await Storage.setSyncItems({ history: history.slice(0, 30) });
   },
   3000
 );

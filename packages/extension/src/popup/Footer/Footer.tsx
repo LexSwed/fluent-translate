@@ -4,7 +4,6 @@ import { Box, Columns, Column } from '@fxtrot/edge';
 
 import styles from './styles.css';
 
-import TranslatorLink from '../TranslatorLink';
 import HistoryHeading from '../History/HistoryHeading';
 import History from '../History';
 
@@ -18,16 +17,13 @@ const Footer = () => {
         py="s"
         className={cx(styles.footerBar, isOpen && styles.footerBarOpen)}
       >
-        <Columns align="apart" alignY="center">
+        <Columns align="right" alignY="center">
           <Column width="content">
             <HistoryHeading isOpen={isOpen} onClick={() => setOpen(!isOpen)} />
           </Column>
-          <Column width="content" className={styles.text}>
-            <TranslatorLink>Microsoft Translator</TranslatorLink>
-          </Column>
         </Columns>
       </Box>
-      {isOpen && <History />}
+      {isOpen && <History onClose={() => setOpen(false)} />}
     </div>
   );
 };

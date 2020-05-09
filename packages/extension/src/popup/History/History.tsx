@@ -1,39 +1,38 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Stack, Text, Columns, Column } from '@fxtrot/edge';
+import { Box } from '@fxtrot/edge';
 
 import styles from './styles.css';
 import { Storage } from '../../utils';
-import { useLanguages } from '../store/utils';
+import { useLanguages, useStoreUpdater } from '../store/utils';
+import HistoryEntry from './HistoryEntry';
 
-const History = () => {
+type Props = {
+  onClose: () => void;
+};
+
+const History: React.FC<Props> = ({ onClose }) => {
   const items = useHistory();
   const langs = useLanguages();
+  const updateStore = useStoreUpdater();
+
+  const onItemClick = (item: HistoryItem) => {
+    updateStore(item);
+    onClose();
+  };
 
   return (
     <Box pr="s" className={styles.history}>
       <ul className={styles.list}>
         {items.map((item) => {
           return (
-            <li className={styles.entry} key={item.text}>
-              <Box p="s">
-                <Columns>
-                  <Column>
-                    <Stack space="s">
-                      <Text tone="light" className={styles.languages}>
-                        {langs[item.from].nativeName}
-                        <span aria-label="arrow right"> → </span>
-                        {langs[item.to].nativeName}
-                      </Text>
-                      <Stack space="xs">
-                        <Text>{item.text}</Text>
-                        <Text tone="light">{item.translation}</Text>
-                      </Stack>
-                    </Stack>
-                  </Column>
-                  <Column width="content"></Column>
-                </Columns>
-              </Box>
-            </li>
+            <HistoryEntry
+              item={{
+                ...item,
+                from: langs[item.from].name,
+                to: langs[item.to].name
+              }}
+              onClick={() => onItemClick(item)}
+            />
           );
         })}
       </ul>
@@ -49,7 +48,7 @@ function useHistory() {
 
   useEffect(() => {
     Storage.getSyncItems<{ history: HistoryItems }>('history').then(
-      ({ history }) => {
+      ({ history = [] }) => {
         historySaved = history;
         setHistory(history);
       }

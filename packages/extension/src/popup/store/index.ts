@@ -34,10 +34,10 @@ export function useStore() {
   const store: Store = {
     languages,
     text,
-    setText,
     from,
     to,
     translation,
+    setText,
     setFrom,
     setTo
   };
