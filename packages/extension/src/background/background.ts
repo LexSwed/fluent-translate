@@ -1,4 +1,4 @@
-import { getLanguages, translate } from '../utils';
+import { getLanguages, translate, addHistoryItem } from './utils';
 
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
@@ -31,7 +31,15 @@ chrome.runtime.onMessage.addListener(
         break;
       }
       case 'translate': {
-        translate(request.params).then(sendResponse);
+        translate(request.params).then((res) => {
+          addHistoryItem({
+            text: request.params.text,
+            from: res.from || request.params.from || 'auto',
+            to: res.to || request.params.to,
+            translation: res.translation.text
+          });
+          sendResponse(res);
+        });
         break;
       }
     }

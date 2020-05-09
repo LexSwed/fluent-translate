@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { userLang, getStorageItems } from '../../utils';
+import { userLang, Storage } from '../../utils';
 import useTranslation from './useTranslation';
 
 const initialLanguages = {
@@ -19,7 +19,7 @@ export function useStore() {
 
   useEffect(() => {
     async function fillStorage() {
-      const { to, languages } = await getStorageItems<{
+      const { to, languages } = await Storage.getItems<{
         to?: 'string';
         languages?: Languages;
       }>(['to', 'languages']);

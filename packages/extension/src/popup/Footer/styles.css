@@ -1,10 +1,15 @@
 .footer {
   position: absolute;
-  bottom: 0;
+  top: calc(100vh - 38px);
   left: 0;
   width: 100%;
   background-color: var(--gray-100);
-  transition: 2s ease-in-out;
+  transition: transform 0.24s ease-in-out;
+  height: 100vh;
+}
+
+.footerOpen {
+  transform: translateY(calc(-1 * (100vh - 38px)));
 }
 
 .line {

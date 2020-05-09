@@ -5,7 +5,7 @@ declare module '*.css' {
 }
 declare module 'react-shadow';
 
-type TranslateQuery = { to?: string; from?: string; text: string };
+type TranslateQuery = { from?: string; to: string; text: string };
 
 type TranslateResponse = {
   from: string | undefined;

@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "Edge Translate public page",
   "scripts": {
-    "dev": "next",
-    "build": "next build && next export -o build",
-    "start": "next start"
+    "next": "if [[ $EXTENSION == *true ]]; then yarn workspace extension run dev; else yarn run next dev --port $PORT; fi",
+    "start": "vc dev"
   },
   "repository": {
     "type": "git",
@@ -23,12 +22,26 @@
   },
   "homepage": "https://github.com/LexSwed/edge-translate#readme",
   "dependencies": {
+    "@fxtrot/edge": "^1.0.29",
+    "@sentry/node": "^5.15.5",
+    "@vercel/node": "^1.6.0",
     "next": "^9.3.6",
+    "node-fetch": "^2.6.0",
+    "qs": "^6.9.4",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "uuidv4": "^6.0.8"
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.10",
+    "@types/node-fetch": "^2.5.7",
+    "@types/qs": "^6.9.2",
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.7",
     "cssnano": "^4.1.10",
-    "postcss-modules": "^2.0.0"
+    "vercel": "^19.0.0",
+    "postcss-modules": "^2.0.0",
+    "postcss-preset-env": "^6.7.0",
+    "typescript": "^3.8.3"
   }
 }

@@ -1,5 +1,5 @@
 import { useContext, createContext } from 'react';
-import { setStorageTo } from '../../utils';
+import { Storage } from '../../utils';
 
 const context = createContext<Store>({} as Store);
 
@@ -19,7 +19,7 @@ export const useToLanguage = () => {
   const { to, setTo } = useContext(context);
 
   const updateTo = (langKey: string) => {
-    setStorageTo(langKey);
+    Storage.setItems({ to: langKey });
     setTo(langKey);
   };
 

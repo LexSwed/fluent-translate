@@ -1,25 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import cx from 'classnames';
 import { Box, Columns, Column } from '@fxtrot/edge';
 
 import styles from './styles.css';
 
 import TranslatorLink from '../TranslatorLink';
 import HistoryHeading from '../History/HistoryHeading';
+import History from '../History';
 
 const Footer = () => {
   const [isOpen, setOpen] = useState(false);
-  const [style, setStyle] = useState<React.CSSProperties>(calcStyle());
-
-  useEffect(() => {
-    if (isOpen) {
-      setStyle(calcStyle());
-    } else {
-      setStyle({ transform: 'none' });
-    }
-  }, [isOpen]);
 
   return (
-    <div className={styles.footer} style={style}>
+    <div className={cx(styles.footer, isOpen && styles.footerOpen)}>
       <Box px="m" py="s">
         <Columns align="apart" alignY="center">
           <Column width="content">
@@ -30,23 +23,9 @@ const Footer = () => {
           </Column>
         </Columns>
       </Box>
-      {isOpen && (
-        <Box p="m">
-          <Box p="m">Huge content!</Box>
-          <Box p="m">Huge content!</Box>
-          <Box p="m">Huge content!</Box>
-        </Box>
-      )}
+      {isOpen && <History />}
     </div>
   );
 };
 
 export default Footer;
-
-function calcStyle() {
-  const { height } = document.body.getBoundingClientRect();
-
-  return {
-    transform: `translateY(calc((${height}px - 100%) * -1))`
-  };
-}

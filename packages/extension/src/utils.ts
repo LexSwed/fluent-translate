@@ -1,25 +1,3 @@
-import { stringify } from 'qs';
-
-const baseURL =
-  process.env.NODE_ENV === 'production'
-    ? 'https://edge-translate.lexswed.now.sh'
-    : 'http://localhost:3000';
-
-const request = <T = any>(
-  url: string,
-  params?: Record<string, any>
-): Promise<T> => {
-  return fetch(
-    `${baseURL}${url}${stringify(params, { addQueryPrefix: true })}`,
-    params
-  ).then((res) => res.json());
-};
-
-export const getLanguages = () => request('/api/languages');
-
-export const translate = (params: TranslateQuery): Promise<TranslateResponse> =>
-  request<TranslateResponse>('/api/translate', params);
-
 export const userLang =
   window.navigator.language.slice(0, 2) ||
   window.navigator.languages[0].slice(0, 2);
@@ -45,35 +23,22 @@ export const API = {
   }
 };
 
-export const setStorageTo = (to: string) => {
-  return new Promise((resolve) => chrome.storage.local.set({ to }, resolve));
+export const Storage = {
+  getItems: <T extends Record<string, any>>(
+    key: StorageKey,
+    storageType: 'local' | 'sync' = 'local'
+  ): Promise<T> => {
+    return new Promise((resolve) => {
+      chrome.storage[storageType].get(key, (caches) => resolve(caches as T));
+    });
+  },
+  setItems: (item: object, storageType: 'local' | 'sync' = 'local') => {
+    return new Promise((resolve) =>
+      chrome.storage[storageType].set(item, () => resolve())
+    );
+  },
+  getSyncItems: <T>(key: StorageKey) => Storage.getItems<T>(key, 'sync'),
+  setSyncItems: (item: object) => Storage.setItems(item, 'sync')
 };
 
-export const updateHistory = async ({
-  text,
-  to,
-  from,
-  translation
-}: HistoryItem) => {
-  if (text.length > 20) {
-    return;
-  }
-
-  const { history } = await getStorageItems<{ history: HistoryItems }>(
-    'history'
-  );
-
-  history.push({ text, to, from, translation });
-
-  return new Promise((resolve) => {
-    chrome.storage.sync.set({ history }, resolve);
-  });
-};
-
-export function getStorageItems<T extends Record<string, any>>(
-  item: string | string[]
-): Promise<T> {
-  return new Promise((resolve) => {
-    chrome.storage.local.get(item, (caches) => resolve(caches as T));
-  });
-}
+type StorageKey = Parameters<typeof chrome.storage['local']['get']>[0];

@@ -7,3 +7,4 @@ build/
 .parcel-cache
 dist
 .next
+.vercel
