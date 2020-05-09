@@ -10,8 +10,7 @@ import App from './App';
 
 const style = (
   <style>
-    {`@import url('${chrome.extension.getURL('/dist/content/content.css')}');
-  `}
+    {`@import url('${chrome.extension.getURL('/dist/content/content.css')}');`}
   </style>
 );
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Edge } from '@fxtrot/edge';
-import '@fxtrot/edge/dist/styles.css';
 
 import { useStore } from './store';
 import { StoreContextProvider } from './store/utils';

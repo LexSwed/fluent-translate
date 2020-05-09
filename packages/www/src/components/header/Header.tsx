@@ -13,7 +13,7 @@ const Header = () => {
             <a href="/" className={styles.logoLink}>
               <Inline space="m" alignY="center">
                 <img
-                  src="images/icon.svg"
+                  src="/images/icon.svg"
                   alt="Edge Translate logo"
                   className={styles.logo}
                   aria-hidden="true"

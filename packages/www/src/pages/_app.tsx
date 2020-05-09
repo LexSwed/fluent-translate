@@ -13,7 +13,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     <>
       <Head>
         <meta charSet="utf-8" />
-        <link rel="shortcut icon" href="/images/favicon.ico" />
+        <link rel="shortcut icon" href="/images/icon.svg" />
         <title>Edge Translate</title>
       </Head>
       <Edge>

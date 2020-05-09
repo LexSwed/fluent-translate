@@ -58,5 +58,5 @@
   transform: rotate(90deg);
   transform-origin: center;
   transition: 1s linear all;
-  stroke: var(--brand-color);
+  stroke: var(--brand-500);
 }

@@ -1,13 +1,15 @@
+@import url('@fxtrot/edge/dist/styles.css');
+
 :global(.fxtrot-edge) {
-  --brand-100: #ebf8ff;
-  --brand-200: #bee3f8;
-  --brand-300: #90cdf4;
-  --brand-400: #63b3ed;
-  --brand-500: #4299e1;
-  --brand-600: #3182ce;
-  --brand-700: #2b6cb0;
-  --brand-800: #2c5282;
-  --brand-900: #2a4365;
+  --brand-100: #81c0ce;
+  --brand-200: #4fa7ba;
+  --brand-300: #359ab0;
+  --brand-400: #1c8ea6;
+  --brand-500: #03819c;
+  --brand-600: #03748c;
+  --brand-700: #02677d;
+  --brand-800: #025a6d;
+  --brand-900: #024d5e;
 
   --bg-color-1: #fff;
   --bg-color-2: var(--gray-100);
@@ -31,6 +33,5 @@
     --border-color: rgb(107, 107, 107);
     --border-color-hover: rgb(138, 138, 138);
     --border-color-focus: rgb(128, 128, 128);
-    --brand-700: #63b3ed;
   }
 }
