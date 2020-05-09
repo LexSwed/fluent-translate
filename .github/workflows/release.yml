@@ -35,7 +35,7 @@ jobs:
           CI: true
 
       - name: Build
-        run: yarn build:extension
+        run: yarn build:ext
         env:
           CI: true
       - name: Release
