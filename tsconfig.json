@@ -21,6 +21,4 @@
     "esModuleInterop": true,
     "noEmit": true
   },
-  "include": ["packages", "types"],
-  "exclude": ["node_modules", "**/*.test.ts", "**/__mocks__/*"]
 }

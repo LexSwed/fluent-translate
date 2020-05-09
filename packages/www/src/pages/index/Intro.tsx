@@ -21,7 +21,10 @@ const Intro: React.FC = () => {
                   alt="Available in Chrome Web Store"
                 />
               </a>
-              <a href="void;" className={styles.webStore}>
+              <a
+                href="https://microsoftedge.microsoft.com/addons/detail/fnpmkppmkmjgcdkjoblipakmfnocefog"
+                className={styles.webStore}
+              >
                 <img
                   src="/images/edge-addons.png"
                   alt="Available in Microsoft Edge Addons"

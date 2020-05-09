@@ -1,17 +1,37 @@
-import React from 'react';
-import { Inline } from '@fxtrot/edge';
-
-import TranslatorLink from '../TranslatorLink';
+import React, { useState } from 'react';
+import cx from 'classnames';
+import { Box, Columns, Column } from '@fxtrot/edge';
 
 import styles from './styles.css';
 
+import HistoryHeading from '../History/HistoryHeading';
+import History from '../History';
+import { useHistory } from '../History/History';
+
 const Footer = () => {
+  const [isOpen, setOpen] = useState(false);
+  const history = useHistory();
+
   return (
-    <Inline space="m" align="center" alignY="center">
-      <TranslatorLink className={styles.text}>
-        Microsoft Translator
-      </TranslatorLink>
-    </Inline>
+    <div className={cx(styles.footer, isOpen && styles.footerOpen)}>
+      <Box
+        px="m"
+        py="s"
+        className={cx(styles.footerBar, isOpen && styles.footerBarOpen)}
+      >
+        <Columns align="right" alignY="center">
+          {Boolean(history.length) && (
+            <Column width="content">
+              <HistoryHeading
+                isOpen={isOpen}
+                onClick={() => setOpen(!isOpen)}
+              />
+            </Column>
+          )}
+        </Columns>
+      </Box>
+      {isOpen && <History onClose={() => setOpen(false)} />}
+    </div>
   );
 };
 

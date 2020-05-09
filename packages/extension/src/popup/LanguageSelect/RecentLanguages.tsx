@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Storage } from '../../utils';
 
 type Props = {
   recent: string[];
@@ -30,15 +31,15 @@ export function useRecentLanguages() {
   const [lastItems, setLastItems] = useState<string[]>([]);
 
   useEffect(() => {
-    chrome.storage.local.get('recentLanguages', (cache) => {
+    Storage.getItems('recentLanguages').then((cache) => {
       if (cache.recentLanguages && Array.isArray(cache.recentLanguages)) {
-        setLastItems(cache.recentLanguages || []);
+        setLastItems(cache.recentLanguages);
       }
     });
   }, []);
 
   const updateRecent = (recentLanguages: string[]) => {
-    chrome.storage.local.set({ recentLanguages });
+    Storage.setItems({ recentLanguages });
 
     setLastItems(recentLanguages);
   };

@@ -5,7 +5,7 @@ declare module '*.css' {
 }
 declare module 'react-shadow';
 
-type TranslateQuery = { to?: string; from?: string; text: string };
+type TranslateQuery = { from?: string; to: string; text: string };
 
 type TranslateResponse = {
   from: string | undefined;
@@ -19,3 +19,12 @@ type TranslateResponse = {
 type AsyncRequest =
   | { request: 'getLanguages'; params: undefined }
   | { request: 'translate'; params: TranslateQuery };
+
+type HistoryItem = {
+  from: string;
+  to: string;
+  text: string;
+  translation: string;
+};
+
+type HistoryItems = HistoryItem[];

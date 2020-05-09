@@ -21,18 +21,24 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
+    "@fxtrot/edge": "^1.0.29",
     "@sentry/browser": "^5.15.5",
     "@webcomponents/webcomponentsjs": "^2.4.3",
     "autosize": "^4.0.2",
     "classnames": "^2.2.6",
+    "debounce": "^1.2.0",
+    "qs": "^6.9.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-shadow": "^18.1.0",
-    "src": "^1.1.2"
+    "react-shadow": "^18.1.0"
   },
   "devDependencies": {
     "@types/autosize": "^3.0.7",
-    "@types/chrome": "^0.0.106",
+    "@types/chrome": "^0.0.107",
+    "@types/classnames": "^2.2.10",
+    "@types/debounce": "^1.2.0",
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.7",
     "cssnano": "^4.1.10",
     "parcel-bundler": "^1.12.4",
     "postcss-modules": "^2.0.0",

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { userLang } from '../../utils';
-import { getCachedItems } from './utils';
+import { userLang, Storage } from '../../utils';
 import useTranslation from './useTranslation';
 
 const initialLanguages = {
@@ -19,20 +18,26 @@ export function useStore() {
   const translation = useTranslation({ to, from, text });
 
   useEffect(() => {
-    getCachedItems().then((cache) => {
-      cache.to && setTo(cache.to);
-      cache.languages &&
-        setLangs((langs) => ({ ...langs, ...cache.languages }));
-    });
+    async function fillStorage() {
+      const { to, languages } = await Storage.getItems<{
+        to?: 'string';
+        languages?: Languages;
+      }>(['to', 'languages']);
+
+      to && setTo(to);
+      languages && setLangs((langs) => ({ ...langs, ...languages }));
+    }
+
+    fillStorage();
   }, [setTo, setLangs]);
 
   const store: Store = {
     languages,
     text,
-    setText,
     from,
     to,
     translation,
+    setText,
     setFrom,
     setTo
   };

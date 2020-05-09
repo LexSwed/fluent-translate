@@ -1,5 +1,5 @@
 import * as Sentry from '@sentry/node';
-import { NowRequest, NowResponse } from '@now/node';
+import type { NowRequest, NowResponse } from '@vercel/node';
 
 Sentry.init({
   dsn: process.env.SENTRY_DSN
