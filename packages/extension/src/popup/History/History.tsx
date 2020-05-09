@@ -21,7 +21,7 @@ const History: React.FC<Props> = ({ onClose }) => {
   };
 
   return (
-    <Box pr="s" className={styles.history}>
+    <Box pr="m" className={styles.history}>
       <ul className={styles.list}>
         {items.map((item) => {
           return (
@@ -43,7 +43,7 @@ const History: React.FC<Props> = ({ onClose }) => {
 export default History;
 
 let historySaved: HistoryItems = [];
-function useHistory() {
+export function useHistory() {
   const [history, setHistory] = useState<HistoryItems>(historySaved);
 
   useEffect(() => {

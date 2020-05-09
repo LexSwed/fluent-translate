@@ -6,7 +6,7 @@
   transition: transform 0.24s ease-in-out;
   height: 100vh;
   overflow: hidden;
-  background-color: #fff;
+  background-color: var(--bg-color-1);
 }
 
 .footerOpen {
@@ -14,19 +14,14 @@
 }
 
 .footerBar {
-  border-bottom: 1px solid var(--border-color);
+  height: 38px;
+  border-bottom: 1px solid transparent;
 }
 .footerBarOpen {
-  border-bottom-color: var(--gray-300);
+  border-bottom-color: var(--bg-color-3);
 }
 
 .text {
   font-size: 12px;
   line-height: 14px;
-}
-
-@media (prefers-color-scheme: dark) {
-  .footer {
-    background-color: #4f4f4f;
-  }
 }
