@@ -4,16 +4,13 @@ import { stringify } from 'qs';
 import SuperError from './error';
 
 export async function translate({ to, from, text }: TranslateQuery) {
-  const [{ detectedLanguage, translations }] = await fetch(
-    'https://www.bing.com/ttranslatev3',
-    {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-      },
-      body: stringify({ to, fromLang: from || 'auto-detect', text })
-    }
-  ).then((res) => {
+  const res = await fetch('https://www.bing.com/ttranslatev3', {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+    },
+    body: stringify({ to, fromLang: from || 'auto-detect', text })
+  }).then((res) => {
     const { status, statusText } = res;
 
     if (status === 200) {
@@ -23,9 +20,15 @@ export async function translate({ to, from, text }: TranslateQuery) {
     }
   });
 
-  return {
-    from: detectedLanguage ? detectedLanguage.language : null,
-    to: translations[0].to,
-    text: translations[0].text
-  };
+  try {
+    const [{ detectedLanguage, translations }] = res;
+
+    return {
+      from: detectedLanguage ? detectedLanguage.language : null,
+      to: translations[0].to,
+      text: translations[0].text
+    };
+  } catch (error) {
+    throw new SuperError(error.message, { res, from, to, text });
+  }
 }
