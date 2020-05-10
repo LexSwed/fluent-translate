@@ -10,6 +10,7 @@ function withSentry(handler: (req: NowRequest, res: NowResponse) => any) {
     try {
       return await handler(req, res);
     } catch (error) {
+      Sentry.setExtras(error.data);
       Sentry.captureException(error);
 
       if (process.env.NODE_ENV !== 'production') {
