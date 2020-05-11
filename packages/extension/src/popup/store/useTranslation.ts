@@ -7,7 +7,7 @@ const initialState: Translation = {
   truncated: false,
   text: '',
   from: '',
-  to: ''
+  to: '',
 };
 
 function useTranslationReducer({ text, from, to }: Params) {
@@ -22,11 +22,11 @@ function useTranslationReducer({ text, from, to }: Params) {
       dispatch({ type: 'translating' });
 
       const res = await API.translate({
-        // let guess language if Auto is selected
+        // let guess the language if Auto is selected
         from: from === 'auto' ? undefined : from,
         // user lang
         to,
-        text: text.trim()
+        text: text.trim(),
       });
 
       dispatch({
@@ -34,8 +34,8 @@ function useTranslationReducer({ text, from, to }: Params) {
         payload: {
           ...res.translation,
           from: res.from,
-          to: res.to
-        }
+          to: res.to,
+        },
       });
     }, 200);
 
@@ -56,7 +56,7 @@ function translationReducer(state = initialState, action: Action) {
     case 'textRemoved':
       return {
         ...state,
-        text: ''
+        text: '',
       };
     default:
       return state;

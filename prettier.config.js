@@ -2,7 +2,6 @@
 
 module.exports = {
   singleQuote: true,
-  trailingComma: 'none',
   tabWidth: 2,
   useTabs: false,
   quoteProps: 'consistent',
@@ -10,9 +9,9 @@ module.exports = {
     {
       files: ['*.html'],
       options: {
-        printWidth: 140
-      }
-    }
+        printWidth: 140,
+      },
+    },
   ],
-  svelteSortOrder: 'scripts-markup-styles'
+  svelteSortOrder: 'scripts-markup-styles',
 };
