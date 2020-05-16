@@ -57,6 +57,20 @@ export function useMemory() {
     );
   }, [setMemory]);
 
+  useEffect(() => {
+    const onChange: onStorageChangeListener = ({ memory }, name) => {
+      if (memory?.newValue && name === 'sync') {
+        setMemory(memory?.newValue as MemoryItems);
+      }
+    };
+
+    chrome.storage.onChanged.addListener(onChange);
+
+    return () => {
+      chrome.storage.onChanged.removeListener(onChange);
+    };
+  }, [setMemory]);
+
   const setItems = useCallback(
     (items: MemoryItems) => {
       memorySaved = items;
@@ -67,3 +81,7 @@ export function useMemory() {
 
   return [memory, setItems] as const;
 }
+
+type onStorageChangeListener = Parameters<
+  typeof chrome.storage.onChanged.addListener
+>[0];

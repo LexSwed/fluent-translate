@@ -41,25 +41,7 @@ const Footer = () => {
 export default Footer;
 
 function useMemoryItemsNotEmpty(): boolean {
-  const [memory, setMemory] = useMemory();
-
-  useEffect(() => {
-    const onChange: onStorageChangeListener = ({ memory }, name) => {
-      if (memory?.newValue && name === 'sync') {
-        setMemory(memory?.newValue as MemoryItems);
-      }
-    };
-
-    chrome.storage.onChanged.addListener(onChange);
-
-    return () => {
-      chrome.storage.onChanged.removeListener(onChange);
-    };
-  }, [setMemory]);
+  const [memory] = useMemory();
 
   return memory.length > 0;
 }
-
-type onStorageChangeListener = Parameters<
-  typeof chrome.storage.onChanged.addListener
->[0];
