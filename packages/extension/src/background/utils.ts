@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 
 import { Storage } from '../utils';
 
-const baseURL = 'http://localhost:3000' || 'https://edge-translate.now.sh';
+const baseURL = 'https://edge-translate.now.sh';
 
 const request = <T = any>(
   url: string,
