@@ -21,7 +21,7 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "@fxtrot/edge": "^1.0.29",
+    "@fxtrot/edge": "^1.0.30",
     "@sentry/browser": "^5.15.5",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "@typescript-eslint/parser": "^2.33.0",

@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Edge Translate public page",
   "scripts": {
-    "start": "vc dev"
+    "start": "vc dev",
+    "next": "next"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "@fxtrot/edge": "^1.0.29",
     "@sentry/node": "^5.15.5",
     "@vercel/node": "^1.6.0",
+    "eslint-plugin-flowtype": "^5.0.3",
     "next": "^9.3.6",
     "node-fetch": "^2.6.0",
     "qs": "^6.9.4",
@@ -38,9 +40,9 @@
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.7",
     "cssnano": "^4.1.10",
-    "vercel": "^19.0.0",
     "postcss-modules": "^2.0.0",
     "postcss-preset-env": "^6.7.0",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "vercel": "^19.0.0"
   }
 }

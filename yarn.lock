@@ -962,10 +962,10 @@
   resolved "https://registry.npmjs.org/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
-"@fxtrot/edge@^1.0.29":
-  version "1.0.29"
-  resolved "https://registry.npmjs.org/@fxtrot/edge/-/edge-1.0.29.tgz#267d79405f4b72d578f1308276f8616845a72b2a"
-  integrity sha512-vyONJt081XL6vbQeaOIfGlEeFR/dMSTaGVTdSgdrSZyatgfsCbmwHHabQQW41Pr+odb4d8QlrIT8EMhdipKwtA==
+"@fxtrot/edge@^1.0.29", "@fxtrot/edge@^1.0.30":
+  version "1.0.30"
+  resolved "https://registry.npmjs.org/@fxtrot/edge/-/edge-1.0.30.tgz#32173a5edb5a8c7071266e9e498a9b33af568b68"
+  integrity sha512-DnY/XrOUr7AE4tIi/EYKQSbnxIIsooYUjedddOmlLTM1ARAVlxaW62bw7to2MP3dM1vm17P5Kz6uLurxIlDBAg==
   dependencies:
     "@popperjs/core" "^2.3.3"
     "@reach/auto-id" "^0.10.1"
@@ -6247,7 +6247,7 @@ kind-of@^5.0.0:
   resolved "https://registry.npmjs.org/kind-of/-/kind-of-5.1.0.tgz#729c91e2d857b7a419a1f9aa65685c4c33f5845d"
   integrity sha512-NGEErnH6F2vUuXDh+OlbcKW7/wOcfdRHaZ7VWtqCztfHri/++YKmP51OdWeGPuqCOba6kk2OTe5d02VmTB80Pw==
 
-kind-of@^6.0.0, kind-of@^6.0.2:
+kind-of@^6.0.0, kind-of@^6.0.2, kind-of@^6.0.3:
   version "6.0.3"
   resolved "https://registry.npmjs.org/kind-of/-/kind-of-6.0.3.tgz#07c05034a6c349fa06e24fa35aa76db4580ce4dd"
   integrity sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==
@@ -7019,12 +7019,13 @@ minimatch@^3.0.4:
     brace-expansion "^1.1.7"
 
 minimist-options@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.npmjs.org/minimist-options/-/minimist-options-4.0.2.tgz#29c4021373ded40d546186725e57761e4b1984a7"
-  integrity sha512-seq4hpWkYSUh1y7NXxzucwAN9yVlBc3Upgdjz8vLCP97jG8kaOmzYrVH/m7tQ1NYD1wdtZbSLfdy4zFmRWuc/w==
+  version "4.1.0"
+  resolved "https://registry.npmjs.org/minimist-options/-/minimist-options-4.1.0.tgz#c0655713c53a8a2ebd77ffa247d342c40f010619"
+  integrity sha512-Q4r8ghd80yhO/0j1O3B2BjweX3fiHg9cdOwjJd2J76Q135c+NDxGCqdYKQ1SKBuFfgWbAUzBfvYjPUEeNgqN1A==
   dependencies:
     arrify "^1.0.1"
     is-plain-obj "^1.1.0"
+    kind-of "^6.0.3"
 
 minimist@^1.1.3, minimist@^1.2.0, minimist@^1.2.5:
   version "1.2.5"

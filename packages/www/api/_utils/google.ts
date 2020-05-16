@@ -28,7 +28,7 @@ export async function translate({ to, from, text }: TranslateQuery) {
     const { sentences, src } = res;
 
     return {
-      from: src,
+      from: src || from || 'auto',
       to: to,
       text: sentences.map((s) => s.trans).join(''),
     };

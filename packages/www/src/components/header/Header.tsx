@@ -1,5 +1,6 @@
 import React from 'react';
 import { ContentBlock, Inline, Heading, TextLink } from '@fxtrot/edge';
+import cx from 'classnames';
 import Link from 'next/link';
 
 import styles from './styles.module.css';
@@ -37,6 +38,12 @@ const Header = () => {
             <Link href="/privacy">
               <TextLink className={styles.link}>Privacy Policy</TextLink>
             </Link>
+            <TextLink
+              href="https://alexanderswed.typeform.com/to/sjSxc6"
+              className={cx(styles.link, styles.highlight)}
+            >
+              Leave Feedback
+            </TextLink>
           </Inline>
         </Inline>
       </ContentBlock>

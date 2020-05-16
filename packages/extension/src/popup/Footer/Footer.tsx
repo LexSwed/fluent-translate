@@ -7,6 +7,7 @@ import styles from './styles.css';
 import MemoryHeading from '../Memory/MemoryHeading';
 import Memory from '../Memory';
 import { useMemory } from '../Memory/Memory';
+import More from './More';
 
 const Footer = () => {
   const [isOpen, setOpen] = useState(false);
@@ -25,7 +26,8 @@ const Footer = () => {
         py="s"
         className={cx(styles.footerBar, isOpen && styles.footerBarOpen)}
       >
-        <Columns align="right" alignY="center">
+        <Columns align="apart" alignY="center">
+          <More />
           {isMemory ? (
             <Column width="content">
               <MemoryHeading isOpen={isOpen} onClick={() => setOpen(!isOpen)} />
