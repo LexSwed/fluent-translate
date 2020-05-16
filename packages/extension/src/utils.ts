@@ -8,7 +8,7 @@ export const getTranslatorLink = ({
 }: {
   to?: string;
   text?: string;
-}) => `https://www.bing.com/translator?to=${to}&text=${text}`;
+}) => `https://translate.google.com/?op=translate&tl=${to}&text=${text}`;
 
 export const API = {
   getLanguages: () => {
