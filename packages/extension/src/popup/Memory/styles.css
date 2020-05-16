@@ -15,9 +15,7 @@
   height: auto;
   transition: 0.24s ease-in;
   background-color: var(--bg-color-2);
-  &:not(:last-child) {
-    border-bottom: 1px solid var(--bg-color-3);
-  }
+  border-bottom: 1px solid var(--bg-color-3);
 }
 
 .languages {

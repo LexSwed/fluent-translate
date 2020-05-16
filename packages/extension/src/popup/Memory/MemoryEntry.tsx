@@ -58,7 +58,7 @@ type Props = {
 const MemoryEntry: React.FC<Props> = ({ item, onDelete }) => {
   return (
     <li className={styles.entry}>
-      <Box p="s">
+      <Box p="s" pb="m">
         <Columns>
           <Column>
             <Stack space="s">
