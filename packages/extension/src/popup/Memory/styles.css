@@ -1,0 +1,23 @@
+.memory {
+  height: calc(100vh - 38px);
+  overflow-y: scroll;
+  background-color: var(--bg-color-1);
+}
+
+.list {
+  margin: 0;
+  list-style: none;
+  padding: 0;
+  border-right: 1px solid var(--bg-color-3);
+}
+
+.entry {
+  height: auto;
+  transition: 0.24s ease-in;
+  background-color: var(--bg-color-2);
+  border-bottom: 1px solid var(--bg-color-3);
+}
+
+.languages {
+  font-size: 10px;
+}

@@ -1,11 +1,11 @@
-import { getLanguages, translate, addHistoryItem } from './utils';
+import { getLanguages, translate, addMemoryItem } from './utils';
 
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
     title: 'Translate with Edge Translate',
     id: 'parent',
     type: 'normal',
-    contexts: ['selection']
+    contexts: ['selection'],
   });
 
   getLanguages().then((languages) => {
@@ -32,11 +32,11 @@ chrome.runtime.onMessage.addListener(
       }
       case 'translate': {
         translate(request.params).then((res) => {
-          addHistoryItem({
+          addMemoryItem({
             text: request.params.text,
             from: res.from || request.params.from || 'auto',
             to: res.to || request.params.to,
-            translation: res.translation.text
+            translation: res.translation.text,
           });
           sendResponse(res);
         });

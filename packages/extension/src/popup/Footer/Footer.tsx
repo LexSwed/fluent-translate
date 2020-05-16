@@ -1,16 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
 import { Box, Columns, Column } from '@fxtrot/edge';
 
 import styles from './styles.css';
 
-import HistoryHeading from '../History/HistoryHeading';
-import History from '../History';
-import { useHistory } from '../History/History';
+import MemoryHeading from '../Memory/MemoryHeading';
+import Memory from '../Memory';
+import { useMemory } from '../Memory/Memory';
+import More from './More';
 
 const Footer = () => {
   const [isOpen, setOpen] = useState(false);
-  const history = useHistory();
+  const isMemory = useMemoryItemsNotEmpty();
+
+  useEffect(() => {
+    if (!isMemory) {
+      setOpen(false);
+    }
+  }, [isMemory]);
 
   return (
     <div className={cx(styles.footer, isOpen && styles.footerOpen)}>
@@ -19,20 +26,24 @@ const Footer = () => {
         py="s"
         className={cx(styles.footerBar, isOpen && styles.footerBarOpen)}
       >
-        <Columns align="right" alignY="center">
-          {Boolean(history.length) && (
+        <Columns align="apart" alignY="center">
+          <More />
+          {isMemory ? (
             <Column width="content">
-              <HistoryHeading
-                isOpen={isOpen}
-                onClick={() => setOpen(!isOpen)}
-              />
+              <MemoryHeading isOpen={isOpen} onClick={() => setOpen(!isOpen)} />
             </Column>
-          )}
+          ) : null}
         </Columns>
       </Box>
-      {isOpen && <History onClose={() => setOpen(false)} />}
+      {isOpen && <Memory />}
     </div>
   );
 };
 
 export default Footer;
+
+function useMemoryItemsNotEmpty(): boolean {
+  const memory = useMemory();
+
+  return memory.length > 0;
+}

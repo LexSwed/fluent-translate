@@ -12,22 +12,22 @@ export async function translate({ from, to, text }: TranslateQuery) {
   const url = `/translate?${qs.stringify({
     query: {
       to,
-      from
-    }
+      from,
+    },
   })}`;
 
   const [{ detectedLanguage, translations }] = await fetchJSON(url, {
     method: 'POST',
     headers: {
-      'Ocp-Apim-Subscription-Key': process.env.AZURE_KEY || ''
+      'Ocp-Apim-Subscription-Key': process.env.AZURE_KEY || '',
     },
-    body: JSON.stringify([{ Text: text }])
+    body: JSON.stringify([{ Text: text }]),
   });
 
   return {
     from: detectedLanguage ? detectedLanguage.language : null,
     to: translations[0].to,
-    text: translations[0].text
+    text: translations[0].text,
   };
 }
 
@@ -46,12 +46,12 @@ async function fetchJSON(
     headers: {
       ...params.headers,
       'Content-type': 'application/json',
-      'X-ClientTraceId': uuid().toString()
-    }
+      'X-ClientTraceId': uuid().toString(),
+    },
   };
 
   const apiVersion = qs.stringify({
-    'api-version': '3.0'
+    'api-version': '3.0',
   });
 
   relativeUrl = relativeUrl.includes('?')

@@ -1,3 +1,3 @@
 export default {
-  maxLength: 300
+  maxLength: 300,
 };

@@ -4,11 +4,11 @@ export const userLang =
 
 export const getTranslatorLink = ({
   to,
-  text
+  text,
 }: {
   to?: string;
   text?: string;
-}) => `https://www.bing.com/translator?to=${to}&text=${text}`;
+}) => `https://translate.google.com/?op=translate&tl=${to}&text=${text}`;
 
 export const API = {
   getLanguages: () => {
@@ -20,7 +20,7 @@ export const API = {
     return new Promise((resolve) =>
       chrome.runtime.sendMessage({ request: 'translate', params }, resolve)
     );
-  }
+  },
 };
 
 export const Storage = {
@@ -38,7 +38,19 @@ export const Storage = {
     );
   },
   getSyncItems: <T>(key: StorageKey) => Storage.getItems<T>(key, 'sync'),
-  setSyncItems: (item: object) => Storage.setItems(item, 'sync')
+  setSyncItems: (item: object) => Storage.setItems(item, 'sync'),
 };
+
+export async function deleteMemoryEntry(id: MemoryItem['id']) {
+  const { memory } = await Storage.getSyncItems<{ memory: MemoryItems }>(
+    'memory'
+  );
+
+  const items = memory.filter((entry) => entry.id !== id);
+
+  await Storage.setSyncItems({ memory: items });
+
+  return items;
+}
 
 type StorageKey = Parameters<typeof chrome.storage['local']['get']>[0];

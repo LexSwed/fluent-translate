@@ -22,6 +22,15 @@
   --font-size: 13px;
 }
 
+:global(.fx-button.fx-button--transparent) {
+  &:hover {
+    --bg-color: var(--bg-color-3);
+  }
+  &:active {
+    --bg-color: var(--bg-color-4);
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   :global(.fxtrot-edge) {
     --bg-color-1: rgb(51, 51, 51);
@@ -33,5 +42,14 @@
     --border-color: rgb(107, 107, 107);
     --border-color-hover: rgb(138, 138, 138);
     --border-color-focus: rgb(128, 128, 128);
+    --brand-900: #81c0ce;
+    --brand-800: #4fa7ba;
+    --brand-700: #359ab0;
+    --brand-600: #1c8ea6;
+    --brand-500: #03819c;
+    --brand-400: #03748c;
+    --brand-300: #02677d;
+    --brand-200: #025a6d;
+    --brand-100: #024d5e;
   }
 }

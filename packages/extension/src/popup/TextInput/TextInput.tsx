@@ -18,7 +18,10 @@ const TextInput: React.FC = () => {
   useLayoutEffect(() => {
     const el = inputRef.current;
 
-    el && autosize(el);
+    if (el) {
+      autosize(el);
+      el.focus();
+    }
 
     return () => {
       el && autosize.destroy(el);
