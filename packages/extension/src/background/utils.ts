@@ -1,5 +1,6 @@
 import { stringify } from 'qs';
 import { debounce } from 'debounce';
+import { nanoid } from 'nanoid';
 
 import { Storage } from '../utils';
 
@@ -20,25 +21,32 @@ export const getLanguages = () => request<Languages>('/api/languages');
 export const translate = (params: TranslateQuery): Promise<TranslateResponse> =>
   request<TranslateResponse>('/api/translate', params);
 
-export const addHistoryItem = debounce(
-  async ({ text, to, from, translation }: HistoryItem) => {
+export const addMemoryItem = debounce(
+  async ({ text, to, from, translation }: Omit<MemoryItem, 'id'>) => {
     if (text.length > 40) {
       return;
     }
 
-    const { history = [] } = await Storage.getSyncItems<{
-      history: HistoryItems;
+    const { memory = [] } = await Storage.getSyncItems<{
+      memory: MemoryItems;
     }>('history');
 
-    const textIndex = history.findIndex((item) => item.text === text);
+    const textIndex = memory.findIndex((item) => item.text === text);
+    const item = memory[textIndex];
 
-    if (textIndex > -1) {
-      history.splice(textIndex, 1);
+    if (item) {
+      memory.splice(textIndex, 1);
     }
 
-    history.unshift({ text, to, from, translation });
+    memory.unshift({
+      id: item ? item.id : nanoid(),
+      text,
+      to,
+      from,
+      translation,
+    });
 
-    await Storage.setSyncItems({ history: history.slice(0, 30) });
+    await Storage.setSyncItems({ memory: memory.slice(0, 100) });
   },
   3000
 );

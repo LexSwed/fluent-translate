@@ -21,16 +21,12 @@ const TextInput: React.FC = () => {
     if (el) {
       autosize(el);
       el.focus();
-      setTimeout(() => {
-        document.execCommand('paste');
-        setText(el.value);
-      }, 0);
     }
 
     return () => {
       el && autosize.destroy(el);
     };
-  }, [inputRef, setText]);
+  }, [inputRef]);
 
   return (
     <Box

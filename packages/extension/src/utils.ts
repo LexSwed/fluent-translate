@@ -41,4 +41,16 @@ export const Storage = {
   setSyncItems: (item: object) => Storage.setItems(item, 'sync'),
 };
 
+export async function deleteMemoryEntry(id: MemoryItem['id']) {
+  const { memory } = await Storage.getSyncItems<{ memory: MemoryItems }>(
+    'memory'
+  );
+
+  const items = memory.filter((entry) => entry.id !== id);
+  console.log({ memory, items });
+
+  await Storage.setSyncItems({ memory: items });
+  return items;
+}
+
 type StorageKey = Parameters<typeof chrome.storage['local']['get']>[0];

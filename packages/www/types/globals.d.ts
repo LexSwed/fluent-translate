@@ -20,11 +20,12 @@ type AsyncRequest =
   | { request: 'getLanguages'; params: undefined }
   | { request: 'translate'; params: TranslateQuery };
 
-type HistoryItem = {
+type MemoryItem = {
+  id: string;
   from: string;
   to: string;
   text: string;
   translation: string;
 };
 
-type HistoryItems = HistoryItem[];
+type MemoryItems = MemoryItem[];

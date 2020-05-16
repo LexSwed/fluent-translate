@@ -22,6 +22,15 @@
   --font-size: 13px;
 }
 
+:global(.fx-button.fx-button--transparent) {
+  &:hover {
+    --bg-color: var(--bg-color-3);
+  }
+  &:active {
+    --bg-color: var(--bg-color-4);
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   :global(.fxtrot-edge) {
     --bg-color-1: rgb(51, 51, 51);
