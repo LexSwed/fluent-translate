@@ -10,7 +10,7 @@ const TranslatorLink: React.FC<React.ComponentProps<typeof TextLink>> = ({
 }) => {
   const [to] = useToLanguage();
   const [text] = useText();
-
+  console.log(to, text);
   return (
     <TextLink
       href={getTranslatorLink({ to, text })}

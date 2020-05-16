@@ -26,10 +26,11 @@ const History: React.FC<Props> = ({ onClose }) => {
         {items.map((item) => {
           return (
             <HistoryEntry
+              key={item.text}
               item={{
                 ...item,
                 from: langs[item.from].name,
-                to: langs[item.to].name
+                to: langs[item.to].name,
               }}
               onClick={() => onItemClick(item)}
             />
