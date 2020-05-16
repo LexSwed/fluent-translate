@@ -25,3 +25,24 @@
   font-size: 12px;
   line-height: 14px;
 }
+
+.menuButton {
+  padding: 0 4px;
+  margin-left: -8px;
+}
+
+.listbox {
+  background-color: var(--bg-color-2);
+}
+
+.option {
+  height: 24px;
+  background-color: transparent;
+  &:hover,
+  &[data-selected] {
+    background-color: var(--bg-color-1);
+  }
+  &[aria-selected='true'] {
+    background-color: var(--bg-color-3);
+  }
+}
