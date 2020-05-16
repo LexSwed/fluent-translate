@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 
 import { Storage } from '../utils';
 
-const baseURL = 'https://edge-translate.now.sh';
+const baseURL = 'http://localhost:3000' || 'https://edge-translate.now.sh';
 
 const request = <T = any>(
   url: string,
@@ -29,7 +29,7 @@ export const addMemoryItem = debounce(
 
     const { memory = [] } = await Storage.getSyncItems<{
       memory: MemoryItems;
-    }>('history');
+    }>('memory');
 
     const textIndex = memory.findIndex((item) => item.text === text);
     const item = memory[textIndex];

@@ -13,7 +13,7 @@ const Footer = () => {
   const isMemory = useMemoryItemsNotEmpty();
 
   useEffect(() => {
-    if (isMemory) {
+    if (!isMemory) {
       setOpen(false);
     }
   }, [isMemory]);
@@ -41,7 +41,7 @@ const Footer = () => {
 export default Footer;
 
 function useMemoryItemsNotEmpty(): boolean {
-  const [memory] = useMemory();
+  const memory = useMemory();
 
   return memory.length > 0;
 }

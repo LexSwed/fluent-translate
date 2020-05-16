@@ -47,9 +47,9 @@ export async function deleteMemoryEntry(id: MemoryItem['id']) {
   );
 
   const items = memory.filter((entry) => entry.id !== id);
-  console.log({ memory, items });
 
   await Storage.setSyncItems({ memory: items });
+
   return items;
 }
 

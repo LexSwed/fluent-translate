@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import styles from './styles.css';
-import { Box, Columns, Column, Stack, Text, Button, Icon } from '@fxtrot/edge';
+import {
+  Box,
+  Columns,
+  Column,
+  Stack,
+  Text,
+  Button,
+  Icon,
+  TextLink,
+} from '@fxtrot/edge';
 
 const Header: React.FC<Props> = ({ item, onDelete }) => {
   return (
-    <Columns align="apart">
+    <Columns align="apart" alignY="center">
       <Column width="content">
         <Text tone="light" className={styles.languages}>
           {item.from}
@@ -22,6 +31,25 @@ const Header: React.FC<Props> = ({ item, onDelete }) => {
   );
 };
 
+const Texts: React.FC<Omit<Props, 'onDelete'>> = ({ item }) => {
+  const [isShown, setShown] = useState(false);
+
+  return (
+    <Stack space="xs">
+      <Text>{item.text}</Text>
+      <Text tone="light">
+        {isShown ? (
+          item.translation
+        ) : (
+          <TextLink href="#" onClick={() => setShown(true)}>
+            Show translation
+          </TextLink>
+        )}
+      </Text>
+    </Stack>
+  );
+};
+
 type Props = {
   item: MemoryItem;
   onDelete: (id: string) => any;
@@ -35,10 +63,7 @@ const MemoryEntry: React.FC<Props> = ({ item, onDelete }) => {
           <Column>
             <Stack space="s">
               <Header item={item} onDelete={onDelete} />
-              <Stack space="xs">
-                <Text>{item.text}</Text>
-                <Text tone="light">{item.translation}</Text>
-              </Stack>
+              <Texts item={item} />
             </Stack>
           </Column>
           <Column width="content"></Column>
