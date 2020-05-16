@@ -7,9 +7,9 @@ export async function translate({ to, from, text }: TranslateQuery) {
   const res = await fetch('https://www.bing.com/ttranslatev3', {
     method: 'post',
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+      'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
     },
-    body: stringify({ to, fromLang: from || 'auto-detect', text })
+    body: stringify({ to, fromLang: from || 'auto-detect', text }),
   }).then((res) => {
     const { status, statusText } = res;
 
@@ -26,7 +26,7 @@ export async function translate({ to, from, text }: TranslateQuery) {
     return {
       from: detectedLanguage ? detectedLanguage.language : null,
       to: translations[0].to,
-      text: translations[0].text
+      text: translations[0].text,
     };
   } catch (error) {
     throw new SuperError(error.message, { res, from, to, text });

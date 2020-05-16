@@ -18,12 +18,19 @@ const TextInput: React.FC = () => {
   useLayoutEffect(() => {
     const el = inputRef.current;
 
-    el && autosize(el);
+    if (el) {
+      autosize(el);
+      el.focus();
+      setTimeout(() => {
+        document.execCommand('paste');
+        setText(el.value);
+      }, 0);
+    }
 
     return () => {
       el && autosize.destroy(el);
     };
-  }, [inputRef]);
+  }, [inputRef, setText]);
 
   return (
     <Box

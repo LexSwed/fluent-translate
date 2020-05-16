@@ -30,6 +30,7 @@
   "permissions": [
     "contextMenus",
     "storage",
+    "clipboardRead",
     "http://localhost/*",
     "https://edge-translate.lexswed.now.sh/*"
   ]

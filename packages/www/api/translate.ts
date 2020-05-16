@@ -1,5 +1,5 @@
 import config from './config';
-import { translate } from './_utils/bing';
+import { translate } from './_utils/google';
 import withSentry from './_utils/withSentry';
 
 export default withSentry(async (req, res) => {
@@ -9,7 +9,7 @@ export default withSentry(async (req, res) => {
   const translated = await translate({
     to,
     from,
-    text
+    text,
   });
 
   const body: TranslateResponse = {
@@ -17,8 +17,8 @@ export default withSentry(async (req, res) => {
     to: translated.to,
     translation: {
       text: translated.text,
-      truncated: text.length > Text.length
-    }
+      truncated: text.length > Text.length,
+    },
   };
 
   res.send(body);

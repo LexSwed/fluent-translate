@@ -4,7 +4,7 @@ export const userLang =
 
 export const getTranslatorLink = ({
   to,
-  text
+  text,
 }: {
   to?: string;
   text?: string;
@@ -20,7 +20,7 @@ export const API = {
     return new Promise((resolve) =>
       chrome.runtime.sendMessage({ request: 'translate', params }, resolve)
     );
-  }
+  },
 };
 
 export const Storage = {
@@ -38,7 +38,7 @@ export const Storage = {
     );
   },
   getSyncItems: <T>(key: StorageKey) => Storage.getItems<T>(key, 'sync'),
-  setSyncItems: (item: object) => Storage.setItems(item, 'sync')
+  setSyncItems: (item: object) => Storage.setItems(item, 'sync'),
 };
 
 type StorageKey = Parameters<typeof chrome.storage['local']['get']>[0];
