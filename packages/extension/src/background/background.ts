@@ -1,4 +1,4 @@
-import { getLanguages, translate, addMemoryItem } from './utils';
+import { getLanguages, translateGoogle, addMemoryItem } from './utils';
 
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
@@ -30,8 +30,12 @@ chrome.runtime.onMessage.addListener(
         getLanguages().then(sendResponse);
         break;
       }
-      case 'translate': {
-        translate(request.params).then((res) => {
+      case 'translateGoogle': {
+        translateGoogle(request.params).then((res) => {
+          if (res === null) {
+            return sendResponse(res);
+          }
+
           addMemoryItem({
             text: request.params.text,
             from: res.from || request.params.from || 'auto',

@@ -2,7 +2,7 @@ import { stringify } from 'qs';
 import { debounce } from 'debounce';
 import { nanoid } from 'nanoid';
 
-import { Storage } from '../utils';
+import { Storage, Sentry } from '../utils';
 
 const baseURL = 'https://edge-translate.now.sh';
 
@@ -50,3 +50,50 @@ export const addMemoryItem = debounce(
   },
   3000
 );
+
+const BASE_URL =
+  'https://translate.googleapis.com/translate_a/single?client=gtx&dt=t&dj=1';
+
+export async function translateGoogle({
+  to,
+  from,
+  text,
+}: TranslateQuery): Promise<TranslateResponse | null> {
+  const query = text.slice(0, 300);
+  const res: GoogleTranslateResponse = await fetch(
+    `${BASE_URL}&${stringify({ tl: to, sl: from || 'auto', q: query })}`,
+    {
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+      },
+    }
+  ).then((res) => res.json());
+
+  try {
+    const { sentences, src } = res;
+
+    return {
+      from: src || from || 'auto',
+      to: to,
+      translation: {
+        text: sentences.map((s) => s.trans).join(''),
+        truncated: text.length > query.length,
+      },
+    };
+  } catch (error) {
+    Sentry.captureException(error.message, { data: { res, from, to, text } });
+  }
+
+  return null;
+}
+
+interface GoogleTranslateResponse {
+  sentences: [
+    {
+      trans: string;
+      orig: string;
+    }
+  ];
+  src: string;
+  spell: any;
+}

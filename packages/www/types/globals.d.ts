@@ -18,7 +18,7 @@ type TranslateResponse = {
 
 type AsyncRequest =
   | { request: 'getLanguages'; params: undefined }
-  | { request: 'translate'; params: TranslateQuery };
+  | { request: 'translateGoogle'; params: TranslateQuery };
 
 type MemoryItem = {
   id: string;

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Stack, Box, Icon, Text } from '@fxtrot/edge';
-import { BrowserClient } from '@sentry/browser';
 
 import '../global.css';
 import styles from './styles.css';
@@ -8,15 +7,11 @@ import styles from './styles.css';
 import TextInput from './TextInput';
 import Translated from './Translated';
 import Footer from './Footer';
-
-const Sentry = new BrowserClient({
-  dsn:
-    'https://dffd96a87e8f47e8a2921033d3d53e05@o383828.ingest.sentry.io/5214268'
-});
+import { Sentry } from '../utils';
 
 class App extends React.Component {
   state = {
-    hasError: false
+    hasError: false,
   };
 
   componentDidCatch(error: Error) {

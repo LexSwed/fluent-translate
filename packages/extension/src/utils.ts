@@ -1,3 +1,5 @@
+import { BrowserClient } from '@sentry/browser';
+
 export const userLang =
   window.navigator.language.slice(0, 2) ||
   window.navigator.languages[0].slice(0, 2);
@@ -18,7 +20,10 @@ export const API = {
   },
   translate: (params: TranslateQuery): Promise<TranslateResponse> => {
     return new Promise((resolve) =>
-      chrome.runtime.sendMessage({ request: 'translate', params }, resolve)
+      chrome.runtime.sendMessage(
+        { request: 'translateGoogle', params },
+        resolve
+      )
     );
   },
 };
@@ -54,3 +59,8 @@ export async function deleteMemoryEntry(id: MemoryItem['id']) {
 }
 
 type StorageKey = Parameters<typeof chrome.storage['local']['get']>[0];
+
+export const Sentry = new BrowserClient({
+  dsn:
+    'https://dffd96a87e8f47e8a2921033d3d53e05@o383828.ingest.sentry.io/5214268',
+});
