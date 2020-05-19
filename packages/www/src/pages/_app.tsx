@@ -24,7 +24,7 @@ const App = ({ Component, pageProps }: AppProps) => {
           property="og:description"
           content="Translate any text with few clicks, learn languages involuntary"
         />
-        <meta property="og:image" content="/images/screenshot-3.webp" />
+        <meta property="og:image" content="/images/screenshot-3.png" />
       </Head>
       <Edge>
         <Header />
