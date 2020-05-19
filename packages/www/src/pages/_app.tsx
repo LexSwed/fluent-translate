@@ -26,7 +26,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         />
         <meta
           property="og:image"
-          content="https://edge-translate.now.sh/images/screenshot-3.png"
+          content="https://edge-translate.now.sh/images/icon-512.png"
         />
       </Head>
       <Edge>
