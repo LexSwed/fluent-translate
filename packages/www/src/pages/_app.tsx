@@ -15,6 +15,16 @@ const App = ({ Component, pageProps }: AppProps) => {
         <meta charSet="utf-8" />
         <link rel="shortcut icon" href="/images/icon.svg" />
         <title>Edge Translate</title>
+        <meta name="twitter:card" content="summary" />
+        <meta
+          property="og:title"
+          content="Edge Translate for Edge and Chrome"
+        />
+        <meta
+          property="og:description"
+          content="Translate any text with few clicks, learn languages involuntary"
+        />
+        <meta property="og:image" content="/images/screenshot-3.webp" />
       </Head>
       <Edge>
         <Header />
