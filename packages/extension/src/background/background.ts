@@ -1,4 +1,5 @@
-import { getLanguages, translateGoogle, addMemoryItem } from './utils';
+import { addMemoryItem } from './utils';
+import { getLanguages, translateBing } from './api';
 
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
@@ -30,18 +31,17 @@ chrome.runtime.onMessage.addListener(
         getLanguages().then(sendResponse);
         break;
       }
-      case 'translateGoogle': {
-        translateGoogle(request.params).then((res) => {
-          if (res === null) {
-            return sendResponse(res);
+      case 'translateBing': {
+        translateBing(request.params).then((res) => {
+          if (res !== null) {
+            addMemoryItem({
+              text: request.params.text,
+              from: res.from || request.params.from || 'auto',
+              to: res.to || request.params.to,
+              translation: res.translation.text,
+            });
           }
 
-          addMemoryItem({
-            text: request.params.text,
-            from: res.from || request.params.from || 'auto',
-            to: res.to || request.params.to,
-            translation: res.translation.text,
-          });
           sendResponse(res);
         });
         break;

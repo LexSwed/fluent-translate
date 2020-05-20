@@ -20,10 +20,7 @@ export const API = {
   },
   translate: (params: TranslateQuery): Promise<TranslateResponse> => {
     return new Promise((resolve) =>
-      chrome.runtime.sendMessage(
-        { request: 'translateGoogle', params },
-        resolve
-      )
+      chrome.runtime.sendMessage({ request: 'translateBing', params }, resolve)
     );
   },
 };

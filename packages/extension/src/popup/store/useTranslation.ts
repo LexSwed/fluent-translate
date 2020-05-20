@@ -15,7 +15,9 @@ function useTranslationReducer({ text, from, to }: Params) {
 
   useEffect(() => {
     const id = setTimeout(async () => {
-      if (text.length < 2) {
+      const trimmed = text.trim();
+
+      if (trimmed.length < 2) {
         dispatch({ type: 'textRemoved' });
         return;
       }
@@ -26,7 +28,7 @@ function useTranslationReducer({ text, from, to }: Params) {
         from: from === 'auto' ? undefined : from,
         // user lang
         to,
-        text: text.trim(),
+        text: trimmed,
       });
 
       dispatch({
@@ -37,7 +39,7 @@ function useTranslationReducer({ text, from, to }: Params) {
           to: res.to,
         },
       });
-    }, 200);
+    }, 500);
 
     return () => clearTimeout(id);
   }, [text, from, to, dispatch]);
