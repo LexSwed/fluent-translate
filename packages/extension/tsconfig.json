@@ -1,6 +1,6 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": { "jsx": "react" },
-  "include": ["src", "../www/types"],
+  "include": ["src", "src/types"],
   "exclude": ["node_modules", "**/*.test.ts", "**/__mocks__/*"]
 }

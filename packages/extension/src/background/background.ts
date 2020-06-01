@@ -1,5 +1,5 @@
 import { addMemoryItem } from './utils';
-import { getLanguages, translateBing } from './api';
+import { getLanguages, translateBing, dictLookup } from './api';
 
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
@@ -46,8 +46,11 @@ chrome.runtime.onMessage.addListener(
         });
         break;
       }
+      case 'dictionaryLookup': {
+        dictLookup(request.params).then(sendResponse);
+        break;
+      }
     }
-
     return true;
   }
 );

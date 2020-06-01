@@ -12,17 +12,15 @@ export const getTranslatorLink = ({
   text?: string;
 }) => `https://translate.google.com/?op=translate&tl=${to}&text=${text}`;
 
+const makeRequest = <T = any>(request: AsyncRequest): Promise<T> =>
+  new Promise((resolve) => chrome.runtime.sendMessage(request, resolve));
+
 export const API = {
-  getLanguages: () => {
-    return new Promise((resolve) =>
-      chrome.runtime.sendMessage({ request: 'getLanguages' }, resolve)
-    );
-  },
-  translate: (params: TranslateQuery): Promise<TranslateResponse> => {
-    return new Promise((resolve) =>
-      chrome.runtime.sendMessage({ request: 'translateBing', params }, resolve)
-    );
-  },
+  getLanguages: () => makeRequest<Languages>({ request: 'getLanguages' }),
+  translate: (params: TranslateQuery) =>
+    makeRequest<TranslateResponse>({ request: 'translateBing', params }),
+  dictionaryLookup: (params: Required<TranslateQuery>) =>
+    makeRequest<DictLookup>({ request: 'dictionaryLookup', params }),
 };
 
 export const Storage = {

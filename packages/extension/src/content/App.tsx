@@ -6,7 +6,7 @@ import styles from './styles.css';
 
 import { useText } from '../popup/store/utils';
 import FromLanguageSelect from '../popup/TextInput/FromLanguageSelect';
-import TranslatedText from '../popup/Translated/TranslatedText';
+import Translated from '../popup/Results/Translated';
 import CloseTimer from './CloseTimer';
 
 type Props = {
@@ -35,7 +35,7 @@ const App: React.FC<Props> = ({ text, onClose }) => {
           <FromLanguageSelect size="small" />
           <Text>{text}</Text>
         </Stack>
-        <TranslatedText />
+        <Translated />
       </Stack>
     </Box>
   );

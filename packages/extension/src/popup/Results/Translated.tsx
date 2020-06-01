@@ -6,8 +6,9 @@ import styles from './styles.css';
 import LanguageSelect from '../LanguageSelect';
 import TranslatorLink from '../TranslatorLink';
 import { useToLanguage, useTranslation, useLanguages } from '../store/utils';
+import Translations from './Translations';
 
-const TranslatedText: React.FC = () => {
+const Translated: React.FC = () => {
   const [to, setTo] = useToLanguage();
   const { text, truncated } = useTranslation();
   const languages = useLanguages();
@@ -32,8 +33,9 @@ const TranslatedText: React.FC = () => {
           )}
         </Text>
       </Box>
+      <Translations />
     </Stack>
   );
 };
 
-export default React.memo(TranslatedText);
+export default React.memo(Translated);

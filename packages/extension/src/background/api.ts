@@ -4,7 +4,7 @@ import { Sentry } from '../utils';
 
 export async function getLanguages() {
   try {
-    const { translation } = await fetch(
+    const { translation } = await makeRequest(
       'https://api.cognitive.microsofttranslator.com/languages?' +
         qs.stringify({
           'api-version': '3.0',
@@ -15,7 +15,7 @@ export async function getLanguages() {
           'X-ClientTraceId': uuid().toString(),
         },
       }
-    ).then((res) => res.json());
+    );
 
     return translation;
   } catch (error) {
@@ -26,13 +26,13 @@ export async function getLanguages() {
 export async function translateBing({ to, from, text }: TranslateQuery) {
   const query = text.slice(0, 300);
 
-  const res = await fetch('https://www.bing.com/ttranslatev3', {
+  const res = await makeRequest('https://www.bing.com/ttranslatev3', {
     method: 'post',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
     },
     body: qs.stringify({ to, fromLang: from || 'auto-detect', text: query }),
-  }).then((res) => res.json());
+  });
 
   try {
     const [{ detectedLanguage, translations }] = res;
@@ -49,5 +49,75 @@ export async function translateBing({ to, from, text }: TranslateQuery) {
     Sentry.captureException(error.message, { data: { res, from, to, text } });
   }
 
+  return null;
+}
+
+export async function dictLookup({
+  to,
+  from,
+  text,
+}: Required<TranslateQuery>): Promise<DictLookup | null> {
+  if (text.split(/\s/).length > 1) {
+    return null;
+  }
+
+  const response: DictLookupResponse = await makeRequest(
+    'https://www.bing.com/tlookupv3?isVertical=1',
+    {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+      },
+      body: qs.stringify({ to, from: from || 'auto-detect', text }),
+    }
+  );
+
+  try {
+    const [{ displaySource, translations }] = response;
+
+    const normalized = translations.reduce((res, tr) => {
+      if (!Array.isArray(res[tr.posTag])) {
+        res[tr.posTag] = [];
+      }
+
+      res[tr.posTag].push({
+        source: displaySource,
+        target: tr.displayTarget,
+        confidence: tr.confidence,
+        backTranslations: tr.backTranslations.map((bt) => bt.displayText),
+      });
+
+      return res;
+    }, {} as DictLookup['translations']);
+
+    return {
+      from,
+      to,
+      source: text,
+      translations: normalized,
+    };
+  } catch (error) {
+    Sentry.captureException(error.message, {
+      data: { response, from, to, text },
+    });
+  }
+
+  return null;
+}
+
+async function makeRequest(...params: Parameters<typeof fetch>) {
+  try {
+    const res = await fetch(...params).then((res) => res.json());
+
+    if (res.statusCode !== 200) {
+      throw new Error("Request didn't go quite well");
+    }
+
+    return res;
+  } catch (error) {
+    Sentry.captureException(error.message, {
+      data: { url: params[0], data: params[1] },
+    });
+  }
   return null;
 }
