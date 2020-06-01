@@ -1,53 +1,54 @@
 import React from 'react';
-import { ContentBlock, Inline, Heading, TextLink } from '@fxtrot/edge';
-import cx from 'classnames';
+import {
+  Box,
+  ContentBlock,
+  Inline,
+  Heading,
+  TextLink,
+  Hidden,
+} from '@fxtrot/edge';
 import Link from 'next/link';
 
 import styles from './styles.module.css';
 
 const Header = () => {
   return (
-    <header className={styles.header}>
+    <Box as="header" bg="#fff">
       <ContentBlock>
-        <Inline space="l" alignY="center">
+        <Inline space="l" nowrap>
           <Link href="/">
             <a href="/" className={styles.logoLink}>
-              <Inline space="m" alignY="center">
+              <Inline space="m" nowrap>
                 <img
                   src="/images/icon.svg"
                   alt="Edge Translate logo"
                   className={styles.logo}
                   aria-hidden="true"
                 />
-                <Heading as="h3" tone="light">
-                  Edge Translate <span className={styles.delimiter}>|</span>
+                <Heading as="h3" variant="light">
+                  Edge Translate{' '}
+                  <Hidden as="span" below="tablet" className={styles.delimiter}>
+                    |
+                  </Hidden>
                 </Heading>
               </Inline>
             </a>
           </Link>
-          <Inline space="m" alignY="center">
-            <TextLink href="https://lexswed.github.io/" className={styles.link}>
-              Author
-            </TextLink>
-            <TextLink
-              href="https://github.com/LexSwed/edge-translate"
-              className={styles.link}
-            >
+          <Inline space="m">
+            <TextLink href="https://lexswed.github.io/">Author</TextLink>
+            <TextLink href="https://github.com/LexSwed/edge-translate">
               Sources
             </TextLink>
             <Link href="/privacy">
-              <TextLink className={styles.link}>Privacy Policy</TextLink>
+              <TextLink>Privacy Policy</TextLink>
             </Link>
-            <TextLink
-              href="https://alexanderswed.typeform.com/to/sjSxc6"
-              className={cx(styles.link, styles.highlight)}
-            >
+            <TextLink href="https://alexanderswed.typeform.com/to/sjSxc6">
               Leave Feedback
             </TextLink>
           </Inline>
         </Inline>
       </ContentBlock>
-    </header>
+    </Box>
   );
 };
 

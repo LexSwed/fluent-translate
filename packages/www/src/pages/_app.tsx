@@ -1,9 +1,8 @@
 import React from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import { Edge } from '@fxtrot/edge';
+import { ThemeProvider } from '@fxtrot/edge';
 
-import '@fxtrot/edge/dist/styles.css';
 import './global.css';
 
 import Header from '../components/header';
@@ -29,10 +28,10 @@ const App = ({ Component, pageProps }: AppProps) => {
           content="https://edge-translate.now.sh/images/twitter-image.png"
         />
       </Head>
-      <Edge>
+      <ThemeProvider>
         <Header />
         <Component {...pageProps} />
-      </Edge>
+      </ThemeProvider>
     </>
   );
 };

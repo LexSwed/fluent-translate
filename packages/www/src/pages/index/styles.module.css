@@ -1,11 +1,3 @@
-.main {
-}
-
-.intro {
-  background-color: var(--gray-100);
-  padding: 5vh 0;
-}
-
 .webStore {
   display: block;
   height: 80px;
@@ -29,14 +21,4 @@
 
 .screenshot {
   width: 100%;
-}
-
-.features {
-  height: 100%;
-  padding: 5vh 0;
-  --xl: 80px;
-}
-
-.featureImg {
-  height: 200px;
 }

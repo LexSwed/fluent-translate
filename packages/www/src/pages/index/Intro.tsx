@@ -1,17 +1,24 @@
 import React from 'react';
-import { ContentBlock, Columns, Column, Heading, Stack } from '@fxtrot/edge';
+import {
+  Box,
+  ContentBlock,
+  Columns,
+  Column,
+  Heading,
+  Stack,
+} from '@fxtrot/edge';
 
 import styles from './styles.module.css';
 import Image from '../../components/image';
 
 const Intro: React.FC = () => {
   return (
-    <div className={styles.intro}>
+    <Box bg="gray.100" p="5vh 0">
       <ContentBlock>
         <Columns alignY="center" align="apart">
           <Column width="1/3">
             <Stack>
-              <Heading as="h2">Translator Extension for your browser</Heading>
+              <Heading as="h1">Translator Extension for your browser</Heading>
               <a
                 href="https://chrome.google.com/webstore/detail/jbkaeigbknejjmhnkhmankagkfepncmn"
                 className={styles.webStore}
@@ -42,7 +49,7 @@ const Intro: React.FC = () => {
           </Column>
         </Columns>
       </ContentBlock>
-    </div>
+    </Box>
   );
 };
 

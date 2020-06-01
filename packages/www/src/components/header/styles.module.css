@@ -15,30 +15,3 @@
   user-select: none;
   margin-left: var(--l);
 }
-
-.link {
-  color: var(--text-color);
-  border-bottom: 2px solid transparent;
-  transition: 0.12s ease;
-  font-size: 13px !important;
-  &:hover {
-    border-bottom-color: #000;
-    color: #000;
-  }
-
-  &:link,
-  &:focus,
-  &:hover,
-  &:active,
-  &:visited {
-    text-decoration: none;
-  }
-}
-
-.highlight {
-  color: var(--brand-500);
-  &:hover {
-    border-bottom-color: var(--brand-600);
-    color: var(--brand-600);
-  }
-}

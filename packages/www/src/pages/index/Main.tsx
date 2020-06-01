@@ -1,16 +1,15 @@
 import React from 'react';
-
-import styles from './styles.module.css';
+import { Box } from '@fxtrot/edge';
 
 import Intro from './Intro';
 import Features from './Features';
 
 const Main: React.FC = () => {
   return (
-    <main className={styles.main}>
+    <Box as="main">
       <Intro />
       <Features />
-    </main>
+    </Box>
   );
 };
 
