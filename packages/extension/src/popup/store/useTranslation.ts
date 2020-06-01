@@ -30,7 +30,7 @@ function useTranslationReducer({ text, from, to }: Params) {
         to,
         text: trimmed,
       });
-      console.log(res);
+
       dispatch({
         type: 'translated',
         payload: {

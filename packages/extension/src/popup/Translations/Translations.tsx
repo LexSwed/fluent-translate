@@ -1,8 +1,8 @@
 import React from 'react';
 import useSWR from 'swr';
-import { Box, Heading, Text, Button } from '@fxtrot/edge';
+import { Box, Heading, Text } from '@fxtrot/edge';
 
-import { useTranslation, useText, useStoreUpdater } from '../store/utils';
+import { useTranslation, useText } from '../store/utils';
 import { API } from '../../utils';
 
 import styles from './styles.css';
@@ -10,12 +10,11 @@ import styles from './styles.css';
 const Translations = () => {
   const { from, to, text } = useTranslation();
   const [sourceText] = useText();
-  const setSource = useStoreUpdater();
-
-  const { data } = useSWR([from, to, text], (from, to) =>
-    API.dictionaryLookup({ text: sourceText, from, to })
+  const { data } = useSWR(
+    () => ([from, to, text].every(Boolean) ? [from, to, text] : null),
+    (from, to) => API.dictionaryLookup({ text: sourceText, from, to })
   );
-
+  console.log(data);
   if (!data) {
     return null;
   }
@@ -32,19 +31,7 @@ const Translations = () => {
               {translations.map((el) => {
                 return (
                   <>
-                    <Box>
-                      <Button
-                        key={el.target}
-                        tone="transparent"
-                        size="xs"
-                        onClick={() => {
-                          setSource({ text: el.target, to: from, from: to });
-                        }}
-                        className={styles.dictItem}
-                      >
-                        {el.target}
-                      </Button>
-                    </Box>
+                    <Text key={el.target}>{el.target}</Text>
                     <Text tone="light">{el.backTranslations.join(', ')}</Text>
                   </>
                 );

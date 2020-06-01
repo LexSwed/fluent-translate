@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 34% 1fr;
   grid-column-gap: 24px;
+  grid-row-gap: 4px;
   font-size: 12px;
 }
 

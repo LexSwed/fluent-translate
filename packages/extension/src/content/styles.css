@@ -4,7 +4,9 @@
   max-width: 400px;
   max-height: 500px;
   background: inherit;
-  overflow: hidden;
+  overflow: auto;
+  max-height: 200px;
+  border-radius: 4px;
 }
 
 .shadowRoot {

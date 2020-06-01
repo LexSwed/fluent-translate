@@ -10,7 +10,7 @@ export const getTranslatorLink = ({
 }: {
   to?: string;
   text?: string;
-}) => `https://translate.google.com/?op=translate&tl=${to}&text=${text}`;
+}) => `https://www.bing.com/translator?to=${to}&text=${text}`;
 
 const makeRequest = <T = any>(request: AsyncRequest): Promise<T> =>
   new Promise((resolve) => chrome.runtime.sendMessage(request, resolve));

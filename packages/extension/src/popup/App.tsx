@@ -6,7 +6,6 @@ import styles from './styles.css';
 
 import TextInput from './TextInput';
 import Results from './Results';
-import Translations from './Translations';
 import Footer from './Footer';
 
 import { Sentry } from '../utils';
@@ -52,7 +51,6 @@ class App extends React.Component {
           <Stack space="m">
             <TextInput />
             <Results />
-            <Translations />
           </Stack>
         </Box>
         <Footer />
