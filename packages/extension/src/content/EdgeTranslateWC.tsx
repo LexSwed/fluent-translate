@@ -16,11 +16,13 @@ const style = (
 
 const Shadow: React.FC<{ shown?: boolean }> = ({ shown = false, children }) => {
   return (
-    <root.div
-      className={cx(styles.shadowRoot, shown ? styles.shown : styles.hidden)}
-    >
-      {style}
-      {children}
+    <root.div>
+      <div
+        className={cx(styles.shadowRoot, shown ? styles.shown : styles.hidden)}
+      >
+        {style}
+        {children}
+      </div>
     </root.div>
   );
 };

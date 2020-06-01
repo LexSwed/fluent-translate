@@ -1,6 +1,6 @@
 import React from 'react';
 import useSWR from 'swr';
-import { Box, Heading, Text, Button, Inline } from '@fxtrot/edge';
+import { Box, Heading, Text, Button } from '@fxtrot/edge';
 
 import { useTranslation, useText, useStoreUpdater } from '../store/utils';
 import { API } from '../../utils';
@@ -32,7 +32,7 @@ const Translations = () => {
               {translations.map((el) => {
                 return (
                   <>
-                    <Box pb="m">
+                    <Box>
                       <Button
                         key={el.target}
                         tone="transparent"

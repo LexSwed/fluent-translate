@@ -6,7 +6,6 @@ import styles from './styles.css';
 import LanguageSelect from '../LanguageSelect';
 import TranslatorLink from '../TranslatorLink';
 import { useToLanguage, useTranslation, useLanguages } from '../store/utils';
-import Translations from './Translations';
 
 const Translated: React.FC = () => {
   const [to, setTo] = useToLanguage();
@@ -33,7 +32,6 @@ const Translated: React.FC = () => {
           )}
         </Text>
       </Box>
-      <Translations />
     </Stack>
   );
 };

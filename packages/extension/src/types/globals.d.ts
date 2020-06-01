@@ -3,7 +3,6 @@ declare module '*.css' {
 
   export = styles;
 }
-declare module 'react-shadow';
 
 type TranslateQuery = { from?: string; to: string; text: string };
 

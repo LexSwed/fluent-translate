@@ -11,20 +11,3 @@
   white-space: pre-wrap;
   font-size: var(--font-size);
 }
-
-.grid {
-  display: grid;
-  grid-template-columns: 34% 1fr;
-  grid-column-gap: 24px;
-  font-size: 12px;
-}
-
-.pos {
-  font-size: 13px;
-}
-
-.dictItem {
-  display: inline-block;
-  padding-left: 2px;
-  padding-right: 2px;
-}
