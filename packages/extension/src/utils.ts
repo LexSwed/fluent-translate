@@ -13,12 +13,7 @@ export const getTranslatorLink = ({
 }) => `https://www.bing.com/translator?to=${to}&text=${text}`;
 
 const makeRequest = <T = any>(request: AsyncRequest): Promise<T> =>
-  new Promise((resolve, reject) =>
-    chrome.runtime.sendMessage(request, (data) => {
-      console.dir(data);
-      return resolve(data);
-    })
-  );
+  new Promise((resolve) => chrome.runtime.sendMessage(request, resolve));
 
 export const API = {
   getLanguages: () => makeRequest<Languages>({ request: 'getLanguages' }),
