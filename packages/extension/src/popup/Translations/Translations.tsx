@@ -14,7 +14,7 @@ const Translations = () => {
     () => ([from, to, text].every(Boolean) ? [from, to, text] : null),
     (from, to) => API.dictionaryLookup({ text: sourceText, from, to })
   );
-  console.log(data);
+
   if (!data) {
     return null;
   }
@@ -30,10 +30,10 @@ const Translations = () => {
             <Text className={styles.grid}>
               {translations.map((el) => {
                 return (
-                  <>
-                    <Text key={el.target}>{el.target}</Text>
+                  <React.Fragment key={el.target}>
+                    <Text>{el.target}</Text>
                     <Text tone="light">{el.backTranslations.join(', ')}</Text>
-                  </>
+                  </React.Fragment>
                 );
               })}
             </Text>
