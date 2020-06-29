@@ -106,18 +106,5 @@ export async function dictLookup({
 }
 
 async function makeRequest(...params: Parameters<typeof fetch>) {
-  try {
-    const response = await fetch(...params).then((res) => res.json());
-
-    if (response.statusCode === 400) {
-      throw new Error('Request went wrong');
-    }
-
-    return response;
-  } catch (error) {
-    Sentry.captureException(error.message, {
-      data: { url: params[0], data: params[1] },
-    });
-  }
-  return null;
+  return fetch(...params).then((res) => res.json());
 }

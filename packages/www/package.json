@@ -43,7 +43,6 @@
     "@types/styled-components": "^5.1.0",
     "babel-plugin-styled-components": "^1.10.7",
     "cssnano": "^4.1.10",
-    "postcss-modules": "^2.0.0",
     "postcss-preset-env": "^6.7.0",
     "typescript": "^3.8.3",
     "vercel": "^19.0.0"
