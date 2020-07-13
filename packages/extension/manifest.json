@@ -1,6 +1,6 @@
 {
   "name": "Edge Translate",
-  "version": "1.5.2",
+  "version": "1.6.0",
   "manifest_version": 2,
   "description": "Extension for translating and memorizing words",
   "icons": {
