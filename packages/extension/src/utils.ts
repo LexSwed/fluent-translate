@@ -13,15 +13,36 @@ export const getTranslatorLink = ({
 }) => `https://www.bing.com/translator?to=${to}&text=${text}`;
 
 const makeRequest = <T = any>(request: AsyncRequest): Promise<T> =>
-  new Promise((resolve) => chrome.runtime.sendMessage(request, resolve));
+  new Promise((resolve, reject) =>
+    chrome.runtime.sendMessage(request, (res) =>
+      res?.ok ? resolve(res.data) : reject(res.message)
+    )
+  );
 
-export const API = {
-  getLanguages: () => makeRequest<Languages>({ request: 'getLanguages' }),
-  translate: (params: TranslateQuery) =>
-    makeRequest<TranslateResponse>({ request: 'translateBing', params }),
-  dictionaryLookup: (params: Required<TranslateQuery>) =>
-    makeRequest<DictLookup>({ request: 'dictionaryLookup', params }),
-};
+class BackgroundFetcher {
+  errorHandler = (err: string) => {
+    console.error(err);
+  };
+
+  setErrorHandler(callback: (error: string) => void) {
+    this.errorHandler = callback;
+  }
+
+  getLanguages = () =>
+    makeRequest<Languages>({ request: 'getLanguages' }).catch(
+      this.errorHandler
+    );
+  translate = (params: TranslateQuery) =>
+    makeRequest<TranslateResponse>({ request: 'translateBing', params }).catch(
+      this.errorHandler
+    );
+  dictionaryLookup = (params: Required<TranslateQuery>) =>
+    makeRequest<DictLookup>({ request: 'dictionaryLookup', params }).catch(
+      this.errorHandler
+    );
+}
+
+export const API = new BackgroundFetcher();
 
 export const Storage = {
   getItems: <T extends Record<string, any>>(

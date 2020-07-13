@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { userLang, Storage } from '../../utils';
+import { userLang, Storage, API } from '../../utils';
 import useTranslation from './useTranslation';
 
 export function useStore() {
@@ -9,6 +9,7 @@ export function useStore() {
   const [from, setFrom] = useState<string>('auto');
   const [to, setTo] = useState<string>(userLang);
   const translation = useTranslation({ to, from, text });
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function fillStorage() {
@@ -24,7 +25,12 @@ export function useStore() {
     fillStorage();
   }, [setTo, setLangs]);
 
+  useEffect(() => {
+    API.setErrorHandler(setError);
+  }, []);
+
   const store: Store = {
+    error,
     languages,
     text,
     from,

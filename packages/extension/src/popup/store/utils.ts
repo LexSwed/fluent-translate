@@ -45,3 +45,5 @@ export const useStoreUpdater = () => {
     setText(text);
   };
 };
+
+export const useError = () => useContext(context).error;

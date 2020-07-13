@@ -18,6 +18,7 @@ type Action =
   | { type: 'textRemoved' };
 
 type Store = {
+  error: string | null;
   languages: Languages;
   text: string;
   setText: React.Dispatch<React.SetStateAction<string>>;

@@ -1,5 +1,6 @@
 import { addMemoryItem } from './utils';
 import { getLanguages, translateBing, dictLookup } from './api';
+import { Sentry } from '../utils';
 
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
@@ -26,13 +27,14 @@ chrome.contextMenus.onClicked.addListener((info) => {
 
 chrome.runtime.onMessage.addListener(
   (request: AsyncRequest, _sender, sendResponse) => {
+    let promise: Promise<any> | null;
     switch (request.request) {
       case 'getLanguages': {
-        getLanguages().then(sendResponse);
+        promise = getLanguages();
         break;
       }
       case 'translateBing': {
-        translateBing(request.params).then((res) => {
+        promise = translateBing(request.params).then((res) => {
           if (res !== null) {
             addMemoryItem({
               text: request.params.text,
@@ -42,14 +44,22 @@ chrome.runtime.onMessage.addListener(
             });
           }
 
-          sendResponse(res);
+          return res;
         });
         break;
       }
       case 'dictionaryLookup': {
-        dictLookup(request.params).then(sendResponse);
+        promise = dictLookup(request.params);
         break;
       }
+    }
+    if (promise) {
+      promise
+        .then((res) => sendResponse({ ok: true, data: res }))
+        .catch((err) => {
+          Sentry.captureException(err.message, { data: request.params });
+          sendResponse({ ok: false, message: err.message });
+        });
     }
     return true;
   }

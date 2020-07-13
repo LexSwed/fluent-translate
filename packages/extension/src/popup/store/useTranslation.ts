@@ -31,6 +31,10 @@ function useTranslationReducer({ text, from, to }: Params) {
         text: trimmed,
       });
 
+      if (!res) {
+        return;
+      }
+
       dispatch({
         type: 'translated',
         payload: {
