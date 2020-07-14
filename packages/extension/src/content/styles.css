@@ -1,11 +1,9 @@
 .app {
   position: relative;
-  min-width: 280px;
-  max-width: 400px;
-  max-height: 500px;
+  width: 300px;
+  max-height: 400px;
   background: inherit;
   overflow: auto;
-  max-height: 200px;
   border-radius: 4px;
 }
 

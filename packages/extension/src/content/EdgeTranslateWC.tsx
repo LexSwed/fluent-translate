@@ -1,5 +1,5 @@
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import React from 'react';
 import cx from 'classnames';
 import root from 'react-shadow';
 
@@ -8,20 +8,19 @@ import styles from './styles.css';
 import AppContext from '../popup/AppContext';
 import App from './App';
 
-const style = (
-  <style>
-    {`@import url('${chrome.extension.getURL('/dist/content/content.css')}');`}
-  </style>
-);
-
 const Shadow: React.FC<{ shown?: boolean }> = ({ shown = false, children }) => {
+  const [cssLoaded, setLoaded] = useState(false);
   return (
     <root.div>
+      <link
+        rel="stylesheet"
+        href={chrome.extension.getURL('/dist/content/content.css')}
+        onLoad={() => setLoaded(true)}
+      />
       <div
         className={cx(styles.shadowRoot, shown ? styles.shown : styles.hidden)}
       >
-        {style}
-        {children}
+        {cssLoaded && children}
       </div>
     </root.div>
   );
