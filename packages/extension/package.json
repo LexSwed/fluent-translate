@@ -22,42 +22,43 @@
   "private": false,
   "dependencies": {
     "@fxtrot/edge": "1.0.30",
-    "@sentry/browser": "^5.15.5",
-    "@webcomponents/webcomponentsjs": "^2.4.3",
+    "@sentry/browser": "^5.22.3",
+    "@webcomponents/webcomponentsjs": "^2.4.4",
     "autosize": "^4.0.2",
     "classnames": "^2.2.6",
     "debounce": "^1.2.0",
-    "nanoid": "^3.1.7",
+    "nanoid": "^3.1.12",
     "qs": "^6.9.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-shadow": "^18.1.0",
-    "swr": "^0.2.2",
-    "typescript": "^3.9.2"
+    "react-shadow": "^18.3.0",
+    "swr": "^0.3.1",
+    "typescript": "^4.0.2"
   },
   "devDependencies": {
     "@types/autosize": "^3.0.7",
-    "@types/chrome": "^0.0.120",
+    "@types/chrome": "^0.0.122",
     "@types/classnames": "^2.2.10",
     "@types/debounce": "^1.2.0",
-    "@types/react": "^16.9.34",
-    "@types/react-dom": "^16.9.7",
-    "@typescript-eslint/eslint-plugin": "^3.0.2",
-    "@typescript-eslint/parser": "^3.0.2",
+    "@types/react": "^16.9.48",
+    "@types/react-dom": "^16.9.8",
+    "@typescript-eslint/eslint-plugin": "^3.10.1",
+    "@typescript-eslint/parser": "^3.10.1",
     "cssnano": "^4.1.10",
-    "eslint-plugin-flowtype": "^5.0.3",
-    "eslint-plugin-react": "^7.20.0",
-    "eslint-plugin-react-hooks": "^4.0.2",
+    "eslint-plugin-flowtype": "^5.2.0",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.0",
     "parcel-bundler": "^1.12.4",
-    "postcss-modules": "^3.1.0",
+    "postcss-modules": "^3.2.2",
     "postcss-preset-env": "^6.7.0"
   },
   "targets": {
     "main": {
       "engines": {
         "browsers": [
-          "> 1%",
-          "not dead"
+          "> 3%",
+          "not ie 11",
+          "not op_mini all"
         ]
       }
     }
