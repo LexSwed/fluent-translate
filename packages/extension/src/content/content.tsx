@@ -32,15 +32,19 @@ document.addEventListener('mouseup', (event) => {
 
   let parent = selection?.getRangeAt(0).commonAncestorContainer;
 
-  if (parent?.nodeType === 3) {
+  if (!parent) {
+    return;
+  } else if (parent?.nodeType === 3) {
     parent = parent.parentNode as Node;
   }
 
-  if (!parent) {
-    return;
-  }
-
+  const [startNode, endNode] =
+    (selection?.anchorOffset || 0) > (selection?.focusOffset || 0)
+      ? ([selection?.anchorNode, selection?.focusNode] as const)
+      : ([selection?.focusNode, selection?.anchorNode] as const);
+  console.log(selection);
   console.log(parent);
+  console.log(startNode, endNode);
   console.log(selection?.focusOffset, selection?.anchorOffset);
 
   // document.addEventListener('mouseenter', onMouseEnter)
