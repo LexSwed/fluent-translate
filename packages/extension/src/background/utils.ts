@@ -13,14 +13,17 @@ export const addMemoryItem = debounce(
       memory: MemoryItems;
     }>('memory');
 
-    const textIndex = memory.findIndex((item) => item.text === text);
+    const textIndex = memory.findIndex(
+      (item) => item.text === text && item.translation === translation
+    );
     const item = memory[textIndex];
 
     if (item) {
       memory.splice(textIndex, 1);
     }
 
-    memory.unshift({
+    // to prevent memory capacity error, remove last element first
+    memory.slice(0, -1).unshift({
       id: item ? item.id : nanoid(),
       text,
       to,
