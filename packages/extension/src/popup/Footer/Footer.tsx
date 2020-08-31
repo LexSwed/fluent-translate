@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import cx from 'classnames';
-import { Box, Columns, Column } from '@fxtrot/edge';
-
-import styles from './styles.css';
+import { Box, Flex } from '@chakra-ui/core';
 
 import MemoryHeading from '../Memory/MemoryHeading';
 import Memory from '../Memory';
@@ -20,23 +17,33 @@ const Footer = () => {
   }, [isMemory]);
 
   return (
-    <div className={cx(styles.footer, isOpen && styles.footerOpen)}>
+    <Box
+      position="absolute"
+      top="calc(100vh - 38px)"
+      left={0}
+      width="100%"
+      transition="transform 0.24s ease-in-out"
+      height="100vh"
+      overflow="hidden"
+      backgroundColor="var(--bg-color-1)"
+      transform={isOpen ? 'translateY(calc(-1 * (100vh - 38px)))' : ''}
+    >
       <Box
-        px="m"
-        py="s"
-        className={cx(styles.footerBar, isOpen && styles.footerBarOpen)}
+        px={4}
+        py={2}
+        height="38px"
+        borderBottom="1px solid transparent"
+        borderBottomColor={isOpen ? 'gray.300' : 'transparent'}
       >
-        <Columns align="apart" alignY="center">
+        <Flex align="center" justifyContent="space-between">
           <More />
           {isMemory ? (
-            <Column width="content">
-              <MemoryHeading isOpen={isOpen} onClick={() => setOpen(!isOpen)} />
-            </Column>
+            <MemoryHeading isOpen={isOpen} onClick={() => setOpen(!isOpen)} />
           ) : null}
-        </Columns>
+        </Flex>
       </Box>
       {isOpen && <Memory />}
-    </div>
+    </Box>
   );
 };
 

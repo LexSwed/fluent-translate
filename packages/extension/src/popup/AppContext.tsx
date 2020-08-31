@@ -1,5 +1,6 @@
 import React from 'react';
 import { Edge } from '@fxtrot/edge';
+import { ThemeProvider, CSSReset } from '@chakra-ui/core';
 
 import { useStore } from './store';
 import { StoreContextProvider } from './store/utils';
@@ -9,7 +10,10 @@ const AppContextProvider: React.FC = ({ children }) => {
 
   return (
     <Edge>
-      <StoreContextProvider value={store}>{children}</StoreContextProvider>
+      <ThemeProvider>
+        <CSSReset />
+        <StoreContextProvider value={store}>{children}</StoreContextProvider>
+      </ThemeProvider>
     </Edge>
   );
 };
