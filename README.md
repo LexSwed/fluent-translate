@@ -1,5 +1,7 @@
 <img src="packages/extension/icons/icon.svg" height="120px" align="right"/>
 
+**Disconnected** as Microsoft Edge introduced own solution for [inline text translation](https://docs.microsoft.com/en-us/deployedge/microsoft-edge-relnote-stable-channel#version-84052240-july-16)
+
 # edge-translate
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
