@@ -13,12 +13,11 @@ const TextArea = styled('textarea', {
   fontFamily: 'inherit',
   minHeight: '1em',
   maxHeight: '150px',
-  width: 'calc(100% - 12px * 2)',
+  width: 'calc(100% - 8px * 2)',
   overflow: 'hidden',
   fontSize: '$sm',
-  height: '$4',
-  px: '$2',
-  py: '$2',
+  height: '$3',
+  p: '$2',
   m: 0,
   br: '$md',
   bc: 'transparent',
@@ -81,6 +80,8 @@ const TextInput: React.FC = () => {
       flow={multiline ? 'column' : 'row'}
       focused={focused}
       multiline={multiline}
+      main="stretch"
+      cross="stretch"
     >
       <TextArea
         value={text}

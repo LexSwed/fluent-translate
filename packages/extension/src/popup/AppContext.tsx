@@ -34,7 +34,7 @@ const darkTheme: Theme = {
   colors: {
     $text: '#fff',
     $textDisabled: 'var(--colors-gray400)',
-    $textLight: 'var(--colors-gray100)',
+    $textLight: '#9D9D9D',
     $accent: '#fff',
 
     $primaryStill: '#359ab0',
@@ -43,14 +43,14 @@ const darkTheme: Theme = {
     $primaryLight: '#4fa7ba',
     $primaryLightActive: '#81c0ce',
 
-    $surfaceStill: 'var(--colors-gray800)',
-    $surfaceHover: 'var(--colors-gray700)',
-    $surfaceActive: 'var(--colors-gray600)',
+    $surfaceStill: '#333333',
+    $surfaceHover: '#404040',
+    $surfaceActive: '#454545',
     $surfaceDisabled: 'rgba(0,0,0,0.2)',
 
-    $borderStill: 'var(--colors-gray400)',
-    $borderHover: 'var(--colors-gray500)',
-    $borderActive: 'var(--colors-gray300)',
+    $borderStill: '#737373',
+    $borderHover: '#9A9A9A',
+    $borderActive: '#888888',
   },
 };
 
