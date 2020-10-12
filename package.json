@@ -11,15 +11,16 @@
     "build:ext": "yarn workspace extension build",
     "build:www": "yarn workspace www build",
     "lint": "eslint packages/**/*",
-    "typecheck": "npx npm-run-all -p tsc:ext tsc:www",
+    "typecheck": "echo 'avoid for now'",
     "tsc:ext": "tsc -p ./packages/extension --noEmit",
-    "tsc:www": "tsc  -p ./packages/www --noEmit"
+    "tsc:www": "tsc  -p ./packages/www --noEmit",
+    "release": "yarn run semantic-release"
   },
   "devDependencies": {
     "@semantic-release/exec": "^5.0.0",
     "@semantic-release/git": "^9.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.4.0",
-    "@typescript-eslint/parser": "^4.4.0",
+    "@typescript-eslint/eslint-plugin": "^4.4.1",
+    "@typescript-eslint/parser": "^4.4.1",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.11.0",
     "eslint-config-prettier": "^6.11.0",
@@ -33,7 +34,7 @@
     "husky": "^4.2.5",
     "prettier": "^2.0.5",
     "pretty-quick": "^3.0.2",
-    "semantic-release": "^17.2.0",
+    "semantic-release": "^17.2.1",
     "typescript": "^4.0.3"
   },
   "repository": {
@@ -53,7 +54,7 @@
   "homepage": "https://github.com/LexSwed/edge-translate#readme",
   "husky": {
     "hooks": {
-      "pre-commit": "npm run typecheck && pretty-quick --staged"
+      "pre-commit": "yarn typecheck && pretty-quick --staged"
     }
   },
   "workspaces": [
