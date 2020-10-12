@@ -22,8 +22,10 @@ export const addMemoryItem = debounce(
       memory.splice(textIndex, 1);
     }
 
-    // to prevent memory capacity error, remove last element first
-    memory.slice(0, -1).unshift({
+    // to prevent memory capacity error kepp only 100 entries
+    const items = memory.slice(0, 100);
+
+    items.unshift({
       id: item ? item.id : nanoid(),
       text,
       to,
@@ -31,7 +33,9 @@ export const addMemoryItem = debounce(
       translation,
     });
 
-    await Storage.setSyncItems({ memory: memory.slice(0, 100) });
+    await Storage.setSyncItems({
+      memory: items,
+    });
   },
   3000
 );

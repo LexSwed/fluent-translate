@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Stack, Text, Box } from '@fxtrot/edge';
-
-import '../global.css';
-import styles from './styles.css';
+import { styled, Flex, Text, Box } from '@fxtrot/ui';
 
 import { useText } from '../popup/store/utils';
 import FromLanguageSelect from '../popup/TextInput/FromLanguageSelect';
@@ -13,6 +10,19 @@ type Props = {
   text?: string;
   onClose: () => void;
 };
+
+const Main = styled(Box, {
+  bc: '$surfaceStill',
+  position: 'relative',
+  width: '300px',
+  maxHeight: '400px',
+  overflow: 'auto',
+  br: '$md',
+  p: '$4',
+  transition: '0.2s',
+  boxShadow: '$xl',
+});
+
 const App: React.FC<Props> = ({ text, onClose }) => {
   const [, setText] = useText();
   const [isMouseOver, setMouseOver] = useState(false);
@@ -22,22 +32,19 @@ const App: React.FC<Props> = ({ text, onClose }) => {
   }, [text, setText]);
 
   return (
-    <Box
-      elevation="2"
-      p="m"
-      className={styles.app}
+    <Main
       onMouseOver={() => setMouseOver(true)}
       onMouseLeave={() => setMouseOver(false)}
     >
       <CloseTimer isMouseOver={isMouseOver} onClose={onClose} />
-      <Stack>
-        <Stack space="s">
-          <FromLanguageSelect size="small" />
-          <Text>{text}</Text>
-        </Stack>
+      <Flex space="md">
+        <Flex space="sm">
+          <FromLanguageSelect />
+          <Text size="sm">{text}</Text>
+        </Flex>
         <Translated />
-      </Stack>
-    </Box>
+      </Flex>
+    </Main>
   );
 };
 

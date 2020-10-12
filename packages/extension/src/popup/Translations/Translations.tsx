@@ -1,11 +1,27 @@
 import React from 'react';
 import useSWR from 'swr';
-import { Box, Heading, Text } from '@fxtrot/edge';
+import { Box, Flex, Heading, StyleRecord, Text } from '@fxtrot/ui';
 
 import { useTranslation, useText } from '../store/utils';
 import { API } from '../../utils';
 
-import styles from './styles.css';
+const styles: StyleRecord = {
+  wrapper: {
+    overflow: 'auto',
+  },
+  heading: {
+    fontSize: '$xs',
+  },
+  box: {
+    display: 'grid',
+    gridTemplateColumns: '34% 1fr',
+    columnGap: '$3',
+    rowGap: '$1',
+  },
+  dictionary: {
+    lineHeight: 1.2,
+  },
+};
 
 const Translations = () => {
   const { from, to, text } = useTranslation();
@@ -20,27 +36,33 @@ const Translations = () => {
   }
 
   return (
-    <>
-      {Object.entries(data.translations).map(([pos, translations]) => {
-        return (
-          <Box mt="xs" key={pos}>
-            <Heading as="h4" className={styles.pos}>
-              {pos}
-            </Heading>
-            <Text className={styles.grid}>
-              {translations.map((el) => {
-                return (
-                  <React.Fragment key={el.target}>
-                    <Text>{el.target}</Text>
-                    <Text tone="light">{el.backTranslations.join(', ')}</Text>
-                  </React.Fragment>
-                );
-              })}
-            </Text>
-          </Box>
-        );
-      })}
-    </>
+    <Box css={styles.wrapper}>
+      <Flex space="sm" cross="stretch">
+        {Object.entries(data.translations).map(([pos, translations]) => {
+          return (
+            <Flex key={pos} cross="stretch">
+              <Heading as="h4" css={styles.heading}>
+                {pos}
+              </Heading>
+              <Box css={styles.box}>
+                {translations.map((el) => {
+                  return (
+                    <React.Fragment key={el.target}>
+                      <Text size="xs" css={styles.dictionary}>
+                        {el.target}
+                      </Text>
+                      <Text size="xs" tone="light" css={styles.dictionary}>
+                        {el.backTranslations.join(', ')}
+                      </Text>
+                    </React.Fragment>
+                  );
+                })}
+              </Box>
+            </Flex>
+          );
+        })}
+      </Flex>
+    </Box>
   );
 };
 

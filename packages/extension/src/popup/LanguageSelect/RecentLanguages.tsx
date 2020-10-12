@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Storage } from '../../utils';
+import { Option } from './styled';
 
 type Props = {
   recent: string[];
@@ -16,9 +17,9 @@ const RecentLanguages: React.FC<Props> = ({ recent, languages }) => {
       {recent.map(
         (lang) =>
           languages[lang] && (
-            <option key={lang} value={lang} title={languages[lang].nativeName}>
+            <Option key={lang} value={lang} title={languages[lang].nativeName}>
               {languages[lang].name}
-            </option>
+            </Option>
           )
       )}
     </optgroup>

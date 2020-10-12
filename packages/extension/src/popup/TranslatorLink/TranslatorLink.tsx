@@ -1,13 +1,15 @@
 import React from 'react';
-import { TextLink } from '@fxtrot/edge';
+import { TextLink, StyleRecord } from '@fxtrot/ui';
 
 import { getTranslatorLink } from '../../utils';
 import { useToLanguage, useText } from '../store/utils';
 
-const TranslatorLink: React.FC<React.ComponentProps<typeof TextLink>> = ({
-  children,
-  ...props
-}) => {
+const style: StyleRecord = { css: { fontWeight: 400 } };
+
+const TranslatorLink = React.forwardRef<
+  HTMLAnchorElement,
+  React.ComponentProps<typeof TextLink>
+>(({ children, ...props }, ref) => {
   const [to] = useToLanguage();
   const [text] = useText();
 
@@ -16,11 +18,13 @@ const TranslatorLink: React.FC<React.ComponentProps<typeof TextLink>> = ({
       href={getTranslatorLink({ to, text })}
       target="_blank"
       rel="noopener"
+      css={style}
       {...props}
+      ref={ref}
     >
       {children}
     </TextLink>
   );
-};
+});
 
 export default TranslatorLink;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 
-import styles from './styles.css';
 import { useText } from '../../popup/store/utils';
+import { styled } from '@fxtrot/ui';
 
 const TIME_LIMIT = 4000;
 const R = 32;
@@ -18,23 +18,37 @@ type Props = {
   onTimeout: () => void;
 };
 
-const Timer: React.FC<Props> = ({ isMouseOver, onTimeout }) => {
+export const Svg = styled('svg', {
+  transition: '0.12s',
+  size: '$5',
+  pointerEvents: 'none',
+  transformOrigin: 'center',
+  transform: 'scaleX(-1)',
+});
+
+const Group = styled('g', {
+  fill: 'none',
+  stroke: 'none',
+});
+
+const Path = styled('path', {
+  strokeWidth: '8px',
+  strokeLinecap: 'round',
+  transform: 'rotate(90deg)',
+  transformOrigin: 'center',
+  transition: '1s linear all',
+  stroke: '$primaryStill',
+});
+
+const Timer: React.FC<Props> = ({ isMouseOver, onTimeout, ...props }) => {
   const dashArray = useDasharray({ isMouseOver, onTimeout });
 
   return (
-    <svg
-      className={styles.timer}
-      viewBox="0 0 100 100"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <g className={styles.group}>
-        <path
-          strokeDasharray={dashArray}
-          className={styles.remaining}
-          d={path}
-        ></path>
-      </g>
-    </svg>
+    <Svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <Group>
+        <Path strokeDasharray={dashArray} id="timer-remaining" d={path}></Path>
+      </Group>
+    </Svg>
   );
 };
 

@@ -1,11 +1,15 @@
 import React from 'react';
-import { Box } from '@fxtrot/edge';
-
-import styles from './styles.css';
+import { Flex, Icon, styled } from '@fxtrot/ui';
 
 import Translated from './Translated';
 import { useTranslation } from '../store/utils';
 import LanguageIcon from './LanguageIcon';
+
+const Wrapper = styled(Flex, {
+  userSelect: 'none',
+  height: '$24',
+  color: '$gray300',
+});
 
 const Result = () => {
   const translation = useTranslation();
@@ -13,9 +17,9 @@ const Result = () => {
   return translation.text ? (
     <Translated />
   ) : (
-    <Box className={styles.empty}>
-      <LanguageIcon fill="var(--gray-400" width={50} height={50} />
-    </Box>
+    <Wrapper main="center" cross="center">
+      <Icon as={LanguageIcon} size="3xl" />
+    </Wrapper>
   );
 };
 

@@ -1,15 +1,16 @@
 import React from 'react';
-import { Button, Icon } from '@fxtrot/edge';
+import { Button, Icon } from '@fxtrot/ui';
+import { HiOutlineBookmarkAlt } from 'react-icons/hi';
 
 type Props = {
   isOpen: boolean;
-  onClick: React.ComponentProps<typeof Button>['onClick'];
+  onPress: React.ComponentProps<typeof Button>['onPress'];
 };
 
-const MemoryHeading: React.FC<Props> = ({ isOpen, onClick }) => {
+const MemoryHeading: React.FC<Props> = ({ isOpen, onPress }) => {
   return (
-    <Button tone="transparent" size="xs" onClick={onClick}>
-      <Icon icon="history" />
+    <Button variant="flat" onPress={onPress} size="sm">
+      <Icon as={HiOutlineBookmarkAlt} />
       {isOpen ? 'Close' : 'Memory'}
     </Button>
   );

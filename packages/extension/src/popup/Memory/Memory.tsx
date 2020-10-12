@@ -1,10 +1,17 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Box } from '@fxtrot/edge';
+import { Flex, styled } from '@fxtrot/ui';
 
-import styles from './styles.css';
 import { Storage, deleteMemoryEntry } from '../../utils';
 import { useLanguages } from '../store/utils';
 import MemoryEntry from './MemoryEntry';
+
+const List = styled(Flex, {
+  p: 0,
+  listStyle: 'none',
+  m: 0,
+  overflow: 'scroll',
+  height: 'calc(100vh - 48px)',
+});
 
 type Props = {};
 
@@ -18,23 +25,21 @@ const Memory: React.FC<Props> = () => {
   );
 
   return (
-    <Box pr="m" className={styles.memory}>
-      <ul className={styles.list}>
-        {items.map((item) => {
-          return (
-            <MemoryEntry
-              key={item.id}
-              item={{
-                ...item,
-                from: langs[item.from].name,
-                to: langs[item.to].name,
-              }}
-              onDelete={onDelete}
-            />
-          );
-        })}
-      </ul>
-    </Box>
+    <List as="ul" cross="stretch">
+      {items.map((item) => {
+        return (
+          <MemoryEntry
+            key={item.id}
+            item={{
+              ...item,
+              from: langs[item.from].name,
+              to: langs[item.to].name,
+            }}
+            onDelete={onDelete}
+          />
+        );
+      })}
+    </List>
   );
 };
 
@@ -62,6 +67,7 @@ export function useMemory() {
 
   useEffect(() => {
     const onChange: onStorageChangeListener = ({ memory }, name) => {
+      console.log(memory);
       if (memory?.newValue && name === 'sync') {
         setItems(memory?.newValue as MemoryItems);
       }

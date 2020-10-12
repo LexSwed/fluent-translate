@@ -1,8 +1,6 @@
 import React, { useMemo } from 'react';
-import { Stack, Box, Icon, Text } from '@fxtrot/edge';
-
-import '../global.css';
-import styles from './styles.css';
+import { Flex, Box, Icon, Text, StyleRecord } from '@fxtrot/ui';
+import { HiOutlineFire } from 'react-icons/hi';
 
 import TextInput from './TextInput';
 import Results from './Results';
@@ -10,6 +8,18 @@ import Footer from './Footer';
 
 import { Sentry } from '../utils';
 import { useError } from './store/utils';
+// TODO: remove it when stitches global css works!
+import './global.css';
+
+const styles: StyleRecord = {
+  app: {
+    p: '$3',
+    pb: '$12',
+    overflow: 'hidden',
+    bc: '$surfaceStill',
+    minWidth: '360px',
+  },
+};
 
 class App extends React.Component<{ error?: string | null }> {
   state = {
@@ -31,41 +41,39 @@ class App extends React.Component<{ error?: string | null }> {
   render() {
     if (this.state.hasError) {
       return (
-        <Box className={styles.app} p="m">
-          <Stack align="center">
-            <Icon icon="cloud_off" size="xl" color="var(--gray-400)" />
+        <Box css={styles.app}>
+          <Flex cross="center" main="center" space="md">
+            <Icon as={HiOutlineFire} size="3xl" color="$gray400" />
             {this.props.error ? (
-              <Text align="center">{this.props.error}</Text>
+              <Text align="center" size="sm">
+                {this.props.error}
+              </Text>
             ) : (
               <>
-                <Text align="center">
-                  Something broke the service,
-                  <br /> checking what was it...
+                <Text align="center" size="sm">
+                  Something broke the service, checking what was it...
                 </Text>
-                <Box pt="m" />
-                <Text align="center" tone="light">
+                <Text align="center" tone="light" size="xs">
                   In the meanwhile, try to close and open this popup,
                   <br />
                   maybe the{' '}
                   <span role="img" aria-label="bug">
                     🐞
-                  </span>
+                  </span>{' '}
                   is already gone
                 </Text>
               </>
             )}
-          </Stack>
+          </Flex>
         </Box>
       );
     }
     return (
       <>
-        <Box className={styles.app} p="m">
-          <Stack space="m">
-            <TextInput />
-            <Results />
-          </Stack>
-        </Box>
+        <Flex main="stretch" cross="stretch" space="md" css={styles.app}>
+          <TextInput />
+          <Results />
+        </Flex>
         <Footer />
       </>
     );

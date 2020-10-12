@@ -5,7 +5,6 @@ import { useFromLanguage, useLanguages, useTranslation } from '../store/utils';
 
 type Props = {
   size?: React.ComponentProps<typeof LanguageSelect>['size'];
-  border?: React.ComponentProps<typeof LanguageSelect>['border'];
 };
 
 const FromLanguageSelect: React.FC<Props> = (props) => {

@@ -1,33 +1,20 @@
 import React, { useState } from 'react';
 
-import styles from './styles.css';
-import {
-  Box,
-  Columns,
-  Column,
-  Stack,
-  Text,
-  Button,
-  Icon,
-  TextLink,
-} from '@fxtrot/edge';
+import { Text, Button, Icon, TextLink, Flex, styled } from '@fxtrot/ui';
+import { HiOutlineTrash } from 'react-icons/hi';
 
 const Header: React.FC<Props> = ({ item, onDelete }) => {
   return (
-    <Columns align="apart" alignY="center">
-      <Column width="content">
-        <Text tone="light" className={styles.languages}>
-          {item.from}
-          <span aria-label="arrow right"> → </span>
-          {item.to}
-        </Text>
-      </Column>
-      <Column width="content">
-        <Button size="xs" tone="transparent" onClick={() => onDelete(item.id)}>
-          <Icon icon="delete" />
-        </Button>
-      </Column>
-    </Columns>
+    <Flex flow="row" main="spread" cross="center">
+      <Text size="xs" css={{ color: '$textDisabled' }}>
+        {item.from}
+        <span aria-label="translated to"> → </span>
+        {item.to}
+      </Text>
+      <Button size="sm" variant="flat" onPress={() => onDelete(item.id)}>
+        <Icon as={HiOutlineTrash} />
+      </Button>
+    </Flex>
   );
 };
 
@@ -35,18 +22,16 @@ const Texts: React.FC<Omit<Props, 'onDelete'>> = ({ item }) => {
   const [isShown, setShown] = useState(false);
 
   return (
-    <Stack space="xs">
-      <Text>{item.text}</Text>
-      <Text tone="light">
-        {isShown ? (
-          item.translation
-        ) : (
-          <TextLink href="#" onClick={() => setShown(true)}>
-            Show translation
-          </TextLink>
-        )}
-      </Text>
-    </Stack>
+    <Flex space="xs">
+      <Text size="sm">{item.text}</Text>
+      {isShown ? (
+        <Text size="sm">{item.translation}</Text>
+      ) : (
+        <TextLink href="#" size="sm" onPress={() => setShown(true)}>
+          Show translation
+        </TextLink>
+      )}
+    </Flex>
   );
 };
 
@@ -55,21 +40,18 @@ type Props = {
   onDelete: (id: string) => any;
 };
 
+const Entry = styled(Flex, {
+  p: '$2',
+  pr: '$3',
+  borderBottom: '1px solid $surfaceActive',
+});
+
 const MemoryEntry: React.FC<Props> = ({ item, onDelete }) => {
   return (
-    <li className={styles.entry}>
-      <Box p="s" pb="m">
-        <Columns>
-          <Column>
-            <Stack space="s">
-              <Header item={item} onDelete={onDelete} />
-              <Texts item={item} />
-            </Stack>
-          </Column>
-          <Column width="content"></Column>
-        </Columns>
-      </Box>
-    </li>
+    <Entry as="li" space="sm" cross="stretch">
+      <Header item={item} onDelete={onDelete} />
+      <Texts item={item} />
+    </Entry>
   );
 };
 

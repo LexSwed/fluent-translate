@@ -1,12 +1,60 @@
 import React, { useState, useRef, useLayoutEffect } from 'react';
-import cx from 'classnames';
 import autosize from 'autosize';
-import { Box } from '@fxtrot/edge';
-
-import styles from './styles.css';
+import { styled, Box, Flex } from '@fxtrot/ui';
 
 import { useText } from '../store/utils';
 import FromLanguageSelect from './FromLanguageSelect';
+
+const TextArea = styled('textarea', {
+  display: 'block',
+  outline: 'none',
+  border: 'none',
+  resize: 'none',
+  fontFamily: 'inherit',
+  minHeight: '1em',
+  maxHeight: '150px',
+  width: 'calc(100% - 12px * 2)',
+  overflow: 'hidden',
+  fontSize: '$sm',
+  height: '$4',
+  px: '$2',
+  py: '$2',
+  m: 0,
+  br: '$md',
+  bc: 'transparent',
+  color: '$text',
+});
+const SelectWrapper = styled(Box, {
+  pr: '$1',
+});
+
+const Wrapper = styled(Flex, {
+  border: '1px solid $borderStill',
+  br: '$md',
+  display: 'flex',
+  alignItems: 'center',
+  transition: '0.12s ease-in-out',
+
+  variants: {
+    focused: {
+      true: {
+        borderColor: '$borderActive',
+      },
+      false: {
+        'borderColor': '$borderStill',
+        ':hover': { borderColor: '$borderHover' },
+      },
+    },
+    multiline: {
+      true: {
+        [`> ${SelectWrapper}`]: {
+          alignSelf: 'flex-end',
+          pb: '$1',
+        },
+      },
+    },
+  },
+});
 
 const TextInput: React.FC = () => {
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -29,26 +77,23 @@ const TextInput: React.FC = () => {
   }, [inputRef]);
 
   return (
-    <Box
-      className={cx(
-        styles.wrapper,
-        multiline && styles.multiline,
-        focused && styles.inputFocused
-      )}
+    <Wrapper
+      flow={multiline ? 'column' : 'row'}
+      focused={focused}
+      multiline={multiline}
     >
-      <textarea
+      <TextArea
         value={text}
-        onChange={(e) => setText(e.target.value)}
+        onChange={(e: any) => setText(e.target.value)}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
-        className={styles.input}
         autoFocus
         ref={inputRef}
       />
-      <Box className={styles.languageSelect}>
+      <SelectWrapper>
         <FromLanguageSelect />
-      </Box>
-    </Box>
+      </SelectWrapper>
+    </Wrapper>
   );
 };
 

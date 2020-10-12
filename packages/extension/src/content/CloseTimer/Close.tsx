@@ -1,12 +1,11 @@
 import React from 'react';
+import { Button, Icon, styled } from '@fxtrot/ui';
 
-import styles from './styles.css';
-
-const Icon = (
+const svg = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
-    fill="var(--text-color)"
+    fill="currentColor"
     width="100%"
     height="100%"
   >
@@ -15,14 +14,17 @@ const Icon = (
   </svg>
 );
 
-const Close: React.FC<React.DetailedHTMLProps<
-  React.ButtonHTMLAttributes<HTMLButtonElement>,
-  HTMLButtonElement
->> = (props) => {
+export const CloseButton = styled(Button, {
+  p: 0,
+  size: '$5',
+  opacity: 0,
+});
+
+const Close: React.FC<React.ComponentProps<typeof Button>> = (props) => {
   return (
-    <button {...props} className={styles.close}>
-      {Icon}
-    </button>
+    <CloseButton {...props} variant="flat" size="sm">
+      <Icon as={svg} />
+    </CloseButton>
   );
 };
 

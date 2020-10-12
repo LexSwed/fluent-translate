@@ -1,5 +1,5 @@
 import qs from 'qs';
-import { uuid } from 'uuidv4';
+import { v4 } from 'uuid';
 
 export async function getLanguages() {
   const { translation } = await makeRequest(
@@ -10,7 +10,7 @@ export async function getLanguages() {
     {
       headers: {
         'Content-type': 'application/json',
-        'X-ClientTraceId': uuid().toString(),
+        'X-ClientTraceId': v4().toString(),
       },
     }
   );

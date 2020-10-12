@@ -1,13 +1,44 @@
 import React, { useState, useEffect } from 'react';
-import cx from 'classnames';
-import { Box, Columns, Column } from '@fxtrot/edge';
-
-import styles from './styles.css';
+import { styled, Box } from '@fxtrot/ui';
 
 import MemoryHeading from '../Memory/MemoryHeading';
 import Memory from '../Memory';
 import { useMemory } from '../Memory/Memory';
 import More from './More';
+
+const MainSheet = styled(Box, {
+  position: 'absolute',
+  top: 'calc(100vh - 40px)',
+  left: 0,
+  width: '100%',
+  transition: 'transform 0.24s ease-in-out',
+  minHeight: '100vh',
+  overflow: 'hidden',
+  bc: '$surfaceStill',
+  variants: {
+    open: {
+      true: {
+        transform: 'translateY(calc(-1 * (100vh - 40px)))',
+      },
+    },
+  },
+});
+
+const FooterBar = styled(Box, {
+  p: '$2',
+  display: 'flex',
+  justifyContent: 'space-between',
+  borderBottom: '1px solid transparent',
+  transition: '0.2s 0.1s ease-in',
+  variants: {
+    open: {
+      true: {
+        bc: '$surfaceHover',
+        borderColor: '$surfaceActive',
+      },
+    },
+  },
+});
 
 const Footer = () => {
   const [isOpen, setOpen] = useState(false);
@@ -20,23 +51,15 @@ const Footer = () => {
   }, [isMemory]);
 
   return (
-    <div className={cx(styles.footer, isOpen && styles.footerOpen)}>
-      <Box
-        px="m"
-        py="s"
-        className={cx(styles.footerBar, isOpen && styles.footerBarOpen)}
-      >
-        <Columns align="apart" alignY="center">
-          <More />
-          {isMemory ? (
-            <Column width="content">
-              <MemoryHeading isOpen={isOpen} onClick={() => setOpen(!isOpen)} />
-            </Column>
-          ) : null}
-        </Columns>
-      </Box>
+    <MainSheet as="section" open={isOpen}>
+      <FooterBar as="footer" open={isOpen}>
+        <More />
+        {isMemory ? (
+          <MemoryHeading isOpen={isOpen} onPress={() => setOpen(!isOpen)} />
+        ) : null}
+      </FooterBar>
       {isOpen && <Memory />}
-    </div>
+    </MainSheet>
   );
 };
 
