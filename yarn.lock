@@ -1117,10 +1117,10 @@
     react-spring "^8.0.27"
     styled-system "^5.1.5"
 
-"@fxtrot/ui@^1.0.41":
-  version "1.0.41"
-  resolved "https://registry.yarnpkg.com/@fxtrot/ui/-/ui-1.0.41.tgz#b546ba9b89d0655e4d44639eb8abdd51895f82b5"
-  integrity sha512-SIHM3Ad4DnLXhL3xTGCHV/Ee56r+Xe6ntUb8shiWt+dJqf8g3aTe9jDRjdaUIG96LVTNmY/WAbxCjtX04Hvx2g==
+"@fxtrot/ui@^1.0.42":
+  version "1.0.42"
+  resolved "https://registry.yarnpkg.com/@fxtrot/ui/-/ui-1.0.42.tgz#b248bfcd14fd356e5800c65ea27f4764d9c9036b"
+  integrity sha512-ayIerH8AjKTlVUJSkM8R6N0DYs6kSLGDo0YaAjeu/x0Z2Mec9gfG17IaqGT/jqEodzEZ0p32dldswPJOg7Oi8g==
   dependencies:
     "@popperjs/core" "^2.5.3"
     "@react-aria/button" "^3.2.2"
