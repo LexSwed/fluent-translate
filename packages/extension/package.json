@@ -21,7 +21,7 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "@fxtrot/ui": "^1.0.39",
+    "@fxtrot/ui": "^1.0.41",
     "@sentry/browser": "^5.15.5",
     "@stitches/react": "^0.0.3-canary.3",
     "@webcomponents/webcomponentsjs": "^2.4.3",

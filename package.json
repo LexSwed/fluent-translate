@@ -10,10 +10,10 @@
     "build": "yarn build:ext && yarn build:www",
     "build:ext": "yarn workspace extension build",
     "build:www": "yarn workspace www build",
-    "lint": "eslint packages/**/*",
-    "typecheck": "echo 'avoid for now'",
+    "lint": "eslint packages/**/* --ext .js,.jsx,.ts,.tsx --ignore-pattern /node_modules/",
+    "typecheck": "npx npm-run-all -p tsc:www tsc:ext",
     "tsc:ext": "tsc -p ./packages/extension --noEmit",
-    "tsc:www": "tsc  -p ./packages/www --noEmit",
+    "tsc:www": "tsc -p ./packages/www --noEmit",
     "release": "yarn run semantic-release"
   },
   "devDependencies": {
