@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Text, Button, Icon, TextLink, Flex, styled } from '@fxtrot/ui';
+import { Text, Button, Icon, Flex, styled } from '@fxtrot/ui';
 import { HiOutlineTrash } from 'react-icons/hi';
 
 const Header: React.FC<Props> = ({ item, onDelete }) => {
