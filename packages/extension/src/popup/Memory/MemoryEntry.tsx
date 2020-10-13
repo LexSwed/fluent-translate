@@ -27,9 +27,9 @@ const Texts: React.FC<Omit<Props, 'onDelete'>> = ({ item }) => {
       {isShown ? (
         <Text size="sm">{item.translation}</Text>
       ) : (
-        <TextLink href="#" size="sm" onPress={() => setShown(true)}>
+        <Button size="sm" onPress={() => setShown(true)} variant="link">
           Show translation
-        </TextLink>
+        </Button>
       )}
     </Flex>
   );
