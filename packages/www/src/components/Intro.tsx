@@ -9,7 +9,7 @@ import {
 } from '@fxtrot/edge';
 
 import styles from './styles.module.css';
-import Image from '../../components/image';
+import Image from './image';
 
 const Intro: React.FC = () => {
   return (

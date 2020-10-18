@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, ContentBlock, Stack, Heading } from '@fxtrot/edge';
 
-import Image from '../../components/image';
+import Image from './image';
 
 const items = [
   {

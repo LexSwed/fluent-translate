@@ -1,8 +1,8 @@
 import React from 'react';
 import { Box } from '@fxtrot/edge';
 
-import Intro from './Intro';
-import Features from './Features';
+import Intro from '../components/Intro';
+import Features from '../components/Features';
 
 const Main: React.FC = () => {
   return (
