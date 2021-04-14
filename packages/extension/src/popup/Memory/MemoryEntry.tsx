@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 
 import { Text, Button, Icon, Flex, styled } from '@fxtrot/ui';
-import { HiOutlineTrash } from 'react-icons/hi';
+import { TrashIcon } from '@heroicons/react/outline';
 
 const Header: React.FC<Props> = ({ item, onDelete }) => {
   return (
-    <Flex flow="row" main="spread" cross="center">
+    <Flex flow="row" main="space-between" cross="center">
       <Text size="xs" css={{ color: '$textDisabled' }}>
         {item.from}
         <span aria-label="translated to"> → </span>
         {item.to}
       </Text>
-      <Button size="sm" variant="flat" onPress={() => onDelete(item.id)}>
-        <Icon as={HiOutlineTrash} />
+      <Button size="sm" variant="flat" onClick={() => onDelete(item.id)}>
+        <Icon as={TrashIcon} />
       </Button>
     </Flex>
   );
@@ -22,12 +22,12 @@ const Texts: React.FC<Omit<Props, 'onDelete'>> = ({ item }) => {
   const [isShown, setShown] = useState(false);
 
   return (
-    <Flex space="xs">
-      <Text size="sm">{item.text}</Text>
+    <Flex gap="sm">
+      <Text>{item.text}</Text>
       {isShown ? (
-        <Text size="sm">{item.translation}</Text>
+        <Text>{item.translation}</Text>
       ) : (
-        <Button size="sm" onPress={() => setShown(true)} variant="link">
+        <Button size="sm" onClick={() => setShown(true)} variant="link">
           Show translation
         </Button>
       )}
@@ -41,14 +41,14 @@ type Props = {
 };
 
 const Entry = styled(Flex, {
-  p: '$2',
-  pr: '$3',
-  borderBottom: '1px solid $surfaceActive',
+  p: '$3',
+  py: '$2',
+  borderBottom: '1px solid $borderLight',
 });
 
 const MemoryEntry: React.FC<Props> = ({ item, onDelete }) => {
   return (
-    <Entry as="li" space="sm" cross="stretch">
+    <Entry as="li" gap="sm">
       <Header item={item} onDelete={onDelete} />
       <Texts item={item} />
     </Entry>

@@ -12,7 +12,7 @@ const styles: StyleRecord = {
   },
   text: {
     whiteSpace: 'pre-wrap',
-    fontSize: '$sm',
+    fontSize: '$md',
     fontWeight: 500,
   },
 };
@@ -23,7 +23,7 @@ const Translated: React.FC = () => {
   const languages = useLanguages();
 
   return (
-    <Flex space="sm" cross="stretch">
+    <Flex gap="sm" cross="stretch">
       <LanguageSelect
         value={to}
         onChange={setTo}

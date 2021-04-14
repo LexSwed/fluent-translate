@@ -1,15 +1,12 @@
 import React from 'react';
 
-type Props = React.DetailedHTMLProps<
-  React.ImgHTMLAttributes<HTMLImageElement>,
-  HTMLImageElement
->;
+interface Props extends React.ComponentProps<'img'> {}
 
-const Image: React.FC<Props> = ({ src, ...props }) => {
+const Image: React.FC<Props> = ({ src, className, ...props }) => {
   const path = src?.slice(0, src.lastIndexOf('.'));
 
   return (
-    <picture>
+    <picture className={className}>
       <source type="image/webp" srcSet={`${path}.webp`} />
       <source type="image/png" srcSet={`${path}.png`} />
       <source type="image/jpg" srcSet={`${path}.jpg`} />

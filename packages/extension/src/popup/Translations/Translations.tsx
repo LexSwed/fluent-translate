@@ -37,7 +37,7 @@ const Translations = () => {
 
   return (
     <Box css={styles.wrapper}>
-      <Flex space="sm" cross="stretch">
+      <Flex gap="sm" cross="stretch">
         {Object.entries(data.translations).map(([pos, translations]) => {
           return (
             <Flex key={pos} cross="stretch">

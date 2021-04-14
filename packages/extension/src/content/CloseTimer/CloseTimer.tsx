@@ -45,7 +45,7 @@ const CloseTimer: React.FC<Props> = ({ isMouseOver, onClose }) => {
   return (
     <Wrapper isMouseOver={isMouseOver}>
       <Timer isMouseOver={isMouseOver} onTimeout={onClose} />
-      <Close onPress={onClose} />
+      <Close onClick={onClose} />
     </Wrapper>
   );
 };

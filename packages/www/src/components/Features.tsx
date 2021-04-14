@@ -1,7 +1,8 @@
 import React from 'react';
-import { Box, ContentBlock, Stack, Heading } from '@fxtrot/edge';
+import { Box, Flex, Heading, css } from '@fxtrot/ui';
 
-import Image from './image';
+import Image from './Image';
+import { ContentBlock } from './ContentBlock';
 
 const items = [
   {
@@ -20,23 +21,33 @@ const items = [
 
 const Features = () => {
   return (
-    <Box p="5vh 0">
-      <ContentBlock wide>
-        <Stack space="xl" align="center">
+    <Box py="5vh">
+      <ContentBlock css={{ maxWidth: 1280 }}>
+        <Flex gap="32" cross="center">
           {items.map((item) => (
-            <Stack key={item.img} align="center">
-              <Heading as="h3">{item.title}</Heading>
-              <Box
-                as={Image}
-                width={['100vw', '90vw', 600, 600]}
-                src={item.img}
-              />
-            </Stack>
+            <Flex key={item.img} gap="8" cross="center">
+              <Heading level={2}>{item.title}</Heading>
+              <Image className={styles.image} src={item.img} alt={item.title} />
+            </Flex>
           ))}
-        </Stack>
+        </Flex>
       </ContentBlock>
     </Box>
   );
 };
 
 export default Features;
+
+const styles = {
+  image: css({
+    '@initial': {
+      maxWidth: 600,
+    },
+    '@tablet': {
+      maxWidth: '80vw',
+    },
+    '@mobile': {
+      maxWidth: '90vw',
+    },
+  })(),
+} as const;

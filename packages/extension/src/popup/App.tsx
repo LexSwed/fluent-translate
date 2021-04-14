@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { Flex, Box, Icon, Text, StyleRecord } from '@fxtrot/ui';
-import { HiOutlineFire } from 'react-icons/hi';
+import { FireIcon } from '@heroicons/react/outline';
 
 import TextInput from './TextInput';
 import Results from './Results';
@@ -8,8 +8,6 @@ import Footer from './Footer';
 
 import { Sentry } from '../utils';
 import { useError } from './store/utils';
-// TODO: remove it when stitches global css works!
-import './global.css';
 
 const styles: StyleRecord = {
   app: {
@@ -18,6 +16,7 @@ const styles: StyleRecord = {
     overflow: 'hidden',
     bc: '$surfaceStill',
     minWidth: '360px',
+    minHeight: '220px',
   },
 };
 
@@ -42,8 +41,8 @@ class App extends React.Component<{ error?: string | null }> {
     if (this.state.hasError) {
       return (
         <Box css={styles.app}>
-          <Flex cross="center" main="center" space="md">
-            <Icon as={HiOutlineFire} size="3xl" color="$gray400" />
+          <Flex cross="center" main="center" gap="md">
+            <Icon as={FireIcon} size="3xl" color="$gray400" />
             {this.props.error ? (
               <Text align="center" size="sm">
                 {this.props.error}
@@ -70,7 +69,7 @@ class App extends React.Component<{ error?: string | null }> {
     }
     return (
       <>
-        <Flex main="stretch" cross="stretch" space="md" css={styles.app}>
+        <Flex main="stretch" cross="stretch" gap="md" css={styles.app}>
           <TextInput />
           <Results />
         </Flex>

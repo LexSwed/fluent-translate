@@ -6,51 +6,39 @@ import { ThemeProvider } from '@fxtrot/ui';
 
 type Theme = React.ComponentProps<typeof ThemeProvider>['theme'];
 
-const theme: Theme = {
-  colors: {
-    $text: 'var(--colors-gray900)',
-    $textDisabled: 'var(--colors-gray500)',
-    $textLight: 'var(--colors-gray400)',
-    $accent: '#03748c',
-
-    $primaryStill: '#03819c',
-    $primaryHover: '#03748c',
-    $primaryActive: '#02677d',
-    $primaryLight: '#4fa7ba',
-    $primaryLightActive: '#81c0ce',
-
-    $surfaceStill: '#fff',
-    $surfaceHover: 'var(--colors-gray100)',
-    $surfaceActive: 'var(--colors-gray200)',
-    $surfaceDisabled: 'var(--colors-gray200)',
-
-    $borderStill: 'var(--colors-gray400)',
-    $borderHover: 'var(--colors-gray500)',
-    $borderActive: 'var(--colors-gray600)',
-  },
-};
-
 const darkTheme: Theme = {
   colors: {
-    $text: '#fff',
-    $textDisabled: 'var(--colors-gray400)',
-    $textLight: '#9D9D9D',
-    $accent: '#fff',
+    text: '#fff',
+    textDisabled: '$gray200',
+    textLight: '#9D9D9D',
+    textSubtle: '#9D9D9D',
+    accent: '#359ab0',
+    accentLight: '$gray50',
+    focusRing: '$gray50',
 
-    $primaryStill: '#359ab0',
-    $primaryHover: '#1c8ea6',
-    $primaryActive: '#03819c',
-    $primaryLight: '#4fa7ba',
-    $primaryLightActive: '#81c0ce',
+    success: '$success',
+    danger: '$danger',
 
-    $surfaceStill: '#333333',
-    $surfaceHover: '#404040',
-    $surfaceActive: '#454545',
-    $surfaceDisabled: 'rgba(0,0,0,0.2)',
+    primaryStill: '#359ab0',
+    primaryHover: '#1c8ea6',
+    primaryActive: '#03819c',
+    primaryLight: '#4fa7ba',
+    primaryLightActive: '#81c0ce',
 
-    $borderStill: '#737373',
-    $borderHover: '#9A9A9A',
-    $borderActive: '#888888',
+    surfaceStill: '#333333',
+    surfaceHover: '#404040',
+    surfaceActive: '#454545',
+    surfaceDisabled: 'rgba(0,0,0,0.2)',
+
+    flatStill: 'transparent',
+    flatHover: 'rgba(255,255,255,0.15)',
+    flatActive: 'rgba(255,255,255,0.3)',
+    flatDisabled: 'rgba(0,0,0,0.2)',
+
+    borderStill: '#737373',
+    borderHover: '#9A9A9A',
+    borderActive: '#888888',
+    borderLight: '#404040',
   },
 };
 
@@ -59,7 +47,7 @@ const AppContextProvider: React.FC = ({ children }) => {
   const prefersDark = useMediaQuery('(prefers-color-scheme: dark)');
 
   return (
-    <ThemeProvider theme={prefersDark ? darkTheme : theme}>
+    <ThemeProvider theme={prefersDark ? darkTheme : 'cyan'}>
       <StoreContextProvider value={store}>{children}</StoreContextProvider>
     </ThemeProvider>
   );

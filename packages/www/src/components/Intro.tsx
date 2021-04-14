@@ -1,56 +1,48 @@
 import React from 'react';
-import {
-  Box,
-  ContentBlock,
-  Columns,
-  Column,
-  Heading,
-  Stack,
-} from '@fxtrot/edge';
+import { Box, Flex, Grid, Heading, styled } from '@fxtrot/ui';
 
-import styles from './styles.module.css';
-import Image from './image';
+import Image from './Image';
+import { ContentBlock } from './ContentBlock';
 
 const Intro: React.FC = () => {
   return (
-    <Box bg="gray.100" p="5vh 0">
+    <Box py="5vh">
       <ContentBlock>
-        <Columns alignY="center" align="apart">
-          <Column width="1/3">
-            <Stack>
-              <Heading as="h1">Translator Extension for your browser</Heading>
-              <a
-                href="https://chrome.google.com/webstore/detail/jbkaeigbknejjmhnkhmankagkfepncmn"
-                className={styles.webStore}
-              >
-                <img
-                  src="/images/chrome-web-store.png"
-                  alt="Available in Chrome Web Store"
-                />
-              </a>
-              <a
-                href="https://microsoftedge.microsoft.com/addons/detail/fnpmkppmkmjgcdkjoblipakmfnocefog"
-                className={styles.webStore}
-              >
-                <img
-                  src="/images/edge-addons.png"
-                  alt="Available in Microsoft Edge Addons"
-                />
-              </a>
-            </Stack>
-          </Column>
-          <Column width="1/2">
-            <div>
-              <Image
-                src="/images/screenshot-1.png"
-                className={styles.screenshot}
+        <Heading>Translator Extension for your browser</Heading>
+        <Grid columns="1fr 1fr" gap="16">
+          <Flex gap="6">
+            <WebstoreLink href="https://chrome.google.com/webstore/detail/jbkaeigbknejjmhnkhmankagkfepncmn">
+              <img
+                src="/images/chrome-web-store.png"
+                alt="Available in Chrome Web Store"
               />
-            </div>
-          </Column>
-        </Columns>
+            </WebstoreLink>
+            <WebstoreLink href="https://microsoftedge.microsoft.com/addons/detail/fnpmkppmkmjgcdkjoblipakmfnocefog">
+              <img
+                src="/images/edge-addons.png"
+                alt="Available in Microsoft Edge Addons"
+              />
+            </WebstoreLink>
+          </Flex>
+          <Image src="/images/screenshot-1.png" />
+        </Grid>
       </ContentBlock>
     </Box>
   );
 };
 
 export default Intro;
+
+const WebstoreLink = styled('a', {
+  'height': 80,
+  'br': '$md',
+  'bc': '#fff',
+  'textDecoration': 'none',
+  'display': 'flex',
+  'alignContent': 'center',
+  'focusRing': '$focusRing',
+  '& > img': { maxHeight: '100%' },
+  '&:hover': {
+    boxShadow: '0 0 0 3px $colors$focusRing',
+  },
+});

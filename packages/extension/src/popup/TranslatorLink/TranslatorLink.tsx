@@ -8,14 +8,13 @@ const style: StyleRecord = { css: { fontWeight: 400 } };
 
 const TranslatorLink = React.forwardRef<
   HTMLAnchorElement,
-  React.ComponentProps<typeof TextLink>
+  React.ComponentProps<'a'>
 >(({ children, ...props }, ref) => {
-  const [to] = useToLanguage();
-  const [text] = useText();
+  const href = useTranslatorLink();
 
   return (
     <TextLink
-      href={getTranslatorLink({ to, text })}
+      href={href}
       target="_blank"
       rel="noopener"
       css={style}
@@ -28,3 +27,10 @@ const TranslatorLink = React.forwardRef<
 });
 
 export default TranslatorLink;
+
+export function useTranslatorLink() {
+  const [to] = useToLanguage();
+  const [text] = useText();
+
+  return getTranslatorLink({ to, text });
+}

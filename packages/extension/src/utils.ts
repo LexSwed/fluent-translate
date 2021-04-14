@@ -55,7 +55,7 @@ export const Storage = {
   },
   setItems: (item: object, storageType: 'local' | 'sync' = 'local') => {
     return new Promise((resolve) =>
-      chrome.storage[storageType].set(item, () => resolve())
+      chrome.storage[storageType].set(item, () => resolve(undefined))
     );
   },
   getSyncItems: <T>(key: StorageKey) => Storage.getItems<T>(key, 'sync'),

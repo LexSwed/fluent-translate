@@ -21,6 +21,7 @@ const Main = styled(Box, {
   p: '$4',
   transition: '0.2s',
   boxShadow: '$xl',
+  color: '$text',
 });
 
 const App: React.FC<Props> = ({ text, onClose }) => {
@@ -37,10 +38,10 @@ const App: React.FC<Props> = ({ text, onClose }) => {
       onMouseLeave={() => setMouseOver(false)}
     >
       <CloseTimer isMouseOver={isMouseOver} onClose={onClose} />
-      <Flex space="md">
-        <Flex space="sm">
+      <Flex gap="md">
+        <Flex gap="sm">
           <FromLanguageSelect />
-          <Text size="sm">{text}</Text>
+          <Text size="md">{text}</Text>
         </Flex>
         <Translated />
       </Flex>

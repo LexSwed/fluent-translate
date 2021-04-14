@@ -1,22 +1,23 @@
 import React from 'react';
-import { Icon, Menu, styled, Text } from '@fxtrot/ui';
-import { HiDotsVertical } from 'react-icons/hi';
+import { Icon, Button, Menu, Item as MenuItem, styled, Text } from '@fxtrot/ui';
+import { DotsVerticalIcon } from '@heroicons/react/outline';
 
-import TranslatorLink from '../TranslatorLink';
+import { useTranslatorLink } from '../TranslatorLink/TranslatorLink';
 
-const Item = styled(Menu.Item, {
-  height: '$7',
+const Item = styled(MenuItem, {
+  height: '$8',
 });
 
 const More: React.FC = () => {
+  const translatorHref = useTranslatorLink();
   return (
     <Menu>
-      <Menu.Button variant="flat" aria-label="More" size="sm">
-        <Icon as={HiDotsVertical} size="sm" />
-      </Menu.Button>
-      <Menu.List offset={0}>
+      <Button variant="flat" aria-label="More" size="xs">
+        <Icon as={DotsVerticalIcon} size="md" />
+      </Button>
+      <Menu.List>
         <Item
-          onPress={() =>
+          onClick={() =>
             chrome.tabs.create({
               url: 'https://alexanderswed.typeform.com/to/sjSxc6',
             })
@@ -24,7 +25,13 @@ const More: React.FC = () => {
         >
           <Text size="sm">Leave Feedback</Text>
         </Item>
-        <Item as={TranslatorLink}>
+        <Item
+          onClick={() => {
+            chrome.tabs.create({
+              url: translatorHref,
+            });
+          }}
+        >
           <Text size="sm">Open in Microsoft Bing</Text>
         </Item>
       </Menu.List>

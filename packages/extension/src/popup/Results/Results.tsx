@@ -8,7 +8,7 @@ import LanguageIcon from './LanguageIcon';
 const Wrapper = styled(Flex, {
   userSelect: 'none',
   height: '$24',
-  color: '$gray300',
+  color: '$textLight',
 });
 
 const Result = () => {

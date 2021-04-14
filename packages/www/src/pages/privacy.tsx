@@ -1,10 +1,12 @@
 import React from 'react';
-import { ContentBlock } from '@fxtrot/edge';
+import { Heading } from '@fxtrot/ui';
+
+import { ContentBlock } from '../components/ContentBlock';
 
 const Privacy = () => {
   return (
     <ContentBlock>
-      <h1>Privacy Policy for Edge Translate</h1>
+      <Heading>Privacy Policy for Edge Translate</Heading>
 
       <p>
         At Edge Translate, accessible from https://edge-translate.now.sh/, one
@@ -26,14 +28,14 @@ const Privacy = () => {
         website.
       </p>
 
-      <h2>Consent</h2>
+      <Heading level={2}>Consent</Heading>
 
       <p>
         By using our Edge Translate extension, you hereby consent to our Privacy
         Policy and agree to its terms.
       </p>
 
-      <h2>Information we collect</h2>
+      <Heading level={2}>Information we collect</Heading>
 
       <p>
         The personal information that you are asked to provide, and the reasons
@@ -47,7 +49,7 @@ const Privacy = () => {
         you may choose to provide.
       </p>
 
-      <h2>How we use your information</h2>
+      <Heading level={2}>How we use your information</Heading>
 
       <p>
         We only use the information passed to the extension directly in order to
@@ -58,7 +60,7 @@ const Privacy = () => {
         <li>Send entered text to the Translator service</li>
       </ul>
 
-      <h2>Advertising Partners Privacy Policies</h2>
+      <Heading level={2}>Advertising Partners Privacy Policies</Heading>
 
       <p>
         You may consult this list to find the Privacy Policy for each of the
@@ -80,7 +82,7 @@ const Privacy = () => {
         that are used by third-party advertisers.
       </p>
 
-      <h2>Third Party Privacy Policies</h2>
+      <Heading level={2}>Third Party Privacy Policies</Heading>
 
       <p>
         Edge Translate's Privacy Policy does not apply to other advertisers or
@@ -97,7 +99,9 @@ const Privacy = () => {
         websites.
       </p>
 
-      <h2>CCPA Privacy Rights (Do Not Sell My Personal Information)</h2>
+      <Heading level={2}>
+        CCPA Privacy Rights (Do Not Sell My Personal Information)
+      </Heading>
 
       <p>
         Under the CCPA, among other rights, California consumers have the right
@@ -121,7 +125,7 @@ const Privacy = () => {
         like to exercise any of these rights, please contact us.
       </p>
 
-      <h2>GDPR Data Protection Rights</h2>
+      <Heading level={2}>GDPR Data Protection Rights</Heading>
 
       <p>
         We would like to make sure you are fully aware of all of your data
@@ -159,7 +163,7 @@ const Privacy = () => {
         like to exercise any of these rights, please contact us.
       </p>
 
-      <h2>Children's Information</h2>
+      <Heading level={2}>Children's Information</Heading>
 
       <p>
         Another part of our priority is adding protection for children while

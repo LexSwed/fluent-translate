@@ -1,13 +1,23 @@
 import React from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import { ThemeProvider } from '@fxtrot/edge';
+import { stitchesConfig, ThemeProvider } from '@fxtrot/ui';
 
-import './global.css';
+import Header from '../components/Header';
 
-import Header from '../components/header';
+const globals = stitchesConfig.global({
+  html: {
+    overscrollBehavior: 'none',
+  },
+  body: {
+    m: 0,
+    background:
+      'radial-gradient(farthest-corner at 30% 30%,$warmGray100 20%, $blueGray100 80%)',
+  },
+});
 
 const App = ({ Component, pageProps }: AppProps) => {
+  globals();
   return (
     <>
       <Head>
@@ -29,7 +39,7 @@ const App = ({ Component, pageProps }: AppProps) => {
           content="https://edge-translate.now.sh/images/twitter-image.png"
         />
       </Head>
-      <ThemeProvider>
+      <ThemeProvider theme="lightBlue">
         <Header />
         <Component {...pageProps} />
       </ThemeProvider>

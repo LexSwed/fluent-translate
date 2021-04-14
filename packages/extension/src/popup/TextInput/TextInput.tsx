@@ -1,4 +1,4 @@
-import React, { useState, useRef, useLayoutEffect } from 'react';
+import React, { useRef, useLayoutEffect } from 'react';
 import autosize from 'autosize';
 import { styled, Box, Flex } from '@fxtrot/ui';
 
@@ -11,42 +11,38 @@ const TextArea = styled('textarea', {
   border: 'none',
   resize: 'none',
   fontFamily: 'inherit',
-  minHeight: '1em',
+  minHeight: '1rem',
+  height: '1rem',
   maxHeight: '150px',
   width: 'calc(100% - 8px * 2)',
+  boxSizing: 'content-box',
   overflow: 'hidden',
-  fontSize: '$sm',
-  height: '$3',
+  fontSize: '$md',
   p: '$2',
-  m: 0,
   br: '$md',
   bc: 'transparent',
   color: '$text',
 });
+
 const SelectWrapper = styled(Box, {
   pr: '$1',
 });
 
 const Wrapper = styled(Flex, {
-  border: '1px solid $borderStill',
-  br: '$md',
-  display: 'flex',
-  alignItems: 'center',
-  transition: '0.12s ease-in-out',
+  'border': '1px solid $borderStill',
+  'br': '$md',
+  'transition': '0.12s ease-in-out',
 
-  variants: {
-    focused: {
-      true: {
-        borderColor: '$borderActive',
-      },
-      false: {
-        'borderColor': '$borderStill',
-        ':hover': { borderColor: '$borderHover' },
-      },
-    },
+  ':hover': { borderColor: '$borderHover' },
+
+  '&:focus-within': {
+    borderColor: '$borderActive',
+  },
+
+  'variants': {
     multiline: {
       true: {
-        [`> ${SelectWrapper}`]: {
+        [`& > ${SelectWrapper}`]: {
           alignSelf: 'flex-end',
           pb: '$1',
         },
@@ -57,7 +53,6 @@ const Wrapper = styled(Flex, {
 
 const TextInput: React.FC = () => {
   const inputRef = useRef<HTMLTextAreaElement>(null);
-  const [focused, setFocused] = useState(false);
   const [text, setText] = useText();
 
   const multiline = Math.floor(text.length / 25) > 0 || text.includes('\n');
@@ -78,16 +73,15 @@ const TextInput: React.FC = () => {
   return (
     <Wrapper
       flow={multiline ? 'column' : 'row'}
-      focused={focused}
       multiline={multiline}
       main="stretch"
-      cross="stretch"
+      cross={multiline ? 'stretch' : 'center'}
     >
       <TextArea
         value={text}
-        onChange={(e: any) => setText(e.target.value)}
-        onFocus={() => setFocused(true)}
-        onBlur={() => setFocused(false)}
+        onChange={(e: any) => {
+          setText(e.target.value);
+        }}
         autoFocus
         ref={inputRef}
       />
