@@ -12,17 +12,17 @@ const darkTheme: Theme = {
     textDisabled: '$gray200',
     textLight: '#9D9D9D',
     textSubtle: '#9D9D9D',
-    accent: '#359ab0',
+    accent: '#4fcae6',
     accentLight: '$gray50',
     focusRing: '$gray50',
 
     success: '$success',
     danger: '$danger',
 
-    primaryStill: '#359ab0',
-    primaryHover: '#1c8ea6',
-    primaryActive: '#03819c',
-    primaryLight: '#4fa7ba',
+    primaryStill: '#4fcae6',
+    primaryHover: '#6adef8',
+    primaryActive: '#1e99b4',
+    primaryLight: '#5db6ca',
     primaryLightActive: '#81c0ce',
 
     surfaceStill: '#333333',
