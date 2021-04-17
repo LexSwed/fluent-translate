@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex, Heading, css } from '@fxtrot/ui';
+import { Box, Flex, Heading } from '@fxtrot/ui';
 
 import Image from './Image';
 import { ContentBlock } from './ContentBlock';
@@ -27,7 +27,7 @@ const Features = () => {
           {items.map((item) => (
             <Flex key={item.img} gap="8" cross="center">
               <Heading level={2}>{item.title}</Heading>
-              <Image className={styles.image} src={item.img} alt={item.title} />
+              <Image src={item.img} alt={item.title} />
             </Flex>
           ))}
         </Flex>
@@ -37,17 +37,3 @@ const Features = () => {
 };
 
 export default Features;
-
-const styles = {
-  image: css({
-    '@initial': {
-      maxWidth: 600,
-    },
-    '@tablet': {
-      maxWidth: '80vw',
-    },
-    '@mobile': {
-      maxWidth: '90vw',
-    },
-  })(),
-} as const;

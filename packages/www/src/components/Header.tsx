@@ -32,10 +32,10 @@ const Header = () => {
           <TextLink href="https://github.com/LexSwed/edge-translate">
             Sources
           </TextLink>
-          <Link href="/privacy">
+          <Link href="/privacy" passHref>
             <TextLink>Privacy Policy</TextLink>
           </Link>
-          <TextLink href="https://alexanderswed.typeform.com/to/sjSxc6">
+          <TextLink href="https://lexswed.typeform.com/to/fKJxgcPE">
             Leave Feedback
           </TextLink>
         </Flex>

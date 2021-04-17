@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useText } from '../../popup/store/utils';
 import { styled } from '@fxtrot/ui';
 
-const TIME_LIMIT = 4000;
+const TIME_LIMIT = 8000;
 const R = 32;
 const FULL_DASH_ARRAY = 2 * Math.PI * R;
 const path = `

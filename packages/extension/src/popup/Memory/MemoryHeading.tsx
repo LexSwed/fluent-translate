@@ -9,9 +9,17 @@ type Props = {
 
 const MemoryHeading: React.FC<Props> = ({ isOpen, onClick }) => {
   return (
-    <Button variant="flat" onClick={onClick} size="xs">
+    <Button
+      variant="flat"
+      onClick={onClick}
+      size="xs"
+      cross="center"
+      css={{ fontSize: '$sm' }}
+    >
       <Icon as={BookmarkAltIcon} />
-      <Text size="sm">{isOpen ? 'Close' : 'Memory'}</Text>
+      <Text size="sm" css={{ lineHeight: 1 }}>
+        {isOpen ? 'Close' : 'Memory'}
+      </Text>
     </Button>
   );
 };

@@ -10,8 +10,8 @@ const darkTheme: Theme = {
   colors: {
     text: '#fff',
     textDisabled: '$gray200',
-    textLight: '#9D9D9D',
-    textSubtle: '#9D9D9D',
+    textLight: '$gray300',
+    textSubtle: '#gray400',
     accent: '#4fcae6',
     accentLight: '$gray50',
     focusRing: '$gray50',
@@ -47,7 +47,7 @@ const AppContextProvider: React.FC = ({ children }) => {
   const prefersDark = useMediaQuery('(prefers-color-scheme: dark)');
 
   return (
-    <ThemeProvider theme={prefersDark ? darkTheme : 'cyan'}>
+    <ThemeProvider theme={prefersDark ? darkTheme : 'lightBlue'}>
       <StoreContextProvider value={store}>{children}</StoreContextProvider>
     </ThemeProvider>
   );

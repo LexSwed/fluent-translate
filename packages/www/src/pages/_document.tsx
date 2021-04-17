@@ -8,7 +8,7 @@ export default class Document extends NextDocument {
       <Html lang="en">
         <Head>
           <style
-            id="stitches"
+            id="fxtrot-ui"
             dangerouslySetInnerHTML={{ __html: stitchesConfig.getCssString() }}
           />
           <link rel="icon" href="/favicon.png" />

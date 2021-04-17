@@ -1,21 +1,10 @@
 import React from 'react';
-import { Text, Flex, Box, StyleRecord } from '@fxtrot/ui';
+import { Text, Flex, Box } from '@fxtrot/ui';
 
 import { useToLanguage, useTranslation, useLanguages } from '../store/utils';
 import LanguageSelect from '../LanguageSelect';
 import TranslatorLink from '../TranslatorLink';
 import Translations from '../Translations';
-
-const styles: StyleRecord = {
-  box: {
-    pl: '$1',
-  },
-  text: {
-    whiteSpace: 'pre-wrap',
-    fontSize: '$md',
-    fontWeight: 500,
-  },
-};
 
 const Translated: React.FC = () => {
   const [to, setTo] = useToLanguage();
@@ -23,15 +12,15 @@ const Translated: React.FC = () => {
   const languages = useLanguages();
 
   return (
-    <Flex gap="sm" cross="stretch">
+    <Flex gap="4" cross="stretch">
       <LanguageSelect
         value={to}
         onChange={setTo}
         languages={languages}
         size="small"
       />
-      <Box css={styles.box}>
-        <Text css={styles.text}>
+      <Flex gap="6" css={{ pl: '$2' }}>
+        <Text size="lg">
           {truncated ? (
             <>
               {`${text}… `}
@@ -41,8 +30,8 @@ const Translated: React.FC = () => {
             text
           )}
         </Text>
-      </Box>
-      <Translations />
+        <Translations />
+      </Flex>
     </Flex>
   );
 };

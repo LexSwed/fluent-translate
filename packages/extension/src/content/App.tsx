@@ -41,7 +41,9 @@ const App: React.FC<Props> = ({ text, onClose }) => {
       <Flex gap="md">
         <Flex gap="sm">
           <FromLanguageSelect />
-          <Text size="md">{text}</Text>
+          <Box pl="$2">
+            <Text>{text}</Text>
+          </Box>
         </Flex>
         <Translated />
       </Flex>

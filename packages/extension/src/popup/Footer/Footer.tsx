@@ -61,6 +61,7 @@ const FooterBar = styled('footer', {
   display: 'flex',
   justifyContent: 'space-between',
   borderBottom: '1px solid transparent',
+  borderTop: '1px solid $borderLight',
   transition: '0.2s 0.1s ease-in',
   variants: {
     open: {

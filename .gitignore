@@ -2,6 +2,7 @@
 node_modules
 build/
 .env
+!packages/extension/.env
 .now
 .cache
 .parcel-cache

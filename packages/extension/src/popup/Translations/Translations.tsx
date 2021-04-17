@@ -1,6 +1,6 @@
 import React from 'react';
 import useSWR from 'swr';
-import { Box, Flex, Heading, StyleRecord, Text } from '@fxtrot/ui';
+import { Box, Flex, Grid, Heading, StyleRecord, Text } from '@fxtrot/ui';
 
 import { useTranslation, useText } from '../store/utils';
 import { API } from '../../utils';
@@ -11,15 +11,6 @@ const styles: StyleRecord = {
   },
   heading: {
     fontSize: '$xs',
-  },
-  box: {
-    display: 'grid',
-    gridTemplateColumns: '34% 1fr',
-    columnGap: '$3',
-    rowGap: '$1',
-  },
-  dictionary: {
-    lineHeight: 1.2,
   },
 };
 
@@ -37,27 +28,25 @@ const Translations = () => {
 
   return (
     <Box css={styles.wrapper}>
-      <Flex gap="sm" cross="stretch">
+      <Flex gap="md" cross="stretch">
         {Object.entries(data.translations).map(([pos, translations]) => {
           return (
-            <Flex key={pos} cross="stretch">
+            <Flex key={pos} gap="2" cross="stretch">
               <Heading as="h4" css={styles.heading}>
                 {pos}
               </Heading>
-              <Box css={styles.box}>
+              <Grid columns="34% 1fr" columnGap="3" rowGap="2">
                 {translations.map((el) => {
                   return (
                     <React.Fragment key={el.target}>
-                      <Text size="xs" css={styles.dictionary}>
+                      <Text size="sm" tone="light">
                         {el.target}
                       </Text>
-                      <Text size="xs" tone="light" css={styles.dictionary}>
-                        {el.backTranslations.join(', ')}
-                      </Text>
+                      <Text size="sm">{el.backTranslations.join(', ')}</Text>
                     </React.Fragment>
                   );
                 })}
-              </Box>
+              </Grid>
             </Flex>
           );
         })}

@@ -18,17 +18,22 @@
     "type": "git",
     "url": "git+https://github.com/LexSwed/edge-translate.git"
   },
+  "alias": {
+    "@fxtrot/ui": "../../../complete-core",
+    "react": "../../../complete-core/node_modules/react",
+    "react-dom": "../../../complete-core/node_modules/react-dom"
+  },
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "@fxtrot/ui": "^1.0.159",
+    "@fxtrot/ui": "^1.0.164",
     "@heroicons/react": "^1.0.1",
     "@sentry/browser": "^6.2.5",
     "@stitches/react": "^0.1.7",
     "@webcomponents/webcomponentsjs": "^2.4.3",
     "autosize": "^4.0.2",
     "debounce": "^1.2.0",
-    "framer-motion": "^4.1.3",
+    "framer-motion": "^4.1.4",
     "nanoid": "^3.1.7",
     "qs": "^6.9.4",
     "react": "^17.0.2",
@@ -55,8 +60,7 @@
     "main": {
       "engines": {
         "browsers": [
-          "> 1%",
-          "not dead"
+          "last 2 Chrome version"
         ]
       }
     }

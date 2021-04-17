@@ -6,6 +6,7 @@ import { useTranslatorLink } from '../TranslatorLink/TranslatorLink';
 
 const Item = styled(MenuItem, {
   height: '$8',
+  fontSize: '$sm',
 });
 
 const More: React.FC = () => {
@@ -19,7 +20,7 @@ const More: React.FC = () => {
         <Item
           onClick={() =>
             chrome.tabs.create({
-              url: 'https://alexanderswed.typeform.com/to/sjSxc6',
+              url: 'https://lexswed.typeform.com/to/fKJxgcPE',
             })
           }
         >

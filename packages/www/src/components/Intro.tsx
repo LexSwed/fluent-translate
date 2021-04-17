@@ -8,7 +8,9 @@ const Intro: React.FC = () => {
   return (
     <Box py="5vh">
       <ContentBlock>
-        <Heading>Translator Extension for your browser</Heading>
+        <Heading css={{ pb: '$12', textAlign: 'center' }}>
+          Translator Extension for your Browser
+        </Heading>
         <Grid columns="1fr 1fr" gap="16">
           <Flex gap="6">
             <WebstoreLink href="https://chrome.google.com/webstore/detail/jbkaeigbknejjmhnkhmankagkfepncmn">
