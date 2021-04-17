@@ -18,11 +18,6 @@
     "type": "git",
     "url": "git+https://github.com/LexSwed/edge-translate.git"
   },
-  "alias": {
-    "@fxtrot/ui": "../../../complete-core",
-    "react": "../../../complete-core/node_modules/react",
-    "react-dom": "../../../complete-core/node_modules/react-dom"
-  },
   "license": "MIT",
   "private": false,
   "dependencies": {
