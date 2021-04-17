@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Flex, Box } from '@fxtrot/ui';
+import { Text, Flex } from '@fxtrot/ui';
 
 import { useToLanguage, useTranslation, useLanguages } from '../store/utils';
 import LanguageSelect from '../LanguageSelect';
