@@ -25,15 +25,15 @@ export const Memory: React.FC<Props> = () => {
   );
 
   return (
-    <List as="ul" cross="stretch">
+    <List as="ul" flow="column" cross="stretch">
       {items.map((item) => {
         return (
           <MemoryEntry
             key={item.id}
             item={{
               ...item,
-              from: langs[item.from].name,
-              to: langs[item.to].name,
+              from: langs[item.from],
+              to: langs[item.to],
             }}
             onDelete={onDelete}
           />

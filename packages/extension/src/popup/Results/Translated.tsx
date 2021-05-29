@@ -12,14 +12,14 @@ const Translated: React.FC = () => {
   const languages = useLanguages();
 
   return (
-    <Flex gap="4" cross="stretch">
+    <Flex flow="column" gap="4" cross="stretch">
       <LanguageSelect
         value={to}
         onChange={setTo}
         languages={languages}
         size="small"
       />
-      <Flex gap="6" css={{ pl: '$2' }}>
+      <Flex flow="column" gap="6" css={{ pl: '$2' }}>
         <Text size="lg">
           {truncated ? (
             <>

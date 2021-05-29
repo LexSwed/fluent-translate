@@ -1,5 +1,4 @@
-type Language = { name: string; nativeName: string };
-type Languages = Record<string, Language>;
+type Languages = Record<string, string>;
 
 type Translation = {
   translating: boolean;

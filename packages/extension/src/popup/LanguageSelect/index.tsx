@@ -29,8 +29,8 @@ export const LanguageSelect: React.FC<Props> = ({
     >
       <RecentLanguages recent={recent} languages={languages} />
       <optgroup label="Languages">
-        {Object.entries(languages).map(([lang, { nativeName, name }]) => (
-          <Option key={lang} value={lang} title={nativeName}>
+        {Object.entries(languages).map(([lang, name]) => (
+          <Option key={lang} value={lang}>
             {name}
           </Option>
         ))}

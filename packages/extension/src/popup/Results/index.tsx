@@ -17,7 +17,7 @@ export const Result = React.memo(() => {
   return translation.text ? (
     <Translated />
   ) : (
-    <Wrapper main="center" cross="center">
+    <Wrapper flow="column" main="center" cross="center">
       <Icon as={LanguageIcon} size="3xl" />
     </Wrapper>
   );

@@ -28,10 +28,6 @@ class BackgroundFetcher {
     this.errorHandler = callback;
   }
 
-  getLanguages = () =>
-    makeRequest<Languages>({ request: 'getLanguages' }).catch(
-      this.errorHandler
-    );
   translate = (params: TranslateQuery) =>
     makeRequest<TranslateResponse>({ request: 'translateBing', params }).catch(
       this.errorHandler

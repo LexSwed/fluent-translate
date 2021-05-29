@@ -48,7 +48,7 @@ const Entry = styled(Flex, {
 
 const MemoryEntry: React.FC<Props> = ({ item, onDelete }) => {
   return (
-    <Entry as="li" gap="sm">
+    <Entry flow="column" as="li" gap="sm">
       <Header item={item} onDelete={onDelete} />
       <Texts item={item} />
     </Entry>

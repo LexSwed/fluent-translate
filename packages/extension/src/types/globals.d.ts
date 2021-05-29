@@ -16,7 +16,6 @@ type TranslateResponse = {
 };
 
 type AsyncRequest =
-  | { request: 'getLanguages'; params?: any }
   | { request: 'translateBing'; params: TranslateQuery }
   | { request: 'dictionaryLookup'; params: Required<TranslateQuery> };
 

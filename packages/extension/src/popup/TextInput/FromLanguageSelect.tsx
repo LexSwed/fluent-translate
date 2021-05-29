@@ -33,20 +33,10 @@ function useLanguagesWithAuto(from: string) {
       const lang = languages[translation.from];
 
       return {
-        auto: {
-          name: `${lang.name}${suffix}`,
-          nativeName: `${lang.nativeName}${suffix}`,
-        },
-        ...languages,
-      };
-    } else {
-      return {
-        auto: {
-          name: 'Auto',
-          nativeName: 'Auto',
-        },
+        auto: `${lang}${suffix}`,
         ...languages,
       };
     }
+    return languages;
   }, [from, languages, translation.from]);
 }

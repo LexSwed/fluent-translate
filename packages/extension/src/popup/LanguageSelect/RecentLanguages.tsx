@@ -17,8 +17,8 @@ const RecentLanguages: React.FC<Props> = ({ recent, languages }) => {
       {recent.map(
         (lang) =>
           languages[lang] && (
-            <Option key={lang} value={lang} title={languages[lang].nativeName}>
-              {languages[lang].name}
+            <Option key={lang} value={lang}>
+              {languages[lang]}
             </Option>
           )
       )}
