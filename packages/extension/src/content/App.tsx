@@ -38,8 +38,8 @@ const App: React.FC<Props> = ({ text, onClose }) => {
       onMouseLeave={() => setMouseOver(false)}
     >
       <CloseTimer isMouseOver={isMouseOver} onClose={onClose} />
-      <Flex gap="md">
-        <Flex gap="sm">
+      <Flex flow="column" gap="md">
+        <Flex flow="column" gap="sm">
           <FromLanguageSelect />
           <Box pl="$2">
             <Text>{text}</Text>

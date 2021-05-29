@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-import LanguageSelect from '../LanguageSelect';
+import { LanguageSelect } from '../LanguageSelect';
 import { useFromLanguage, useLanguages, useTranslation } from '../store/utils';
 
 type Props = {

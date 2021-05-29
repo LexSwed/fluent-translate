@@ -2,9 +2,9 @@ import React from 'react';
 import { Text, Flex } from '@fxtrot/ui';
 
 import { useToLanguage, useTranslation, useLanguages } from '../store/utils';
-import LanguageSelect from '../LanguageSelect';
-import TranslatorLink from '../TranslatorLink';
-import Translations from '../Translations';
+import { LanguageSelect } from '../LanguageSelect';
+import { TranslatorLink } from '../TranslatorLink';
+import { Translations } from '../Translations';
 
 const Translated: React.FC = () => {
   const [to, setTo] = useToLanguage();

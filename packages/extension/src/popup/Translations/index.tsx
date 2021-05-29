@@ -5,16 +5,7 @@ import { Box, Flex, Grid, Heading, StyleRecord, Text } from '@fxtrot/ui';
 import { useTranslation, useText } from '../store/utils';
 import { API } from '../../utils';
 
-const styles: StyleRecord = {
-  wrapper: {
-    overflow: 'auto',
-  },
-  heading: {
-    fontSize: '$xs',
-  },
-};
-
-const Translations = () => {
+export const Translations = () => {
   const { from, to, text } = useTranslation();
   const [sourceText] = useText();
   const { data } = useSWR(
@@ -28,10 +19,10 @@ const Translations = () => {
 
   return (
     <Box css={styles.wrapper}>
-      <Flex gap="md" cross="stretch">
+      <Flex flow="column" gap="md" cross="stretch">
         {Object.entries(data.translations).map(([pos, translations]) => {
           return (
-            <Flex key={pos} gap="2" cross="stretch">
+            <Flex flow="column" key={pos} gap="2" cross="stretch">
               <Heading as="h4" css={styles.heading}>
                 {pos}
               </Heading>
@@ -55,4 +46,11 @@ const Translations = () => {
   );
 };
 
-export default Translations;
+const styles: StyleRecord = {
+  wrapper: {
+    overflow: 'auto',
+  },
+  heading: {
+    fontSize: '$xs',
+  },
+};

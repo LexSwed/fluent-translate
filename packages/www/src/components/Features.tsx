@@ -23,9 +23,9 @@ const Features = () => {
   return (
     <Box py="5vh">
       <ContentBlock css={{ maxWidth: 1280 }}>
-        <Flex gap="32" cross="center">
+        <Flex flow="column" gap="32" cross="center">
           {items.map((item) => (
-            <Flex key={item.img} gap="8" cross="center">
+            <Flex key={item.img} flow="column" gap="8" cross="center">
               <Heading level={2}>{item.title}</Heading>
               <Image src={item.img} alt={item.title} />
             </Flex>

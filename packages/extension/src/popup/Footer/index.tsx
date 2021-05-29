@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { styled } from '@fxtrot/ui';
 
 import MemoryHeading from '../Memory/MemoryHeading';
-import Memory from '../Memory';
-import { useMemory } from '../Memory/Memory';
+import { Memory, useMemory } from '../Memory';
 import More from './More';
 
-const Footer = () => {
+export const Footer = () => {
   const [isOpen, setOpen] = useState(false);
   const isMemory = useMemoryItemsNotEmpty();
 
@@ -28,8 +27,6 @@ const Footer = () => {
     </MainSheet>
   );
 };
-
-export default Footer;
 
 function useMemoryItemsNotEmpty(): boolean {
   const memory = useMemory();

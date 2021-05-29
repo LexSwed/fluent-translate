@@ -5,6 +5,47 @@ import { styled, Box, Flex } from '@fxtrot/ui';
 import { useText } from '../store/utils';
 import FromLanguageSelect from './FromLanguageSelect';
 
+export const TextInput: React.FC = () => {
+  const inputRef = useRef<HTMLTextAreaElement>(null);
+  const [text, setText] = useText();
+
+  const multiline = Math.floor(text.length / 25) > 0 || text.includes('\n');
+
+  useLayoutEffect(() => {
+    const el = inputRef.current;
+
+    if (el) {
+      autosize(el);
+      el.focus();
+    }
+
+    return () => {
+      el && autosize.destroy(el);
+    };
+  }, [inputRef]);
+
+  return (
+    <Wrapper
+      flow={multiline ? 'column' : 'row'}
+      multiline={multiline}
+      main="stretch"
+      cross={multiline ? 'stretch' : 'center'}
+    >
+      <TextArea
+        value={text}
+        onChange={(e: any) => {
+          setText(e.target.value);
+        }}
+        autoFocus
+        ref={inputRef}
+      />
+      <SelectWrapper>
+        <FromLanguageSelect />
+      </SelectWrapper>
+    </Wrapper>
+  );
+};
+
 const TextArea = styled('textarea', {
   display: 'block',
   outline: 'none',
@@ -50,46 +91,3 @@ const Wrapper = styled(Flex, {
     },
   },
 });
-
-const TextInput: React.FC = () => {
-  const inputRef = useRef<HTMLTextAreaElement>(null);
-  const [text, setText] = useText();
-
-  const multiline = Math.floor(text.length / 25) > 0 || text.includes('\n');
-
-  useLayoutEffect(() => {
-    const el = inputRef.current;
-
-    if (el) {
-      autosize(el);
-      el.focus();
-    }
-
-    return () => {
-      el && autosize.destroy(el);
-    };
-  }, [inputRef]);
-
-  return (
-    <Wrapper
-      flow={multiline ? 'column' : 'row'}
-      multiline={multiline}
-      main="stretch"
-      cross={multiline ? 'stretch' : 'center'}
-    >
-      <TextArea
-        value={text}
-        onChange={(e: any) => {
-          setText(e.target.value);
-        }}
-        autoFocus
-        ref={inputRef}
-      />
-      <SelectWrapper>
-        <FromLanguageSelect />
-      </SelectWrapper>
-    </Wrapper>
-  );
-};
-
-export default TextInput;

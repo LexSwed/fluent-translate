@@ -2,9 +2,9 @@ import React, { useMemo } from 'react';
 import { Flex, Box, Icon, Text, StyleRecord } from '@fxtrot/ui';
 import { FireIcon } from '@heroicons/react/outline';
 
-import TextInput from './TextInput';
-import Results from './Results';
-import Footer from './Footer';
+import { TextInput } from './TextInput';
+import { Result } from './Results';
+import { Footer } from './Footer';
 
 import { Sentry } from '../utils';
 import { useError } from './store/utils';
@@ -41,7 +41,7 @@ class App extends React.Component<{ error?: string | null }> {
     if (this.state.hasError) {
       return (
         <Box css={styles.app}>
-          <Flex cross="center" main="center" gap="md">
+          <Flex flow="column" cross="center" main="center" gap="md">
             <Icon as={FireIcon} size="3xl" color="$gray400" />
             {this.props.error ? (
               <Text align="center" size="sm">
@@ -69,9 +69,15 @@ class App extends React.Component<{ error?: string | null }> {
     }
     return (
       <>
-        <Flex main="stretch" cross="stretch" gap="md" css={styles.app}>
+        <Flex
+          flow="column"
+          main="stretch"
+          cross="stretch"
+          gap="md"
+          css={styles.app}
+        >
           <TextInput />
-          <Results />
+          <Result />
         </Flex>
         <Footer />
       </>

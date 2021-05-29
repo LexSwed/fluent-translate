@@ -15,7 +15,7 @@ const List = styled(Flex, {
 
 type Props = {};
 
-const Memory: React.FC<Props> = () => {
+export const Memory: React.FC<Props> = () => {
   const items = useMemory();
   const langs = useLanguages();
 
@@ -43,8 +43,6 @@ const Memory: React.FC<Props> = () => {
   );
 };
 
-export default Memory;
-
 let memorySaved: MemoryItems = [];
 export function useMemory() {
   const [memory, setMemory] = useState<MemoryItems>(memorySaved);
@@ -67,7 +65,6 @@ export function useMemory() {
 
   useEffect(() => {
     const onChange: onStorageChangeListener = ({ memory }, name) => {
-      console.log(memory);
       if (memory?.newValue && name === 'sync') {
         setItems(memory?.newValue as MemoryItems);
       }

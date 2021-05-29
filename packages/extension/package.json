@@ -26,14 +26,15 @@
     "@sentry/browser": "^6.2.5",
     "@stitches/react": "^0.1.7",
     "@webcomponents/webcomponentsjs": "^2.4.3",
-    "autosize": "^4.0.2",
+    "autosize": "^5.0.0",
     "debounce": "^1.2.0",
     "framer-motion": "^4.1.4",
     "nanoid": "^3.1.7",
     "qs": "^6.9.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "swr": "^0.5.5"
+    "swr": "^0.5.5",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/autosize": "^3.0.7",
@@ -44,8 +45,6 @@
     "@types/react-dom": "^17.0.3",
     "@types/uuid": "^8.3.0",
     "parcel-bundler": "^1.12.4",
-    "postcss-modules": "^4.0.0",
-    "postcss-preset-env": "^6.7.0",
     "prettier": "^2.1.2",
     "pretty-quick": "^3.0.2",
     "semantic-release": "^17.2.3",

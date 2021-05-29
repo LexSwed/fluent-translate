@@ -6,7 +6,7 @@ import { useToLanguage, useText } from '../store/utils';
 
 const style: StyleRecord = { css: { fontWeight: 400 } };
 
-const TranslatorLink = React.forwardRef<
+export const TranslatorLink = React.forwardRef<
   HTMLAnchorElement,
   React.ComponentProps<'a'>
 >(({ children, ...props }, ref) => {
@@ -25,8 +25,6 @@ const TranslatorLink = React.forwardRef<
     </TextLink>
   );
 });
-
-export default TranslatorLink;
 
 export function useTranslatorLink() {
   const [to] = useToLanguage();

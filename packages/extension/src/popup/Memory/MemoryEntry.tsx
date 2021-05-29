@@ -5,7 +5,7 @@ import { TrashIcon } from '@heroicons/react/outline';
 
 const Header: React.FC<Props> = ({ item, onDelete }) => {
   return (
-    <Flex flow="row" main="space-between" cross="center">
+    <Flex main="space-between" cross="center">
       <Text size="xs" css={{ color: '$textDisabled' }}>
         {item.from}
         <span aria-label="translated to"> → </span>
@@ -22,7 +22,7 @@ const Texts: React.FC<Omit<Props, 'onDelete'>> = ({ item }) => {
   const [isShown, setShown] = useState(false);
 
   return (
-    <Flex gap="sm">
+    <Flex flow="column" gap="sm">
       <Text>{item.text}</Text>
       {isShown ? (
         <Text>{item.translation}</Text>

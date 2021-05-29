@@ -7,10 +7,10 @@ import { ContentBlock } from './ContentBlock';
 const Header = () => {
   return (
     <ContentBlock as="header" css={{ p: '$4' }}>
-      <Flex gap="4" flow="row" cross="center" wrap="nowrap">
+      <Flex gap="4" cross="center" wrap="nowrap">
         <Link href="/">
           <TextLink>
-            <Flex gap="md" cross="center" flow="row" wrap="nowrap">
+            <Flex gap="md" cross="center" wrap="nowrap">
               <Box
                 as="img"
                 css={{ size: 24 }}
@@ -19,7 +19,7 @@ const Header = () => {
                 aria-hidden="true"
               />
               <Heading level={3} variant="light">
-                <Flex flow="row" cross="center" gap="4">
+                <Flex cross="center" gap="4">
                   <span>Edge Translate</span>{' '}
                   <Box css={{ '@tablet': { display: 'none' } }}>|</Box>
                 </Flex>
@@ -27,7 +27,7 @@ const Header = () => {
             </Flex>
           </TextLink>
         </Link>
-        <Flex flow="row" gap="4">
+        <Flex gap="4">
           <TextLink href="https://lexswed.github.io/">Author</TextLink>
           <TextLink href="https://github.com/LexSwed/edge-translate">
             Sources

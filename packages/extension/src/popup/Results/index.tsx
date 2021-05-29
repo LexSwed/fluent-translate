@@ -11,7 +11,7 @@ const Wrapper = styled(Flex, {
   color: '$textLight',
 });
 
-const Result = () => {
+export const Result = React.memo(() => {
   const translation = useTranslation();
 
   return translation.text ? (
@@ -21,6 +21,4 @@ const Result = () => {
       <Icon as={LanguageIcon} size="3xl" />
     </Wrapper>
   );
-};
-
-export default React.memo(Result);
+});

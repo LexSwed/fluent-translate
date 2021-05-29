@@ -2,7 +2,7 @@ import React from 'react';
 import { Icon, Button, Menu, Item as MenuItem, styled, Text } from '@fxtrot/ui';
 import { DotsVerticalIcon } from '@heroicons/react/outline';
 
-import { useTranslatorLink } from '../TranslatorLink/TranslatorLink';
+import { useTranslatorLink } from '../TranslatorLink';
 
 const Item = styled(MenuItem, {
   height: '$8',

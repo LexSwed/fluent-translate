@@ -21,13 +21,16 @@ export async function getLanguages() {
 export async function translateBing({ to, from, text }: TranslateQuery) {
   const query = text.slice(0, 300);
 
-  const res = await makeRequest('https://www.bing.com/ttranslatev3', {
-    method: 'post',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
-    },
-    body: qs.stringify({ to, fromLang: from || 'auto-detect', text: query }),
-  });
+  const res = await makeRequest(
+    'https://cors-anywhere.herokuapp.com/https://www.bing.com/ttranslatev3',
+    {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+      },
+      body: qs.stringify({ to, fromLang: from || 'auto-detect', text: query }),
+    }
+  );
 
   if (!Array.isArray(res) || res.length === 0) {
     throw new Error('Wrong response');

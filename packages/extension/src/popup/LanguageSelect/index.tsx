@@ -10,7 +10,11 @@ type Props = {
   size?: 'small';
 };
 
-const LanguageSelect: React.FC<Props> = ({ value, onChange, languages }) => {
+export const LanguageSelect: React.FC<Props> = ({
+  value,
+  onChange,
+  languages,
+}) => {
   const [recent, addRecent] = useRecentLanguages();
 
   return (
@@ -34,5 +38,3 @@ const LanguageSelect: React.FC<Props> = ({ value, onChange, languages }) => {
     </Select>
   );
 };
-
-export default LanguageSelect;
