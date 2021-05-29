@@ -12,7 +12,7 @@ const Intro: React.FC = () => {
           Translator Extension for your Browser
         </Heading>
         <Grid columns="1fr 1fr" gap="16">
-          <Flex gap="6">
+          <Flex flow="column" gap="6">
             <WebstoreLink href="https://chrome.google.com/webstore/detail/jbkaeigbknejjmhnkhmankagkfepncmn">
               <img
                 src="/images/chrome-web-store.png"
