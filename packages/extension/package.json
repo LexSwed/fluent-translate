@@ -41,14 +41,11 @@
     "@types/chrome": "^0.0.143",
     "@types/debounce": "^1.2.0",
     "@types/qs": "^6.9.6",
-    "@types/react": "^17.0.3",
-    "@types/react-dom": "^17.0.3",
     "@types/uuid": "^8.3.0",
     "parcel-bundler": "^1.12.4",
-    "prettier": "^2.1.2",
     "pretty-quick": "^3.0.2",
     "semantic-release": "^17.2.3",
-    "typescript": "^4.0.3"
+    "typescript": "^4.3.2"
   },
   "targets": {
     "main": {

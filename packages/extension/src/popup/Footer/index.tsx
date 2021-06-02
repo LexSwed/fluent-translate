@@ -35,8 +35,8 @@ function useMemoryItemsNotEmpty(): boolean {
 }
 
 const MainSheet = styled('section', {
-  position: 'absolute',
-  top: 'calc(100vh - $sizes$base)',
+  position: 'fixed',
+  top: 'calc(100% - $sizes$base)',
   left: 0,
   width: '100%',
   transition: 'transform 0.24s ease-in-out',

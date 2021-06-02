@@ -5,12 +5,15 @@ export const userLang =
   window.navigator.languages[0].slice(0, 2);
 
 export const getTranslatorLink = ({
+  from = 'auto',
   to,
   text,
 }: {
+  from?: string;
   to?: string;
   text?: string;
-}) => `https://www.bing.com/translator?to=${to}&text=${text}`;
+}) =>
+  `https://translate.google.com/?sl=${from}&tl=${to}&text=${text}&op=translate`;
 
 const makeRequest = <T = any>(request: AsyncRequest): Promise<T> =>
   new Promise((resolve, reject) =>
@@ -73,6 +76,5 @@ export async function deleteMemoryEntry(id: MemoryItem['id']) {
 type StorageKey = Parameters<typeof chrome.storage['local']['get']>[0];
 
 export const Sentry = new BrowserClient({
-  dsn:
-    'https://dffd96a87e8f47e8a2921033d3d53e05@o383828.ingest.sentry.io/5214268',
+  dsn: 'https://dffd96a87e8f47e8a2921033d3d53e05@o383828.ingest.sentry.io/5214268',
 });

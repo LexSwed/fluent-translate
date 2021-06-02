@@ -2,7 +2,7 @@ import React from 'react';
 import { TextLink, StyleRecord } from '@fxtrot/ui';
 
 import { getTranslatorLink } from '../../utils';
-import { useToLanguage, useText } from '../store/utils';
+import { useTranslation, useText } from '../store/utils';
 
 const style: StyleRecord = { css: { fontWeight: 400 } };
 
@@ -27,8 +27,8 @@ export const TranslatorLink = React.forwardRef<
 });
 
 export function useTranslatorLink() {
-  const [to] = useToLanguage();
+  const { to, from } = useTranslation();
   const [text] = useText();
 
-  return getTranslatorLink({ to, text });
+  return getTranslatorLink({ to, from, text });
 }

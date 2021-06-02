@@ -33,7 +33,7 @@ const More: React.FC = () => {
             });
           }}
         >
-          <Text size="sm">Open in Microsoft Bing</Text>
+          <Text size="sm">Open in Google Translate</Text>
         </Item>
       </Menu.List>
     </Menu>
