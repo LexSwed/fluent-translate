@@ -36,7 +36,7 @@ class BackgroundFetcher {
       this.errorHandler
     );
   dictionaryLookup = (params: Required<TranslateQuery>) =>
-    makeRequest<DictLookup>({ request: 'dictionaryLookup', params }).catch(
+    makeRequest<DictLookup[]>({ request: 'dictionaryLookup', params }).catch(
       this.errorHandler
     );
 }

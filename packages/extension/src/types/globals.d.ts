@@ -50,16 +50,10 @@ type DictLookupResponse = {
 type PartOfSpeech = string;
 
 type DictLookup = {
-  from: string;
-  to: string;
-  source: string;
-  translations: Record<
-    PartOfSpeech,
-    {
-      source: string;
-      target: string;
-      confidence: number;
-      backTranslations: string[];
-    }[]
-  >;
+  word: string;
+  phonetics: { audio: string; text: string }[];
+  meanings: {
+    definitions: { definition: string; synonyms: string[] }[];
+    partOfSpeech: string;
+  }[];
 };

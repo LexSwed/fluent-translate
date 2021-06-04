@@ -36,7 +36,7 @@ chrome.runtime.onMessage.addListener(
               translation: res.translation.text,
             });
           }
-
+          console.log(res);
           return res;
         });
         break;
