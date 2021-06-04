@@ -1,7 +1,7 @@
 {
   "name": "extension",
   "description": "Edge Translate browser extension",
-  "version": "1.7.9",
+  "version": "1.7.10",
   "author": "lexswed",
   "scripts": {
     "dev": "parcel watch src/background/background.ts src/popup/popup.html src/content/content.tsx --no-hmr --public-url /dist",
