@@ -15,8 +15,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
-          registry-url: 'https://registry.npmjs.org'
+          node-version: '14.x'
 
       - name: Cache node modules
         uses: actions/cache@v1
@@ -29,17 +28,20 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
+
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install
         env:
           CI: true
 
       - name: Check
-        run: npx npm-run-all -p typecheck
+        run: yarn typecheck
+
       - name: Build
         run: yarn build:ext
         env:
           CI: true
+
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
