@@ -12,7 +12,7 @@ const Translated: React.FC = () => {
     <Flex flow="column" gap="2" cross="stretch">
       <ToLanguageSelect />
       <Flex flow="column" gap="6" css={{ pl: '$2' }}>
-        <Text size="lg" css={{ lineHeight: 1.4 }}>
+        <Text size="md">
           {truncated ? (
             <>
               {`${text}… `}

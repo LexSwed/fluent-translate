@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { styled, Flex, Text, Box } from '@fxtrot/ui';
 
 import { useText } from '../popup/store/utils';
-import FromLanguageSelect from '../popup/TextInput/FromLanguageSelect';
 import Translated from '../popup/Results/Translated';
 import CloseTimer from './CloseTimer';
+import { FromLanguageSelect } from '../popup/LanguageSelect';
 
 type Props = {
   text?: string;
