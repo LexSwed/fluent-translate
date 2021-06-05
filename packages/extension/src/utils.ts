@@ -32,7 +32,7 @@ class BackgroundFetcher {
   }
 
   translate = (params: TranslateQuery) =>
-    makeRequest<TranslateResponse>({ request: 'translateBing', params }).catch(
+    makeRequest<TranslateResponse>({ request: 'translate', params }).catch(
       this.errorHandler
     );
   dictionaryLookup = (params: Required<TranslateQuery>) =>

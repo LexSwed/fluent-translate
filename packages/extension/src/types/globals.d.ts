@@ -16,7 +16,7 @@ type TranslateResponse = {
 };
 
 type AsyncRequest =
-  | { request: 'translateBing'; params: TranslateQuery }
+  | { request: 'translate'; params: TranslateQuery }
   | { request: 'dictionaryLookup'; params: Required<TranslateQuery> };
 
 type MemoryItem = {

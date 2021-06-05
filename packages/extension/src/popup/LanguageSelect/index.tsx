@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import RecentLanguages, { useRecentLanguages } from './RecentLanguages';
 import { Option, Select } from './styled';
+
+import {
+  useToLanguage,
+  useFromLanguage,
+  useTranslation,
+  useLanguages,
+} from '../store/utils';
 
 type Props = {
   value: string;
@@ -9,11 +16,7 @@ type Props = {
   languages: Languages;
 };
 
-export const LanguageSelect: React.FC<Props> = ({
-  value,
-  onChange,
-  languages,
-}) => {
+const LanguageSelect: React.FC<Props> = ({ value, onChange, languages }) => {
   const [recent, addRecent] = useRecentLanguages();
 
   return (
@@ -35,5 +38,36 @@ export const LanguageSelect: React.FC<Props> = ({
         ))}
       </optgroup>
     </Select>
+  );
+};
+
+export const ToLanguageSelect = () => {
+  const [to, setTo] = useToLanguage();
+  const languages = useLanguages();
+
+  return <LanguageSelect value={to} onChange={setTo} languages={languages} />;
+};
+
+export const FromLanguageSelect = () => {
+  const [from, setFrom] = useFromLanguage();
+  const translation = useTranslation();
+  const languages = useLanguages();
+
+  const languagesWithAuto = useMemo(() => {
+    let { auto, ...langs } = languages;
+    if (from === 'auto' && translation.from) {
+      const suffix = ' | Auto';
+      const lang = languages[translation.from];
+      auto = `${lang}${suffix}`;
+    }
+    return { auto, ...langs };
+  }, [from, languages, translation.from]);
+
+  return (
+    <LanguageSelect
+      value={from}
+      onChange={setFrom}
+      languages={languagesWithAuto}
+    />
   );
 };

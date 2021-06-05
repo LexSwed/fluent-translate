@@ -17,7 +17,6 @@ export function useStore() {
         to?: 'string';
         languages?: Languages;
       }>(['to', 'languages']);
-
       to && setTo(to);
       languages && setLangs((langs) => ({ ...langs, ...languages }));
     }

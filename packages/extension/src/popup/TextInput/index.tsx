@@ -3,7 +3,7 @@ import autosize from 'autosize';
 import { styled, Box, Flex } from '@fxtrot/ui';
 
 import { useText } from '../store/utils';
-import FromLanguageSelect from './FromLanguageSelect';
+import { FromLanguageSelect } from '../LanguageSelect';
 
 export const TextInput: React.FC = () => {
   const inputRef = useRef<HTMLTextAreaElement>(null);

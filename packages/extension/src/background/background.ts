@@ -26,7 +26,7 @@ chrome.runtime.onMessage.addListener(
   (request: AsyncRequest, _sender, sendResponse) => {
     let promise: Promise<any> | null;
     switch (request.request) {
-      case 'translateBing': {
+      case 'translate': {
         promise = translate(request.params).then((res) => {
           if (res !== null) {
             addMemoryItem({
@@ -36,7 +36,6 @@ chrome.runtime.onMessage.addListener(
               translation: res.translation.text,
             });
           }
-          console.log(res);
           return res;
         });
         break;
@@ -76,6 +75,7 @@ chrome.runtime.onInstalled.addListener(async ({ reason }) => {
         languages,
         memory: newMemoryWithGoogleLanguageCode,
       });
+      break;
     default:
       break;
   }

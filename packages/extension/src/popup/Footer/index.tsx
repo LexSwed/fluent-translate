@@ -17,7 +17,7 @@ export const Footer = () => {
 
   return (
     <MainSheet open={isOpen}>
-      <FooterBar open={isOpen}>
+      <FooterBar>
         {!isOpen && <More />}
         {hasMemoryItems && (
           <Box ml="auto">
@@ -44,14 +44,6 @@ const FooterBar = styled('footer', {
   borderBottom: '1px solid transparent',
   borderTop: '1px solid $borderLight',
   transition: '0.2s 0.1s ease-in',
-  variants: {
-    open: {
-      true: {
-        bc: '$surfaceHover',
-        borderColor: '$surfaceActive',
-      },
-    },
-  },
 });
 
 const MainSheet = styled('section', {
@@ -62,7 +54,6 @@ const MainSheet = styled('section', {
   transition: 'transform 0.24s ease-in-out',
   minHeight: '100vh',
   overflow: 'auto',
-  bc: '$surfaceStill',
   variants: {
     open: {
       true: {
@@ -81,4 +72,5 @@ const Content = styled('div', {
   overflowY: 'auto',
   overflowX: 'hidden',
   height: 'calc(100vh - $sizes$base)',
+  bc: '$surfaceStill',
 });
