@@ -4,7 +4,6 @@ import { Text, Flex } from '@fxtrot/ui';
 import { useToLanguage, useTranslation, useLanguages } from '../store/utils';
 import { LanguageSelect } from '../LanguageSelect';
 import { TranslatorLink } from '../TranslatorLink';
-import { Translations } from '../Translations';
 
 const Translated: React.FC = () => {
   const [to, setTo] = useToLanguage();
@@ -13,12 +12,7 @@ const Translated: React.FC = () => {
 
   return (
     <Flex flow="column" gap="4" cross="stretch">
-      <LanguageSelect
-        value={to}
-        onChange={setTo}
-        languages={languages}
-        size="small"
-      />
+      <LanguageSelect value={to} onChange={setTo} languages={languages} />
       <Flex flow="column" gap="6" css={{ pl: '$2' }}>
         <Text size="lg">
           {truncated ? (
@@ -30,7 +24,6 @@ const Translated: React.FC = () => {
             text
           )}
         </Text>
-        <Translations />
       </Flex>
     </Flex>
   );

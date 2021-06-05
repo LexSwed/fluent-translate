@@ -19,7 +19,7 @@ export const Translations = () => {
 
   return (
     <Box css={styles.wrapper}>
-      <Flex flow="column" gap="md" cross="stretch">
+      {/* <Flex flow="column" gap="md" cross="stretch">
         {data.map((dict) => {
           return (
             <Flex flow="column" key={pos} gap="2" cross="stretch">
@@ -41,7 +41,7 @@ export const Translations = () => {
             </Flex>
           );
         })}
-      </Flex>
+      </Flex> */}
     </Box>
   );
 };

@@ -17,7 +17,7 @@ export function useStore() {
         to?: 'string';
         languages?: Languages;
       }>(['to', 'languages']);
-      console.log(languages);
+
       to && setTo(to);
       languages && setLangs((langs) => ({ ...langs, ...languages }));
     }

@@ -9,8 +9,6 @@ const List = styled(Flex, {
   p: 0,
   listStyle: 'none',
   m: 0,
-  overflow: 'scroll',
-  height: 'calc(100vh - 48px)',
 });
 
 type Props = {};

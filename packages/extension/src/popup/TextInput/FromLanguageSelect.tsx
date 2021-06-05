@@ -3,21 +3,11 @@ import React, { useMemo } from 'react';
 import { LanguageSelect } from '../LanguageSelect';
 import { useFromLanguage, useLanguages, useTranslation } from '../store/utils';
 
-type Props = {
-  size?: React.ComponentProps<typeof LanguageSelect>['size'];
-};
-
-const FromLanguageSelect: React.FC<Props> = (props) => {
+const FromLanguageSelect = () => {
   const [from, setFrom] = useFromLanguage();
   const languages = useLanguagesWithAuto(from);
-
   return (
-    <LanguageSelect
-      value={from}
-      onChange={setFrom}
-      languages={languages}
-      {...props}
-    />
+    <LanguageSelect value={from} onChange={setFrom} languages={languages} />
   );
 };
 
@@ -33,8 +23,8 @@ function useLanguagesWithAuto(from: string) {
       const lang = languages[translation.from];
 
       return {
-        auto: `${lang}${suffix}`,
         ...languages,
+        auto: `${lang}${suffix}`,
       };
     }
     return languages;

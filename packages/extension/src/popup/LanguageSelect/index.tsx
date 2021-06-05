@@ -7,7 +7,6 @@ type Props = {
   value: string;
   onChange: (value: string) => void;
   languages: Languages;
-  size?: 'small';
 };
 
 export const LanguageSelect: React.FC<Props> = ({

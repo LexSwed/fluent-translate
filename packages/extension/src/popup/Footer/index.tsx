@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { styled } from '@fxtrot/ui';
+import { styled, Box } from '@fxtrot/ui';
 
 import MemoryHeading from '../Memory/MemoryHeading';
 import { Memory, useMemory } from '../Memory';
@@ -7,23 +7,25 @@ import More from './More';
 
 export const Footer = () => {
   const [isOpen, setOpen] = useState(false);
-  const isMemory = useMemoryItemsNotEmpty();
+  const hasMemoryItems = useMemoryItemsNotEmpty();
 
   useEffect(() => {
-    if (!isMemory) {
+    if (!hasMemoryItems) {
       setOpen(false);
     }
-  }, [isMemory]);
+  }, [hasMemoryItems]);
 
   return (
     <MainSheet open={isOpen}>
       <FooterBar open={isOpen}>
-        <More />
-        {isMemory ? (
-          <MemoryHeading isOpen={isOpen} onClick={() => setOpen(!isOpen)} />
-        ) : null}
+        {!isOpen && <More />}
+        {hasMemoryItems && (
+          <Box ml="auto">
+            <MemoryHeading isOpen={isOpen} onClick={() => setOpen(!isOpen)} />
+          </Box>
+        )}
       </FooterBar>
-      {isOpen && <Memory />}
+      <Content>{isOpen && <Memory />}</Content>
     </MainSheet>
   );
 };
@@ -33,24 +35,6 @@ function useMemoryItemsNotEmpty(): boolean {
 
   return memory.length > 0;
 }
-
-const MainSheet = styled('section', {
-  position: 'fixed',
-  top: 'calc(100% - $sizes$base)',
-  left: 0,
-  width: '100%',
-  transition: 'transform 0.24s ease-in-out',
-  minHeight: '100vh',
-  overflow: 'hidden',
-  bc: '$surfaceStill',
-  variants: {
-    open: {
-      true: {
-        transform: 'translateY(calc(-1 * (100vh - $sizes$base)))',
-      },
-    },
-  },
-});
 
 const FooterBar = styled('footer', {
   height: '$base',
@@ -68,4 +52,33 @@ const FooterBar = styled('footer', {
       },
     },
   },
+});
+
+const MainSheet = styled('section', {
+  position: 'fixed',
+  top: 'calc(100% - $sizes$base)',
+  left: 0,
+  width: '100%',
+  transition: 'transform 0.24s ease-in-out',
+  minHeight: '100vh',
+  overflow: 'auto',
+  bc: '$surfaceStill',
+  variants: {
+    open: {
+      true: {
+        transform: 'translateY(calc(-1 * (100vh - $sizes$base)))',
+
+        [`& > ${FooterBar}`]: {
+          bc: '$surfaceHover',
+          borderColor: '$surfaceActive',
+        },
+      },
+    },
+  },
+});
+
+const Content = styled('div', {
+  overflowY: 'auto',
+  overflowX: 'hidden',
+  height: 'calc(100vh - $sizes$base)',
 });
