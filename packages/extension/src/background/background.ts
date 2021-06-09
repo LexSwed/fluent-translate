@@ -58,7 +58,7 @@ chrome.runtime.onMessage.addListener(
 );
 
 chrome.runtime.onInstalled.addListener(async ({ reason }) => {
-  const { memory } = await Storage.getSyncItems<{ memory: MemoryItems }>(
+  const { memory = [] } = await Storage.getSyncItems<{ memory: MemoryItems }>(
     'memory'
   );
 
