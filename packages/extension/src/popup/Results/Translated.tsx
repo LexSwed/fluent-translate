@@ -1,13 +1,17 @@
 import React from 'react';
 import { Text, Flex } from '@fxtrot/ui';
 
-import { useTranslation } from '../store/utils';
 import { TranslatorLink } from '../TranslatorLink';
 import { ToLanguageSelect } from '../LanguageSelect';
+import { useTranslation } from '../atoms';
 
 const Translated: React.FC = () => {
-  const { text, truncated } = useTranslation();
+  const { translation } = useTranslation();
 
+  if (!translation) {
+    return null;
+  }
+  const { text, truncated } = translation;
   return (
     <Flex flow="column" gap="2" cross="stretch">
       <ToLanguageSelect />

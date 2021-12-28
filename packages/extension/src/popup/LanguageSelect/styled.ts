@@ -28,6 +28,9 @@ export const Select = styled('select', {
     bc: '$flatActive',
     borderColor: '$borderActive',
   },
+  '& optgroup': {
+    bc: '$surfaceStill',
+  },
 
   '@media (prefers-color-scheme: dark)': {
     backgroundImage:

@@ -2,8 +2,8 @@ import React from 'react';
 import { Flex, Icon, styled } from '@fxtrot/ui';
 
 import Translated from './Translated';
-import { useTranslation } from '../store/utils';
 import LanguageIcon from './LanguageIcon';
+import { useTranslation } from '../atoms';
 
 const Wrapper = styled(Flex, {
   userSelect: 'none',
@@ -12,9 +12,9 @@ const Wrapper = styled(Flex, {
 });
 
 export const Result = React.memo(() => {
-  const translation = useTranslation();
+  const { translation } = useTranslation();
 
-  return translation.text ? (
+  return translation?.text ? (
     <Translated />
   ) : (
     <Wrapper flow="column" main="center" cross="center">

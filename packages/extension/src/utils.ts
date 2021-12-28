@@ -23,22 +23,20 @@ const makeRequest = <T = any>(request: AsyncRequest): Promise<T> =>
   );
 
 class BackgroundFetcher {
-  errorHandler = (err: string) => {
-    console.error(err);
+  translateDebounceId: NodeJS.Timeout | null = null;
+
+  translate = (params: TranslateQuery) => {
+    if (this.translateDebounceId) {
+      clearTimeout(this.translateDebounceId);
+    }
+    return new Promise<TranslateResponse>((resolve, reject) => {
+      this.translateDebounceId = setTimeout(() => {
+        makeRequest({ request: 'translate', params })
+          .then(resolve)
+          .catch(reject);
+      }, 500);
+    });
   };
-
-  setErrorHandler(callback: (error: string) => void) {
-    this.errorHandler = callback;
-  }
-
-  translate = (params: TranslateQuery) =>
-    makeRequest<TranslateResponse>({ request: 'translate', params }).catch(
-      this.errorHandler
-    );
-  dictionaryLookup = (params: Required<TranslateQuery>) =>
-    makeRequest<DictLookup[]>({ request: 'dictionaryLookup', params }).catch(
-      this.errorHandler
-    );
 }
 
 export const API = new BackgroundFetcher();

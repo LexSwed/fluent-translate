@@ -5,7 +5,7 @@ import { stitchesConfig, ThemeProvider } from '@fxtrot/ui';
 
 import Header from '../components/Header';
 
-const globals = stitchesConfig.global({
+const globals = stitchesConfig.globalCss({
   html: {
     overscrollBehavior: 'none',
   },

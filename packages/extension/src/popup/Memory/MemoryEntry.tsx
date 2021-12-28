@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { Text, Button, Icon, Flex, styled } from '@fxtrot/ui';
+import { Text, Button, Icon, Flex, CssStyles } from '@fxtrot/ui';
 import { TrashIcon } from '@heroicons/react/outline';
 
 const Header: React.FC<Props> = ({ item, onDelete }) => {
@@ -18,40 +18,27 @@ const Header: React.FC<Props> = ({ item, onDelete }) => {
   );
 };
 
-const Texts: React.FC<Omit<Props, 'onDelete'>> = ({ item }) => {
-  const [isShown, setShown] = useState(false);
-
-  return (
-    <Flex flow="column" gap="sm">
-      <Text>{item.text}</Text>
-      {isShown ? (
-        <Text>{item.translation}</Text>
-      ) : (
-        <Button size="sm" onClick={() => setShown(true)} variant="link">
-          Show translation
-        </Button>
-      )}
-    </Flex>
-  );
-};
-
 type Props = {
   item: MemoryItem;
   onDelete: (id: string) => any;
 };
 
-const Entry = styled(Flex, {
-  p: '$3',
-  py: '$2',
-  borderBottom: '1px solid $borderLight',
-});
-
+const styles: Record<string, CssStyles> = {
+  memoryEntry: {
+    p: '$3',
+    py: '$2',
+    borderBottom: '1px solid $borderLight',
+  },
+};
 const MemoryEntry: React.FC<Props> = ({ item, onDelete }) => {
   return (
-    <Entry flow="column" as="li" gap="sm">
+    <Flex flow="column" role="listitem" gap="sm" css={styles.memoryEntry}>
       <Header item={item} onDelete={onDelete} />
-      <Texts item={item} />
-    </Entry>
+      <Flex flow="column" gap="sm">
+        <Text>{item.text}</Text>
+        <Text>{item.translation}</Text>
+      </Flex>
+    </Flex>
   );
 };
 

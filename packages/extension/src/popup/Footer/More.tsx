@@ -1,40 +1,37 @@
 import React from 'react';
-import { Icon, Button, Menu, Item as MenuItem, styled, Text } from '@fxtrot/ui';
+import { Icon, Menu, IconButton } from '@fxtrot/ui';
 import { DotsVerticalIcon } from '@heroicons/react/outline';
 
 import { useTranslatorLink } from '../TranslatorLink';
-
-const Item = styled(MenuItem, {
-  height: '$8',
-  fontSize: '$sm',
-});
 
 const More: React.FC = () => {
   const translatorHref = useTranslatorLink();
   return (
     <Menu>
-      <Button variant="flat" aria-label="More" size="xs">
+      <IconButton variant="flat" aria-label="More" size="sm">
         <Icon as={DotsVerticalIcon} size="md" />
-      </Button>
+      </IconButton>
       <Menu.List>
-        <Item
+        <Menu.Item
+          size="sm"
           onClick={() =>
             chrome.tabs.create({
               url: 'https://lexswed.typeform.com/to/fKJxgcPE',
             })
           }
         >
-          <Text size="sm">Leave Feedback</Text>
-        </Item>
-        <Item
+          Leave Feedback
+        </Menu.Item>
+        <Menu.Item
           onClick={() => {
             chrome.tabs.create({
               url: translatorHref,
             });
           }}
+          size="sm"
         >
-          <Text size="sm">Open in Google Translate</Text>
-        </Item>
+          Open in Google Translate
+        </Menu.Item>
       </Menu.List>
     </Menu>
   );

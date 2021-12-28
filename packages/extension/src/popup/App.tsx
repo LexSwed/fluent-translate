@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react';
-import { Flex, Box, Icon, Text, StyleRecord } from '@fxtrot/ui';
+import React, { Suspense, useMemo } from 'react';
+import { Flex, Box, Icon, Text, CssStyles } from '@fxtrot/ui';
 import { FireIcon } from '@heroicons/react/outline';
 
 import { TextInput } from './TextInput';
@@ -7,17 +7,15 @@ import { Result } from './Results';
 import { Footer } from './Footer';
 
 import { Sentry } from '../utils';
-import { useError } from './store/utils';
+import { useError } from './atoms';
 
-const styles: StyleRecord = {
-  app: {
-    p: '$3',
-    pb: '$12',
-    overflow: 'hidden',
-    bc: '$surfaceStill',
-    minWidth: '360px',
-    minHeight: '220px',
-  },
+const mainStyle: CssStyles = {
+  p: '$3',
+  pb: '$12',
+  overflow: 'hidden',
+  bc: '$surfaceStill',
+  minWidth: '360px',
+  minHeight: '220px',
 };
 
 class App extends React.Component<{ error?: string | null }> {
@@ -32,6 +30,7 @@ class App extends React.Component<{ error?: string | null }> {
   }
 
   componentDidCatch(error: Error) {
+    console.error(error);
     Sentry.captureException(error);
 
     this.setState({ hasError: true });
@@ -40,7 +39,7 @@ class App extends React.Component<{ error?: string | null }> {
   render() {
     if (this.state.hasError) {
       return (
-        <Box css={styles.app}>
+        <Box css={mainStyle}>
           <Flex flow="column" cross="center" main="center" gap="md">
             <Icon as={FireIcon} size="3xl" color="$gray400" />
             {this.props.error ? (
@@ -74,10 +73,12 @@ class App extends React.Component<{ error?: string | null }> {
           main="stretch"
           cross="stretch"
           gap="md"
-          css={styles.app}
+          css={mainStyle}
         >
           <TextInput />
-          <Result />
+          <Suspense fallback={null}>
+            <Result />
+          </Suspense>
         </Flex>
         <Footer />
       </>
@@ -86,7 +87,7 @@ class App extends React.Component<{ error?: string | null }> {
 }
 
 const AppWithError: React.FC = (children) => {
-  const error = useError();
+  const [error] = useError();
 
   return useMemo(() => <App error={error}>{children}</App>, [error, children]);
 };

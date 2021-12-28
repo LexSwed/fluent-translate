@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Icon, styled } from '@fxtrot/ui';
+import { Icon, IconButton, styled } from '@fxtrot/ui';
 
 const svg = () => (
   <svg
@@ -14,15 +14,23 @@ const svg = () => (
   </svg>
 );
 
-export const CloseButton = styled(Button, {
+export const CloseButton = styled(IconButton, {
   p: 0,
-  size: '$5',
   opacity: 0,
 });
 
-const Close: React.FC<React.ComponentProps<typeof Button>> = (props) => {
+type Props = {
+  onClick: () => void;
+};
+
+const Close = ({ onClick }: Props) => {
   return (
-    <CloseButton {...props} variant="flat" size="sm">
+    <CloseButton
+      onClick={onClick}
+      aria-label="Close popup"
+      variant="flat"
+      size="sm"
+    >
       <Icon as={svg} />
     </CloseButton>
   );

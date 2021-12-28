@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
-import { useStore } from './store';
-import { StoreContextProvider } from './store/utils';
 import { ThemeProvider } from '@fxtrot/ui';
+import { StoreProvider } from './atoms';
 
 type Theme = React.ComponentProps<typeof ThemeProvider>['theme'];
 
@@ -43,12 +42,11 @@ const darkTheme: Theme = {
 };
 
 const AppContextProvider: React.FC = ({ children }) => {
-  const store = useStore();
   const prefersDark = useMediaQuery('(prefers-color-scheme: dark)');
 
   return (
     <ThemeProvider theme={prefersDark ? darkTheme : 'lightBlue'}>
-      <StoreContextProvider value={store}>{children}</StoreContextProvider>
+      <StoreProvider>{children}</StoreProvider>
     </ThemeProvider>
   );
 };
