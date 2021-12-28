@@ -1,9 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 
-import { useText } from '../../popup/store/utils';
 import { styled } from '@fxtrot/ui';
 
-const TIME_LIMIT = 8000;
+const TIME_LIMIT = 998000;
 const R = 32;
 const FULL_DASH_ARRAY = 2 * Math.PI * R;
 const path = `
@@ -44,7 +43,13 @@ const Timer: React.FC<Props> = ({ isMouseOver, onTimeout, ...props }) => {
   const dashArray = useDasharray({ isMouseOver, onTimeout });
 
   return (
-    <Svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <Svg
+      viewBox="0 0 100 100"
+      width="100%"
+      height="100%"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
       <Group>
         <Path strokeDasharray={dashArray} id="timer-remaining" d={path}></Path>
       </Group>
@@ -57,7 +62,6 @@ export default Timer;
 function useDasharray({ isMouseOver, onTimeout }: Props) {
   const timePassed = useRef(0);
   const [dashArray, setDashArray] = useState(`${FULL_DASH_ARRAY}`);
-  const [text] = useText();
 
   useEffect(() => {
     if (isMouseOver) {
@@ -82,7 +86,7 @@ function useDasharray({ isMouseOver, onTimeout }: Props) {
       setDashArray(`${FULL_DASH_ARRAY}`);
       clearInterval(id);
     };
-  }, [text, isMouseOver, onTimeout]);
+  }, [isMouseOver, onTimeout]);
 
   return dashArray;
 }

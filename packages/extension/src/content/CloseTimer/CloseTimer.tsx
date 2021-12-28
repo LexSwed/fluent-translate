@@ -14,12 +14,12 @@ const Wrapper = styled(Box, {
   top: '$2',
   right: '$2',
   display: 'grid',
-  gridTemplateColumns: '20px',
-  gridTemplateRows: '20px',
+  gridTemplateColumns: '$sizes$8',
+  gridTemplateRows: '$sizes$8',
 
-  [`& ${Svg}, & ${CloseButton}`]: {
-    gridColumn: '1 / 1',
-    gridRow: '1 /1',
+  [`& > *`]: {
+    gridArea: '1 / 1 / 1 / 1',
+    placeSelf: 'center',
   },
 
   variants: {

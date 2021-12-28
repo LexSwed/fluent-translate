@@ -2,8 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Flex, styled } from '@fxtrot/ui';
 
 import { Storage, deleteMemoryEntry } from '../../utils';
-import { useLanguages } from '../store/utils';
 import MemoryEntry from './MemoryEntry';
+import { useLanguages } from '../atoms';
 
 const List = styled(Flex, {
   p: 0,
@@ -15,7 +15,7 @@ type Props = {};
 
 export const Memory: React.FC<Props> = () => {
   const items = useMemory();
-  const langs = useLanguages();
+  const languages = useLanguages();
 
   const onDelete = useCallback(
     async (id: MemoryItem['id']) => deleteMemoryEntry(id),
@@ -23,15 +23,15 @@ export const Memory: React.FC<Props> = () => {
   );
 
   return (
-    <List as="ul" flow="column" cross="stretch">
+    <List role="list" flow="column" cross="stretch">
       {items.map((item) => {
         return (
           <MemoryEntry
             key={item.id}
             item={{
               ...item,
-              from: langs[item.from],
-              to: langs[item.to],
+              from: languages[item.from],
+              to: languages[item.to],
             }}
             onDelete={onDelete}
           />

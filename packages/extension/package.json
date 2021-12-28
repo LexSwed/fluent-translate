@@ -4,8 +4,19 @@
   "version": "1.7.12",
   "author": "lexswed",
   "scripts": {
-    "dev": "parcel watch src/background/background.ts src/popup/popup.html src/content/content.tsx --no-hmr --public-url /dist",
-    "build": "parcel build src/background/background.ts src/popup/popup.html src/content/content.tsx --public-url /dist --no-source-maps"
+    "dev": "parcel src/manifest.json --host localhost --target webext-dev --config @parcel/config-webextension",
+    "build": "parcel build src/manifest.json --target webext-prod --config @parcel/config-webextension",
+    "lint": "eslint './src/**/*.{ts,tsx}'",
+    "check": "tsc --noEmit",
+    "ci": "yarn build && yarn lint && yarn check"
+  },
+  "targets": {
+    "webext-dev": {
+      "sourceMap": {
+        "inline": true,
+        "inlineSources": true
+      }
+    }
   },
   "browserslist": [
     "last 2 Chrome version"
@@ -20,38 +31,31 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fxtrot/ui": "^1.0.173",
+    "@fxtrot/ui": "^1.0.205",
     "@heroicons/react": "^1.0.1",
     "@sentry/browser": "^6.5.1",
-    "@stitches/react": "^0.1.9",
+    "@stitches/react": "^1.2.6",
     "@webcomponents/webcomponentsjs": "^2.5.0",
     "autosize": "^5.0.0",
     "debounce": "^1.2.1",
-    "framer-motion": "^4.1.17",
+    "framer-motion": "^5.5.5",
     "nanoid": "^3.1.23",
     "qs": "^6.10.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "swr": "^0.5.6"
+    "recoil": "^0.5.2",
+    "swr": "^1.1.2"
   },
   "devDependencies": {
+    "@parcel/config-webextension": "^2.0.1",
     "@types/autosize": "^4.0.0",
-    "@types/chrome": "^0.0.144",
+    "@types/chrome": "^0.0.173",
     "@types/debounce": "^1.2.0",
     "@types/qs": "^6.9.6",
     "@types/uuid": "^8.3.0",
-    "parcel-bundler": "^1.12.5",
+    "parcel": "^2.0.1",
     "pretty-quick": "^3.1.0",
-    "semantic-release": "^17.4.3",
+    "semantic-release": "^18.0.1",
     "typescript": "^4.3.2"
-  },
-  "targets": {
-    "main": {
-      "engines": {
-        "browsers": [
-          "last 2 Chrome version"
-        ]
-      }
-    }
   }
 }

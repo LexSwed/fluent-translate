@@ -1,16 +1,25 @@
+import { stitchesConfig } from '@fxtrot/ui';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 import AppContext from '../popup/AppContext';
-import App from './App';
+import ContentApp from './ContentApp';
 
 class EdgeTranslate extends HTMLElement {
   wrapper: HTMLDivElement;
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
+
     this.wrapper = document.createElement('div');
     this.shadowRoot?.append(this.wrapper);
+  }
+
+  connectedCallback() {
+    const styleElement = document.createElement('style');
+    this.shadowRoot?.prepend(styleElement);
+    (stitchesConfig as any).sheet.sheet = styleElement.sheet;
+    (stitchesConfig as any).reset();
   }
 
   static get observedAttributes() {
@@ -26,7 +35,7 @@ class EdgeTranslate extends HTMLElement {
       case 'text': {
         ReactDOM.render(
           <AppContext>
-            <App text={newValue} onClose={this.onClose} />
+            <ContentApp text={newValue} onClose={this.onClose} />
           </AppContext>,
           this.wrapper
         );

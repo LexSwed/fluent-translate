@@ -12,7 +12,7 @@ const MemoryHeading: React.FC<Props> = ({ isOpen, onClick }) => {
     <Button
       variant="flat"
       onClick={onClick}
-      size="xs"
+      size="sm"
       cross="center"
       css={{ fontSize: '$sm' }}
     >

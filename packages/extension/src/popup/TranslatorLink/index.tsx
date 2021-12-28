@@ -1,10 +1,8 @@
 import React from 'react';
-import { TextLink, StyleRecord } from '@fxtrot/ui';
+import { TextLink } from '@fxtrot/ui';
 
 import { getTranslatorLink } from '../../utils';
-import { useTranslation, useText } from '../store/utils';
-
-const style: StyleRecord = { css: { fontWeight: 400 } };
+import { useFromLanguage, useInputText, useToLanguage } from '../atoms';
 
 export const TranslatorLink = React.forwardRef<
   HTMLAnchorElement,
@@ -17,7 +15,7 @@ export const TranslatorLink = React.forwardRef<
       href={href}
       target="_blank"
       rel="noopener"
-      css={style}
+      css={{ fontWeight: 400 }}
       {...props}
       ref={ref}
     >
@@ -27,8 +25,9 @@ export const TranslatorLink = React.forwardRef<
 });
 
 export function useTranslatorLink() {
-  const { to, from } = useTranslation();
-  const [text] = useText();
+  const [to] = useToLanguage();
+  const [from] = useFromLanguage();
+  const [text] = useInputText();
 
   return getTranslatorLink({ to, from, text });
 }

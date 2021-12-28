@@ -9,7 +9,7 @@ export default class Document extends NextDocument {
         <Head>
           <style
             id="fxtrot-ui"
-            dangerouslySetInnerHTML={{ __html: stitchesConfig.getCssString() }}
+            dangerouslySetInnerHTML={{ __html: stitchesConfig.getCssText() }}
           />
           <link rel="icon" href="/favicon.png" />
         </Head>

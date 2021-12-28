@@ -4,15 +4,16 @@ declare module '*.css' {
   export = styles;
 }
 
+type Languages = Record<string, string>;
 type TranslateQuery = { from?: string; to: string; text: string };
 
 type TranslateResponse = {
-  from: string | undefined;
-  to: string;
+  from?: string;
+  to?: string;
   translation: {
     text: string;
     truncated: boolean;
-  };
+  } | null;
 };
 
 type AsyncRequest =

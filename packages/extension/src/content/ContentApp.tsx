@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { styled, Flex, Text, Box } from '@fxtrot/ui';
 
-import { useText } from '../popup/store/utils';
 import Translated from '../popup/Results/Translated';
 import CloseTimer from './CloseTimer';
 import { FromLanguageSelect } from '../popup/LanguageSelect';
+import { useInputText, useTranslation } from '../popup/atoms';
 
 type Props = {
   text?: string;
@@ -20,13 +20,14 @@ const Main = styled(Box, {
   br: '$md',
   p: '$4',
   transition: '0.2s',
-  boxShadow: '$xl',
+  boxShadow: '$popper',
   color: '$text',
 });
 
-const App: React.FC<Props> = ({ text, onClose }) => {
-  const [, setText] = useText();
+const ContentApp: React.FC<Props> = ({ text, onClose }) => {
+  const [, setText] = useInputText();
   const [isMouseOver, setMouseOver] = useState(false);
+  const { translation } = useTranslation();
 
   useEffect(() => {
     text && setText(text);
@@ -37,7 +38,9 @@ const App: React.FC<Props> = ({ text, onClose }) => {
       onMouseOver={() => setMouseOver(true)}
       onMouseLeave={() => setMouseOver(false)}
     >
-      <CloseTimer isMouseOver={isMouseOver} onClose={onClose} />
+      {translation?.text ? (
+        <CloseTimer isMouseOver={isMouseOver} onClose={onClose} key={text} />
+      ) : null}
       <Flex flow="column" gap="md">
         <Flex flow="column" gap="sm">
           <FromLanguageSelect />
@@ -51,4 +54,4 @@ const App: React.FC<Props> = ({ text, onClose }) => {
   );
 };
 
-export default App;
+export default ContentApp;

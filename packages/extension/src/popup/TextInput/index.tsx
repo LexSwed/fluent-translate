@@ -2,12 +2,12 @@ import React, { useRef, useLayoutEffect } from 'react';
 import autosize from 'autosize';
 import { styled, Box, Flex } from '@fxtrot/ui';
 
-import { useText } from '../store/utils';
 import { FromLanguageSelect } from '../LanguageSelect';
+import { useInputText } from '../atoms';
 
 export const TextInput: React.FC = () => {
   const inputRef = useRef<HTMLTextAreaElement>(null);
-  const [text, setText] = useText();
+  const [text, setText] = useInputText();
 
   const multiline = Math.floor(text.length / 25) > 0 || text.includes('\n');
 
@@ -32,6 +32,7 @@ export const TextInput: React.FC = () => {
       cross={multiline ? 'stretch' : 'center'}
     >
       <TextArea
+        aria-label="Text to translate"
         value={text}
         onChange={(e: any) => {
           setText(e.target.value);

@@ -37,7 +37,6 @@ function useMemoryItemsNotEmpty(): boolean {
 }
 
 const FooterBar = styled('footer', {
-  height: '$base',
   p: '$2',
   display: 'flex',
   justifyContent: 'space-between',
@@ -48,7 +47,7 @@ const FooterBar = styled('footer', {
 
 const MainSheet = styled('section', {
   position: 'fixed',
-  top: 'calc(100% - $sizes$base)',
+  top: 'calc(100% - $sizes$12)',
   left: 0,
   width: '100%',
   transition: 'transform 0.24s ease-in-out',
@@ -57,7 +56,7 @@ const MainSheet = styled('section', {
   variants: {
     open: {
       true: {
-        transform: 'translateY(calc(-1 * (100vh - $sizes$base)))',
+        transform: 'translateY(calc(-1 * (100vh - $sizes$12)))',
 
         [`& > ${FooterBar}`]: {
           bc: '$surfaceHover',
