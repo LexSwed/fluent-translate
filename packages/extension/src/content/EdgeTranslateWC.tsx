@@ -1,8 +1,8 @@
-import { stitchesConfig } from '@fxtrot/ui';
 import React from 'react';
+import { stitchesConfig } from '@fxtrot/ui';
 import ReactDOM from 'react-dom';
 
-import AppContext from '../popup/AppContext';
+import { AppContext } from '../popup/AppContext';
 import ContentApp from './ContentApp';
 
 class EdgeTranslate extends HTMLElement {

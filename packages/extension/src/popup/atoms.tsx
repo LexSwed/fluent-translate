@@ -1,86 +1,64 @@
 import React from 'react';
-import {
-  RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValueLoadable,
-  useRecoilStateLoadable,
-} from 'recoil';
+import { Provider, atom, useAtom } from 'jotai';
+import { useUpdateAtom, useAtomValue } from 'jotai/utils';
 import { API, Storage, userLang } from '../utils';
 
 export const StoreProvider: React.FC = ({ children }) => {
-  return <RecoilRoot>{children}</RecoilRoot>;
+  return <Provider>{children}</Provider>;
 };
 
 /**
  * User input text
  */
-const inputTextAtom = atom({
-  key: 'inputText',
-  default: '',
-});
-export const useInputText = () => useRecoilState(inputTextAtom);
+const inputTextAtom = atom('');
+export const useInputText = () => useAtom(inputTextAtom);
 
 /**
  * List of available languages
  */
-const languagesAtom = selector({
-  key: 'languagesList',
-  get: async () => {
+const languagesAtom = atom<Languages>({});
+languagesAtom.onMount = (setLanguages) => {
+  async function load() {
     const { languages } = await Storage.getItems<{
       languages?: Languages;
     }>(['to', 'languages']);
-    return languages as Languages;
-  },
-});
-export const useLanguages = () => {
-  const loadable = useRecoilValueLoadable(languagesAtom);
-  switch (loadable.state) {
-    case 'hasValue':
-      return loadable.contents;
-    default:
-      return {};
+    if (languages) {
+      setLanguages(languages);
+    }
   }
+  load();
 };
+export const useLanguages = () => useAtomValue(languagesAtom);
 
 /**
  * Selected language translate the text FROM
  */
-const fromLanguageAtom = atom<string>({
-  key: 'fromLanguage',
-  default: 'auto',
-});
-export const useFromLanguage = () => useRecoilState(fromLanguageAtom);
+const fromLanguageAtom = atom<string>('auto');
+export const useFromLanguage = () => useAtom(fromLanguageAtom);
 
 /**
  * Selected language translate the text TO
  */
-const toLanguageAtom = atom({
-  key: 'toLanguage',
-  default: selector({
-    key: 'toLanguage/default',
-    get: async () => {
-      const { to } = await Storage.getItems<{
-        to?: 'string';
-      }>(['to']);
-      return to as string;
-    },
-    set: async ({ set }, value) => {
-      // set(toLanguageAtom, value)
-      await Storage.setItems({ to: value });
-    },
-  }),
-});
-export const useToLanguage = () => {
-  const [loadable, setState] = useRecoilStateLoadable(toLanguageAtom);
-  switch (loadable.state) {
-    case 'hasValue':
-      return [loadable.contents, setState] as const;
-    default:
-      return ['', setState] as const;
+const toLanguageValueAtom = atom(userLang);
+const toLanguageAtom = atom(
+  (get) => get(toLanguageValueAtom),
+  (_get, set, newTo: string) => {
+    set(toLanguageValueAtom, newTo);
+    Storage.setItems({ to: newTo });
   }
+);
+toLanguageAtom.onMount = (setTo) => {
+  async function load() {
+    const { to } = await Storage.getItems<{
+      to?: 'string';
+    }>(['to']);
+    if (to) {
+      setTo(to);
+    }
+  }
+  load();
 };
+export const useToLanguage = () => useAtom(toLanguageAtom);
 
 /**
  * Translation result
@@ -88,61 +66,56 @@ export const useToLanguage = () => {
  * to "auto" while providing a hint about the language used for translation
  */
 const translationAtom = atom<TranslateResponse>({
-  key: 'translation',
-  default: selector({
-    key: 'translation/default',
-    get: async ({ get }) => {
-      const to = get(toLanguageAtom);
-      const from = get(fromLanguageAtom);
-      const text = get(inputTextAtom);
-      const trimmed = text.trim();
-
-      if (trimmed.length < 2) {
-        return {
-          translation: null,
-        };
-      }
-
-      try {
-        const res = await API.translate({
-          // let it guess the language if Auto is selected
-          from: from === 'auto' ? undefined : from,
-          to,
-          text: trimmed,
-        });
-
-        if (!res) {
-          throw new Error('Failed to fetch');
-        }
-
-        return {
-          from: res.from,
-          to: res.to,
-          translation: res.translation,
-        };
-      } catch (error) {
-        return {
-          translation: null,
-        };
-      }
-    },
-  }),
+  translation: null,
 });
-export const useTranslation = () => {
-  const loadable = useRecoilValueLoadable(translationAtom);
-  switch (loadable.state) {
-    case 'hasValue':
-      return loadable.contents;
-    default:
-      return {
-        translation: null,
-      };
+export const useTranslation = () => useAtomValue(translationAtom);
+export const useUpdateTranslation = () => useUpdateAtom(translationAtom);
+
+const errorAtom = atom<string | null>(null);
+
+export const useError = () => useAtom(errorAtom);
+export const useUpdateError = () => useUpdateAtom(errorAtom);
+
+const memoryAtom = atom<MemoryItems>([]);
+export const useMemoryItems = () => {
+  const items = useAtomValue(memoryAtom);
+
+  const onDelete = React.useCallback(async (id: MemoryItem['id']) => {
+    const { memory } = await Storage.getSyncItems<{ memory: MemoryItems }>(
+      'memory'
+    );
+
+    const items = memory.filter((entry) => entry.id !== id);
+
+    // atom value automatically updated due to listener set up on mount
+    await Storage.setSyncItems({ memory: items });
+
+    return items;
+  }, []);
+
+  return [items, onDelete] as const;
+};
+memoryAtom.onMount = (setMemoryItems) => {
+  async function load() {
+    const { memory = [] } = await Storage.getSyncItems<{ memory: MemoryItems }>(
+      'memory'
+    );
+    setMemoryItems(memory);
   }
+  load();
+  const onChange: onStorageChangeListener = ({ memory }, name) => {
+    if (memory?.newValue && name === 'sync') {
+      setMemoryItems(memory?.newValue as MemoryItems);
+    }
+  };
+
+  chrome.storage.onChanged.addListener(onChange);
+
+  return () => {
+    chrome.storage.onChanged.removeListener(onChange);
+  };
 };
 
-const errorAtom = atom<string | null>({
-  key: 'error',
-  default: null,
-});
-
-export const useError = () => useRecoilState(errorAtom);
+type onStorageChangeListener = Parameters<
+  typeof chrome.storage.onChanged.addListener
+>[0];

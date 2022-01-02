@@ -23,19 +23,8 @@ const makeRequest = <T = any>(request: AsyncRequest): Promise<T> =>
   );
 
 class BackgroundFetcher {
-  translateDebounceId: NodeJS.Timeout | null = null;
-
   translate = (params: TranslateQuery) => {
-    if (this.translateDebounceId) {
-      clearTimeout(this.translateDebounceId);
-    }
-    return new Promise<TranslateResponse>((resolve, reject) => {
-      this.translateDebounceId = setTimeout(() => {
-        makeRequest({ request: 'translate', params })
-          .then(resolve)
-          .catch(reject);
-      }, 500);
-    });
+    return makeRequest({ request: 'translate', params });
   };
 }
 
@@ -58,18 +47,6 @@ export const Storage = {
   getSyncItems: <T>(key: StorageKey) => Storage.getItems<T>(key, 'sync'),
   setSyncItems: (item: object) => Storage.setItems(item, 'sync'),
 };
-
-export async function deleteMemoryEntry(id: MemoryItem['id']) {
-  const { memory } = await Storage.getSyncItems<{ memory: MemoryItems }>(
-    'memory'
-  );
-
-  const items = memory.filter((entry) => entry.id !== id);
-
-  await Storage.setSyncItems({ memory: items });
-
-  return items;
-}
 
 type StorageKey = Parameters<typeof chrome.storage['local']['get']>[0];
 

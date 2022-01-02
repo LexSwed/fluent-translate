@@ -22,9 +22,8 @@ const LanguageSelect: React.FC<Props> = ({ value, onChange, languages }) => {
     <Select
       value={value}
       title="Language select"
-      onChange={(e: any) => {
+      onChange={(e) => {
         const { value } = e.target;
-
         addRecent(value);
         onChange(value);
       }}
@@ -44,7 +43,6 @@ const LanguageSelect: React.FC<Props> = ({ value, onChange, languages }) => {
 export const ToLanguageSelect = () => {
   const [to, setTo] = useToLanguage();
   const languages = useLanguages();
-
   return <LanguageSelect value={to} onChange={setTo} languages={languages} />;
 };
 
@@ -52,7 +50,6 @@ export const FromLanguageSelect = () => {
   const [from, setFrom] = useFromLanguage();
   const translation = useTranslation();
   const languages = useLanguages();
-
   const languagesWithAuto = useMemo(() => {
     let { auto, ...langs } = languages;
     if (from === 'auto' && translation.from) {
