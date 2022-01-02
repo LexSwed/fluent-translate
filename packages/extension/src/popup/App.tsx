@@ -1,4 +1,4 @@
-import React, { Suspense, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { Flex, Box, Icon, Text, CssStyles } from '@fxtrot/ui';
 import { FireIcon } from '@heroicons/react/outline';
 
@@ -76,9 +76,7 @@ class App extends React.Component<{ error?: string | null }> {
           css={mainStyle}
         >
           <TextInput />
-          <Suspense fallback={null}>
-            <Result />
-          </Suspense>
+          <Result />
         </Flex>
         <Footer />
       </>

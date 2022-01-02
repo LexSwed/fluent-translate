@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { styled, Box } from '@fxtrot/ui';
 
 import MemoryHeading from '../Memory/MemoryHeading';
-import { Memory, useMemory } from '../Memory';
+import { Memory } from '../Memory';
 import More from './More';
+import { useMemoryItems } from '../atoms';
 
 export const Footer = () => {
   const [isOpen, setOpen] = useState(false);
-  const hasMemoryItems = useMemoryItemsNotEmpty();
+  const [items] = useMemoryItems();
+  const hasMemoryItems = items.length > 0;
 
   useEffect(() => {
     if (!hasMemoryItems) {
@@ -29,12 +31,6 @@ export const Footer = () => {
     </MainSheet>
   );
 };
-
-function useMemoryItemsNotEmpty(): boolean {
-  const memory = useMemory();
-
-  return memory.length > 0;
-}
 
 const FooterBar = styled('footer', {
   p: '$2',

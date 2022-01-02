@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import AppContext from './AppContext';
+import { AppContext } from './AppContext';
 import App from './App';
 
 // const element = document.getElementById('edge-translate') as HTMLElement & {
