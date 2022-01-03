@@ -11,7 +11,7 @@ const More: React.FC = () => {
       <IconButton variant="flat" aria-label="More" size="sm">
         <Icon as={DotsVerticalIcon} size="md" />
       </IconButton>
-      <Menu.List>
+      <Menu.List side="top">
         <Menu.Item
           size="sm"
           onClick={() =>

@@ -2,7 +2,8 @@ import React, { useEffect, useState, useRef } from 'react';
 
 import { styled } from '@fxtrot/ui';
 
-const TIME_LIMIT = 998000;
+// 7 sec (or more?)
+const TIME_LIMIT = 1000 * 7;
 const R = 32;
 const FULL_DASH_ARRAY = 2 * Math.PI * R;
 const path = `

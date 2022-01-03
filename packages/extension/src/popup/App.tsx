@@ -15,7 +15,7 @@ const mainStyle: CssStyles = {
   overflow: 'hidden',
   bc: '$surfaceStill',
   minWidth: '360px',
-  minHeight: '220px',
+  minHeight: '280px',
 };
 
 class App extends React.Component<{ error?: string | null }> {
