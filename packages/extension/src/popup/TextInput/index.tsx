@@ -75,7 +75,7 @@ const Wrapper = styled(Flex, {
   'br': '$md',
   'transition': '0.12s ease-in-out',
 
-  ':hover': { borderColor: '$borderHover' },
+  '&:hover': { borderColor: '$borderHover' },
 
   '&:focus-within': {
     borderColor: '$borderActive',

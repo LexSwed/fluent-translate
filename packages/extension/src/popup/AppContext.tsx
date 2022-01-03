@@ -1,15 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { API } from '../utils';
+import React, { useState } from 'react';
 
 import { ThemeProvider } from '@fxtrot/ui';
-import {
-  StoreProvider,
-  useFromLanguage,
-  useInputText,
-  useToLanguage,
-  useUpdateError,
-  useUpdateTranslation,
-} from './atoms';
+import { StoreProvider } from './atoms';
+import { Translator } from './Translator';
 
 type Theme = React.ComponentProps<typeof ThemeProvider>['theme'];
 
@@ -32,20 +25,20 @@ const darkTheme: Theme = {
     primaryLight: '#5db6ca',
     primaryLightActive: '#81c0ce',
 
-    surfaceStill: '#333333',
-    surfaceHover: '#404040',
-    surfaceActive: '#454545',
-    surfaceDisabled: 'rgba(0,0,0,0.2)',
+    surfaceStill: 'hsl(0, 0%, 20%)',
+    surfaceHover: 'hsl(0, 0%, 25%)',
+    surfaceActive: 'hsl(0, 0%, 28%)',
+    surfaceDisabled: 'hsla(0, 0%, 20%, 0.2)',
 
     flatStill: 'transparent',
-    flatHover: 'rgba(255,255,255,0.15)',
-    flatActive: 'rgba(255,255,255,0.3)',
-    flatDisabled: 'rgba(0,0,0,0.2)',
+    flatHover: 'hsla(0, 0%, 100%, 0.15)',
+    flatActive: 'hsla(0, 0%, 100%, 0.25)',
+    flatDisabled: 'hsla(0, 0%, 0%, 0.2)',
 
-    borderStill: '#737373',
-    borderHover: '#9A9A9A',
-    borderActive: '#888888',
-    borderLight: '#404040',
+    borderStill: 'hsl(0, 0%, 45%)',
+    borderHover: 'hsl(0, 0%, 50%)',
+    borderActive: 'hsl(0, 0%, 60%)',
+    borderLight: 'hsl(0, 0%, 35%)',
   },
 };
 
@@ -59,53 +52,6 @@ export const AppContext: React.FC = ({ children }) => {
       </StoreProvider>
     </ThemeProvider>
   );
-};
-
-const Translator: React.FC = ({ children }) => {
-  const [text] = useInputText();
-  const [from] = useFromLanguage();
-  const [to] = useToLanguage();
-  const setTranslation = useUpdateTranslation();
-  const setError = useUpdateError();
-
-  useEffect(() => {
-    async function translate() {
-      const trimmed = text.trim();
-
-      setError(null);
-      setTranslation((prev) => ({ ...prev, translation: null }));
-
-      if (trimmed.length < 2) {
-        return;
-      }
-
-      try {
-        const res = await API.translate({
-          // let it guess the language if Auto is selected
-          from: from === 'auto' ? undefined : from,
-          to,
-          text: trimmed,
-        });
-
-        if (!res) {
-          throw new Error('Failed to fetch');
-        }
-
-        setTranslation({
-          from: res.from,
-          to: res.to,
-          translation: res.translation,
-        });
-      } catch (error) {
-        setError(`${error}`);
-        setTranslation({ translation: null });
-      }
-    }
-    const id = setTimeout(translate, 500);
-    return () => clearTimeout(id);
-  }, [text, from, to, setError, setTranslation]);
-
-  return <>{children}</>;
 };
 
 function useMediaQuery(query: string) {

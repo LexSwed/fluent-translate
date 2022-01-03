@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider, atom, useAtom } from 'jotai';
-import { useUpdateAtom, useAtomValue } from 'jotai/utils';
+import { useUpdateAtom, useAtomValue, selectAtom } from 'jotai/utils';
 import { API, Storage, userLang } from '../utils';
 
 export const StoreProvider: React.FC = ({ children }) => {
@@ -65,11 +65,22 @@ export const useToLanguage = () => useAtom(toLanguageAtom);
  * We need to duplicate "from" here and in respective atom to keep the selection
  * to "auto" while providing a hint about the language used for translation
  */
-const translationAtom = atom<TranslateResponse>({
+const translationAtom = atom<
+  | TranslateResponse
+  | {
+      from?: string;
+      to?: string;
+      fetching: boolean;
+    }
+>({
   translation: null,
 });
 export const useTranslation = () => useAtomValue(translationAtom);
 export const useUpdateTranslation = () => useUpdateAtom(translationAtom);
+const translatingAtom = selectAtom(translationAtom, (state) =>
+  'fetching' in state ? state.fetching : false
+);
+export const useTranslatingStatus = () => useAtomValue(translatingAtom);
 
 const errorAtom = atom<string | null>(null);
 

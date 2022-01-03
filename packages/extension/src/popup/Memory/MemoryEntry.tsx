@@ -13,6 +13,7 @@ const styles: Record<string, CssStyles> = {
     p: '$3',
     py: '$2',
     borderBottom: '1px solid $borderLight',
+    scrollSnapAlign: 'start',
   },
   lightText: {
     color: '$textLight',
