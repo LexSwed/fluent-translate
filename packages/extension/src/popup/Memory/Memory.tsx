@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import { Flex, styled } from '@fxtrot/ui';
 
 import { MemoryEntry } from './MemoryEntry';
@@ -11,7 +11,7 @@ const List = styled(Flex, {
   minHeight: 400,
 });
 
-export const Memory = React.memo(() => {
+export const Memory = memo(() => {
   const [items, onDelete] = useMemoryItems();
   const languages = useLanguages();
 

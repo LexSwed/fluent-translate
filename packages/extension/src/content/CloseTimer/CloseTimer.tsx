@@ -1,12 +1,19 @@
-import React from 'react';
-
-import Close, { CloseButton } from './Close';
-import Timer, { Svg } from './Timer';
+import { Close, CloseButton } from './Close';
+import { Timer, Svg } from './Timer';
 import { Box, styled } from '@fxtrot/ui';
 
 type Props = {
   isMouseOver: boolean;
   onClose: () => void;
+};
+
+export const CloseTimer: React.FC<Props> = ({ isMouseOver, onClose }) => {
+  return (
+    <Wrapper isMouseOver={isMouseOver}>
+      <Timer isMouseOver={isMouseOver} onTimeout={onClose} />
+      <Close onClick={onClose} />
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled(Box, {
@@ -40,14 +47,3 @@ const Wrapper = styled(Box, {
     },
   },
 });
-
-const CloseTimer: React.FC<Props> = ({ isMouseOver, onClose }) => {
-  return (
-    <Wrapper isMouseOver={isMouseOver}>
-      <Timer isMouseOver={isMouseOver} onTimeout={onClose} />
-      <Close onClick={onClose} />
-    </Wrapper>
-  );
-};
-
-export default CloseTimer;

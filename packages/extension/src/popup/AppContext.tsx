@@ -19,11 +19,11 @@ const darkTheme: Theme = {
     success: '$success',
     danger: '$danger',
 
-    primaryStill: '#4fcae6',
-    primaryHover: '#6adef8',
-    primaryActive: '#1e99b4',
-    primaryLight: '#5db6ca',
-    primaryLightActive: '#81c0ce',
+    primaryStill: 'hsl(191, 75%, 60%)',
+    primaryHover: 'hsl(191, 75%, 70%)',
+    primaryActive: 'hsl(191, 75%, 50%)',
+    primaryLight: 'hsl(191, 75%, 75%)',
+    primaryLightActive: 'hsl(191, 75%, 70%)',
 
     surfaceStill: 'hsl(0, 0%, 20%)',
     surfaceHover: 'hsl(0, 0%, 25%)',

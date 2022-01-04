@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button, Icon, Text } from '@fxtrot/ui';
 import { BookmarkAltIcon } from '@heroicons/react/outline';
 

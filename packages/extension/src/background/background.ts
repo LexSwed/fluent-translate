@@ -1,5 +1,5 @@
 import { addMemoryItem } from './utils';
-import { translate, dictLookup } from './api';
+import { translate } from './api';
 import { Sentry, Storage } from '../utils';
 import { languages } from './languages';
 
@@ -24,7 +24,7 @@ chrome.contextMenus.onClicked.addListener((info) => {
 
 chrome.runtime.onMessage.addListener(
   (request: AsyncRequest, _sender, sendResponse) => {
-    let promise: Promise<any> | null;
+    let promise: Promise<any> | null = null;
     switch (request.request) {
       case 'translate': {
         promise = translate(request.params).then((res) => {
@@ -38,10 +38,6 @@ chrome.runtime.onMessage.addListener(
           }
           return res;
         });
-        break;
-      }
-      case 'dictionaryLookup': {
-        promise = dictLookup(request.params);
         break;
       }
     }

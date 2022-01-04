@@ -7,15 +7,6 @@ declare module '*.css' {
 type Languages = Record<string, string>;
 type TranslateQuery = { from?: string; to: string; text: string };
 
-type TranslateResponse = {
-  from?: string;
-  to?: string;
-  translation: {
-    text: string;
-    truncated: boolean;
-  } | null;
-};
-
 type AsyncRequest =
   | { request: 'translate'; params: TranslateQuery }
   | { request: 'dictionaryLookup'; params: Required<TranslateQuery> };

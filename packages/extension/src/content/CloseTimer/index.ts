@@ -1,1 +1,1 @@
-export { default } from './CloseTimer';
+export * from './CloseTimer';

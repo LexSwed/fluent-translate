@@ -1,4 +1,3 @@
-import React from 'react';
 import { Icon, Menu, IconButton } from '@fxtrot/ui';
 import { DotsVerticalIcon } from '@heroicons/react/outline';
 

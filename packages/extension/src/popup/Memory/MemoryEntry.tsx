@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Text, Button, Icon, Flex, CssStyles } from '@fxtrot/ui';
 import { TrashIcon } from '@heroicons/react/outline';
 

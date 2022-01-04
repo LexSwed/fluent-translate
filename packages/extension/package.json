@@ -31,8 +31,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fxtrot/ui": "^1.0.205",
-    "@heroicons/react": "^1.0.1",
+    "@fxtrot/ui": "^1.0.206",
+    "@heroicons/react": "^1.0.5",
     "@sentry/browser": "^6.5.1",
     "@stitches/react": "^1.2.6",
     "@webcomponents/webcomponentsjs": "^2.5.0",
@@ -41,7 +41,6 @@
     "framer-motion": "^5.5.5",
     "jotai": "^1.5.0",
     "nanoid": "^3.1.23",
-    "qs": "^6.10.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "swr": "^1.1.2"
@@ -49,9 +48,8 @@
   "devDependencies": {
     "@parcel/config-webextension": "^2.0.1",
     "@types/autosize": "^4.0.0",
-    "@types/chrome": "^0.0.173",
+    "@types/chrome": "^0.0.174",
     "@types/debounce": "^1.2.0",
-    "@types/qs": "^6.9.6",
     "@types/uuid": "^8.3.0",
     "parcel": "^2.0.1",
     "pretty-quick": "^3.1.0",

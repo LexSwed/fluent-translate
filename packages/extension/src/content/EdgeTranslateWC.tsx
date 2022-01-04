@@ -1,4 +1,3 @@
-import React from 'react';
 import { stitchesConfig } from '@fxtrot/ui';
 import ReactDOM from 'react-dom';
 
