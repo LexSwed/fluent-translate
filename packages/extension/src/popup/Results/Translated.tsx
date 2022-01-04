@@ -1,34 +1,24 @@
-import React from 'react';
+import { memo } from 'react';
 import { Text, Flex } from '@fxtrot/ui';
 
 import { TranslatorLink } from '../TranslatorLink';
 import { ToLanguageSelect } from '../LanguageSelect';
 import { useTranslation } from '../atoms';
 
-const Translated: React.FC = () => {
+export const Translated = memo(() => {
   const { translation } = useTranslation();
 
   if (!translation) {
     return null;
   }
-  const { text, truncated } = translation;
+  const { text } = translation;
   return (
     <Flex flow="column" gap="2" cross="stretch">
       <ToLanguageSelect />
       <Flex flow="column" gap="6" css={{ pl: '$2' }}>
-        <Text size="md">
-          {truncated ? (
-            <>
-              {`${text}… `}
-              <TranslatorLink>Full translation</TranslatorLink>
-            </>
-          ) : (
-            text
-          )}
-        </Text>
+        <Text size="md">{text}</Text>
+        <TranslatorLink>See more on Google Translate</TranslatorLink>
       </Flex>
     </Flex>
   );
-};
-
-export default React.memo(Translated);
+});

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { styled, Flex, Text, Box } from '@fxtrot/ui';
 
-import Translated from '../popup/Results/Translated';
-import CloseTimer from './CloseTimer';
+import { Translated } from '../popup/Results/Translated';
+import { CloseTimer } from './CloseTimer';
 import { FromLanguageSelect } from '../popup/LanguageSelect';
 import { useInputText, useTranslation } from '../popup/atoms';
 

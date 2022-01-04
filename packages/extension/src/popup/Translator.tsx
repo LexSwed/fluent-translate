@@ -13,9 +13,8 @@ export const Translator: React.FC = ({ children }) => {
   const [text] = useInputText();
   const [from] = useFromLanguage();
   const [to] = useToLanguage();
-  const setTranslation = useUpdateTranslation();
+  const [, dispatch] = useUpdateTranslation();
   const setError = useUpdateError();
-
   useEffect(() => {
     async function translate() {
       const trimmed = text.trim();
@@ -23,16 +22,11 @@ export const Translator: React.FC = ({ children }) => {
       setError(null);
 
       if (trimmed.length < 2) {
-        setTranslation(({ from, to }) => ({ from, to, translation: null }));
+        dispatch({ type: 'reset' });
         return;
       }
 
-      setTranslation(({ from, to }) => ({
-        from,
-        to,
-        translation: null,
-        fetching: true,
-      }));
+      dispatch({ type: 'fetching' });
 
       try {
         const res = await API.translate({
@@ -46,19 +40,18 @@ export const Translator: React.FC = ({ children }) => {
           throw new Error('Failed to fetch');
         }
 
-        setTranslation({
-          from: res.from,
-          to: res.to,
-          translation: res.translation,
+        dispatch({
+          type: 'done',
+          payload: res,
         });
       } catch (error) {
         setError(`${error}`);
-        setTranslation({ translation: null });
+        dispatch({ type: 'reset' });
       }
     }
     const id = setTimeout(translate, 500);
     return () => clearTimeout(id);
-  }, [text, from, to, setError, setTranslation]);
+  }, [text, from, to, setError, dispatch]);
 
   return <>{children}</>;
 };
