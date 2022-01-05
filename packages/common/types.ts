@@ -1,9 +1,17 @@
 export type TranslateResponse = {
   from: string;
   to: string;
-  translation: {
-    text: string;
-    pronunciation?: string;
-    alternatives?: string[];
-  } | null;
+  translation: TranslationSuccess | null;
+};
+
+export type TranslationSuccess = {
+  text: string;
+  pronunciation?: string;
+  alternatives?: string[];
+  definitions?: TranslateDefinition[];
+};
+
+export type TranslateDefinition = {
+  type: string;
+  explanations: { explanation: string; example: string | null }[];
 };

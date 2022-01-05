@@ -10,8 +10,8 @@ const darkTheme: Theme = {
   colors: {
     text: '#fff',
     textDisabled: '$gray200',
-    textLight: '$gray300',
-    textSubtle: '#gray400',
+    textLight: '$gray200',
+    textSubtle: '$gray300',
     accent: '#4fcae6',
     accentLight: '$gray50',
     focusRing: '$gray50',

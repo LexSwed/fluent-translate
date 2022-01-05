@@ -13,9 +13,9 @@ export const TranslatorLink = React.forwardRef<
   return (
     <TextLink
       href={href}
-      css={{ fontWeight: 400 }}
-      {...props}
+      css={{ fontWeight: 400, color: '$text' }}
       external
+      {...props}
       ref={ref}
     >
       {children}

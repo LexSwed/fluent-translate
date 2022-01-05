@@ -1,7 +1,10 @@
 import translate from '@vitalets/google-translate-api';
 
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { TranslateResponse } from '../../../../common/types';
+import {
+  TranslateResponse,
+  TranslationSuccess,
+} from '../../../../common/types';
 
 export default async function handler(
   req: NextApiRequest,
@@ -18,7 +21,7 @@ export default async function handler(
     res.status(400);
   }
 
-  const { pronunciation, alternatives } = parseRaw(resp.raw);
+  const { pronunciation, alternatives, definitions } = parseRaw(resp.raw);
 
   res.status(200).json({
     from: resp.from.language.iso || from || 'auto',
@@ -27,31 +30,49 @@ export default async function handler(
       text: resp.text,
       pronunciation: resp.pronunciation || pronunciation,
       alternatives,
+      definitions,
     },
   });
 }
 
 function parseRaw(raw: any) {
-  const [translation, moreData] = raw;
+  const [translation, more, _lang, definitionsData] = raw;
   const data: {
-    pronunciation?: string;
-    alternatives?: string[];
+    pronunciation?: TranslationSuccess['pronunciation'];
+    alternatives?: TranslationSuccess['alternatives'];
+    definitions?: TranslationSuccess['definitions'];
   } = {};
   if (translation?.[0]) {
     data.pronunciation = translation?.[0];
   }
-  if (!Array.isArray(moreData)) {
+  if (!Array.isArray(more)) {
     return data;
   }
-
   // TODO: Array.at(-1) is not available yet
-  const alternatives = moreData[0]?.[0]?.[moreData[0]?.[0]?.length - 1];
-  if (Array.isArray(alternatives)) {
-    // TODO: Array.at(-1) is not available yet
-    data.alternatives = alternatives[0][alternatives[0].length - 1]?.map(
-      (item: [string, [number]]) => item[0]
-    );
+  const alternatives = takeLast(takeLast(more[0]?.[0])[0]);
+  if (Array.isArray(alternatives) && alternatives.length > 1) {
+    data.alternatives = alternatives.map((item: [string, [number]]) => item[0]);
+  }
+
+  const definitions = definitionsData?.[1]?.[0];
+  if (Array.isArray(definitions)) {
+    data.definitions = definitions.map(([type, explanations]: any) => {
+      return {
+        type,
+        explanations: explanations.map(([explanation, example]: any) => ({
+          explanation,
+          example,
+        })),
+      };
+    });
   }
 
   return data;
+}
+
+function takeLast(arr: any[]): any[] {
+  if (!Array.isArray(arr)) {
+    return [];
+  }
+  return Array.isArray(arr[arr.length - 1]) ? arr[arr.length - 1] : [];
 }

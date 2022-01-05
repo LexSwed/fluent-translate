@@ -3,8 +3,7 @@ import { DotsVerticalIcon } from '@heroicons/react/outline';
 
 import { useTranslatorLink } from '../TranslatorLink';
 
-const More: React.FC = () => {
-  const translatorHref = useTranslatorLink();
+export const More: React.FC = () => {
   return (
     <Menu>
       <IconButton variant="flat" aria-label="More" size="sm">
@@ -21,19 +20,24 @@ const More: React.FC = () => {
         >
           Leave Feedback
         </Menu.Item>
-        <Menu.Item
-          onClick={() => {
-            chrome.tabs.create({
-              url: translatorHref,
-            });
-          }}
-          size="sm"
-        >
-          Open in Google Translate
-        </Menu.Item>
+        <OpenInGoogleMenuItem />
       </Menu.List>
     </Menu>
   );
 };
 
-export default More;
+const OpenInGoogleMenuItem = () => {
+  const translatorHref = useTranslatorLink();
+  return (
+    <Menu.Item
+      onClick={() => {
+        chrome.tabs.create({
+          url: translatorHref,
+        });
+      }}
+      size="sm"
+    >
+      Open in Google Translate
+    </Menu.Item>
+  );
+};
