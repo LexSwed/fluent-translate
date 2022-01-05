@@ -3,7 +3,7 @@ import { styled, Box } from '@fxtrot/ui';
 
 import MemoryHeading from '../Memory/MemoryHeading';
 import { Memory } from '../Memory';
-import More from './More';
+import { More } from './More';
 import { useTranslatingStatus, useMemoryItems } from '../atoms';
 import { AnimatePresence, motion } from 'framer-motion';
 

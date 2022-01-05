@@ -17,6 +17,10 @@ export const Result = React.memo(() => {
 });
 
 const Wrapper = styled(Flex, {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate3d(-50%, -50%, 0)',
   userSelect: 'none',
   height: '$24',
   color: '$textLight',

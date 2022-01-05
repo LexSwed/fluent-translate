@@ -14,14 +14,14 @@ const styles: Record<string, CssStyles> = {
     scrollSnapAlign: 'start',
   },
   lightText: {
-    color: '$textLight',
+    color: '$textSubtle',
   },
 };
 export const MemoryEntry: React.FC<Props> = ({ item, onDelete }) => {
   return (
     <Flex flow="column" gap="1" role="listitem" css={styles.memoryEntry}>
       <Header item={item} onDelete={onDelete} />
-      <Flex flow="column">
+      <Flex flow="column" gap="1">
         <Text size="sm">{item.text}</Text>
         <Text>{item.translation}</Text>
       </Flex>

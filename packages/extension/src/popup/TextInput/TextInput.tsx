@@ -1,94 +1,24 @@
-import React, { useRef, useLayoutEffect } from 'react';
-import autosize from 'autosize';
-import { styled, Box, Flex } from '@fxtrot/ui';
+import React from 'react';
+import { Flex, TextArea } from '@fxtrot/ui';
 
 import { FromLanguageSelect } from '../LanguageSelect';
 import { useInputText } from '../atoms';
 
 export const TextInput: React.FC = () => {
-  const inputRef = useRef<HTMLTextAreaElement>(null);
   const [text, setText] = useInputText();
 
-  const multiline = Math.floor(text.length / 25) > 0 || text.includes('\n');
-
-  useLayoutEffect(() => {
-    const el = inputRef.current;
-
-    if (el) {
-      autosize(el);
-      el.focus();
-    }
-
-    return () => {
-      el && autosize.destroy(el);
-    };
-  }, [inputRef]);
-
   return (
-    <Wrapper
-      flow={multiline ? 'column' : 'row'}
-      multiline={multiline}
-      main="stretch"
-      cross={multiline ? 'stretch' : 'center'}
-    >
+    <Flex flow="column" gap="2">
+      <Flex main="space-between" cross="baseline">
+        <FromLanguageSelect />
+      </Flex>
       <TextArea
         aria-label="Text to translate"
         value={text}
-        onChange={(e: any) => {
-          setText(e.target.value);
-        }}
+        onChange={setText}
         autoFocus
-        ref={inputRef}
+        size="md"
       />
-      <SelectWrapper>
-        <FromLanguageSelect />
-      </SelectWrapper>
-    </Wrapper>
+    </Flex>
   );
 };
-
-const TextArea = styled('textarea', {
-  display: 'block',
-  outline: 'none',
-  border: 'none',
-  resize: 'none',
-  fontFamily: 'inherit',
-  minHeight: '1rem',
-  height: '1rem',
-  maxHeight: '150px',
-  width: 'calc(100% - 8px * 2)',
-  boxSizing: 'content-box',
-  overflow: 'hidden',
-  fontSize: '$md',
-  p: '$2',
-  br: '$md',
-  bc: 'transparent',
-  color: '$text',
-});
-
-const SelectWrapper = styled(Box, {
-  pr: '$1',
-});
-
-const Wrapper = styled(Flex, {
-  'border': '1px solid $borderStill',
-  'br': '$md',
-  'transition': '0.12s ease-in-out',
-
-  '&:hover': { borderColor: '$borderHover' },
-
-  '&:focus-within': {
-    borderColor: '$borderActive',
-  },
-
-  'variants': {
-    multiline: {
-      true: {
-        [`& > ${SelectWrapper}`]: {
-          alignSelf: 'flex-end',
-          pb: '$1',
-        },
-      },
-    },
-  },
-});
