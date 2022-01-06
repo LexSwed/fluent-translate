@@ -13,5 +13,5 @@ export type TranslationSuccess = {
 
 export type TranslateDefinition = {
   type: string;
-  explanations: { explanation: string; example: string | null }[];
+  explanations: { explanation: string; example?: string }[];
 };

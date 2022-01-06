@@ -16,26 +16,36 @@ export const addMemoryItem = debounce(
     const textIndex = memory.findIndex(
       (item) => item.text === text && item.translation === translation
     );
-    const item = memory[textIndex];
 
-    if (item) {
+    if (memory[textIndex]) {
       memory.splice(textIndex, 1);
     }
 
-    // to prevent memory capacity error kepp only 100 entries
-    const items = memory.slice(0, 100);
-
-    items.unshift({
-      id: item ? item.id : nanoid(),
+    const newItem = {
+      id: nanoid(),
       text,
       to,
       from,
       translation,
-    });
+    };
+    const newItemByteSize = getSize(newItem);
+
+    while (
+      getSize(memory) + newItemByteSize >
+      chrome.storage.sync.QUOTA_BYTES_PER_ITEM
+    ) {
+      memory.pop();
+    }
+
+    memory.unshift(newItem);
 
     await Storage.setSyncItems({
-      memory: items,
+      memory,
     });
   },
   3000
 );
+
+function getSize(object: any) {
+  return new Blob([JSON.stringify(object)]).size;
+}

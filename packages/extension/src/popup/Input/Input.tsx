@@ -37,4 +37,5 @@ const Wrapper = styled('div', {
   backdropFilter: 'brightness(0.8)',
   mb: -1,
   p: '$3',
+  pb: '$6',
 });

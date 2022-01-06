@@ -1081,10 +1081,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@fxtrot/ui@^1.0.208":
-  version "1.0.208"
-  resolved "https://registry.yarnpkg.com/@fxtrot/ui/-/ui-1.0.208.tgz#da80b03f980c0117b4e9125787c5761123885a2c"
-  integrity sha512-QnuUs4s0EIHqTK7yXv6fZNmPNYNB8B3oogvAuZzTaBu4xCPO0ZOtz0M5Vaz+/HPL3Rp7jXJuNR4v+SIUPl/jzw==
+"@fxtrot/ui@^1.0.211":
+  version "1.0.211"
+  resolved "https://registry.yarnpkg.com/@fxtrot/ui/-/ui-1.0.211.tgz#e68d5ce6f0c059de7721acbcaaf46a13d8f9372c"
+  integrity sha512-HgE4JToBlkyutkl+P+uVO15UzXqalfN9XDBxKQzClAindQr80PfbMlGt4rLgmiXAlSmxz9cpvBVpHh+fk25kxw==
   dependencies:
     "@popperjs/core" "^2.11.0"
     "@radix-ui/react-dialog" "^0.1.1"

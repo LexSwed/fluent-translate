@@ -6,7 +6,8 @@
     "incremental": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "composite": true
   },
   "include": ["next-env.d.ts", "src"],
   "exclude": ["node_modules"],
