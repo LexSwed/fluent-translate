@@ -1,7 +1,7 @@
 import { styled } from '@fxtrot/ui';
 
 export const Select = styled('select', {
-  'width': '120px',
+  'width': '140px',
   'br': '$md',
   'border': '1px solid transparent',
   'transition': '0.16s ease-in-out',

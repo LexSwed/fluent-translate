@@ -31,7 +31,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fxtrot/ui": "^1.0.208",
+    "@fxtrot/ui": "^1.0.211",
     "@heroicons/react": "^1.0.5",
     "@sentry/browser": "^6.5.1",
     "@stitches/react": "^1.2.6",

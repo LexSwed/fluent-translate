@@ -29,7 +29,7 @@ export default async function handler(
     translation: {
       text: resp.text,
       pronunciation: resp.pronunciation || pronunciation,
-      alternatives,
+      alternatives: resp.text.length > 40 ? undefined : alternatives,
       definitions,
     },
   });
@@ -56,15 +56,19 @@ function parseRaw(raw: any) {
 
   const definitions = definitionsData?.[1]?.[0];
   if (Array.isArray(definitions)) {
-    data.definitions = definitions.map(([type, explanations]: any) => {
-      return {
-        type,
-        explanations: explanations.map(([explanation, example]: any) => ({
-          explanation,
-          example,
-        })),
-      };
-    });
+    data.definitions = definitions.map(
+      ([type, explanations]: [string, any[]]) => {
+        return {
+          type,
+          explanations: explanations.map(
+            ([explanation, example]: [string, string | null]) => ({
+              explanation,
+              example: example || undefined,
+            })
+          ),
+        };
+      }
+    );
   }
 
   return data;

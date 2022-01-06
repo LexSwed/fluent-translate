@@ -97,7 +97,7 @@ type TranslateReducerAction =
       type: 'reset';
     };
 const translationReducer = (
-  { from, to }: TranslateAtomValue,
+  { from, to, translation }: TranslateAtomValue,
   action: TranslateReducerAction
 ) => {
   switch (action.type) {
