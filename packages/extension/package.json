@@ -46,12 +46,12 @@
     "swr": "^1.1.2"
   },
   "devDependencies": {
-    "@parcel/config-webextension": "^2.0.1",
+    "@parcel/config-webextension": "^2.1.1",
     "@types/autosize": "^4.0.0",
     "@types/chrome": "^0.0.174",
     "@types/debounce": "^1.2.0",
-    "@types/uuid": "^8.3.0",
-    "parcel": "^2.0.1",
+    "@types/uuid": "^8.3.4",
+    "parcel": "^2.1.1",
     "pretty-quick": "^3.1.0",
     "semantic-release": "^18.0.1",
     "typescript": "^4.3.2"

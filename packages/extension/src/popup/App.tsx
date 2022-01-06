@@ -2,21 +2,12 @@ import React, { useMemo } from 'react';
 import { Flex, Box, Icon, Text, CssStyles } from '@fxtrot/ui';
 import { FireIcon } from '@heroicons/react/outline';
 
-import { TextInput } from './TextInput';
-import { Result } from './Results';
+import { Input } from './Input';
+import { Translated } from './Results';
 import { Footer } from './Footer';
 
 import { Sentry } from '../utils';
 import { useError } from './atoms';
-
-const mainStyle: CssStyles = {
-  p: '$3',
-  pb: '$16',
-  overflow: 'hidden',
-  bc: '$surfaceStill',
-  minWidth: '360px',
-  minHeight: '280px',
-};
 
 class App extends React.Component<{ error?: string | null }> {
   state = {
@@ -68,15 +59,9 @@ class App extends React.Component<{ error?: string | null }> {
     }
     return (
       <>
-        <Flex
-          flow="column"
-          main="stretch"
-          cross="stretch"
-          gap="md"
-          css={mainStyle}
-        >
-          <TextInput />
-          <Result />
+        <Flex flow="column" main="stretch" cross="stretch" css={mainStyle}>
+          <Input />
+          <Translated />
         </Flex>
         <Footer />
       </>
@@ -84,9 +69,15 @@ class App extends React.Component<{ error?: string | null }> {
   }
 }
 
+const mainStyle: CssStyles = {
+  pb: '$12',
+  overflow: 'hidden',
+  bc: '$surfaceStill',
+  minWidth: '360px',
+};
+
 const AppWithError: React.FC = (children) => {
   const [error] = useError();
-
   return useMemo(() => <App error={error}>{children}</App>, [error, children]);
 };
 
