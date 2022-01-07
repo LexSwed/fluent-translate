@@ -5,6 +5,7 @@ import { ToLanguageSelect } from '../LanguageSelect';
 import { useTranslationStatus } from '../atoms';
 import { Skeleton } from './Skeleton';
 import { Translated } from './Translated';
+import { SwitchTranslations } from './SwitchTranslations';
 
 export const Results = memo(() => {
   const status = useTranslationStatus();
@@ -15,6 +16,9 @@ export const Results = memo(() => {
 
   return (
     <Box css={wrapperStyles}>
+      <Box css={switchButton}>
+        <SwitchTranslations />
+      </Box>
       <Flex flow="column" gap="2" cross="stretch">
         <ToLanguageSelect />
         <Box pl="$2">{status === 'done' ? <Translated /> : <Skeleton />}</Box>
@@ -28,4 +32,11 @@ const wrapperStyles: CssStyles = {
   pb: '$6',
   borderTop: '1px solid $flatHover',
   position: 'relative',
+};
+
+const switchButton: CssStyles = {
+  position: 'absolute',
+  right: '$3',
+  top: 0,
+  transform: 'translateY(-50%)',
 };
