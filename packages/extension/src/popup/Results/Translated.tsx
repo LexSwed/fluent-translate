@@ -1,6 +1,6 @@
 import { Text, Flex, Button, CssStyles, Popover } from '@fxtrot/ui';
 
-import { useTranslation } from '../atoms';
+import { useTranslation } from '../Translator';
 
 export const Translated = () => {
   const { translation } = useTranslation();

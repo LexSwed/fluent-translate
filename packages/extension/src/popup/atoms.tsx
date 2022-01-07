@@ -1,13 +1,7 @@
 import React from 'react';
 import { Provider, atom, useAtom } from 'jotai';
-import {
-  useUpdateAtom,
-  useAtomValue,
-  selectAtom,
-  useReducerAtom,
-} from 'jotai/utils';
+import { useUpdateAtom, useAtomValue } from 'jotai/utils';
 import { Storage, userLang } from '../utils';
-import { TranslateResponse } from '../../../common/types';
 
 export const StoreProvider: React.FC = ({ children }) => {
   return <Provider>{children}</Provider>;
@@ -66,73 +60,6 @@ toLanguageAtom.onMount = (setTo) => {
   load();
 };
 export const useToLanguage = () => useAtom(toLanguageAtom);
-
-/**
- * Translation result
- * We need to duplicate "from" here and in respective atom to keep the selection
- * to "auto" while providing a hint about the language used for translation
- */
-type TranslateAtomValue = TranslateResponse & {
-  status: 'initial' | 'done' | 'fetching';
-};
-const translationAtom = atom<TranslateAtomValue>({
-  from: '',
-  to: '',
-  translation: null,
-  status: 'initial',
-});
-export const useTranslation = () => useAtomValue(translationAtom);
-type TranslateReducerAction =
-  | {
-      type: 'fetching';
-    }
-  | {
-      type: 'done';
-      payload: TranslateResponse;
-    }
-  | {
-      type: 'reset';
-    };
-const translationReducer = (
-  { from, to }: TranslateAtomValue,
-  action: TranslateReducerAction
-): TranslateAtomValue => {
-  switch (action.type) {
-    case 'fetching': {
-      return {
-        from,
-        to,
-        translation: null,
-        status: 'fetching',
-      };
-    }
-    case 'done': {
-      const { payload } = action;
-      return {
-        from: payload.from,
-        to: payload.to,
-        translation: payload.translation,
-        status: 'done',
-      };
-    }
-    case 'reset':
-    default: {
-      return {
-        from,
-        to,
-        translation: null,
-        status: 'initial',
-      };
-    }
-  }
-};
-export const useUpdateTranslation = () =>
-  useReducerAtom(translationAtom, translationReducer);
-const translationStatusAtom = selectAtom(
-  translationAtom,
-  (state) => state.status
-);
-export const useTranslationStatus = () => useAtomValue(translationStatusAtom);
 
 export const useSavedItem = () => {
   const setFrom = useUpdateAtom(fromLanguageAtom);

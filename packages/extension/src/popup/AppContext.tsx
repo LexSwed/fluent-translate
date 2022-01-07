@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import { ThemeProvider } from '@fxtrot/ui';
 import { StoreProvider } from './atoms';
-import { Translator } from './Translator';
 
 type Theme = React.ComponentProps<typeof ThemeProvider>['theme'];
 
@@ -48,9 +47,7 @@ export const AppContext: React.FC = ({ children }) => {
 
   return (
     <ThemeProvider theme={prefersDark ? darkTheme : 'lightBlue'}>
-      <StoreProvider>
-        <Translator>{children}</Translator>
-      </StoreProvider>
+      <StoreProvider>{children}</StoreProvider>
     </ThemeProvider>
   );
 };

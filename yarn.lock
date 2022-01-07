@@ -10058,10 +10058,10 @@ svgo@^2.4.0, svgo@^2.6.1, svgo@^2.7.0:
     picocolors "^1.0.0"
     stable "^0.1.8"
 
-swr@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/swr/-/swr-1.1.2.tgz#9f3de2541931fccf03c48f322f1fc935a7551612"
-  integrity sha512-UsM0eo5T+kRPyWFZtWRx2XR5qzohs/LS4lDC0GCyLpCYFmsfTk28UCVDbOE9+KtoXY4FnwHYiF+ZYEU3hnJ1lQ==
+swr@^1.2.0-beta.0:
+  version "1.2.0-beta.0"
+  resolved "https://registry.yarnpkg.com/swr/-/swr-1.2.0-beta.0.tgz#8e25b34d8517f5fb15eb9ab8561dc4c87047c6ab"
+  integrity sha512-XLRgUtmK4f61Bu6gN+NuxuUFWWHJ7ONTVOMaS7S24rHqjvrrHUn8D5kIOfEuq62ySKXvgtimg1bUqvXlLaJDQA==
 
 symbol-tree@^3.2.2:
   version "3.2.4"
