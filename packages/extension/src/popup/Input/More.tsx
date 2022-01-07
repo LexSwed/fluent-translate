@@ -6,10 +6,10 @@ import { useTranslatorLink } from '../TranslatorLink';
 export const More: React.FC = () => {
   return (
     <Menu>
-      <IconButton variant="flat" aria-label="More" size="sm">
+      <IconButton variant="flat" label="More" size="sm">
         <Icon as={DotsVerticalIcon} size="md" />
       </IconButton>
-      <Menu.List side="top">
+      <Menu.List side="bottom">
         <Menu.Item
           size="sm"
           onClick={() =>

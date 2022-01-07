@@ -1,45 +1,67 @@
-import { Text, Button, Icon, Flex, CssStyles } from '@fxtrot/ui';
-import { TrashIcon } from '@heroicons/react/outline';
+import { Text, Icon, Flex, CssStyles, IconButton } from '@fxtrot/ui';
+import { TranslateIcon, TrashIcon } from '@heroicons/react/outline';
+import { memo } from 'react';
+import { useLanguages } from '../atoms';
 
 type Props = {
   item: MemoryItem;
+  onSelect: (item: MemoryItem) => void;
   onDelete: (id: string) => any;
 };
 
-const styles: Record<string, CssStyles> = {
-  memoryEntry: {
-    p: '$3',
-    py: '$2',
-    borderBottom: '1px solid $borderLight',
-    scrollSnapAlign: 'start',
-  },
-  lightText: {
-    color: '$textSubtle',
-  },
-};
-export const MemoryEntry: React.FC<Props> = ({ item, onDelete }) => {
+export const MemoryEntry = memo(({ item, onSelect, onDelete }: Props) => {
   return (
     <Flex flow="column" gap="1" role="listitem" css={styles.memoryEntry}>
-      <Header item={item} onDelete={onDelete} />
+      <Header item={item} onSelect={onSelect} onDelete={onDelete} />
       <Flex flow="column" gap="1">
         <Text size="sm">{item.text}</Text>
         <Text>{item.translation}</Text>
       </Flex>
     </Flex>
   );
-};
+});
 
-const Header: React.FC<Props> = ({ item, onDelete }) => {
+const Header = ({ item, onSelect, onDelete }: Props) => {
+  const languages = useLanguages();
   return (
     <Flex main="space-between" cross="center">
       <Text size="xs" css={styles.lightText}>
-        {item.from}
+        {languages[item.from]}
         <span aria-label="translated to"> → </span>
-        {item.to}
+        {languages[item.to]}
       </Text>
-      <Button size="sm" variant="flat" onClick={() => onDelete(item.id)}>
-        <Icon as={TrashIcon} />
-      </Button>
+      <Flex gap="1">
+        <IconButton
+          label="Use translate"
+          size="sm"
+          variant="flat"
+          onClick={() => {
+            onSelect(item);
+          }}
+        >
+          <Icon as={TranslateIcon} />
+        </IconButton>
+        <IconButton
+          label="Delete item"
+          size="sm"
+          variant="flat"
+          onClick={() => onDelete(item.id)}
+        >
+          <Icon as={TrashIcon} />
+        </IconButton>
+      </Flex>
     </Flex>
   );
+};
+
+const styles: Record<string, CssStyles> = {
+  memoryEntry: {
+    p: '$3',
+    pt: '$2',
+    borderBottom: '1px solid $borderLight',
+    scrollSnapAlign: 'start',
+  },
+  lightText: {
+    color: '$textSubtle',
+  },
 };

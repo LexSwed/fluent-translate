@@ -1081,10 +1081,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@fxtrot/ui@^1.0.211":
-  version "1.0.211"
-  resolved "https://registry.yarnpkg.com/@fxtrot/ui/-/ui-1.0.211.tgz#e68d5ce6f0c059de7721acbcaaf46a13d8f9372c"
-  integrity sha512-HgE4JToBlkyutkl+P+uVO15UzXqalfN9XDBxKQzClAindQr80PfbMlGt4rLgmiXAlSmxz9cpvBVpHh+fk25kxw==
+"@fxtrot/ui@^1.0.222":
+  version "1.0.222"
+  resolved "https://registry.yarnpkg.com/@fxtrot/ui/-/ui-1.0.222.tgz#569ce596718ea6a3ce53d889b4cf89c44c7e6c58"
+  integrity sha512-WN8LflpXXy/0mvtjUrmiz8k3ulUg0DErh7AIF8BkUc+TQMSi1Kq0xXSMABiz+JWyoDAOPiZFlYbEjpf3YcZYUA==
   dependencies:
     "@popperjs/core" "^2.11.0"
     "@radix-ui/react-dialog" "^0.1.1"
@@ -5553,10 +5553,10 @@ format@^0.2.0:
   resolved "https://registry.yarnpkg.com/format/-/format-0.2.2.tgz#d6170107e9efdc4ed30c9dc39016df942b5cb58b"
   integrity sha1-1hcBB+nv3E7TDJ3DkBbflCtctYs=
 
-framer-motion@^5.5.5:
-  version "5.5.5"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-5.5.5.tgz#2cc9345e720ec1b93189ee76423799c72a3224b4"
-  integrity sha512-+LPAF5ddo02qKh+MK4h1ChwqUFvrLkK1NDWwrHy+MuCVmQDGgiFNHvwqOSklTDGkEtbio3dCOEDy23+ZyNAa9g==
+framer-motion@^5.5.6:
+  version "5.5.6"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-5.5.6.tgz#76dbf86e32423311c360eeba0f6673a028197071"
+  integrity sha512-n1PU7kR21siZl3HcNSqxqqxXOS1xZhBdVS3ZjgOAMgDySz3lt+00351MRm7O7WqeYHhonILxLolixnAIVSt0Wg==
   dependencies:
     framesync "6.0.1"
     hey-listen "^1.0.8"

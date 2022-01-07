@@ -71,18 +71,14 @@ export const useToLanguage = () => useAtom(toLanguageAtom);
  * We need to duplicate "from" here and in respective atom to keep the selection
  * to "auto" while providing a hint about the language used for translation
  */
-type TranslateAtomValue =
-  | TranslateResponse
-  | {
-      from: string;
-      to: string;
-      fetching: boolean;
-      translation: null;
-    };
+type TranslateAtomValue = TranslateResponse & {
+  status: 'initial' | 'done' | 'fetching';
+};
 const translationAtom = atom<TranslateAtomValue>({
   from: '',
   to: '',
   translation: null,
+  status: 'initial',
 });
 export const useTranslation = () => useAtomValue(translationAtom);
 type TranslateReducerAction =
@@ -97,16 +93,16 @@ type TranslateReducerAction =
       type: 'reset';
     };
 const translationReducer = (
-  { from, to, translation }: TranslateAtomValue,
+  { from, to }: TranslateAtomValue,
   action: TranslateReducerAction
-) => {
+): TranslateAtomValue => {
   switch (action.type) {
     case 'fetching': {
       return {
         from,
         to,
-        fetching: true,
         translation: null,
+        status: 'fetching',
       };
     }
     case 'done': {
@@ -115,6 +111,7 @@ const translationReducer = (
         from: payload.from,
         to: payload.to,
         translation: payload.translation,
+        status: 'done',
       };
     }
     case 'reset':
@@ -123,19 +120,32 @@ const translationReducer = (
         from,
         to,
         translation: null,
+        status: 'initial',
       };
     }
   }
 };
 export const useUpdateTranslation = () =>
   useReducerAtom(translationAtom, translationReducer);
-const translatingAtom = selectAtom(translationAtom, (state) =>
-  'fetching' in state ? state.fetching : false
+const translationStatusAtom = selectAtom(
+  translationAtom,
+  (state) => state.status
 );
-export const useTranslatingStatus = () => useAtomValue(translatingAtom);
+export const useTranslationStatus = () => useAtomValue(translationStatusAtom);
+
+export const useSavedItem = () => {
+  const setFrom = useUpdateAtom(fromLanguageAtom);
+  const setTo = useUpdateAtom(toLanguageAtom);
+  const setText = useUpdateAtom(inputTextAtom);
+
+  return ({ to, from, text }: MemoryItem) => {
+    setTo(to);
+    setFrom(from);
+    setText(text);
+  };
+};
 
 const errorAtom = atom<string | null>(null);
-
 export const useError = () => useAtom(errorAtom);
 export const useUpdateError = () => useUpdateAtom(errorAtom);
 

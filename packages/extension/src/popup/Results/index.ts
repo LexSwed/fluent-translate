@@ -1,1 +1,1 @@
-export * from './Translated';
+export * from './Results';
