@@ -1,10 +1,6 @@
 import { useMemo } from 'react';
-import {
-  useFromLanguage,
-  useLanguages,
-  useToLanguage,
-  useTranslation,
-} from '../atoms';
+import { useFromLanguage, useLanguages, useToLanguage } from '../atoms';
+import { useTranslation } from '../Translator';
 
 import RecentLanguages, { useRecentLanguages } from './RecentLanguages';
 import { Option, Select } from './styled';

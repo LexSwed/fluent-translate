@@ -1,12 +1,8 @@
 import { Icon, IconButton } from '@fxtrot/ui';
 import { SwitchVerticalIcon } from '@heroicons/react/outline';
 import { memo } from 'react';
-import {
-  useFromLanguage,
-  useToLanguage,
-  useTranslation,
-  useUpdateInputText,
-} from '../atoms';
+import { useFromLanguage, useToLanguage, useUpdateInputText } from '../atoms';
+import { useTranslation } from '../Translator';
 
 export const SwitchTranslations = memo(() => {
   const [to, setTo] = useToLanguage();
@@ -21,7 +17,7 @@ export const SwitchTranslations = memo(() => {
       variant="flat"
       onClick={() => {
         setFrom(to);
-        setTo(translation.from || from);
+        setTo(from === 'auto' ? translation.from : from);
         if (translation.translation?.text) {
           setText(translation.translation?.text);
         }

@@ -32,11 +32,20 @@ export function useRecentLanguages() {
   const [lastItems, setLastItems] = useState<string[]>([]);
 
   useEffect(() => {
+    let mounted = true;
     Storage.getItems('recentLanguages').then((cache) => {
-      if (cache.recentLanguages && Array.isArray(cache.recentLanguages)) {
+      if (
+        mounted &&
+        cache.recentLanguages &&
+        Array.isArray(cache.recentLanguages)
+      ) {
         setLastItems(cache.recentLanguages);
       }
     });
+
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   const updateRecent = (recentLanguages: string[]) => {

@@ -2,13 +2,13 @@ import { memo } from 'react';
 import { Flex, Box, CssStyles } from '@fxtrot/ui';
 
 import { ToLanguageSelect } from '../LanguageSelect';
-import { useTranslationStatus } from '../atoms';
+import { useTranslation } from '../Translator';
 import { Skeleton } from './Skeleton';
 import { Translated } from './Translated';
 import { SwitchTranslations } from './SwitchTranslations';
 
 export const Results = memo(() => {
-  const status = useTranslationStatus();
+  const { status } = useTranslation();
 
   if (status === 'initial') {
     return null;
