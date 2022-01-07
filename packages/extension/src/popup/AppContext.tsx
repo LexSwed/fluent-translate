@@ -29,6 +29,7 @@ const darkTheme: Theme = {
     surfaceHover: 'hsl(0, 0%, 25%)',
     surfaceActive: 'hsl(0, 0%, 28%)',
     surfaceDisabled: 'hsla(0, 0%, 20%, 0.2)',
+    surfaceLayer: 'hsl(0, 0%, 25%)',
 
     flatStill: 'transparent',
     flatHover: 'hsla(0, 0%, 100%, 0.15)',

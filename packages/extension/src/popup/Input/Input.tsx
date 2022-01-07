@@ -1,8 +1,9 @@
 import React from 'react';
-import { Flex, styled, TextArea } from '@fxtrot/ui';
+import { Box, CssStyles, Flex, styled, TextArea } from '@fxtrot/ui';
 
 import { FromLanguageSelect } from '../LanguageSelect';
 import { useInputText } from '../atoms';
+import { Toolbar } from './Toolbar';
 
 const StyledTextArea = styled(TextArea, {
   '&:placeholder-shown': {
@@ -14,28 +15,32 @@ export const Input: React.FC = () => {
   const [text, setText] = useInputText();
 
   return (
-    <Wrapper>
-      <Flex flow="column" gap="2">
-        <Flex main="space-between" cross="baseline">
-          <FromLanguageSelect />
+    <Box css={wrapperStyles}>
+      <Box p="$3" pb="$6">
+        <Flex flow="column" gap="2">
+          <Flex main="space-between" cross="center">
+            <FromLanguageSelect />
+            <Toolbar />
+          </Flex>
+          <StyledTextArea
+            aria-label="Text to translate"
+            value={text}
+            onChange={setText}
+            autoFocus
+            rows={2}
+            size="md"
+          />
         </Flex>
-        <StyledTextArea
-          aria-label="Text to translate"
-          value={text}
-          onChange={setText}
-          autoFocus
-          rows={2}
-          size="md"
-        />
-      </Flex>
-    </Wrapper>
+      </Box>
+    </Box>
   );
 };
 
-const Wrapper = styled('div', {
-  borderBottom: '1px solid $borderStill',
-  backdropFilter: 'brightness(0.8)',
-  mb: -1,
-  p: '$3',
-  pb: '$6',
-});
+const wrapperStyles: CssStyles = {
+  '@light': {
+    backdropFilter: 'brightness(0.995)',
+  },
+  '@dark': {
+    backdropFilter: 'brightness(0.8)',
+  },
+};
