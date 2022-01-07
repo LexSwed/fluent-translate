@@ -18,6 +18,7 @@ export const StoreProvider: React.FC = ({ children }) => {
  */
 const inputTextAtom = atom('');
 export const useInputText = () => useAtom(inputTextAtom);
+export const useUpdateInputText = () => useUpdateAtom(inputTextAtom);
 
 /**
  * List of available languages
