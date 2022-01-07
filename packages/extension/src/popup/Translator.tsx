@@ -10,7 +10,7 @@ import {
 
 /**
  * I use `swr` to avoid saving multiple responses to atom.
- * `swr` allows to ignore resolved promises when new one is out
+ * `swr` allows to ignore resolved promises when a new one is out
  * */
 export function useTranslation(): Translation {
   const [text] = useInputText();
