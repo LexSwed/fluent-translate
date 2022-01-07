@@ -1,4 +1,5 @@
 import { Text, Flex, Button, CssStyles, Popover } from '@fxtrot/ui';
+import { TranslationSuccess } from '../../../../common/types';
 
 import { useTranslation } from '../Translator';
 
@@ -9,35 +10,41 @@ export const Translated = () => {
     return null;
   }
 
-  const { text, pronunciation, alternatives } = translation;
+  const { pronunciation } = translation;
   return (
     <Flex flow="column" gap="1" cross="start">
-      {alternatives ? (
-        <Popover>
-          <Button
-            aria-label="Alternative translations"
-            size="sm"
-            variant="flat"
-            css={moreButton}
-          >
-            {text}
-          </Button>
-          <Popover.Content side="top" css={popoverContent}>
-            <Text as="div" size="sm">
-              {alternatives.join(', ')}
-            </Text>
-          </Popover.Content>
-        </Popover>
-      ) : (
-        <Text size="md">{text}</Text>
-      )}
-
+      <ResultWithAlternatives {...translation} />
       {pronunciation && (
         <Text size="sm" css={pronunciationStyles}>
           {pronunciation}
         </Text>
       )}
     </Flex>
+  );
+};
+
+const ResultWithAlternatives = ({ text, alternatives }: TranslationSuccess) => {
+  if (!alternatives) {
+    return <Text size="md">{text}</Text>;
+  }
+  return (
+    <Popover>
+      <Button
+        aria-label="Alternative translations"
+        size="sm"
+        variant="flat"
+        css={moreButton}
+      >
+        <Text size="md">{text}</Text>
+      </Button>
+      <Popover.Content side="top" css={popoverContent}>
+        {alternatives.slice(1).map((alt) => (
+          <Text as="div" size="md" key={alt}>
+            {alt}
+          </Text>
+        ))}
+      </Popover.Content>
+    </Popover>
   );
 };
 

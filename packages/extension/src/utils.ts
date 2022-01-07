@@ -78,10 +78,10 @@ export function useDebouncedValue<T>(
 ) {
   const [_value, setValue] = useState(value);
   const mountedRef = useRef(false);
-  const timeoutRef = useRef<NodeJS.Timeout>(null);
+  const timeoutRef = useRef<NodeJS.Timeout>();
   const cooldownRef = useRef(false);
 
-  const cancel = () => clearTimeout(timeoutRef.current);
+  const cancel = () => timeoutRef.current && clearTimeout(timeoutRef.current);
 
   useEffect(() => {
     if (mountedRef.current) {
