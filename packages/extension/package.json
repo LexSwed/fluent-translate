@@ -3,6 +3,7 @@
   "description": "Edge Translate browser extension",
   "version": "1.7.12",
   "author": "lexswed",
+  "private": true,
   "scripts": {
     "dev": "parcel src/manifest.json --host localhost --target webext-dev --config @parcel/config-webextension",
     "build": "parcel build src/manifest.json --target webext-prod --config @parcel/config-webextension",
@@ -31,7 +32,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fxtrot/ui": "^1.0.222",
+    "@fxtrot/ui": "^1.0.224",
     "@heroicons/react": "^1.0.5",
     "@sentry/browser": "^6.5.1",
     "@stitches/react": "^1.2.6",
@@ -48,7 +49,7 @@
   "devDependencies": {
     "@parcel/config-webextension": "^2.1.1",
     "@types/autosize": "^4.0.0",
-    "@types/chrome": "^0.0.174",
+    "@types/chrome": "^0.0.175",
     "@types/debounce": "^1.2.0",
     "@types/uuid": "^8.3.4",
     "parcel": "^2.1.1",

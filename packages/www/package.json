@@ -2,6 +2,7 @@
   "name": "www",
   "version": "1.0.0",
   "description": "Edge Translate public page",
+  "private": true,
   "scripts": {
     "dev": "next dev",
     "start": "next start",
@@ -18,7 +19,7 @@
   },
   "homepage": "https://github.com/LexSwed/edge-translate#readme",
   "dependencies": {
-    "@fxtrot/ui": "^1.0.222",
+    "@fxtrot/ui": "^1.0.224",
     "@heroicons/react": "^1.0.1",
     "@sentry/node": "^6.5.1",
     "@stitches/react": "^1.2.6",

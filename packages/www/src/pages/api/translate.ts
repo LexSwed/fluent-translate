@@ -36,7 +36,7 @@ export default async function handler(
 }
 
 function parseRaw(raw: any) {
-  const [translation, more, _lang, definitionsData] = raw;
+  const [translation, more, , definitionsData] = raw;
   const data: {
     pronunciation?: TranslationSuccess['pronunciation'];
     alternatives?: TranslationSuccess['alternatives'];
