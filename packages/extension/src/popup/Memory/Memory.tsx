@@ -115,12 +115,18 @@ function useBodySizeHack() {
     if (!elRef.current) {
       return;
     }
+    const el = document.getElementById('edge-translate');
+    if (!el) {
+      return;
+    }
     const style = css({
+      overflow: 'hidden',
+      maxHeight: 600,
       height: elRef.current.scrollHeight,
     }).toString();
-    document.body.classList.add(style);
+    el.classList.add(style);
     return () => {
-      document.body.classList.remove(style);
+      el.classList.remove(style);
     };
   });
 

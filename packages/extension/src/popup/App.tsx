@@ -33,6 +33,8 @@ const App = () => {
   );
 };
 
+export default App;
+
 class ErrorBoundary extends React.Component<{
   setError: (error: string) => void;
 }> {
@@ -46,5 +48,3 @@ class ErrorBoundary extends React.Component<{
     return this.props.children;
   }
 }
-
-export default App;
