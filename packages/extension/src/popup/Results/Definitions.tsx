@@ -1,5 +1,5 @@
 import { Text, Flex, CssStyles, Collapsible, styled } from '@fxtrot/ui';
-import { TranslationSuccess } from '../../../../common/types';
+import type { TranslationSuccess } from '@shared/types';
 
 export const Definitions = ({
   definitions,

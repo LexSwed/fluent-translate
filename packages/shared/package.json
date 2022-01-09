@@ -1,0 +1,16 @@
+{
+  "name": "@edge-translate/shared",
+  "version": "1.0.0",
+  "private": true,
+  "main": "src/index.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LexSwed/edge-translate.git"
+  },
+  "author": "lexswed",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LexSwed/edge-translate/issues"
+  },
+  "homepage": "https://github.com/LexSwed/edge-translate#readme"
+}

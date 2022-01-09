@@ -1,6 +1,6 @@
 import useSWR from 'swr';
-import { TranslateResponse } from '../../../common/types';
-import { API, useDebouncedValue } from '../utils';
+import type { TranslateResponse } from '@shared/types';
+import { API, useDebouncedValue } from './utils';
 import {
   useFromLanguage,
   useInputText,

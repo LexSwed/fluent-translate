@@ -19,10 +19,12 @@
     "noImplicitReturns": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "noEmit": true
+    "paths": {
+      "@shared/*": ["./packages/shared/src/*"]
+    }
   },
   "exclude": [
-    "node_modules",
+    "**/node_modules",
     "./packages/**/tests/**",
     "./packages/**/dist/**",
     "**/*.test.ts",
@@ -30,13 +32,13 @@
   ],
   "references": [
     {
-      "path": "./packages/common"
+      "path": "packages/shared"
     },
     {
-      "path": "./packages/www"
+      "path": "packages/www"
     },
     {
-      "path": "./packages/extension"
+      "path": "packages/extension"
     }
   ]
 }

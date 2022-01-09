@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Storage } from '../../utils';
+import { Storage } from '../utils';
 import { Option } from './styled';
 
 type Props = {

@@ -1,7 +1,7 @@
 import { debounce } from 'debounce';
 import { nanoid } from 'nanoid';
 
-import { Storage } from '../utils';
+import { Storage } from '../popup/utils';
 
 export const addMemoryItem = debounce(
   async ({ text, to, from, translation }: Omit<MemoryItem, 'id'>) => {

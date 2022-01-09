@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider, atom, useAtom } from 'jotai';
 import { useUpdateAtom, useAtomValue } from 'jotai/utils';
-import { Storage, userLang } from '../utils';
+import { Storage, userLang } from './utils';
 
 export const StoreProvider: React.FC = ({ children }) => {
   return <Provider>{children}</Provider>;

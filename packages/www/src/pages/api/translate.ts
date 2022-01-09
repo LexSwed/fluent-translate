@@ -1,10 +1,7 @@
 import translate from '@vitalets/google-translate-api';
 
 import type { NextApiRequest, NextApiResponse } from 'next';
-import {
-  TranslateResponse,
-  TranslationSuccess,
-} from '../../../../common/types';
+import type { TranslateResponse, TranslationSuccess } from '../../../../shared';
 
 export default async function handler(
   req: NextApiRequest,

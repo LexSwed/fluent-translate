@@ -18,3 +18,4 @@ dist
 !.yarn/versions
 .pnp.*
 .npmrc
+tsconfig.tsbuildinfo

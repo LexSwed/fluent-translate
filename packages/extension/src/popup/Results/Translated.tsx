@@ -1,5 +1,5 @@
 import { Text, Flex, Button, CssStyles, Popover } from '@fxtrot/ui';
-import { TranslationSuccess } from '../../../../common/types';
+import type { TranslationSuccess } from '@shared/types';
 
 import { useTranslation } from '../Translator';
 import { Definitions } from './Definitions';

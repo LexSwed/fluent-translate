@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { BrowserClient } from '@sentry/browser';
-import { TranslateResponse } from '../../common/types';
+import type { TranslateResponse } from '@shared/types';
 
 export const userLang =
   window.navigator.language.slice(0, 2) ||

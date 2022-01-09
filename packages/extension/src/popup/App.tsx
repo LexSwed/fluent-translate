@@ -5,7 +5,7 @@ import { Input } from './Input';
 import { Results } from './Results';
 import { ErrorScreen } from './ErrorScreen';
 
-import { Sentry } from '../utils';
+import { Sentry } from './utils';
 import { useError } from './atoms';
 
 const mainStyle: CssStyles = {
