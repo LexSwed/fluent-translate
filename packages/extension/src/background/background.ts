@@ -1,6 +1,6 @@
 import { addMemoryItem } from './utils';
 import { translate } from './api';
-import { Sentry, Storage } from '../utils';
+import { Sentry, Storage } from '../popup/utils';
 import { languages } from './languages';
 
 chrome.runtime.onInstalled.addListener(() => {

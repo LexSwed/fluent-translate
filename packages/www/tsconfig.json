@@ -1,19 +1,22 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "composite": true,
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
     "incremental": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "composite": true
+    "noEmit": true
   },
-  "include": ["next-env.d.ts", "src"],
-  "exclude": ["node_modules"],
+  "include": [
+    "next-env.d.ts",
+    "src"
+  ],
   "references": [
     {
-      "path": "../common"
+      "path": "../shared"
     }
   ]
 }
