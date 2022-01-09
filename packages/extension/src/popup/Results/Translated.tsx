@@ -19,7 +19,7 @@ export const Translated = () => {
   }
 
   const { pronunciation, definitions } = translation;
-  console.log(definitions);
+
   return (
     <Flex flow="column" gap="4">
       <Flex flow="column" gap="1" cross="start">
