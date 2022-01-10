@@ -19,6 +19,7 @@
     "noImplicitReturns": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "paths": {
       "@shared/*": ["./packages/shared/src/*"]
     }

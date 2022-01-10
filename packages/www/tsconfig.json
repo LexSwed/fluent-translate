@@ -12,7 +12,8 @@
   },
   "include": [
     "next-env.d.ts",
-    "src"
+    "src",
+    "../shared/src",
   ],
   "references": [
     {
