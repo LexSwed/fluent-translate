@@ -1,6 +1,7 @@
 import { Text, Icon, Flex, CssStyles, IconButton } from '@fxtrot/ui';
 import { TranslateIcon, TrashIcon } from '@heroicons/react/outline';
 import { memo } from 'react';
+import { useLocale } from '../../translations';
 import { useLanguages } from '../atoms';
 
 type Props = {
@@ -23,16 +24,17 @@ export const MemoryEntry = memo(({ item, onSelect, onDelete }: Props) => {
 
 const Header = ({ item, onSelect, onDelete }: Props) => {
   const languages = useLanguages();
+  const t = useLocale();
   return (
     <Flex main="space-between" cross="center">
       <Text size="xs" css={styles.lightText}>
         {languages[item.from]}
-        <span aria-label="translated to"> → </span>
+        <span aria-label={t('popup.memory.translated-to')}> → </span>
         {languages[item.to]}
       </Text>
       <Flex gap="1">
         <IconButton
-          label="Use translate"
+          label={t('popup.memory.use-translation')}
           size="sm"
           variant="flat"
           onClick={() => {
@@ -42,7 +44,7 @@ const Header = ({ item, onSelect, onDelete }: Props) => {
           <Icon as={TranslateIcon} />
         </IconButton>
         <IconButton
-          label="Delete item"
+          label={t('popup.memory.delete-translation')}
           size="sm"
           variant="flat"
           onClick={() => onDelete(item.id)}

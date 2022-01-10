@@ -2,9 +2,9 @@ import useSWR from 'swr';
 import type { TranslateResponse } from '@shared/types';
 import { API, useDebouncedValue } from './utils';
 import {
-  useFromLanguage,
+  useSourceLanguage,
   useInputText,
-  useToLanguage,
+  useTargetLanguage,
   useUpdateError,
 } from './atoms';
 
@@ -14,8 +14,8 @@ import {
  * */
 export function useTranslation(): Translation {
   const [text] = useInputText();
-  const [from] = useFromLanguage();
-  const [to] = useToLanguage();
+  const [from] = useSourceLanguage();
+  const [to] = useTargetLanguage();
   const setError = useUpdateError();
 
   const debouncedText = useDebouncedValue(text, 500);

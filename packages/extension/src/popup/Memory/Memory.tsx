@@ -13,10 +13,12 @@ import { MemoryEntry } from './MemoryEntry';
 import { useMemoryItems, useSavedItem } from '../atoms';
 import { BookmarkAltIcon } from '@heroicons/react/outline';
 import { useCallback, useEffect, useRef } from 'react';
+import { useLocale } from '../../translations';
 
 export const Memory = () => {
   const [items] = useMemoryItems();
   const dialogRef = useDialogRef();
+  const t = useLocale();
 
   useEffect(() => {
     if (items.length === 0) {
@@ -31,7 +33,7 @@ export const Memory = () => {
   return (
     <Dialog ref={dialogRef}>
       <IconButton
-        label="History of translations"
+        label={t('popup.memory.open-label')}
         variant="flat"
         size="sm"
         cross="center"

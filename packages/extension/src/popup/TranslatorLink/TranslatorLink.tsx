@@ -2,7 +2,7 @@ import React from 'react';
 import { TextLink } from '@fxtrot/ui';
 
 import { getTranslatorLink } from '../utils';
-import { useFromLanguage, useInputText, useToLanguage } from '../atoms';
+import { useSourceLanguage, useInputText, useTargetLanguage } from '../atoms';
 
 export const TranslatorLink = React.forwardRef<
   HTMLAnchorElement,
@@ -24,8 +24,8 @@ export const TranslatorLink = React.forwardRef<
 });
 
 export function useTranslatorLink() {
-  const [to] = useToLanguage();
-  const [from] = useFromLanguage();
+  const [to] = useTargetLanguage();
+  const [from] = useSourceLanguage();
   const [text] = useInputText();
 
   return getTranslatorLink({ to, from, text });

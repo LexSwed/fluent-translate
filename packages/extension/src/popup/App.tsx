@@ -11,7 +11,7 @@ import { useError } from './atoms';
 const mainStyle: CssStyles = {
   overflow: 'hidden',
   bc: '$surfaceStill',
-  minWidth: '360px',
+  minWidth: '320px',
 };
 
 const App = () => {

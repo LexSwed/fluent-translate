@@ -2,6 +2,7 @@ import React from 'react';
 import { Provider, atom, useAtom } from 'jotai';
 import { useUpdateAtom, useAtomValue } from 'jotai/utils';
 import { Storage, userLang } from './utils';
+import useSWR from 'swr';
 
 export const StoreProvider: React.FC = ({ children }) => {
   return <Provider>{children}</Provider>;
@@ -17,53 +18,48 @@ export const useUpdateInputText = () => useUpdateAtom(inputTextAtom);
 /**
  * List of available languages
  */
-const languagesAtom = atom<Languages>({});
-languagesAtom.onMount = (setLanguages) => {
-  async function load() {
-    const { languages } = await Storage.getItems<{
-      languages?: Languages;
-    }>(['to', 'languages']);
-    if (languages) {
-      setLanguages(languages);
-    }
-  }
-  load();
-};
-export const useLanguages = () => useAtomValue(languagesAtom);
+async function loadLanguages(): Promise<Languages> {
+  const { languages } = await Storage.getItems<{
+    languages?: Languages;
+  }>(['to', 'languages']);
+  return languages || {};
+}
+export const useLanguages = (): Languages =>
+  useSWR('languages', loadLanguages).data || {};
 
 /**
  * Selected language translate the text FROM
  */
-const fromLanguageAtom = atom<string>('auto');
-export const useFromLanguage = () => useAtom(fromLanguageAtom);
+const sourceLanguageAtom = atom<string>('auto');
+export const useSourceLanguage = () => useAtom(sourceLanguageAtom);
 
 /**
  * Selected language translate the text TO
  */
-const toLanguageValueAtom = atom(userLang);
-const toLanguageAtom = atom(
-  (get) => get(toLanguageValueAtom),
+const targetLanguageValueAtom = atom(userLang);
+const targetLanguageAtom = atom(
+  (get) => get(targetLanguageValueAtom),
   (_get, set, newTo: string) => {
-    set(toLanguageValueAtom, newTo);
+    set(targetLanguageValueAtom, newTo);
     Storage.setItems({ to: newTo });
   }
 );
-toLanguageAtom.onMount = (setTo) => {
+targetLanguageAtom.onMount = (setTarget) => {
   async function load() {
     const { to } = await Storage.getItems<{
       to?: 'string';
     }>(['to']);
     if (to) {
-      setTo(to);
+      setTarget(to);
     }
   }
   load();
 };
-export const useToLanguage = () => useAtom(toLanguageAtom);
+export const useTargetLanguage = () => useAtom(targetLanguageAtom);
 
 export const useSavedItem = () => {
-  const setFrom = useUpdateAtom(fromLanguageAtom);
-  const setTo = useUpdateAtom(toLanguageAtom);
+  const setFrom = useUpdateAtom(sourceLanguageAtom);
+  const setTo = useUpdateAtom(targetLanguageAtom);
   const setText = useUpdateAtom(inputTextAtom);
 
   return ({ to, from, text }: MemoryItem) => {

@@ -2,8 +2,8 @@ import { stitchesConfig, styled, Text } from '@fxtrot/ui';
 
 export const Skeleton = () => {
   return (
-    <Text size="md">
-      <SkeletonShimmer />
+    <Text size="md" aria-busy={true}>
+      <SkeletonShimmer aria-hidden={true} />
     </Text>
   );
 };

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useLocale } from '../../translations';
 import { Storage } from '../utils';
 import { Option } from './styled';
 
@@ -8,12 +9,13 @@ type Props = {
 };
 
 const RecentLanguages: React.FC<Props> = ({ recent, languages }) => {
+  const t = useLocale();
   if (!recent.length) {
     return null;
   }
 
   return (
-    <optgroup label="Recently used">
+    <optgroup label={t('popup.select.recent-languages')}>
       {recent.map(
         (lang) =>
           languages[lang] && (

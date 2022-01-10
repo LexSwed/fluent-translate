@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
-import { useFromLanguage, useLanguages, useToLanguage } from '../atoms';
+import { useLocale } from '../../translations';
+import { useSourceLanguage, useLanguages, useTargetLanguage } from '../atoms';
 import { useTranslation } from '../Translator';
 
 import RecentLanguages, { useRecentLanguages } from './RecentLanguages';
@@ -9,15 +10,22 @@ type Props = {
   value: string;
   onChange: (value: string) => void;
   languages: Languages;
+  label: string;
 };
 
-const LanguageSelect: React.FC<Props> = ({ value, onChange, languages }) => {
+const LanguageSelect: React.FC<Props> = ({
+  label,
+  value,
+  onChange,
+  languages,
+}) => {
   const [recent, addRecent] = useRecentLanguages();
 
   return (
     <Select
       value={value}
-      title="Language select"
+      aria-label={label}
+      title={label}
       onChange={(e) => {
         const { value } = e.target;
         addRecent(value);
@@ -37,15 +45,24 @@ const LanguageSelect: React.FC<Props> = ({ value, onChange, languages }) => {
 };
 
 export const ToLanguageSelect = () => {
-  const [to, setTo] = useToLanguage();
+  const [to, setTo] = useTargetLanguage();
   const languages = useLanguages();
-  return <LanguageSelect value={to} onChange={setTo} languages={languages} />;
+  const t = useLocale();
+  return (
+    <LanguageSelect
+      value={to}
+      onChange={setTo}
+      languages={languages}
+      label={t('popup.select.target-language')}
+    />
+  );
 };
 
 export const FromLanguageSelect = () => {
-  const [from, setFrom] = useFromLanguage();
+  const [from, setFrom] = useSourceLanguage();
   const translation = useTranslation();
   const languages = useLanguages();
+  const t = useLocale();
   const languagesWithAuto = useMemo(() => {
     let { auto, ...langs } = languages;
     if (from === 'auto' && translation.from) {
@@ -61,6 +78,7 @@ export const FromLanguageSelect = () => {
       value={from}
       onChange={setFrom}
       languages={languagesWithAuto}
+      label={t('popup.select.source-language')}
     />
   );
 };

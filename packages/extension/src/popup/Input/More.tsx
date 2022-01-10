@@ -1,12 +1,14 @@
 import { Icon, Menu, IconButton } from '@fxtrot/ui';
 import { DotsVerticalIcon } from '@heroicons/react/outline';
+import { useLocale } from '../../translations';
 
 import { useTranslatorLink } from '../TranslatorLink';
 
 export const More: React.FC = () => {
+  const t = useLocale();
   return (
     <Menu>
-      <IconButton variant="flat" label="More" size="sm">
+      <IconButton variant="flat" label={t('popup.more.label')} size="sm">
         <Icon as={DotsVerticalIcon} size="md" />
       </IconButton>
       <Menu.List side="bottom">
@@ -18,7 +20,7 @@ export const More: React.FC = () => {
             })
           }
         >
-          Leave Feedback
+          {t('popup.more.feedback')}
         </Menu.Item>
         <OpenInGoogleMenuItem />
       </Menu.List>
@@ -28,6 +30,7 @@ export const More: React.FC = () => {
 
 const OpenInGoogleMenuItem = () => {
   const translatorHref = useTranslatorLink();
+  const t = useLocale();
   return (
     <Menu.Item
       onClick={() => {
@@ -37,7 +40,7 @@ const OpenInGoogleMenuItem = () => {
       }}
       size="sm"
     >
-      Open in Google Translate
+      {t('popup.more.open-in-tab')}
     </Menu.Item>
   );
 };

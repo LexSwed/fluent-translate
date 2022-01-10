@@ -1,14 +1,18 @@
 import { Text, Flex, CssStyles, Collapsible, styled } from '@fxtrot/ui';
 import type { TranslationSuccess } from '@shared/types';
+import { useLocale } from '../../translations';
 
 export const Definitions = ({
   definitions,
 }: {
   definitions: NonNullable<TranslationSuccess['definitions']>;
 }) => {
+  const t = useLocale();
   return (
     <Collapsible css={collapsibleRoot}>
-      <Collapsible.Trigger size="sm">Definitions</Collapsible.Trigger>
+      <Collapsible.Trigger size="sm">
+        {t('popup.definitions.label')}
+      </Collapsible.Trigger>
       <Collapsible.Content css={definitionsContent}>
         <Flex flow="column" gap="6">
           {definitions.map((item, i) => (

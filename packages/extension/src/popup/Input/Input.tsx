@@ -4,6 +4,7 @@ import { Box, CssStyles, Flex, styled, TextArea } from '@fxtrot/ui';
 import { FromLanguageSelect } from '../LanguageSelect';
 import { useInputText } from '../atoms';
 import { Toolbar } from './Toolbar';
+import { useLocale } from '../../translations';
 
 const StyledTextArea = styled(TextArea, {
   '&:placeholder-shown': {
@@ -13,6 +14,7 @@ const StyledTextArea = styled(TextArea, {
 
 export const Input: React.FC = () => {
   const [text, setText] = useInputText();
+  const t = useLocale();
 
   return (
     <Box css={wrapperStyles}>
@@ -23,7 +25,7 @@ export const Input: React.FC = () => {
             <Toolbar />
           </Flex>
           <StyledTextArea
-            aria-label="Text to translate"
+            aria-label={t('popup.input-text-label')}
             value={text}
             onChange={setText}
             autoFocus

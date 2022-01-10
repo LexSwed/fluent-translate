@@ -1,5 +1,6 @@
 import { Text, Flex, Button, CssStyles, Popover } from '@fxtrot/ui';
 import type { TranslationSuccess } from '@shared/types';
+import { useLocale } from '../../translations';
 
 import { useTranslation } from '../Translator';
 import { Definitions } from './Definitions';
@@ -29,13 +30,14 @@ export const Translated = () => {
 };
 
 const ResultWithAlternatives = ({ text, alternatives }: TranslationSuccess) => {
+  const t = useLocale();
   if (!alternatives) {
     return <Text size="md">{text}</Text>;
   }
   return (
     <Popover>
       <Button
-        aria-label="Alternative translations"
+        aria-label={t('popup.translation.alternatives')}
         size="sm"
         variant="flat"
         css={moreButton}

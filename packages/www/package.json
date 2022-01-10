@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/LexSwed/edge-translate#readme",
   "dependencies": {
-    "@fxtrot/ui": "^1.0.224",
+    "@fxtrot/ui": "^1.0.226",
     "@heroicons/react": "^1.0.1",
     "@sentry/node": "^6.5.1",
     "@stitches/react": "^1.2.6",
