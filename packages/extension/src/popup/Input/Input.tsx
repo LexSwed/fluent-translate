@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, CssStyles, Flex, styled, TextArea } from '@fxtrot/ui';
 
-import { FromLanguageSelect } from '../LanguageSelect';
+import { SourceLanguageSelect } from '../LanguageSelect';
 import { useInputText } from '../atoms';
 import { Toolbar } from './Toolbar';
 import { useLocale } from '../../translations';
@@ -21,7 +21,7 @@ export const Input: React.FC = () => {
       <Box p="$3" pb="$6">
         <Flex flow="column" gap="2">
           <Flex main="space-between" cross="center">
-            <FromLanguageSelect />
+            <SourceLanguageSelect />
             <Toolbar />
           </Flex>
           <StyledTextArea

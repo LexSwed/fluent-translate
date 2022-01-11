@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { styled, Flex, Text, Box } from '@fxtrot/ui';
 
 import { CloseTimer } from './CloseTimer';
-import { FromLanguageSelect } from '../popup/LanguageSelect';
+import { SourceLanguageSelect } from '../popup/LanguageSelect';
 import { useInputText } from '../popup/atoms';
 import { useTranslation } from '../popup/Translator';
 import { Results } from '../popup/Results';
@@ -44,7 +44,7 @@ const ContentApp: React.FC<Props> = ({ text, onClose }) => {
       <Flex flow="column" gap="md">
         <Box p="$3">
           <Flex flow="column" gap="sm">
-            <FromLanguageSelect />
+            <SourceLanguageSelect />
             <Box pl="$2">
               <Text>{inputText}</Text>
             </Box>

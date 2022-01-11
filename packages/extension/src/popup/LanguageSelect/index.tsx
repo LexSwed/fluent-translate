@@ -1,1 +1,2 @@
-export * from './LanguageSelect';
+export { SourceLanguageSelect } from './SourceLanguageSelect';
+export { TargetLanguageSelect } from './TargetLanguageSelect';

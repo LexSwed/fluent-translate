@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { Flex, Box, CssStyles } from '@fxtrot/ui';
 
-import { ToLanguageSelect } from '../LanguageSelect';
+import { TargetLanguageSelect } from '../LanguageSelect';
 import { useTranslation } from '../Translator';
 import { Skeleton } from './Skeleton';
 import { Translated } from './Translated';
@@ -20,7 +20,7 @@ export const Results = memo(() => {
         <SwitchTranslations />
       </Box>
       <Flex flow="column" gap="2" cross="stretch">
-        <ToLanguageSelect />
+        <TargetLanguageSelect />
         <Box pl="$2">{status === 'done' ? <Translated /> : <Skeleton />}</Box>
       </Flex>
     </Box>
