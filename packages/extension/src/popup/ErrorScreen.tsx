@@ -17,11 +17,11 @@ export const ErrorScreen = () => {
             {t('error.line1')}
             <br />
             <br />
-            {t('error.line2')}
+            {t('error.line2')}{' '}
             <span role="img" aria-label={t('error.bug')}>
               🐞
             </span>{' '}
-            {t('error.line4')}
+            {t('error.line3')}
           </Text>
         </>
 
