@@ -6,6 +6,7 @@ import { useTranslation } from '../Translator';
 import { Skeleton } from './Skeleton';
 import { Translated } from './Translated';
 import { SwitchTranslations } from './SwitchTranslations';
+import { RecentLanguages } from './RecentLanguages';
 
 export const Results = memo(() => {
   const { status } = useTranslation();
@@ -20,7 +21,10 @@ export const Results = memo(() => {
         <SwitchTranslations />
       </Box>
       <Flex flow="column" gap="2" cross="stretch">
-        <TargetLanguageSelect />
+        <Flex flow="row" gap="4" cross="center">
+          <TargetLanguageSelect />
+          <RecentLanguages />
+        </Flex>
         <Box pl="$2">{status === 'done' ? <Translated /> : <Skeleton />}</Box>
       </Flex>
     </Box>

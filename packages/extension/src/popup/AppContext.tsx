@@ -11,7 +11,7 @@ const darkTheme: Theme = {
     textDisabled: '$gray200',
     textLight: '$gray200',
     textSubtle: '$gray300',
-    accent: '#4fcae6',
+    accent: '#fff',
     accentLight: '$gray50',
     focusRing: '$gray50',
 
@@ -21,7 +21,7 @@ const darkTheme: Theme = {
     primaryStill: 'hsl(191, 75%, 60%)',
     primaryHover: 'hsl(191, 75%, 70%)',
     primaryActive: 'hsl(191, 75%, 50%)',
-    primaryLight: 'hsl(191, 75%, 75%)',
+    primaryLight: 'hsl(191, 75%, 20%)',
     primaryLightActive: 'hsl(191, 75%, 70%)',
 
     surfaceStill: 'hsl(0, 0%, 20%)',
