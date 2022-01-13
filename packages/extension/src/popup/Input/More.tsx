@@ -6,6 +6,7 @@ import { useTranslatorLink } from '../TranslatorLink';
 
 export const More: React.FC = () => {
   const t = useLocale();
+  const translatorHref = useTranslatorLink();
   return (
     <Menu>
       <IconButton variant="flat" label={t('popup.more.label')} size="sm">
@@ -22,25 +23,17 @@ export const More: React.FC = () => {
         >
           {t('popup.more.feedback')}
         </Menu.Item>
-        <OpenInGoogleMenuItem />
+        <Menu.Item
+          onClick={() => {
+            chrome.tabs.create({
+              url: translatorHref,
+            });
+          }}
+          size="sm"
+        >
+          {t('popup.more.open-in-tab')}
+        </Menu.Item>
       </Menu.List>
     </Menu>
-  );
-};
-
-const OpenInGoogleMenuItem = () => {
-  const translatorHref = useTranslatorLink();
-  const t = useLocale();
-  return (
-    <Menu.Item
-      onClick={() => {
-        chrome.tabs.create({
-          url: translatorHref,
-        });
-      }}
-      size="sm"
-    >
-      {t('popup.more.open-in-tab')}
-    </Menu.Item>
   );
 };
