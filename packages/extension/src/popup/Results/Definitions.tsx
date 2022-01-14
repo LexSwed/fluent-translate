@@ -36,9 +36,11 @@ const DefinitionItem = ({
       <Flex flow="column" gap="2" as="ol" css={definitionsList}>
         {explanations.map((exp, i) => (
           <DefinitionListItem key={i}>
-            <Text as="div">{exp.explanation}</Text>
+            <Text size="sm" as="div">
+              {exp.explanation}
+            </Text>
             {exp.example ? (
-              <Text tone="light" as="div">
+              <Text size="sm" tone="light" as="i">
                 {`"${exp.example}"`}
               </Text>
             ) : null}

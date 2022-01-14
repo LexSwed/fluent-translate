@@ -19,13 +19,13 @@
   },
   "homepage": "https://github.com/LexSwed/edge-translate#readme",
   "dependencies": {
-    "@fxtrot/ui": "^1.0.226",
+    "@fxtrot/ui": "^1.0.227",
     "@heroicons/react": "^1.0.1",
     "@sentry/node": "^6.5.1",
     "@stitches/react": "^1.2.6",
     "@vitalets/google-translate-api": "^7.0.0",
-    "framer-motion": "^5.5.6",
-    "next": "^12.0.7",
+    "framer-motion": "^5.6.0",
+    "next": "^12.0.8",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },

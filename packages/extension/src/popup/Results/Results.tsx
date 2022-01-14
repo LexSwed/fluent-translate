@@ -33,7 +33,7 @@ export const Results = memo(() => {
 
 const wrapperStyles: CssStyles = {
   p: '$3',
-  pb: '$6',
+  pb: '$4',
   borderTop: '1px solid $flatHover',
   position: 'relative',
 };

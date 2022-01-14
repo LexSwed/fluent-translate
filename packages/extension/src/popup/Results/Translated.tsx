@@ -46,7 +46,7 @@ const ResultWithAlternatives = ({ text, alternatives }: TranslationSuccess) => {
       </Button>
       <Popover.Content side="top" css={popoverContent}>
         {alternatives.slice(1).map((alt) => (
-          <Text as="div" size="md" key={alt}>
+          <Text as="div" size="sm" key={alt}>
             {alt}
           </Text>
         ))}

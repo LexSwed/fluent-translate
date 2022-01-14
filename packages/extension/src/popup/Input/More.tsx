@@ -1,4 +1,4 @@
-import { Icon, Menu, IconButton } from '@fxtrot/ui';
+import { Icon, Menu, IconButton, CssStyles } from '@fxtrot/ui';
 import { DotsVerticalIcon } from '@heroicons/react/outline';
 import { useLocale } from '../../translations';
 
@@ -15,6 +15,7 @@ export const More: React.FC = () => {
       <Menu.List side="bottom">
         <Menu.Item
           size="sm"
+          css={menuItem}
           onClick={() =>
             chrome.tabs.create({
               url: 'https://lexswed.typeform.com/to/fKJxgcPE',
@@ -24,16 +25,21 @@ export const More: React.FC = () => {
           {t('popup.more.feedback')}
         </Menu.Item>
         <Menu.Item
+          size="sm"
+          css={menuItem}
           onClick={() => {
             chrome.tabs.create({
               url: translatorHref,
             });
           }}
-          size="sm"
         >
           {t('popup.more.open-in-tab')}
         </Menu.Item>
       </Menu.List>
     </Menu>
   );
+};
+
+const menuItem: CssStyles = {
+  textSize: '$sm',
 };
