@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, CssStyles, Flex, styled, TextArea } from '@fxtrot/ui';
+import { Box, Column, CssStyles, Row, styled, TextArea } from '@fxtrot/ui';
 
 import { SourceLanguageSelect } from '../LanguageSelect';
 import { useInputText } from '../atoms';
@@ -19,11 +19,11 @@ export const Input: React.FC = () => {
   return (
     <Box css={wrapperStyles}>
       <Box p="$3" pb="$6">
-        <Flex flow="column" gap="2">
-          <Flex main="space-between" cross="center">
+        <Column gap="2">
+          <Row main="space-between" cross="center">
             <SourceLanguageSelect />
             <Toolbar />
-          </Flex>
+          </Row>
           <StyledTextArea
             aria-label={t('popup.input-text-label')}
             value={text}
@@ -32,7 +32,7 @@ export const Input: React.FC = () => {
             rows={2}
             size="md"
           />
-        </Flex>
+        </Column>
       </Box>
     </Box>
   );

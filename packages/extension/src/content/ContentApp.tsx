@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { styled, Flex, Text, Box } from '@fxtrot/ui';
+import { styled, Column, Text, Box } from '@fxtrot/ui';
 
 import { CloseTimer } from './CloseTimer';
 import { SourceLanguageSelect } from '../popup/LanguageSelect';
@@ -41,17 +41,17 @@ const ContentApp: React.FC<Props> = ({ text, onClose }) => {
       {status === 'done' ? (
         <CloseTimer isMouseOver={isMouseOver} onClose={onClose} key={text} />
       ) : null}
-      <Flex flow="column" gap="md">
+      <Column gap="md">
         <Box p="$3">
-          <Flex flow="column" gap="sm">
+          <Column gap="sm">
             <SourceLanguageSelect />
             <Box pl="$2">
               <Text>{inputText}</Text>
             </Box>
-          </Flex>
+          </Column>
         </Box>
         <Results />
-      </Flex>
+      </Column>
     </Main>
   );
 };

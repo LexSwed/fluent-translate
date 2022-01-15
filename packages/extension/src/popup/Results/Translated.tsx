@@ -1,4 +1,4 @@
-import { Text, Flex, Button, CssStyles, Popover } from '@fxtrot/ui';
+import { Text, Button, CssStyles, Popover, Column } from '@fxtrot/ui';
 import type { TranslationSuccess } from '@shared/types';
 import { useLocale } from '../../translations';
 
@@ -15,17 +15,17 @@ export const Translated = () => {
   const { pronunciation, definitions } = translation;
 
   return (
-    <Flex flow="column" gap="4">
-      <Flex flow="column" gap="1" cross="start">
+    <Column gap="4">
+      <Column gap="1" cross="start">
         <ResultWithAlternatives {...translation} />
         {pronunciation && (
           <Text size="sm" css={pronunciationStyles}>
             {pronunciation}
           </Text>
         )}
-      </Flex>
+      </Column>
       {definitions ? <Definitions definitions={definitions} /> : null}
-    </Flex>
+    </Column>
   );
 };
 

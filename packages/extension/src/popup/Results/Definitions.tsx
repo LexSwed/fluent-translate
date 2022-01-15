@@ -1,4 +1,4 @@
-import { Text, Flex, CssStyles, Collapsible, styled } from '@fxtrot/ui';
+import { Text, CssStyles, Collapsible, styled, Column } from '@fxtrot/ui';
 import type { TranslationSuccess } from '@shared/types';
 import { useLocale } from '../../translations';
 
@@ -14,11 +14,11 @@ export const Definitions = ({
         {t('popup.definitions.label')}
       </Collapsible.Trigger>
       <Collapsible.Content css={definitionsContent}>
-        <Flex flow="column" gap="6">
+        <Column gap="6">
           {definitions.map((item, i) => (
             <DefinitionItem {...item} key={i} />
           ))}
-        </Flex>
+        </Column>
       </Collapsible.Content>
     </Collapsible>
   );
@@ -29,11 +29,11 @@ const DefinitionItem = ({
   explanations,
 }: NonNullable<TranslationSuccess['definitions']>[number]) => {
   return (
-    <Flex flow="column" gap="2">
+    <Column gap="2">
       <Text as="h1" css={definitionType}>
         {type}
       </Text>
-      <Flex flow="column" gap="2" as="ol" css={definitionsList}>
+      <Column gap="2" as="ol" css={definitionsList}>
         {explanations.map((exp, i) => (
           <DefinitionListItem key={i}>
             <Text size="sm" as="div">
@@ -46,8 +46,8 @@ const DefinitionItem = ({
             ) : null}
           </DefinitionListItem>
         ))}
-      </Flex>
-    </Flex>
+      </Column>
+    </Column>
   );
 };
 

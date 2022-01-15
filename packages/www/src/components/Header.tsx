@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex, Heading, TextLink } from '@fxtrot/ui';
+import { Box, Heading, Row, TextLink } from '@fxtrot/ui';
 import Link from 'next/link';
 
 import { ContentBlock } from './ContentBlock';
@@ -7,10 +7,10 @@ import { ContentBlock } from './ContentBlock';
 const Header = () => {
   return (
     <ContentBlock as="header" css={{ p: '$4' }}>
-      <Flex gap="4" cross="center" wrap="nowrap">
+      <Row gap="4" cross="center" wrap="nowrap">
         <Link href="/">
           <TextLink>
-            <Flex gap="md" cross="center" wrap="nowrap">
+            <Row gap="md" cross="center" wrap="nowrap">
               <Box
                 as="img"
                 css={{ size: 24 }}
@@ -19,15 +19,15 @@ const Header = () => {
                 aria-hidden="true"
               />
               <Heading level={3} variant="light">
-                <Flex cross="center" gap="4">
+                <Row cross="center" gap="4">
                   <span>Edge Translate</span>{' '}
                   <Box css={{ '@tablet': { display: 'none' } }}>|</Box>
-                </Flex>
+                </Row>
               </Heading>
-            </Flex>
+            </Row>
           </TextLink>
         </Link>
-        <Flex gap="4">
+        <Row gap="4">
           <TextLink href="https://lexswed.github.io/">Author</TextLink>
           <TextLink href="https://github.com/LexSwed/edge-translate">
             Sources
@@ -38,8 +38,8 @@ const Header = () => {
           <TextLink href="https://lexswed.typeform.com/to/fKJxgcPE">
             Leave Feedback
           </TextLink>
-        </Flex>
-      </Flex>
+        </Row>
+      </Row>
     </ContentBlock>
   );
 };

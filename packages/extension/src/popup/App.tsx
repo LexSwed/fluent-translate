@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Box, CssStyles } from '@fxtrot/ui';
+import { Box, CssStyles, Column } from '@fxtrot/ui';
 
 import { Input } from './Input';
 import { Results } from './Results';
@@ -25,10 +25,10 @@ const App = () => {
   }
   return (
     <ErrorBoundary setError={setError}>
-      <Flex flow="column" main="stretch" cross="stretch" css={mainStyle}>
+      <Column main="stretch" cross="stretch" css={mainStyle}>
         <Input />
         <Results />
-      </Flex>
+      </Column>
     </ErrorBoundary>
   );
 };

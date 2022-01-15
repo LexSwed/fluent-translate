@@ -1,4 +1,4 @@
-import { Button, Flex } from '@fxtrot/ui';
+import { Button, Row } from '@fxtrot/ui';
 import { useLanguages, useTargetLanguage } from '../atoms';
 import { useRecentLanguages } from '../LanguageSelect/useRecentLanguages';
 
@@ -7,7 +7,7 @@ export const RecentLanguages = () => {
   const languages = useLanguages();
   const [to, setTo] = useTargetLanguage();
   return (
-    <Flex flow="row" gap="2">
+    <Row gap="2">
       {recents
         .filter((lang) => lang !== to)
         .map((lang) => (
@@ -20,6 +20,6 @@ export const RecentLanguages = () => {
             {languages[lang]}
           </Button>
         ))}
-    </Flex>
+    </Row>
   );
 };

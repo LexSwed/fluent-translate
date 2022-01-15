@@ -1,10 +1,11 @@
 import {
+  Column,
   css,
   CssStyles,
   Dialog,
-  Flex,
   Icon,
   IconButton,
+  Row,
   styled,
   useDialogRef,
 } from '@fxtrot/ui';
@@ -62,11 +63,11 @@ const MemoryList = ({ closeDialog }: { closeDialog: () => void }) => {
   return (
     <Dialog.Modal css={modalStyle} hasCloseButton={false} ref={ref}>
       <ScrollSnapStart>
-        <Flex flow="row" main="end">
+        <Row flow="row" main="end">
           <Dialog.Close size="sm" />
-        </Flex>
+        </Row>
       </ScrollSnapStart>
-      <Flex role="list" flow="column" cross="stretch" css={listStyle}>
+      <Column role="list" cross="stretch" css={listStyle}>
         {items.map((item) => (
           <MemoryEntry
             key={item.id}
@@ -75,7 +76,7 @@ const MemoryList = ({ closeDialog }: { closeDialog: () => void }) => {
             onDelete={onDelete}
           />
         ))}
-      </Flex>
+      </Column>
     </Dialog.Modal>
   );
 };

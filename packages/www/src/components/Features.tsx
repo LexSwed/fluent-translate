@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex, Heading } from '@fxtrot/ui';
+import { Box, Column, Heading } from '@fxtrot/ui';
 
 import Image from './Image';
 import { ContentBlock } from './ContentBlock';
@@ -23,14 +23,14 @@ const Features = () => {
   return (
     <Box py="5vh">
       <ContentBlock css={{ maxWidth: 1280 }}>
-        <Flex flow="column" gap="32" cross="center">
+        <Column gap="32" cross="center">
           {items.map((item) => (
-            <Flex key={item.img} flow="column" gap="8" cross="center">
+            <Column key={item.img} gap="8" cross="center">
               <Heading level={2}>{item.title}</Heading>
               <Image src={item.img} alt={item.title} />
-            </Flex>
+            </Column>
           ))}
-        </Flex>
+        </Column>
       </ContentBlock>
     </Box>
   );

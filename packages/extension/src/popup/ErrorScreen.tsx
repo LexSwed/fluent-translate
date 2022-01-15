@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Icon, Text } from '@fxtrot/ui';
+import { Box, Button, Column, Icon, Row, Text } from '@fxtrot/ui';
 import { FireIcon } from '@heroicons/react/outline';
 import { useLocale } from '../translations';
 import { useError } from './atoms';
@@ -9,7 +9,7 @@ export const ErrorScreen = () => {
 
   return (
     <Box p="$3">
-      <Flex flow="column" cross="center" main="center" gap="md">
+      <Column cross="center" main="center" gap="md">
         <Icon as={FireIcon} size="3xl" color="$gray400" />
 
         <>
@@ -25,10 +25,10 @@ export const ErrorScreen = () => {
           </Text>
         </>
 
-        <Flex main="center" cross="center">
+        <Row main="center" cross="center">
           <Button onClick={() => setError(null)}>{t('error.refresh')}</Button>
-        </Flex>
-      </Flex>
+        </Row>
+      </Column>
     </Box>
   );
 };

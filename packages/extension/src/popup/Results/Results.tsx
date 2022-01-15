@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { Flex, Box, CssStyles } from '@fxtrot/ui';
+import { Row, Box, CssStyles, Column } from '@fxtrot/ui';
 
 import { TargetLanguageSelect } from '../LanguageSelect';
 import { useTranslation } from '../Translator';
@@ -20,13 +20,13 @@ export const Results = memo(() => {
       <Box css={switchButton}>
         <SwitchTranslations />
       </Box>
-      <Flex flow="column" gap="2" cross="stretch">
-        <Flex flow="row" gap="4" cross="center">
+      <Column gap="2" cross="stretch">
+        <Row gap="4" cross="center">
           <TargetLanguageSelect />
           <RecentLanguages />
-        </Flex>
+        </Row>
         <Box pl="$2">{status === 'done' ? <Translated /> : <Skeleton />}</Box>
-      </Flex>
+      </Column>
     </Box>
   );
 });
