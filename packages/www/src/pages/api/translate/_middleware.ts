@@ -2,6 +2,9 @@ import type { NextRequest } from 'next/server';
 import { translate } from '../../../translate';
 
 export async function middleware(req: NextRequest) {
+  if (req.method !== 'GET') {
+    return;
+  }
   const params = req.nextUrl.searchParams;
 
   const text = params.get('text');
