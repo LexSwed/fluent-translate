@@ -7,7 +7,7 @@ import { ContentBlock } from './ContentBlock';
 const Header = () => {
   return (
     <ContentBlock as="header" css={{ p: '$4' }}>
-      <Row gap="4" cross="center" wrap="nowrap">
+      <Row gap="4" main="space-between" cross="center" wrap="nowrap">
         <Link href="/">
           <TextLink>
             <Row gap="md" cross="center" wrap="nowrap">
@@ -18,12 +18,6 @@ const Header = () => {
                 alt="Edge Translate logo"
                 aria-hidden="true"
               />
-              <Heading level={3} variant="light">
-                <Row cross="center" gap="4">
-                  <span>Edge Translate</span>{' '}
-                  <Box css={{ '@tablet': { display: 'none' } }}>|</Box>
-                </Row>
-              </Heading>
             </Row>
           </TextLink>
         </Link>

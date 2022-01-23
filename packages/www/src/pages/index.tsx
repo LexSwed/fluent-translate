@@ -63,6 +63,6 @@ const WebstoreLink = styled('a', {
   'focusRing': '$focusRing',
   '& > img': { maxHeight: '100%' },
   '&:hover': {
-    boxShadow: '0 0 0 3px $colors$focusRing',
+    filter: 'brightness(0.95)',
   },
 });

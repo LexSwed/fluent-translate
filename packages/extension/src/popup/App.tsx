@@ -5,7 +5,7 @@ import { Input } from './Input';
 import { Results } from './Results';
 import { ErrorScreen } from './ErrorScreen';
 
-import { Sentry } from './utils';
+import { browser, Sentry } from './utils';
 import { useError } from './atoms';
 
 const mainStyle: CssStyles = {
@@ -25,7 +25,12 @@ const App = () => {
   }
   return (
     <ErrorBoundary setError={setError}>
-      <Column main="stretch" cross="stretch" css={mainStyle}>
+      <Column
+        main="stretch"
+        cross="stretch"
+        css={mainStyle}
+        lang={browser.lang}
+      >
         <Input />
         <Results />
       </Column>
