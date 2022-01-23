@@ -1,3 +1,4 @@
+import React from 'react';
 import { LanguageSelect } from './LanguageSelect';
 import { useLocale } from '../../translations';
 import { useLanguages, useTargetLanguage } from '../atoms';

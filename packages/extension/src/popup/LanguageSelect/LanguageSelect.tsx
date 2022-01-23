@@ -1,3 +1,4 @@
+import React from 'react';
 import { RecentLanguages } from './RecentLanguages';
 import { Option, Select } from './styled';
 import { useRecentLanguages } from './useRecentLanguages';

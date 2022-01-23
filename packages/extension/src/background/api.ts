@@ -1,5 +1,11 @@
+import { isNextEnv } from '../isNextEnv';
+
 export async function translate({ to, from, text }: TranslateQuery) {
-  const url = new URL('https://edge-translate.vercel.app/api/translate');
+  const url = new URL(
+    isNextEnv
+      ? window.location.origin + '/api/translate'
+      : 'https://edge-translate.vercel.app/api/translate'
+  );
   // const url = new URL('http://localhost:3000/api/translate');
   url.searchParams.append('to', to);
   if (from) {

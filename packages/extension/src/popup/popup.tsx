@@ -1,8 +1,9 @@
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { AppContext } from './AppContext';
 import App from './App';
-import { userLang } from './utils';
+import { browser } from './utils';
 
 // const element = document.getElementById('edge-translate') as HTMLElement & {
 //   shadowRoot: ShadowRoot;
@@ -20,4 +21,4 @@ ReactDOM.render(
   document.getElementById('edge-translate')
 );
 
-document.documentElement.setAttribute('lang', userLang);
+document.documentElement.setAttribute('lang', browser.lang);

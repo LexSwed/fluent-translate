@@ -1,3 +1,4 @@
+import React from 'react';
 import { Icon, IconButton, styled } from '@fxtrot/ui';
 import { XIcon } from '@heroicons/react/outline';
 import { useLocale } from '../../translations';

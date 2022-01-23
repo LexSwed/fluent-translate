@@ -1,3 +1,4 @@
+import React from 'react';
 import { stitchesConfig, styled, Text } from '@fxtrot/ui';
 
 export const Skeleton = () => {

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Icon, Menu, IconButton, CssStyles } from '@fxtrot/ui';
 import { DotsVerticalIcon } from '@heroicons/react/outline';
 import { useLocale } from '../../translations';
@@ -12,7 +13,7 @@ export const More: React.FC = () => {
       <IconButton variant="flat" label={t('popup.more.label')} size="sm">
         <Icon as={DotsVerticalIcon} size="md" />
       </IconButton>
-      <Menu.List side="bottom">
+      <Menu.List side="bottom" align="end">
         <Menu.Item
           size="sm"
           css={menuItem}

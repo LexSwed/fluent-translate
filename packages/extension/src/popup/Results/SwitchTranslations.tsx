@@ -1,6 +1,6 @@
+import React from 'react';
 import { Icon, IconButton } from '@fxtrot/ui';
 import { SwitchVerticalIcon } from '@heroicons/react/outline';
-import { memo } from 'react';
 import { useLocale } from '../../translations';
 import {
   useSourceLanguage,
@@ -9,7 +9,7 @@ import {
 } from '../atoms';
 import { useTranslation } from '../Translator';
 
-export const SwitchTranslations = memo(() => {
+export const SwitchTranslations = React.memo(() => {
   const [to, setTo] = useTargetLanguage();
   const [from, setFrom] = useSourceLanguage();
   const setText = useUpdateInputText();

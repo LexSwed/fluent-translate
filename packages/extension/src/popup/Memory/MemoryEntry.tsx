@@ -1,6 +1,6 @@
+import React from 'react';
 import { Text, Icon, CssStyles, IconButton, Column, Row } from '@fxtrot/ui';
 import { TranslateIcon, TrashIcon } from '@heroicons/react/outline';
-import { memo } from 'react';
 import { useLocale } from '../../translations';
 import { useLanguages } from '../atoms';
 
@@ -10,7 +10,7 @@ type Props = {
   onDelete: (id: string) => any;
 };
 
-export const MemoryEntry = memo(({ item, onSelect, onDelete }: Props) => {
+export const MemoryEntry = React.memo(({ item, onSelect, onDelete }: Props) => {
   return (
     <Column gap="1" role="listitem" css={styles.memoryEntry}>
       <Header item={item} onSelect={onSelect} onDelete={onDelete} />

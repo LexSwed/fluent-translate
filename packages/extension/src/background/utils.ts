@@ -1,5 +1,6 @@
 import { debounce } from 'debounce';
 import { nanoid } from 'nanoid';
+import { isNextEnv } from '../isNextEnv';
 
 import { Storage } from '../popup/utils';
 
@@ -28,13 +29,16 @@ export const addMemoryItem = debounce(
       from,
       translation,
     };
-    const newItemByteSize = getSize(newItem);
 
-    while (
-      getSize(memory) + newItemByteSize >
-      chrome.storage.sync.QUOTA_BYTES_PER_ITEM
-    ) {
-      memory.pop();
+    if (!isNextEnv) {
+      const newItemByteSize = getSize(newItem);
+
+      while (
+        getSize(memory) + newItemByteSize >
+        chrome?.storage?.sync?.QUOTA_BYTES_PER_ITEM
+      ) {
+        memory.pop();
+      }
     }
 
     memory.unshift(newItem);

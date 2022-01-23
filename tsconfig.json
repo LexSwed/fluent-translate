@@ -20,8 +20,10 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "jsx": "preserve",
     "paths": {
-      "@shared/*": ["./packages/shared/src/*"]
+      "@shared/*": ["./packages/shared/src/*"],
+      "@popup/*": ["./packages/extension/src/popup/*"]
     }
   },
   "exclude": [

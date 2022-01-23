@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider, atom, useAtom } from 'jotai';
 import { useUpdateAtom, useAtomValue } from 'jotai/utils';
-import { Storage, userLang } from './utils';
+import { Storage, browser } from './utils';
 import useSWR from 'swr';
 
 export const StoreProvider: React.FC = ({ children }) => {
@@ -21,7 +21,7 @@ export const useUpdateInputText = () => useUpdateAtom(inputTextAtom);
 async function loadLanguages(): Promise<Languages> {
   const { languages } = await Storage.getItems<{
     languages?: Languages;
-  }>(['to', 'languages']);
+  }>(['languages']);
   return languages || {};
 }
 export const useLanguages = (): Languages =>
@@ -36,7 +36,7 @@ export const useSourceLanguage = () => useAtom(sourceLanguageAtom);
 /**
  * Selected language translate the text TO
  */
-const targetLanguageValueAtom = atom(userLang);
+const targetLanguageValueAtom = atom(browser.lang);
 const targetLanguageAtom = atom(
   (get) => get(targetLanguageValueAtom),
   (_get, set, newTo: string) => {
@@ -100,19 +100,12 @@ memoryAtom.onMount = (setMemoryItems) => {
     setMemoryItems(memory);
   }
   load();
-  const onChange: onStorageChangeListener = ({ memory }, name) => {
+
+  const unsubscribe = Storage.listen(({ memory }, name) => {
     if (memory?.newValue && name === 'sync') {
       setMemoryItems(memory?.newValue as MemoryItems);
     }
-  };
+  });
 
-  chrome.storage.onChanged.addListener(onChange);
-
-  return () => {
-    chrome.storage.onChanged.removeListener(onChange);
-  };
+  return unsubscribe;
 };
-
-type onStorageChangeListener = Parameters<
-  typeof chrome.storage.onChanged.addListener
->[0];

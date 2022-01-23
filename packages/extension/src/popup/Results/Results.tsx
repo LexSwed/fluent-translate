@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import React from 'react';
 import { Row, Box, CssStyles, Column } from '@fxtrot/ui';
 
 import { TargetLanguageSelect } from '../LanguageSelect';
@@ -8,7 +8,7 @@ import { Translated } from './Translated';
 import { SwitchTranslations } from './SwitchTranslations';
 import { RecentLanguages } from './RecentLanguages';
 
-export const Results = memo(() => {
+export const Results = React.memo(() => {
   const { status } = useTranslation();
 
   if (status === 'initial') {

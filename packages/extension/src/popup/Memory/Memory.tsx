@@ -1,3 +1,4 @@
+import React, { useCallback, useEffect, useRef } from 'react';
 import {
   Column,
   css,
@@ -13,7 +14,6 @@ import {
 import { MemoryEntry } from './MemoryEntry';
 import { useMemoryItems, useSavedItem } from '../atoms';
 import { BookmarkAltIcon } from '@heroicons/react/outline';
-import { useCallback, useEffect, useRef } from 'react';
 import { useLocale } from '../../translations';
 
 export const Memory = () => {
@@ -95,16 +95,22 @@ const listStyle: CssStyles = {
 };
 
 const modalStyle: CssStyles = {
-  width: '100vw',
-  height: '100%',
-  maxWidth: 'none',
-  overflow: 'auto',
-  scrollSnapType: 'y',
-  br: '$0',
-  p: 0,
-  overlay: {
+  'width': '100vw',
+  'height': '100%',
+  'maxWidth': 'none',
+  'overflow': 'auto',
+  'scrollSnapType': 'y',
+  'br': '$0',
+  'p': 0,
+  'overlay': {
     overflow: 'hidden',
     height: '100vh',
+  },
+  // isNextEnv
+  '@desktop': {
+    br: '$md',
+    maxWidth: '320px',
+    maxHeight: '90vh',
   },
 };
 

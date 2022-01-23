@@ -1,3 +1,4 @@
+import React from 'react';
 import { Box, Button, Column, Icon, Row, Text } from '@fxtrot/ui';
 import { FireIcon } from '@heroicons/react/outline';
 import { useLocale } from '../translations';

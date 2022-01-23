@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { styled, Column, Text, Box } from '@fxtrot/ui';
 
 import { CloseTimer } from './CloseTimer';

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { ThemeProvider } from '@fxtrot/ui';
+import { Box, ThemeProvider } from '@fxtrot/ui';
 import { StoreProvider } from './atoms';
 
 type Theme = React.ComponentProps<typeof ThemeProvider>['theme'];
@@ -43,19 +43,36 @@ const darkTheme: Theme = {
 };
 
 export const AppContext: React.FC = ({ children }) => {
+  const mounted = useMounted();
   const prefersDark = useMediaQuery('(prefers-color-scheme: dark)');
 
-  return (
+  const body = (
     <ThemeProvider theme={prefersDark ? darkTheme : 'lightBlue'}>
       <StoreProvider>{children}</StoreProvider>
     </ThemeProvider>
   );
+
+  if (!mounted) {
+    return <div style={{ visibility: 'hidden' }}>{body}</div>;
+  }
+
+  return body;
 };
 
-function useMediaQuery(query: string) {
-  const [matches] = useState(() => {
+function useMediaQuery(query: string): boolean {
+  const mounted = useMounted();
+  if (mounted) {
     return window.matchMedia(query).matches;
-  });
+  }
+  return false;
+}
 
-  return matches;
+function useMounted() {
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  return mounted;
 }

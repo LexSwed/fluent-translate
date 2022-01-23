@@ -1,3 +1,4 @@
+import React from 'react';
 import { Close, CloseButton } from './Close';
 import { Timer, Svg } from './Timer';
 import { Box, styled } from '@fxtrot/ui';

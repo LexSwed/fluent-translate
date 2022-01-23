@@ -7,17 +7,20 @@
     "incremental": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
     "noEmit": true
   },
   "include": [
     "next-env.d.ts",
     "src",
     "../shared/src",
+    "../extension/src"
   ],
   "references": [
     {
       "path": "../shared"
+    },
+    {
+      "path": "../extension"
     }
   ]
 }

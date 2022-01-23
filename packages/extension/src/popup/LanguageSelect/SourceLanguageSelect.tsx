@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { LanguageSelect } from './LanguageSelect';
 import { useLocale } from '../../translations';
 import { useSourceLanguage, useLanguages } from '../atoms';

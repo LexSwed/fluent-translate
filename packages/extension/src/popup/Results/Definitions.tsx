@@ -1,3 +1,4 @@
+import React from 'react';
 import { Text, CssStyles, Collapsible, styled, Column } from '@fxtrot/ui';
 import type { TranslationSuccess } from '@shared/types';
 import { useLocale } from '../../translations';

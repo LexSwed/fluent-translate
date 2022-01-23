@@ -1,3 +1,4 @@
+import React from 'react';
 import { useLocale } from '../../translations';
 import { Option } from './styled';
 

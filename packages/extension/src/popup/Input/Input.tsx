@@ -5,10 +5,11 @@ import { SourceLanguageSelect } from '../LanguageSelect';
 import { useInputText } from '../atoms';
 import { Toolbar } from './Toolbar';
 import { useLocale } from '../../translations';
+import { isNextEnv } from '../../isNextEnv';
 
 const StyledTextArea = styled(TextArea, {
-  '&:placeholder-shown': {
-    bc: '$surfaceHover',
+  textarea: {
+    color: '$text',
   },
 });
 
@@ -28,7 +29,7 @@ export const Input: React.FC = () => {
             aria-label={t('popup.input-text-label')}
             value={text}
             onChange={setText}
-            autoFocus
+            autoFocus={!isNextEnv}
             rows={2}
             size="md"
           />

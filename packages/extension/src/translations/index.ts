@@ -11,7 +11,7 @@ import { pt } from './pt';
 import { ru } from './ru';
 import { zh } from './zh';
 
-import { userLang } from '../popup/utils';
+import { browser } from '../popup/utils';
 
 const translations: Record<string, Record<keyof typeof en, string>> = {
   ca,
@@ -28,6 +28,6 @@ const translations: Record<string, Record<keyof typeof en, string>> = {
   zh,
 };
 
-const translator = (key: keyof typeof en) => translations[userLang]?.[key];
+const translator = (key: keyof typeof en) => translations[browser.lang]?.[key];
 
 export const useLocale = () => translator;

@@ -3,6 +3,7 @@ node_modules
 build/
 .env
 !packages/extension/.env
+!packages/www/.env
 .now
 .cache
 .parcel-cache

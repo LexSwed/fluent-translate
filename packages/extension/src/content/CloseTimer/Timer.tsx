@@ -1,5 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
-
+import React, { useEffect, useState, useRef } from 'react';
 import { styled } from '@fxtrot/ui';
 
 type Props = {
