@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import { Box, Column, Grid, Heading, styled, Text } from '@fxtrot/ui';
 import { ContentBlock } from '../components/ContentBlock';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 
 const ExtensionPopup = dynamic(
   () => import('@edge-translate/extension/src/popup/App'),
@@ -26,18 +27,33 @@ const Main: React.FC = () => {
                 specific phrases you do not understand just yet.
               </Text>
             </Column>
-            <Grid columns="1fr 1fr" gap="16" cross="start">
+            <Grid
+              css={{
+                '@desktop': {
+                  gridTemplateColumns: 'repeat(2, 1fr)',
+                },
+                '@tablet': {
+                  gridTemplateColumns: '1fr',
+                },
+              }}
+              gap="16"
+              cross="start"
+            >
               <Column gap="6">
                 <WebstoreLink href="https://chrome.google.com/webstore/detail/jbkaeigbknejjmhnkhmankagkfepncmn">
-                  <img
+                  <Image
                     src="/images/chrome-web-store.png"
                     alt="Available in Chrome Web Store"
+                    layout="fill"
+                    objectFit="contain"
                   />
                 </WebstoreLink>
                 <WebstoreLink href="https://microsoftedge.microsoft.com/addons/detail/fnpmkppmkmjgcdkjoblipakmfnocefog">
-                  <img
+                  <Image
                     src="/images/edge-addons.png"
                     alt="Available in Microsoft Edge Addons"
+                    layout="fill"
+                    objectFit="contain"
                   />
                 </WebstoreLink>
               </Column>
@@ -57,9 +73,11 @@ const Main: React.FC = () => {
 export default Main;
 
 const WebstoreLink = styled('a', {
-  'height': 80,
+  'position': 'relative',
   'br': '$md',
   'bc': '#fff',
+  'height': 80,
+  'width': '100%',
   'textDecoration': 'none',
   'display': 'flex',
   'alignContent': 'center',

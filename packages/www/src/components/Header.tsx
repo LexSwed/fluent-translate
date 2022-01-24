@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Row, TextLink } from '@fxtrot/ui';
+import { Box, Flex, Row, TextLink } from '@fxtrot/ui';
 import Link from 'next/link';
 
 import { ContentBlock } from './ContentBlock';
@@ -7,7 +7,15 @@ import { ContentBlock } from './ContentBlock';
 const Header = () => {
   return (
     <ContentBlock as="header" css={{ py: '$4' }}>
-      <Row gap="4" main="space-between" cross="center" wrap="nowrap">
+      <Flex
+        flow={{
+          '@desktop': 'row',
+          '@initial': 'column',
+        }}
+        gap="4"
+        main="space-between"
+        cross="center"
+      >
         <Link href="/" passHref>
           <TextLink>
             <Box
@@ -31,7 +39,7 @@ const Header = () => {
             Leave Feedback
           </TextLink>
         </Row>
-      </Row>
+      </Flex>
     </ContentBlock>
   );
 };

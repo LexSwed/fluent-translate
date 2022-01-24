@@ -7,7 +7,10 @@ import { AppContext } from '@edge-translate/extension/src/popup/AppContext';
 
 const globals = stitchesConfig.globalCss({
   'html': {
-    overscrollBehavior: 'none',
+    'overscrollBehavior': 'none',
+    '@tablet': {
+      fontSize: 14,
+    },
   },
   'body': {
     m: 0,
