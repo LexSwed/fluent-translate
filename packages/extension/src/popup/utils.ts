@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { BrowserClient } from '@sentry/browser';
 import type { TranslateResponse } from '@edge-translate/shared';
+import { isServer } from '@fxtrot/ui';
 import { translate } from '../background/api';
 import { addMemoryItem } from '../background/utils';
 import { languages } from '../background/languages';
@@ -8,6 +9,9 @@ import { isNextEnv } from '../isNextEnv';
 
 export const browser = {
   get lang() {
+    if (isServer) {
+      return 'en';
+    }
     return (
       window.navigator.language.slice(0, 2) ||
       window.navigator.languages[0].slice(0, 2)
