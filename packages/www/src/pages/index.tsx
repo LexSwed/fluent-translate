@@ -44,16 +44,16 @@ const Main: React.FC = () => {
                   <Image
                     src="/images/chrome-web-store.png"
                     alt="Available in Chrome Web Store"
-                    layout="fill"
-                    objectFit="contain"
+                    height={80}
+                    width={264}
                   />
                 </WebstoreLink>
                 <WebstoreLink href="https://microsoftedge.microsoft.com/addons/detail/fnpmkppmkmjgcdkjoblipakmfnocefog">
                   <Image
                     src="/images/edge-addons.png"
                     alt="Available in Microsoft Edge Addons"
-                    layout="fill"
-                    objectFit="contain"
+                    height={80}
+                    width={264}
                   />
                 </WebstoreLink>
               </Column>
@@ -76,8 +76,6 @@ const WebstoreLink = styled('a', {
   'position': 'relative',
   'br': '$md',
   'bc': '#fff',
-  'height': 80,
-  'width': '100%',
   'textDecoration': 'none',
   'display': 'flex',
   'alignContent': 'center',
