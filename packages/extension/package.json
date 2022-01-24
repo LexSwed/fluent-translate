@@ -1,7 +1,7 @@
 {
   "name": "@edge-translate/extension",
   "description": "Edge Translate browser extension",
-  "version": "1.9.2",
+  "version": "1.9.3",
   "author": "lexswed",
   "private": true,
   "scripts": {
