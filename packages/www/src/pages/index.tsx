@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Box, Column, Grid, Heading, styled, Text } from '@fxtrot/ui';
-import ExtensionPopup from '@edge-translate/extension/src/popup/App';
 import { ContentBlock } from '../components/ContentBlock';
+import dynamic from 'next/dynamic';
 
-import SafeHydrate from '../components/SafeHydrate';
+const ExtensionPopup = dynamic(
+  () => import('@edge-translate/extension/src/popup/App'),
+  { ssr: false, suspense: true }
+);
 
 const Main: React.FC = () => {
   return (
@@ -38,11 +41,11 @@ const Main: React.FC = () => {
                   />
                 </WebstoreLink>
               </Column>
-              <Box boxShadow="$xs, $lg, $sm" br="$md" overflow="hidden">
-                <SafeHydrate>
+              <Suspense fallback={null}>
+                <Box boxShadow="$xs, $lg, $sm" br="$md" overflow="hidden">
                   <ExtensionPopup />
-                </SafeHydrate>
-              </Box>
+                </Box>
+              </Suspense>
             </Grid>
           </Column>
         </ContentBlock>
