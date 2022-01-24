@@ -76,10 +76,18 @@ const WebstoreLink = styled('a', {
   'position': 'relative',
   'br': '$md',
   'bc': '#fff',
+  'border': '1px solid transparent',
   'textDecoration': 'none',
   'display': 'flex',
   'alignContent': 'center',
   'focusRing': '$focusRing',
+  'transition': '0.24s',
+  '@light': {
+    'borderColor': '$borderLight',
+    '&:hover': {
+      borderColor: '$borderHover',
+    },
+  },
   '& > img': { maxHeight: '100%' },
   '&:hover': {
     filter: 'brightness(0.95)',
