@@ -6,4 +6,5 @@ export const ContentBlock = styled('section', {
   my: 0,
   mx: 'auto',
   py: '$8',
+  px: '$4',
 });

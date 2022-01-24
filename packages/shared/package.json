@@ -2,8 +2,7 @@
   "name": "@edge-translate/shared",
   "version": "1.0.0",
   "private": true,
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "main": "src/index.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LexSwed/edge-translate.git"

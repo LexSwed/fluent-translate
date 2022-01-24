@@ -6,19 +6,17 @@ import { ContentBlock } from './ContentBlock';
 
 const Header = () => {
   return (
-    <ContentBlock as="header" css={{ p: '$4' }}>
+    <ContentBlock as="header" css={{ py: '$4' }}>
       <Row gap="4" main="space-between" cross="center" wrap="nowrap">
-        <Link href="/">
+        <Link href="/" passHref>
           <TextLink>
-            <Row gap="md" cross="center" wrap="nowrap">
-              <Box
-                as="img"
-                css={{ size: 24 }}
-                src="/images/icon.svg"
-                alt="Edge Translate logo"
-                aria-hidden="true"
-              />
-            </Row>
+            <Box
+              as="img"
+              css={{ size: 48 }}
+              src="/images/icon.svg"
+              alt="Edge Translate logo"
+              aria-hidden="true"
+            />
           </TextLink>
         </Link>
         <Row gap="4">
