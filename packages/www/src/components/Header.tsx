@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Heading, Row, TextLink } from '@fxtrot/ui';
+import { Box, Row, TextLink } from '@fxtrot/ui';
 import Link from 'next/link';
 
 import { ContentBlock } from './ContentBlock';

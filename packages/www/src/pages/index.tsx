@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Column, Grid, Heading, styled, Text } from '@fxtrot/ui';
-import ExtensionPopup from '../../../extension/src/popup/App';
+import ExtensionPopup from '@edge-translate/extension/src/popup/App';
 import { ContentBlock } from '../components/ContentBlock';
 
 import SafeHydrate from '../components/SafeHydrate';

@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { Box, stitchesConfig } from '@fxtrot/ui';
 import Header from '../components/Header';
-import { AppContext } from '../../../extension/src/popup/AppContext';
+import { AppContext } from '@edge-translate/extension/src/popup/AppContext';
 
 const globals = stitchesConfig.globalCss({
   'html': {

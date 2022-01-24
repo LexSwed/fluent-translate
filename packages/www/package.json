@@ -21,7 +21,7 @@
   "dependencies": {
     "@fxtrot/ui": "^1.0.227",
     "@heroicons/react": "^1.0.1",
-    "@sentry/node": "^6.5.1",
+    "@sentry/node": "^6.17.1",
     "@stitches/react": "^1.2.6",
     "@vitalets/google-translate-api": "^7.0.0",
     "framer-motion": "^6.2.1",

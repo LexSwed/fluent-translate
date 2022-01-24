@@ -1,5 +1,8 @@
 import { isSupported } from './languages';
-import type { TranslateResponse, TranslationSuccess } from '@shared/types';
+import type {
+  TranslateResponse,
+  TranslationSuccess,
+} from '@edge-translate/shared';
 
 type TranslateOptions = {
   from?: string;

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { Box, ThemeProvider } from '@fxtrot/ui';
+import { ThemeProvider } from '@fxtrot/ui';
 import { StoreProvider } from './atoms';
 
 type Theme = React.ComponentProps<typeof ThemeProvider>['theme'];

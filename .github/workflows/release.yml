@@ -34,13 +34,13 @@ jobs:
         env:
           CI: true
 
-      - name: Check
-        run: yarn typecheck
-
       - name: Build
         run: yarn build:ext
         env:
           CI: true
+
+      - name: Check
+        run: yarn typecheck
 
       - name: Release
         env:

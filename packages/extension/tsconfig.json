@@ -2,7 +2,10 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "composite": true,
-    "skipLibCheck": true
+    "incremental": true,
+    "skipLibCheck": true,
+    "outDir": "dist",
+    "rootDir": "src"
   },
   "references": [
     {

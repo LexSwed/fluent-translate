@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { BrowserClient } from '@sentry/browser';
-import type { TranslateResponse } from '@shared/types';
+import type { TranslateResponse } from '@edge-translate/shared';
 import { translate } from '../background/api';
 import { addMemoryItem } from '../background/utils';
 import { languages } from '../background/languages';
