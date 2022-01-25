@@ -15,23 +15,18 @@ export function useRecentLanguages() {
   const { data: lastItems = [], mutate } = useSWR('recentLanguages', fetcher);
 
   const addRecent = (langKey: string) => {
-    if (langKey === 'auto') {
+    if (!langKey || langKey === 'auto') {
       return;
     }
-    const updateRecent = (recentLanguages: string[]) => {
-      Storage.setItems({ recentLanguages });
 
-      mutate(recentLanguages);
-    };
-    const inListIndex = lastItems.findIndex((el) => el === langKey);
+    const recentLanguages = Array.from(new Set([langKey, ...lastItems])).slice(
+      0,
+      4
+    );
 
-    if (inListIndex > -1) {
-      lastItems.splice(inListIndex, 1);
-      updateRecent([langKey, ...lastItems]);
-    } else {
-      const [first, second] = lastItems;
-      updateRecent(Array.from(new Set([langKey, first, second])));
-    }
+    Storage.setItems({ recentLanguages });
+
+    mutate(recentLanguages);
   };
 
   return [lastItems, addRecent] as const;

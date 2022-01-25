@@ -1,24 +1,30 @@
 import React from 'react';
-import { Box, Row, TextLink } from '@fxtrot/ui';
+import { Box, Flex, Row, TextLink } from '@fxtrot/ui';
 import Link from 'next/link';
 
 import { ContentBlock } from './ContentBlock';
 
 const Header = () => {
   return (
-    <ContentBlock as="header" css={{ p: '$4' }}>
-      <Row gap="4" main="space-between" cross="center" wrap="nowrap">
-        <Link href="/">
+    <ContentBlock as="header" css={{ py: '$4' }}>
+      <Flex
+        flow={{
+          '@desktop': 'row',
+          '@initial': 'column',
+        }}
+        gap="4"
+        main="space-between"
+        cross="center"
+      >
+        <Link href="/" passHref>
           <TextLink>
-            <Row gap="md" cross="center" wrap="nowrap">
-              <Box
-                as="img"
-                css={{ size: 24 }}
-                src="/images/icon.svg"
-                alt="Edge Translate logo"
-                aria-hidden="true"
-              />
-            </Row>
+            <Box
+              as="img"
+              css={{ size: 48 }}
+              src="/images/icon.svg"
+              alt="Edge Translate logo"
+              aria-hidden="true"
+            />
           </TextLink>
         </Link>
         <Row gap="4">
@@ -33,7 +39,7 @@ const Header = () => {
             Leave Feedback
           </TextLink>
         </Row>
-      </Row>
+      </Flex>
     </ContentBlock>
   );
 };

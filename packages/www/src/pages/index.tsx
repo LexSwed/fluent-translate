@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Box, Column, Grid, Heading, styled, Text } from '@fxtrot/ui';
-import ExtensionPopup from '@edge-translate/extension/src/popup/App';
 import { ContentBlock } from '../components/ContentBlock';
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
 
-import SafeHydrate from '../components/SafeHydrate';
+const ExtensionPopup = dynamic(
+  () => import('@edge-translate/extension/src/popup/App'),
+  { ssr: false, suspense: true }
+);
 
 const Main: React.FC = () => {
   return (
@@ -23,26 +27,41 @@ const Main: React.FC = () => {
                 specific phrases you do not understand just yet.
               </Text>
             </Column>
-            <Grid columns="1fr 1fr" gap="16" cross="start">
+            <Grid
+              css={{
+                '@desktop': {
+                  gridTemplateColumns: 'repeat(2, 1fr)',
+                },
+                '@tablet': {
+                  gridTemplateColumns: '1fr',
+                },
+              }}
+              gap="16"
+              cross="start"
+            >
               <Column gap="6">
                 <WebstoreLink href="https://chrome.google.com/webstore/detail/jbkaeigbknejjmhnkhmankagkfepncmn">
-                  <img
+                  <Image
                     src="/images/chrome-web-store.png"
                     alt="Available in Chrome Web Store"
+                    height={80}
+                    width={264}
                   />
                 </WebstoreLink>
                 <WebstoreLink href="https://microsoftedge.microsoft.com/addons/detail/fnpmkppmkmjgcdkjoblipakmfnocefog">
-                  <img
+                  <Image
                     src="/images/edge-addons.png"
                     alt="Available in Microsoft Edge Addons"
+                    height={80}
+                    width={264}
                   />
                 </WebstoreLink>
               </Column>
-              <Box boxShadow="$xs, $lg, $sm" br="$md" overflow="hidden">
-                <SafeHydrate>
+              <Suspense fallback={null}>
+                <Box boxShadow="$xs, $lg, $sm" br="$md" overflow="hidden">
                   <ExtensionPopup />
-                </SafeHydrate>
-              </Box>
+                </Box>
+              </Suspense>
             </Grid>
           </Column>
         </ContentBlock>
@@ -54,13 +73,21 @@ const Main: React.FC = () => {
 export default Main;
 
 const WebstoreLink = styled('a', {
-  'height': 80,
+  'position': 'relative',
   'br': '$md',
   'bc': '#fff',
+  'border': '1px solid transparent',
   'textDecoration': 'none',
   'display': 'flex',
   'alignContent': 'center',
   'focusRing': '$focusRing',
+  'transition': '0.24s',
+  '@light': {
+    'borderColor': '$borderLight',
+    '&:hover': {
+      borderColor: '$borderHover',
+    },
+  },
   '& > img': { maxHeight: '100%' },
   '&:hover': {
     filter: 'brightness(0.95)',

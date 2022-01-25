@@ -1,12 +1,12 @@
 {
   "name": "@edge-translate/extension",
   "description": "Edge Translate browser extension",
-  "version": "1.9.0",
+  "version": "1.9.4",
   "author": "lexswed",
   "private": true,
   "scripts": {
-    "dev": "parcel src/manifest.json --host localhost --port 1234 --target webext-dev --config @parcel/config-webextension",
-    "build": "parcel build src/manifest.json --target webext-prod --config @parcel/config-webextension",
+    "dev": "parcel src/manifest.json --config @parcel/config-webextension --host localhost --port 1234 --target webext-dev",
+    "build": "parcel build src/manifest.json --config @parcel/config-webextension --target webext-prod --no-source-maps",
     "lint": "eslint './src/**/*.{ts,tsx}'",
     "check": "tsc --noEmit",
     "ci": "yarn build && yarn lint && yarn check"
@@ -20,7 +20,8 @@
       }
     },
     "webext-prod": {
-      "distDir": "./dist"
+      "distDir": "./dist",
+      "sourceMap": false
     }
   },
   "browserslist": [
@@ -36,6 +37,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@edge-translate/shared": "^1.0.0",
     "@fxtrot/ui": "^1.0.227",
     "@heroicons/react": "^1.0.5",
     "@sentry/browser": "^6.17.1",
@@ -45,8 +47,8 @@
     "framer-motion": "^6.2.1",
     "jotai": "^1.5.3",
     "nanoid": "^3.2.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.0.0-beta-24dd07bd2-20211208",
+    "react-dom": "^18.0.0-beta-24dd07bd2-20211208",
     "swr": "^1.1.2"
   },
   "devDependencies": {
