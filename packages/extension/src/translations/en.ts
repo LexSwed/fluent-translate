@@ -15,7 +15,7 @@ export const en = {
   'popup.translation-switch': 'Switch languages',
   'popup.translation.alternatives': 'Alternative translations',
   'error.line1': 'Something broke the service, checking what was it...',
-  'error.line2': `In the meanwhile, try to close and open this popup, maybe the`,
+  'error.line2': `In the meanwhile, try to Refresh this popup, maybe the`,
   'error.bug': 'bug',
   'error.line3': 'is already gone',
   'error.refresh': 'Refresh',

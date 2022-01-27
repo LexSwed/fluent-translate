@@ -22,14 +22,14 @@ const Header = () => {
               as="img"
               css={{ size: 48 }}
               src="/images/icon.svg"
-              alt="Edge Translate logo"
+              alt="Fluent Translate logo"
               aria-hidden="true"
             />
           </TextLink>
         </Link>
         <Row gap="4">
           <TextLink href="https://lexswed.github.io/">Author</TextLink>
-          <TextLink href="https://github.com/LexSwed/edge-translate">
+          <TextLink href="https://github.com/LexSwed/fluent-translate">
             Sources
           </TextLink>
           <Link href="/privacy" passHref>

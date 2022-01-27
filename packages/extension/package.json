@@ -1,6 +1,6 @@
 {
-  "name": "@edge-translate/extension",
-  "description": "Edge Translate browser extension",
+  "name": "@fluent-translate/extension",
+  "description": "Fluent Translate browser extension",
   "version": "1.9.4",
   "author": "lexswed",
   "private": true,
@@ -28,28 +28,28 @@
     "last 2 Chrome version"
   ],
   "bugs": {
-    "url": "https://github.com/LexSwed/edge-translate/issues"
+    "url": "https://github.com/LexSwed/fluent-translate/issues"
   },
-  "homepage": "https://github.com/LexSwed/edge-translate#readme",
+  "homepage": "https://github.com/LexSwed/fluent-translate#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LexSwed/edge-translate.git"
+    "url": "git+https://github.com/LexSwed/fluent-translate.git"
   },
   "license": "MIT",
   "dependencies": {
-    "@edge-translate/shared": "^1.0.0",
+    "@fluent-translate/shared": "^1.0.0",
     "@fxtrot/ui": "^1.0.227",
     "@heroicons/react": "^1.0.5",
-    "@sentry/browser": "^6.17.1",
+    "@sentry/browser": "^6.17.2",
     "@stitches/react": "^1.2.6",
     "@webcomponents/webcomponentsjs": "^2.6.0",
     "debounce": "^1.2.1",
-    "framer-motion": "^6.2.1",
+    "framer-motion": "^6.2.3",
     "jotai": "^1.5.3",
     "nanoid": "^3.2.0",
     "react": "^18.0.0-beta-24dd07bd2-20211208",
     "react-dom": "^18.0.0-beta-24dd07bd2-20211208",
-    "swr": "^1.1.2"
+    "swr": "^1.2.0"
   },
   "devDependencies": {
     "@parcel/config-webextension": "^2.2.1",

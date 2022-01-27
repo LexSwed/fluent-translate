@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { BrowserClient } from '@sentry/browser';
-import type { TranslateResponse } from '@edge-translate/shared';
+import type { TranslateResponse } from '@fluent-translate/shared';
 import { isServer } from '@fxtrot/ui';
 import { translate } from '../background/api';
 import { addMemoryItem } from '../background/utils';

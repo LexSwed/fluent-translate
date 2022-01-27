@@ -124,7 +124,7 @@ function useBodySizeHack() {
     if (!elRef.current) {
       return;
     }
-    const el = document.getElementById('edge-translate');
+    const el = document.getElementById('fluent-translate');
     if (!el) {
       return;
     }

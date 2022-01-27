@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, Button, CssStyles, Popover, Column } from '@fxtrot/ui';
-import type { TranslationSuccess } from '@edge-translate/shared';
+import type { TranslationSuccess } from '@fluent-translate/shared';
 import { useLocale } from '../../translations';
 
 import { useTranslation } from '../Translator';

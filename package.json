@@ -1,15 +1,15 @@
 {
-  "name": "edge-translate",
+  "name": "fluent-translate",
   "version": "1.2.2",
   "private": true,
   "description": "Translator browser extension",
   "scripts": {
     "start": "yarn dev:ext",
-    "dev:ext": "yarn workspace @edge-translate/extension dev",
-    "dev:www": "yarn workspace @edge-translate/www dev",
+    "dev:ext": "yarn workspace @fluent-translate/extension dev",
+    "dev:www": "yarn workspace @fluent-translate/www dev",
     "build": "yarn build:ext && yarn build:www",
-    "build:ext": "yarn workspace @edge-translate/extension build",
-    "build:www": "yarn workspace @edge-translate/www build",
+    "build:ext": "yarn workspace @fluent-translate/extension build",
+    "build:www": "yarn workspace @fluent-translate/www build",
     "lint": "eslint packages",
     "typecheck": "tsc",
     "release": "yarn run semantic-release",
@@ -40,19 +40,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LexSwed/edge-translate.git"
+    "url": "git+https://github.com/LexSwed/fluent-translate.git"
   },
   "keywords": [
-    "edge",
+    "fluent",
     "extension",
     "chromium"
   ],
   "author": "lexswed",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/LexSwed/edge-translate/issues"
+    "url": "https://github.com/LexSwed/fluent-translate/issues"
   },
-  "homepage": "https://github.com/LexSwed/edge-translate#readme",
+  "homepage": "https://github.com/LexSwed/fluent-translate#readme",
   "workspaces": [
     "packages/*"
   ],
@@ -73,7 +73,7 @@
         "@semantic-release/github",
         {
           "assets": [
-            "packages/extension/EdgeTranslate.zip"
+            "packages/extension/FluentTranslate.zip"
           ]
         }
       ],

@@ -2,7 +2,7 @@ import { isSupported } from './languages';
 import type {
   TranslateResponse,
   TranslationSuccess,
-} from '@edge-translate/shared';
+} from '@fluent-translate/shared';
 
 type TranslateOptions = {
   from?: string;

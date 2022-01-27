@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { Box, stitchesConfig } from '@fxtrot/ui';
 import Header from '../components/Header';
-import { AppContext } from '@edge-translate/extension/src/popup/AppContext';
+import { AppContext } from '@fluent-translate/extension/src/popup/AppContext';
 
 const globals = stitchesConfig.globalCss({
   'html': {
@@ -27,12 +27,12 @@ const App = ({ Component, pageProps }: AppProps) => {
       <Head>
         <meta charSet="utf-8" />
         <link rel="shortcut icon" href="/images/icon.svg" />
-        <title>Edge Translate</title>
+        <title>Fluent Translate</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="twitter:card" content="summary" />
         <meta
           property="og:title"
-          content="Edge Translate for Edge and Chrome"
+          content="Fluent Translate for Microsoft Edge and Google Chrome"
         />
         <meta
           property="og:description"

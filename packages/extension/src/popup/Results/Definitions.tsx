@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, CssStyles, Collapsible, styled, Column } from '@fxtrot/ui';
-import type { TranslationSuccess } from '@edge-translate/shared';
+import type { TranslationSuccess } from '@fluent-translate/shared';
 import { useLocale } from '../../translations';
 
 export const Definitions = ({

@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
 const ExtensionPopup = dynamic(
-  () => import('@edge-translate/extension/src/popup/App'),
+  () => import('@fluent-translate/extension/src/popup/App'),
   { ssr: false, suspense: true }
 );
 
@@ -17,10 +17,12 @@ const Main: React.FC = () => {
           <Column gap="16">
             <Column gap="2">
               <Heading level="2" as="h1">
-                <Text align="center">Learn languages with Edge Translate</Text>
+                <Text align="center">
+                  Learn languages with Fluent Translate
+                </Text>
               </Heading>
               <Text>
-                Edge Translate is a free, open-source, browser extension that
+                Fluent Translate is a free, open-source, browser extension that
                 helps you to translate unfamiliar words and phrases. While
                 browsers are able to translate full page, extension allows you
                 to keep reading the language you're learning, and only translate

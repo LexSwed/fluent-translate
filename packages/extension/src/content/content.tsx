@@ -1,17 +1,17 @@
 import '@webcomponents/webcomponentsjs';
-import EdgeTranslate from './EdgeTranslateWC';
+import FluentTranslate from './FluentTranslateWC';
 
 let element: HTMLElement;
 
 chrome.runtime.onMessage.addListener(({ text }) => {
   if (!element) {
-    customElements.define('edge-translate', EdgeTranslate);
-    element = document.createElement('edge-translate');
+    customElements.define('fluent-translate', FluentTranslate);
+    element = document.createElement('fluent-translate');
     element.setAttribute(
       'style',
       'position: fixed; top: 8px; right: 8px; z-index: 999999;'
     );
-    element.setAttribute('id', 'edge-translate');
+    element.setAttribute('id', 'fluent-translate');
     document.documentElement.appendChild(element);
   }
 

@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import { AppContext } from '../popup/AppContext';
 import ContentApp from './ContentApp';
 
-class EdgeTranslate extends HTMLElement {
+class FluentTranslate extends HTMLElement {
   wrapper: HTMLDivElement;
   constructor() {
     super();
@@ -44,4 +44,4 @@ class EdgeTranslate extends HTMLElement {
   }
 }
 
-export default EdgeTranslate;
+export default FluentTranslate;

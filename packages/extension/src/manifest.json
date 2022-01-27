@@ -1,5 +1,5 @@
 {
-  "name": "Edge Translate",
+  "name": "Fluent Translate",
   "version": "1.7.12",
   "manifest_version": 2,
   "description": "Extension for translating and memorizing words",
@@ -25,11 +25,6 @@
     "persistent": false,
     "scripts": ["background/background.ts"]
   },
-  "permissions": [
-    "contextMenus",
-    "storage",
-    "http://localhost/*",
-    "edge-translate.lexswed.workers.dev"
-  ],
+  "permissions": ["contextMenus", "storage", "http://localhost/*"],
   "web_accessible_resources": ["assets/icons/*.png", "assets/icons/*.svg"]
 }

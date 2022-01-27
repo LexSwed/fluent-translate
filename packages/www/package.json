@@ -1,7 +1,7 @@
 {
-  "name": "@edge-translate/www",
+  "name": "@fluent-translate/www",
   "version": "1.0.0",
-  "description": "Edge Translate public page",
+  "description": "Fluent Translate public page",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -10,24 +10,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LexSwed/edge-translate.git"
+    "url": "git+https://github.com/LexSwed/fluent-translate.git"
   },
   "author": "lexswed",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/LexSwed/edge-translate/issues"
+    "url": "https://github.com/LexSwed/fluent-translate/issues"
   },
-  "homepage": "https://github.com/LexSwed/edge-translate#readme",
+  "homepage": "https://github.com/LexSwed/fluent-translate#readme",
   "dependencies": {
-    "@edge-translate/extension": "^1.0.0",
-    "@edge-translate/shared": "^1.0.0",
+    "@fluent-translate/extension": "^1.0.0",
+    "@fluent-translate/shared": "^1.0.0",
     "@fxtrot/ui": "^1.0.227",
     "@heroicons/react": "^1.0.1",
-    "@sentry/node": "^6.17.1",
+    "@sentry/node": "^6.17.2",
     "@stitches/react": "^1.2.6",
     "@vitalets/google-translate-api": "^7.0.0",
-    "framer-motion": "^6.2.1",
-    "next": "^12.0.8",
+    "framer-motion": "^6.2.3",
+    "next": "^12.0.9",
     "react": "^18.0.0-beta-24dd07bd2-20211208",
     "react-dom": "^18.0.0-beta-24dd07bd2-20211208"
   },

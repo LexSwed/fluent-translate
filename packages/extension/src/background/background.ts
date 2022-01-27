@@ -5,7 +5,7 @@ import { languages } from './languages';
 
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
-    title: 'Translate with Edge Translate',
+    title: 'Translate with Fluent Translate',
     id: 'parent',
     type: 'normal',
     contexts: ['selection'],

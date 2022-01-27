@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import type { TranslateResponse } from '@edge-translate/shared';
+import type { TranslateResponse } from '@fluent-translate/shared';
 import { API, useDebouncedValue } from './utils';
 import {
   useSourceLanguage,

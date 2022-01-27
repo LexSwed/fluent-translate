@@ -1,6 +1,6 @@
 const withTM = require('next-transpile-modules')([
-  '@edge-translate/shared',
-  '@edge-translate/extension',
+  '@fluent-translate/shared',
+  '@fluent-translate/extension',
 ]);
 
 module.exports = withTM({
