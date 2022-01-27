@@ -1,7 +1,7 @@
 {
   "name": "@fluent-translate/extension",
   "description": "Fluent Translate browser extension",
-  "version": "1.9.4",
+  "version": "1.10.0",
   "author": "lexswed",
   "private": true,
   "scripts": {
