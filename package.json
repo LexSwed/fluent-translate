@@ -81,7 +81,7 @@
         "@semantic-release/git",
         {
           "assets": [
-            "packages/extension/manifest.json",
+            "packages/extension/src/manifest.json",
             "packages/extension/package.json"
           ],
           "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
