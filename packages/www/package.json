@@ -27,7 +27,7 @@
     "@stitches/react": "^1.2.6",
     "@vitalets/google-translate-api": "^7.0.0",
     "framer-motion": "^6.2.3",
-    "next": "^12.0.9",
+    "next": "^12.1.0",
     "react": "^18.0.0-beta-24dd07bd2-20211208",
     "react-dom": "^18.0.0-beta-24dd07bd2-20211208"
   },
