@@ -4,7 +4,9 @@ import { useUpdateAtom, useAtomValue } from 'jotai/utils';
 import { Storage, browser } from './utils';
 import useSWR from 'swr';
 
-export const StoreProvider: React.FC = ({ children }) => {
+export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   return <Provider>{children}</Provider>;
 };
 

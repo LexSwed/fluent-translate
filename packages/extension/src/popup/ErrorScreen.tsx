@@ -14,7 +14,7 @@ export const ErrorScreen = () => {
         <Icon as={FireIcon} size="3xl" color="$gray400" />
 
         <>
-          <Text align="center" size="sm">
+          <Text align="center" textStyle="body-md">
             {t('error.line1')}
             <br />
             <br />

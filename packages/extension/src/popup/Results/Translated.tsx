@@ -20,7 +20,7 @@ export const Translated = () => {
       <Column gap="1" cross="start">
         <ResultWithAlternatives {...translation} />
         {pronunciation && (
-          <Text size="sm" css={pronunciationStyles}>
+          <Text textStyle="body-sm" tone="light">
             {pronunciation}
           </Text>
         )}
@@ -33,7 +33,7 @@ export const Translated = () => {
 const ResultWithAlternatives = ({ text, alternatives }: TranslationSuccess) => {
   const t = useLocale();
   if (!alternatives) {
-    return <Text size="md">{text}</Text>;
+    return <Text textStyle="body-md">{text}</Text>;
   }
   return (
     <Popover>
@@ -43,11 +43,11 @@ const ResultWithAlternatives = ({ text, alternatives }: TranslationSuccess) => {
         variant="flat"
         css={moreButton}
       >
-        <Text size="md">{text}</Text>
+        <Text textStyle="body-md">{text}</Text>
       </Button>
       <Popover.Content side="top" css={popoverContent}>
         {alternatives.slice(1).map((alt) => (
-          <Text as="div" size="sm" key={alt}>
+          <Text as="div" textStyle="body-sm" key={alt}>
             {alt}
           </Text>
         ))}
@@ -70,4 +70,3 @@ const moreButton: CssStyles = {
   textSize: '$md',
   textAlign: 'start',
 };
-const pronunciationStyles: CssStyles = { color: '$textSubtle' };

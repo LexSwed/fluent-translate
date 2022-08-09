@@ -37,11 +37,11 @@ const DefinitionItem = ({
       <Column gap="2" as="ol" css={definitionsList}>
         {explanations.map((exp, i) => (
           <DefinitionListItem key={i}>
-            <Text size="sm" as="div">
+            <Text textStyle="body-sm" as="div">
               {exp.explanation}
             </Text>
             {exp.example ? (
-              <Text size="sm" tone="light" as="i">
+              <Text textStyle="body-sm" tone="light" as="i">
                 {`"${exp.example}"`}
               </Text>
             ) : null}
@@ -63,14 +63,14 @@ const collapsibleRoot: CssStyles = {
   ml: '-$2',
 };
 const definitionsContent: CssStyles = {
-  bc: '$flatActive',
+  bc: '$surface2',
   p: '$2',
   pb: '$4',
   mt: '$2',
   br: '$md',
 };
 const definitionType: CssStyles = {
-  color: '$primaryStill',
+  color: '$primary',
 };
 const definitionsList: CssStyles = {
   pl: '$4',

@@ -85,9 +85,10 @@ const WebstoreLink = styled('a', {
   'focusRing': '$focusRing',
   'transition': '0.24s',
   '@light': {
-    'borderColor': '$borderLight',
+    'borderColor': '$outline',
     '&:hover': {
-      borderColor: '$borderHover',
+      borderColor: '$surface5',
+      boxShadow: '0 0 0 1px $colors$outline inset',
     },
   },
   '& > img': { maxHeight: '100%' },

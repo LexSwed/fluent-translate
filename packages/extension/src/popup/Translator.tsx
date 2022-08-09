@@ -18,7 +18,7 @@ export function useTranslation(): Translation {
   const [to] = useTargetLanguage();
   const setError = useUpdateError();
 
-  const debouncedText = useDebouncedValue(text, 500);
+  const debouncedText = useDebouncedValue(text, 800);
 
   // TODO: when Switch button is used, debouncedText is delayed, while from and to are updated
   // TODO: this makes swr to make 2 request, with old text first, then with debouncedText

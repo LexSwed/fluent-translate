@@ -41,7 +41,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <meta property="og:image" content="/images/twitter-image.png" />
       </Head>
       <AppContext>
-        <Box minHeight="100vh" bc="$surfaceStill">
+        <Box minHeight="100vh" bc="$background">
           <Header />
           <Component {...pageProps} />
         </Box>

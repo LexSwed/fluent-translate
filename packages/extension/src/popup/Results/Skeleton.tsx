@@ -3,7 +3,7 @@ import { stitchesConfig, styled, Text } from '@fxtrot/ui';
 
 export const Skeleton = () => {
   return (
-    <Text size="md" aria-busy={true}>
+    <Text textStyle="body-md" aria-busy={true}>
       <SkeletonShimmer aria-hidden={true} />
     </Text>
   );
@@ -22,14 +22,14 @@ const SkeletonShimmer = styled('div', {
   'position': 'relative',
   'height': '$lineHeights$md',
   'width': '60%',
-  'bc': '$flatHover',
+  'bc': '$surface1',
   'br': '$sm',
   'overflow': 'hidden',
   '&:before': {
     content: '',
     position: 'absolute',
     background:
-      'linear-gradient(90deg, transparent, $colors$flatActive, transparent)',
+      'linear-gradient(90deg, transparent, $colors$surface2, transparent)',
     width: '50%',
     height: '100%',
     top: 0,

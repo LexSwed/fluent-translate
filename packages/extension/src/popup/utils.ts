@@ -1,11 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
-import { BrowserClient } from '@sentry/browser';
+import {
+  BrowserClient,
+  Breadcrumbs,
+  Dedupe,
+  defaultStackParser,
+  getCurrentHub,
+  GlobalHandlers,
+  makeFetchTransport,
+  LinkedErrors,
+} from '@sentry/browser';
 import type { TranslateResponse } from '@fluent-translate/shared';
-import { isServer } from '@fxtrot/ui';
 import { translate } from '../background/api';
 import { addMemoryItem } from '../background/utils';
 import { languages } from '../background/languages';
-import { isNextEnv } from '../isNextEnv';
+import { isBrowserEnv } from '../isBrowserEnv';
 
 export const browser = {
   get lang() {
@@ -54,7 +62,7 @@ class BrowserFetcher {
       return null;
     }
     const res = await translate({ from, to, text: trimmed });
-    if (res !== null) {
+    if (res !== null && res.translation?.text) {
       addMemoryItem({
         text: trimmed,
         from: res.from || from || 'auto',
@@ -158,19 +166,34 @@ class BrowserStorage implements IStorage {
   };
 }
 
-export const API = isNextEnv ? new BrowserFetcher() : new BackgroundFetcher();
+export const API = isBrowserEnv
+  ? new BrowserFetcher()
+  : new BackgroundFetcher();
 
-export const Storage = isNextEnv ? new BrowserStorage() : new ChromeStorage();
+export const Storage = isBrowserEnv
+  ? new BrowserStorage()
+  : new ChromeStorage();
 
 type onStorageChangeListener = Parameters<
   typeof chrome.storage.onChanged.addListener
 >[0];
 
 type StorageKey = Parameters<typeof chrome.storage['local']['get']>[0];
-
 export const Sentry = new BrowserClient({
   dsn: 'https://dffd96a87e8f47e8a2921033d3d53e05@o383828.ingest.sentry.io/5214268',
+  transport: makeFetchTransport,
+  stackParser: defaultStackParser,
+  // Only the integrations listed here will be used
+  integrations: [
+    new Breadcrumbs(),
+    new GlobalHandlers(),
+    new LinkedErrors(),
+    new Dedupe(),
+  ],
+  debug: process.env.NODE_ENV === 'development',
+  environment: process.env.NODE_ENV,
 });
+getCurrentHub().bindClient(Sentry);
 
 interface IStorage {
   getItems<T extends Record<string, any>>(
@@ -225,3 +248,5 @@ export function useDebouncedValue<T>(
 
   return _value;
 }
+
+const isServer = typeof window === 'undefined';

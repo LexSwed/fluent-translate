@@ -1,6 +1,6 @@
 import { debounce } from 'debounce';
 import { nanoid } from 'nanoid';
-import { isNextEnv } from '../isNextEnv';
+import { isBrowserEnv } from '../isBrowserEnv';
 
 import { Storage } from '../popup/utils';
 
@@ -30,7 +30,7 @@ export const addMemoryItem = debounce(
       translation,
     };
 
-    if (!isNextEnv) {
+    if (!isBrowserEnv) {
       const newItemByteSize = getSize(newItem);
 
       while (

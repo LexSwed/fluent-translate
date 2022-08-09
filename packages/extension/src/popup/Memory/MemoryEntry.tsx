@@ -15,7 +15,7 @@ export const MemoryEntry = React.memo(({ item, onSelect, onDelete }: Props) => {
     <Column gap="1" role="listitem" css={styles.memoryEntry}>
       <Header item={item} onSelect={onSelect} onDelete={onDelete} />
       <Column gap="1">
-        <Text size="sm">{item.text}</Text>
+        <Text textStyle="body-sm">{item.text}</Text>
         <Text>{item.translation}</Text>
       </Column>
     </Column>
@@ -27,7 +27,7 @@ const Header = ({ item, onSelect, onDelete }: Props) => {
   const t = useLocale();
   return (
     <Row main="space-between" cross="center">
-      <Text size="xs" css={styles.lightText}>
+      <Text textStyle="body-sm">
         {languages[item.from]}
         <span aria-label={t('popup.memory.translated-to')}> → </span>
         {languages[item.to]}
@@ -60,10 +60,7 @@ const styles: Record<string, CssStyles> = {
   memoryEntry: {
     p: '$3',
     pt: '$2',
-    borderBottom: '1px solid $borderLight',
+    borderBottom: '1px solid $surface5',
     scrollSnapAlign: 'start',
-  },
-  lightText: {
-    color: '$textSubtle',
   },
 };

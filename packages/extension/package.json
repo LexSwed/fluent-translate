@@ -38,23 +38,22 @@
   "license": "MIT",
   "dependencies": {
     "@fluent-translate/shared": "^1.0.0",
-    "@fxtrot/ui": "^1.0.227",
-    "@heroicons/react": "^1.0.5",
-    "@sentry/browser": "^6.17.2",
-    "@stitches/react": "^1.2.6",
+    "@fxtrot/ui": "^1.1.9",
+    "@heroicons/react": "^1.0.6",
+    "@sentry/browser": "^7.9.0",
+    "@stitches/react": "^1.2.8",
     "@webcomponents/webcomponentsjs": "^2.6.0",
     "debounce": "^1.2.1",
-    "framer-motion": "^6.2.3",
-    "jotai": "^1.5.3",
-    "nanoid": "^3.2.0",
-    "react": "^18.0.0-beta-24dd07bd2-20211208",
-    "react-dom": "^18.0.0-beta-24dd07bd2-20211208",
-    "swr": "^1.2.0"
+    "jotai": "^1.7.8",
+    "nanoid": "^4.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "swr": "^1.3.0"
   },
   "devDependencies": {
-    "@parcel/config-webextension": "^2.2.1",
-    "@types/chrome": "^0.0.177",
+    "@parcel/config-webextension": "^2.7.0",
+    "@types/chrome": "^0.0.193",
     "@types/debounce": "^1.2.0",
-    "parcel": "^2.2.1"
+    "parcel": "^2.7.0"
   }
 }

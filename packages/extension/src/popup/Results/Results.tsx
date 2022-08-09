@@ -34,7 +34,7 @@ export const Results = React.memo(() => {
 const wrapperStyles: CssStyles = {
   p: '$3',
   pb: '$4',
-  borderTop: '1px solid $flatHover',
+  borderTop: '1px solid $surface2',
   position: 'relative',
 };
 

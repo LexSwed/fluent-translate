@@ -4,10 +4,14 @@ import { DotsVerticalIcon } from '@heroicons/react/outline';
 import { useLocale } from '../../translations';
 
 import { useTranslatorLink } from '../TranslatorLink';
+import { isBrowserEnv } from '../../isBrowserEnv';
 
 export const More: React.FC = () => {
   const t = useLocale();
   const translatorHref = useTranslatorLink();
+  if (isBrowserEnv) {
+    return null;
+  }
   return (
     <Menu>
       <IconButton variant="flat" label={t('popup.more.label')} size="sm">

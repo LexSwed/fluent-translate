@@ -13,7 +13,7 @@ type Props = {
 };
 
 const Main = styled(Box, {
-  bc: '$surfaceStill',
+  bc: '$surface',
   position: 'relative',
   width: '300px',
   maxHeight: '400px',
@@ -21,7 +21,7 @@ const Main = styled(Box, {
   br: '$md',
   transition: '0.2s',
   boxShadow: '$popper',
-  color: '$text',
+  color: '$onSurface',
 });
 
 const ContentApp: React.FC<Props> = ({ text, onClose }) => {

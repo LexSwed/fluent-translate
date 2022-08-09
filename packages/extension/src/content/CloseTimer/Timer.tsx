@@ -57,7 +57,7 @@ const Path = styled('path', {
   transform: 'rotate(90deg)',
   transformOrigin: 'center',
   transition: '1s linear all',
-  stroke: '$primaryStill',
+  stroke: '$primary',
 });
 
 function useDasharray({ isMouseOver, onTimeout }: Props) {

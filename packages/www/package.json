@@ -21,18 +21,18 @@
   "dependencies": {
     "@fluent-translate/extension": "^1.0.0",
     "@fluent-translate/shared": "^1.0.0",
-    "@fxtrot/ui": "^1.0.227",
-    "@heroicons/react": "^1.0.1",
-    "@sentry/node": "^6.17.2",
-    "@stitches/react": "^1.2.6",
-    "@vitalets/google-translate-api": "^7.0.0",
-    "framer-motion": "^6.2.3",
-    "next": "^12.1.0",
-    "react": "^18.0.0-beta-24dd07bd2-20211208",
-    "react-dom": "^18.0.0-beta-24dd07bd2-20211208"
+    "@fxtrot/ui": "^1.1.9",
+    "@heroicons/react": "^1.0.6",
+    "@sentry/node": "^7.9.0",
+    "@stitches/react": "^1.2.8",
+    "@vitalets/google-translate-api": "^8.0.0",
+    "framer-motion": "^7.0.0",
+    "next": "^12.2.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "next-transpile-modules": "^9.0.0",
-    "vercel": "^23.0.0"
+    "vercel": "^27.3.8"
   }
 }

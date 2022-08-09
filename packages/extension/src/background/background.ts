@@ -25,10 +25,6 @@ chrome.contextMenus.onClicked.addListener((info) => {
 chrome.runtime.onMessage.addListener(
   (request: AsyncRequest, _sender, sendResponse) => {
     let promise: Promise<any> | null = null;
-
-const msg = (status: string | number) => `Translator responded with ${status}.
-Unfortunately, this app is free and uses free version of Google Translate and other free services. Hence, it restricts the number of translation requests. Try again a bit later.`;
-
     switch (request.request) {
       case 'translate': {
         promise = translate(request.params).then((res) => {
@@ -37,7 +33,7 @@ Unfortunately, this app is free and uses free version of Google Translate and ot
               text: request.params.text,
               from: res.from || request.params.from || 'auto',
               to: res.to || request.params.to,
-              translation: res.translation?.text || '',
+              translation: res.translation.text,
             });
           }
           return res;
@@ -50,7 +46,7 @@ Unfortunately, this app is free and uses free version of Google Translate and ot
         .then((res) => sendResponse({ ok: true, data: res }))
         .catch((err) => {
           Sentry.captureException(err.message, { data: request.params });
-          sendResponse({ ok: false, message: err.message || msg });
+          sendResponse({ ok: false, message: err.message });
         });
     }
     return true;

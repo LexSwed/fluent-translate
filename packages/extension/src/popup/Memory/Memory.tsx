@@ -61,13 +61,13 @@ const MemoryList = ({ closeDialog }: { closeDialog: () => void }) => {
   );
 
   return (
-    <Dialog.Modal css={modalStyle} hasCloseButton={false} ref={ref}>
+    <Dialog.Modal css={modalStyle} hasCloseButton={false}>
       <ScrollSnapStart>
         <Row flow="row" main="end">
           <Dialog.Close size="sm" />
         </Row>
       </ScrollSnapStart>
-      <Column role="list" cross="stretch" css={listStyle}>
+      <Column role="list" cross="stretch" css={listStyle} ref={ref}>
         {items.map((item) => (
           <MemoryEntry
             key={item.id}
@@ -121,6 +121,7 @@ function useBodySizeHack() {
   const elRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    console.log(elRef.current);
     if (!elRef.current) {
       return;
     }
@@ -132,7 +133,7 @@ function useBodySizeHack() {
       overflow: 'hidden',
       maxHeight: 600,
       height: elRef.current.scrollHeight,
-    }).toString();
+    }).className;
     el.classList.add(style);
     return () => {
       el.classList.remove(style);

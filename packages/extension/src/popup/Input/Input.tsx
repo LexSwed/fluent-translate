@@ -5,11 +5,11 @@ import { SourceLanguageSelect } from '../LanguageSelect';
 import { useInputText } from '../atoms';
 import { Toolbar } from './Toolbar';
 import { useLocale } from '../../translations';
-import { isNextEnv } from '../../isNextEnv';
+import { isBrowserEnv } from '../../isBrowserEnv';
 
 const StyledTextArea = styled(TextArea, {
   textarea: {
-    color: '$text',
+    color: '$onBackground',
   },
 });
 
@@ -29,7 +29,8 @@ export const Input: React.FC = () => {
             aria-label={t('popup.input-text-label')}
             value={text}
             onChange={setText}
-            autoFocus={!isNextEnv}
+            // eslint-disable-next-line jsx-a11y/no-autofocus
+            autoFocus={!isBrowserEnv}
             rows={2}
             size="md"
           />

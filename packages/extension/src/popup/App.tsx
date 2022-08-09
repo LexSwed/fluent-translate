@@ -10,7 +10,7 @@ import { useError } from './atoms';
 
 const mainStyle: CssStyles = {
   overflow: 'hidden',
-  bc: '$surfaceStill',
+  bc: '$background',
 };
 
 const App = () => {
@@ -41,6 +41,7 @@ export default App;
 
 class ErrorBoundary extends React.Component<{
   setError: (error: string) => void;
+  children: React.ReactNode;
 }> {
   componentDidCatch(error: Error) {
     console.error(error);
