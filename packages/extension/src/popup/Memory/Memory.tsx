@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
   Column,
   css,
@@ -99,6 +99,7 @@ const modalStyle: CssStyles = {
   'height': '100%',
   'maxWidth': 'none',
   'overflow': 'auto',
+  'm': 0,
   'scrollSnapType': 'y',
   'br': '$0',
   'p': 0,
@@ -118,11 +119,10 @@ const modalStyle: CssStyles = {
  * We need body to expand even if the modal is absolutely positioned
  */
 function useBodySizeHack() {
-  const elRef = useRef<HTMLDivElement>(null);
+  const [dialogElement, setRef] = useState<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    console.log(elRef.current);
-    if (!elRef.current) {
+    if (!dialogElement) {
       return;
     }
     const el = document.getElementById('fluent-translate');
@@ -132,13 +132,13 @@ function useBodySizeHack() {
     const style = css({
       overflow: 'hidden',
       maxHeight: 600,
-      height: elRef.current.scrollHeight,
-    }).className;
+      height: dialogElement.scrollHeight,
+    }).toString();
     el.classList.add(style);
     return () => {
       el.classList.remove(style);
     };
-  });
+  }, [dialogElement]);
 
-  return elRef;
+  return setRef;
 }
